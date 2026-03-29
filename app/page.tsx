@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const IMGS = {
-  logo: "/logo.png",
   hero: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
   about: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg",
   booth1: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg",
@@ -16,15 +16,6 @@ const IMGS = {
   appStore: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/30dbd149-cefb-41e2-8446-dd541b0258cd/vecteezy_app-store-download-button-in-white-colors-download-on-the_12871374.png",
   googlePlay: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/f164d0f3-0f48-4705-a026-27464c82c4d9/vecteezy_google-play-store-download-button-in-white-colors-download_12871364.png",
 };
-
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Book Now", href: "/book-now" },
-  { label: "About", href: "#about" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
-];
 
 const faqs = [
   {
@@ -54,69 +45,12 @@ const locations = [
 ];
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
 
-      {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#fdf6ec]/90 backdrop-blur-sm border-b border-[#e8d9c3]">
-        <div className="max-w-6xl mx-auto px-6 p-0 flex items-center justify-between">
-          <a href="#home" className="flex items-center">
-            <img src={IMGS.logo} alt="Tanned Co." className="h-28 object-contain" />
-          </a>
-
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium tracking-wider uppercase">
-            {navLinks.map((l) => (
-              <a key={l.href} href={l.href} className="text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors">
-                {l.label}
-              </a>
-            ))}
-          </div>
-
-          <a
-            href="/book-now"
-            className="hidden md:inline-flex items-center bg-[#1a1a1a] text-white text-sm px-5 py-2.5 rounded-full font-medium hover:bg-[#3a2e24] transition-colors"
-          >
-            Book Now
-          </a>
-
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex flex-col gap-1.5 p-2"
-            aria-label="Toggle menu"
-          >
-            <span className={`block w-6 h-0.5 bg-[#1a1a1a] transition-transform duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-[#1a1a1a] transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-[#1a1a1a] transition-transform duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-          </button>
-        </div>
-
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="md:hidden bg-[#fdf6ec] border-t border-[#e8d9c3] px-6 py-6 flex flex-col gap-5">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-base font-medium tracking-wider uppercase text-[#5a4a3a]"
-              >
-                {l.label}
-              </a>
-            ))}
-            <a
-              href="/book-now"
-              className="mt-2 text-center bg-[#1a1a1a] text-white text-sm px-5 py-3 rounded-full font-medium"
-            >
-              Book Now
-            </a>
-          </div>
-        )}
-      </nav>
+      <Navbar activePath="/" />
 
       {/* HERO */}
       <section id="home" className="relative h-screen min-h-[600px] flex items-end">
@@ -395,14 +329,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-[#111] py-8 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col items-center gap-4">
-          <img src={IMGS.logo} alt="Tanned Co." className="h-6 object-contain brightness-0 invert opacity-50" />
-          <p className="text-white/40 text-xs text-center">© {new Date().getFullYear()} Tanned Co. All rights reserved.</p>
-          <a href="https://www.tannedco.com.au/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-white/40 text-xs hover:text-white/60 transition-colors">Privacy Policy</a>
-        </div>
-      </footer>
+      <Footer />
 
     </div>
   );
