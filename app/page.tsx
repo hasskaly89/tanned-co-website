@@ -3,16 +3,13 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import InstagramFeed from "@/components/InstagramFeed";
 
 const IMGS = {
   hero: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
   about: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg",
   booth1: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg",
   booth2: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6ae36374-746b-43fd-b97f-5fb84eafdc85/DSCF3500.jpg",
-  gallery1: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/3be460b8-ced1-4e5d-b1b7-91af7a52d9a2/DSCF2919-HIGHRES-2.jpg",
-  gallery2: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6e0af7d9-de31-4d94-a420-faafd0084f70/DSCF3334-HIGHRES-2.jpg",
-  gallery3: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/2b8046e0-e9f5-424e-9f55-58d06dc9689f/DSCF3275.jpg",
-  gallery4: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg",
   appStore: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/30dbd149-cefb-41e2-8446-dd541b0258cd/vecteezy_app-store-download-button-in-white-colors-download-on-the_12871374.png",
   googlePlay: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/f164d0f3-0f48-4705-a026-27464c82c4d9/vecteezy_google-play-store-download-button-in-white-colors-download_12871364.png",
 };
@@ -165,16 +162,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GALLERY STRIP */}
-      <section className="py-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 px-2">
-          {[IMGS.gallery1, IMGS.gallery2, IMGS.gallery3, IMGS.gallery4].map((src, i) => (
-            <div key={i} className="aspect-square overflow-hidden rounded-xl">
-              <img src={src} alt={`Gallery ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* INSTAGRAM FEED */}
+      <InstagramFeed />
 
       {/* TESTIMONIALS */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
