@@ -44,13 +44,69 @@ const locations = [
   { name: "8 Oxford St, Woollahra", maps: "https://www.google.com/maps/search/?api=1&query=8+Oxford+St+Woollahra+NSW" },
 ];
 
+const testimonials = [
+  {
+    name: "Jess M.",
+    location: "Caringbah",
+    text: "Obsessed with Tanned Co! The booth is so easy to use and the result is always flawless. I've tried so many spray tans and nothing compares — no streaks, no orange, just a gorgeous glow.",
+    stars: 5,
+  },
+  {
+    name: "Sophie L.",
+    location: "Woollahra",
+    text: "I love how quick and private the whole experience is. Book on the app, walk in, walk out glowing. The 5-pack is incredible value — I'm never going back to a regular spray tan salon!",
+    stars: 5,
+  },
+  {
+    name: "Tara B.",
+    location: "Kings Park",
+    text: "I was nervous trying an automated booth for the first time but the instructions inside are so clear. My tan lasted over a week and developed so naturally. Absolutely recommend.",
+    stars: 5,
+  },
+  {
+    name: "Rachel K.",
+    location: "Edensor Park",
+    text: "The rapid clear solution is a game changer — had a wedding the next day and it was perfect. Staff are always so helpful on Instagram too when I have questions.",
+    stars: 5,
+  },
+];
+
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [bannerVisible, setBannerVisible] = useState(true);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+
+  const prevTestimonial = () => setTestimonialIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
+  const nextTestimonial = () => setTestimonialIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1));
 
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
 
-      <Navbar activePath="/" />
+      {/* ANNOUNCEMENT BANNER */}
+      {bannerVisible && (
+        <div className="fixed top-0 left-0 right-0 z-60 bg-[#b08850] text-white text-sm py-2.5 px-4 flex items-center justify-center gap-3">
+          <span>✨ New location now open in Woollahra, Sydney — <a href="#contact" className="underline font-semibold hover:text-white/80 transition-colors">find us here</a></span>
+          <button
+            onClick={() => setBannerVisible(false)}
+            className="absolute right-4 text-white/70 hover:text-white text-lg leading-none transition-colors"
+            aria-label="Dismiss banner"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
+      <Navbar activePath="/" withBanner={bannerVisible} />
+
+      {/* FLOATING BOOK NOW BUTTON */}
+      <a
+        href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#b08850] hover:bg-[#8a6830] text-white text-sm font-bold uppercase tracking-widest px-6 py-3.5 rounded-full shadow-2xl transition-colors flex items-center gap-2"
+      >
+        <span>☀</span> Book Now
+      </a>
 
       {/* HERO */}
       <section id="home" className="relative h-screen min-h-[600px] flex items-end">
@@ -117,6 +173,71 @@ export default function Home() {
               <img src={src} alt={`Gallery ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+        <div className="max-w-4xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">What Our Clients Say</p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-14">Real Glows. Real Reviews.</h2>
+
+          {/* Carousel */}
+          <div className="relative bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-[#e8d9c3] text-center">
+            {/* Stars */}
+            <div className="flex justify-center gap-1 mb-6">
+              {Array.from({ length: testimonials[testimonialIndex].stars }).map((_, i) => (
+                <span key={i} className="text-[#b08850] text-xl">★</span>
+              ))}
+            </div>
+
+            {/* Quote */}
+            <p className="text-[#3a2e24] text-lg md:text-xl leading-relaxed italic mb-8 min-h-[96px]">
+              &ldquo;{testimonials[testimonialIndex].text}&rdquo;
+            </p>
+
+            {/* Author */}
+            <p className="font-bold text-[#1a1a1a] uppercase tracking-widest text-sm">{testimonials[testimonialIndex].name}</p>
+            <p className="text-[#b08850] text-xs tracking-wider uppercase mt-1">{testimonials[testimonialIndex].location}</p>
+
+            {/* Nav arrows */}
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <button
+                onClick={prevTestimonial}
+                className="w-10 h-10 rounded-full border-2 border-[#e8d9c3] flex items-center justify-center text-[#b08850] hover:border-[#b08850] transition-colors text-lg font-bold"
+                aria-label="Previous review"
+              >
+                ‹
+              </button>
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setTestimonialIndex(i)}
+                  className={`w-2 h-2 rounded-full transition-colors ${i === testimonialIndex ? "bg-[#b08850]" : "bg-[#e8d9c3]"}`}
+                  aria-label={`Go to review ${i + 1}`}
+                />
+              ))}
+              <button
+                onClick={nextTestimonial}
+                className="w-10 h-10 rounded-full border-2 border-[#e8d9c3] flex items-center justify-center text-[#b08850] hover:border-[#b08850] transition-colors text-lg font-bold"
+                aria-label="Next review"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+
+          {/* Google review link */}
+          <div className="text-center mt-8">
+            <a
+              href="https://www.google.com/search?q=tanned+co+sydney+reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold tracking-wider uppercase text-[#b08850] border-b-2 border-[#b08850] pb-0.5 hover:text-[#8a6830] hover:border-[#8a6830] transition-colors"
+            >
+              Read More Reviews →
+            </a>
+          </div>
         </div>
       </section>
 

@@ -12,11 +12,11 @@ const navLinks = [
   { label: "Contact", href: "/#contact" },
 ];
 
-export default function Navbar({ activePath = "/" }: { activePath?: string }) {
+export default function Navbar({ activePath = "/", withBanner = false }: { activePath?: string; withBanner?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#fdf6ec]/90 backdrop-blur-sm border-b border-[#e8d9c3]">
+    <nav className={`fixed ${withBanner ? "top-10" : "top-0"} left-0 right-0 z-50 bg-[#fdf6ec]/90 backdrop-blur-sm border-b border-[#e8d9c3] transition-all duration-300`}>
       <div className="max-w-6xl mx-auto px-6 p-0 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <img src="/logo.png" alt="Tanned Co." className="h-28 object-contain" />
