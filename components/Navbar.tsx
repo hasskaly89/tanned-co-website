@@ -5,11 +5,11 @@ import Link from "next/link";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Book Now", href: "/book-now" },
-  { label: "About", href: "/#about" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "FAQ", href: "/#faq" },
-  { label: "Contact", href: "/#contact" },
+  { label: "About", href: "/about" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar({ activePath = "/", withBanner = false }: { activePath?: string; withBanner?: boolean }) {
@@ -38,14 +38,12 @@ export default function Navbar({ activePath = "/", withBanner = false }: { activ
           ))}
         </div>
 
-        <a
-          href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/book-now"
           className="hidden md:inline-flex items-center bg-[#1a1a1a] text-white text-sm px-5 py-2.5 rounded-full font-medium hover:bg-[#3a2e24] transition-colors"
         >
           Book Now
-        </a>
+        </Link>
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
@@ -70,14 +68,13 @@ export default function Navbar({ activePath = "/", withBanner = false }: { activ
               {l.label}
             </Link>
           ))}
-          <a
-            href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/book-now"
+            onClick={() => setMenuOpen(false)}
             className="mt-2 text-center bg-[#1a1a1a] text-white text-sm px-5 py-3 rounded-full font-medium"
           >
             Book Now
-          </a>
+          </Link>
         </div>
       )}
     </nav>
