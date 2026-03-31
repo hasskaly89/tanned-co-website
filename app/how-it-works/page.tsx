@@ -26,10 +26,30 @@ const steps = [
 ];
 
 const prepTips = [
-  { step: "01", icon: "💍", title: "Undress & Remove Jewellery", desc: "Get undressed and remove any jewellery before stepping into the booth." },
-  { step: "02", icon: "🧢", title: "Put On Hair Cap", desc: "Put on a hair cap and leave your hairline and ears exposed for even coverage." },
-  { step: "03", icon: "🤲", title: "Apply Blending Cream", desc: "Apply blending cream to your palms, back of hands and feet including nails to prevent over-absorption." },
-  { step: "04", icon: "👣", title: "Apply Sticky Feet", desc: "Apply sticky feet to the bottom of your feet to keep them clean during your session." },
+  {
+    step: "01",
+    title: "Undress & Remove Jewellery",
+    desc: "Get undressed and remove any jewellery before stepping into the booth.",
+    img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/66cba3e8-b0f9-4756-859a-70bf1be4aa45/DSCF2443.jpg",
+  },
+  {
+    step: "02",
+    title: "Put On Hair Cap",
+    desc: "Put on a hair cap and leave your hairline and ears exposed for even coverage.",
+    img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/96d6e447-3940-40dd-9241-c884ba173900/DSCF2437.jpg",
+  },
+  {
+    step: "03",
+    title: "Apply Blending Cream",
+    desc: "Apply blending cream to your palms, back of hands and feet including nails to prevent over-absorption.",
+    img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/90818258-d4ad-4495-8609-69069d53a69c/DSCF2505.jpg",
+  },
+  {
+    step: "04",
+    title: "Apply Sticky Feet",
+    desc: "Apply sticky feet to the bottom of your feet to keep them clean during your session.",
+    img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/f38ee636-add7-48ad-a970-c4e1438e0971/DSCF2447.jpg",
+  },
 ];
 
 const shades = [
@@ -96,6 +116,20 @@ export default function HowItWorks() {
         </div>
       </section>
 
+      {/* FULL-WIDTH DEMO PHOTO */}
+      <div className="relative h-[400px] md:h-[520px] overflow-hidden">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/f7fcbfad-4a79-4e5e-b6e1-0ea0acdc15e1/DSCF3643.jpg"
+          alt="Inside a Tanned Co. tanning booth"
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+          <p className="text-white text-2xl md:text-4xl font-black uppercase tracking-widest text-center drop-shadow-lg">
+            Private. Automated. Flawless.
+          </p>
+        </div>
+      </div>
+
       {/* PREPARATION GUIDE */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
@@ -103,12 +137,44 @@ export default function HowItWorks() {
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Before You Step In</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Follow these 4 steps inside your tanning room before starting your session.</p>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {prepTips.map(({ step, icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-2xl p-7 border border-[#e8d9c3] shadow-sm text-center flex flex-col items-center">
-                <p className="text-3xl font-black text-[#b08850] mb-2">{step}</p>
-                <div className="text-3xl mb-4">{icon}</div>
-                <h3 className="font-bold uppercase tracking-wide text-sm text-[#1a1a1a] mb-3">{title}</h3>
-                <p className="text-[#5a4a3a] text-sm leading-relaxed">{desc}</p>
+            {prepTips.map(({ step, title, desc, img }) => (
+              <div key={title} className="bg-white rounded-2xl overflow-hidden border border-[#e8d9c3] shadow-sm flex flex-col">
+                {/* Photo */}
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <img
+                    src={img}
+                    alt={title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-3 left-3 bg-[#b08850] text-white text-xs font-black uppercase tracking-widest rounded-full w-9 h-9 flex items-center justify-center shadow-md">
+                    {step}
+                  </div>
+                </div>
+                {/* Text */}
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="font-bold uppercase tracking-wide text-sm text-[#1a1a1a] mb-2">{title}</h3>
+                  <p className="text-[#5a4a3a] text-sm leading-relaxed">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* IN-BOOTH VISUAL GUIDE */}
+      <section className="py-20 md:py-28 bg-[#1a1a1a] text-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">Inside the Booth</p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Your Booth Guide</h2>
+          <p className="text-center text-white/60 mb-16 max-w-lg mx-auto">Once you step in, the booth guides you through everything. Here's what to expect.</p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6933d56e-70e2-44c5-8fbe-dde2aac05421/1.png", label: "Step 1" },
+              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c3e14383-d601-4ac6-b8b2-02393874f08a/2.png", label: "Step 2" },
+              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6d1c8f20-ab3e-4eae-adf5-62c594a286df/3.png", label: "Step 3" },
+            ].map(({ img, label }) => (
+              <div key={label} className="rounded-2xl overflow-hidden border border-white/10">
+                <img src={img} alt={label} className="w-full object-cover" />
               </div>
             ))}
           </div>
