@@ -108,7 +108,7 @@ export default function HowItWorks() {
       </section>
 
       {/* 4-STEP PROCESS */}
-      <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
+      <section className="py-20 md:py-28 bg-[#fdf0d5] text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Process</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">4 Simple Steps</h2>
@@ -139,7 +139,7 @@ export default function HowItWorks() {
       </div>
 
       {/* IN-BOOTH VISUAL GUIDE */}
-      <section className="py-20 md:py-28 bg-[#fdf6ec] text-[#1a1a1a]">
+      <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Inside the Booth</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Your Booth Guide</h2>
@@ -159,7 +159,7 @@ export default function HowItWorks() {
       </section>
 
       {/* SHADE OPTIONS */}
-      <section className="pb-20 md:pb-28 bg-[#fdf6ec]">
+      <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Tan Colours</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Choose Your Shade</h2>
@@ -198,7 +198,7 @@ export default function HowItWorks() {
       </section>
 
       {/* PREPARATION GUIDE */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">In The Room</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Before You Step In</h2>
@@ -229,7 +229,7 @@ export default function HowItWorks() {
       </section>
 
       {/* AFTERCARE */}
-      <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
+      <section className="py-20 md:py-28 bg-[#fdf0d5] text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">After Your Session</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">Aftercare Tips</h2>
@@ -245,7 +245,7 @@ export default function HowItWorks() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5] text-center">
+      <section className="py-20 md:py-28 bg-white text-center">
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#1a1a1a]">Ready to Book?</h2>
           <p className="text-[#5a4a3a] text-lg mb-10">Book your session in seconds. Walk in, walk out glowing.</p>
