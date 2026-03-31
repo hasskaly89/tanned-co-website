@@ -91,12 +91,20 @@ export default function HowItWorks() {
       <Navbar activePath="/how-it-works" />
 
       {/* PAGE HERO */}
-      <section className="bg-[#fdf0d5] pt-40 pb-24 text-center px-6 border-b border-[#e8d9c3]">
-        <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4">Step by Step</p>
-        <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight mb-6 text-[#1a1a1a]">HOW IT WORKS</h1>
-        <p className="text-[#5a4a3a] text-lg md:text-xl max-w-xl mx-auto">
-          Your step-by-step guide to a perfect automated spray tan.
-        </p>
+      <section className="relative h-[70vh] min-h-[520px] flex items-end">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg"
+          alt="Inside a Tanned Co. tanning booth"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-3">Step by Step</p>
+          <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">How It Works</h1>
+          <p className="text-white/80 text-lg md:text-xl max-w-xl">
+            Your step-by-step guide to a perfect automated spray tan.
+          </p>
+        </div>
       </section>
 
       {/* 4-STEP PROCESS */}

@@ -68,12 +68,20 @@ export default function FAQ() {
       <Navbar activePath="/faq" />
 
       {/* HERO */}
-      <section className="bg-[#1a1a1a] text-white pt-40 pb-24 text-center px-6">
-        <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4">Got Questions?</p>
-        <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight mb-6">FREQUENTLY ASKED QUESTIONS</h1>
-        <p className="text-white/70 text-lg md:text-xl max-w-xl mx-auto">
-          Everything you need to know before your first tan.
-        </p>
+      <section className="relative h-[70vh] min-h-[520px] flex items-end">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/2b8046e0-e9f5-424e-9f55-58d06dc9689f/DSCF3275.jpg"
+          alt="Tanned Co. glow result"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-3">Got Questions?</p>
+          <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">FAQs</h1>
+          <p className="text-white/80 text-lg md:text-xl max-w-xl">
+            Everything you need to know before your first tan.
+          </p>
+        </div>
       </section>
 
       {/* FAQ ACCORDION */}

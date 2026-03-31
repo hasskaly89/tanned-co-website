@@ -36,18 +36,26 @@ export default function About() {
       <Navbar activePath="/about" />
 
       {/* PAGE HERO */}
-      <section className="bg-[#1a1a1a] text-white pt-40 pb-24 text-center px-6">
-        <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4">Who We Are</p>
-        <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight mb-6">OUR STORY</h1>
-        <p className="text-white/70 text-lg md:text-xl max-w-xl mx-auto mb-10">
-          Sydney&apos;s first automated spray tanning studio — where luxury meets convenience.
-        </p>
-        <Link
-          href="/book-now"
-          className="inline-flex items-center bg-[#b08850] hover:bg-[#8a6830] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
-        >
-          Book Your Tan →
-        </Link>
+      <section className="relative h-[70vh] min-h-[520px] flex items-end">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg"
+          alt="Tanned Co. studio"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-3">Who We Are</p>
+          <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Our Story</h1>
+          <p className="text-white/80 text-lg md:text-xl max-w-xl mb-8">
+            Sydney&apos;s first automated spray tanning studio — where luxury meets convenience.
+          </p>
+          <Link
+            href="/book-now"
+            className="inline-flex items-center bg-[#b08850] hover:bg-[#8a6830] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
+          >
+            Book Your Tan →
+          </Link>
+        </div>
       </section>
 
       {/* OUR STORY */}

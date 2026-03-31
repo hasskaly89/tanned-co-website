@@ -28,12 +28,20 @@ export default function Pricing() {
       <Navbar activePath="/pricing" />
 
       {/* HERO */}
-      <section className="bg-[#1a1a1a] text-white pt-40 pb-24 text-center px-6">
-        <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4">Transparent &amp; Simple</p>
-        <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight mb-6">SIMPLE, HONEST PRICING</h1>
-        <p className="text-white/70 text-lg md:text-xl max-w-xl mx-auto">
-          No hidden fees. No awkward upsells. Just beautiful tans.
-        </p>
+      <section className="relative h-[70vh] min-h-[520px] flex items-end">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg"
+          alt="Tanned Co. tanning result"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-3">Transparent &amp; Simple</p>
+          <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Simple, Honest Pricing</h1>
+          <p className="text-white/80 text-lg md:text-xl max-w-xl">
+            No hidden fees. No awkward upsells. Just beautiful tans.
+          </p>
+        </div>
       </section>
 
       {/* PRICING CARDS */}
