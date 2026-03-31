@@ -71,7 +71,7 @@ export default function Home() {
       {/* ANNOUNCEMENT BANNER */}
       {bannerVisible && (
         <div className="fixed top-0 left-0 right-0 z-60 bg-[#a46746] text-white text-sm py-2.5 px-4 flex items-center justify-center gap-3">
-          <span>✨ New location now open in Woollahra, Sydney — <Link href="/contact" className="underline font-semibold hover:text-white/80 transition-colors">find us here</Link></span>
+          <span>✨ New location now open in Kings Park, Sydney — <Link href="/contact" className="underline font-semibold hover:text-white/80 transition-colors">find us here</Link></span>
           <button
             onClick={() => setBannerVisible(false)}
             className="absolute right-4 text-white/70 hover:text-white text-lg leading-none transition-colors"
