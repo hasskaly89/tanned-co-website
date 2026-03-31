@@ -70,7 +70,7 @@ export default function Home() {
 
       {/* ANNOUNCEMENT BANNER */}
       {bannerVisible && (
-        <div className="fixed top-0 left-0 right-0 z-60 bg-[#b08850] text-white text-sm py-2.5 px-4 flex items-center justify-center gap-3">
+        <div className="fixed top-0 left-0 right-0 z-60 bg-[#a46746] text-white text-sm py-2.5 px-4 flex items-center justify-center gap-3">
           <span>✨ New location now open in Woollahra, Sydney — <Link href="/contact" className="underline font-semibold hover:text-white/80 transition-colors">find us here</Link></span>
           <button
             onClick={() => setBannerVisible(false)}
@@ -87,7 +87,7 @@ export default function Home() {
       {/* FLOATING BOOK NOW BUTTON */}
       <Link
         href="/book-now"
-        className="fixed bottom-6 right-6 z-50 bg-[#b08850] hover:bg-[#8a6830] text-white text-sm font-bold uppercase tracking-widest px-6 py-3.5 rounded-full shadow-2xl transition-colors flex items-center gap-2"
+        className="fixed bottom-6 right-6 z-50 bg-[#a46746] hover:bg-[#7d4e33] text-white text-sm font-bold uppercase tracking-widest px-6 py-3.5 rounded-full shadow-2xl transition-colors flex items-center gap-2"
       >
         <span>☀</span> Book Now
       </Link>
@@ -118,7 +118,7 @@ export default function Home() {
       <section className="py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4">Your Go-To Destination</p>
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Your Go-To Destination</p>
             <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-6">
               Luxury Tanning, Your Way
             </h2>
@@ -144,7 +144,7 @@ export default function Home() {
       {/* HOW IT WORKS */}
       <section className="py-20 md:py-28 bg-[#1a1a1a] text-white">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">Simple &amp; Fast</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Simple &amp; Fast</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -152,8 +152,8 @@ export default function Home() {
               { num: "02", title: "Step Into Your Booth", desc: "Enter your private tanning room. The booth senses your height and guides you through 4 positions for full coverage." },
               { num: "03", title: "Walk Out Glowing", desc: "Develop for 6–8 hours, shower, and reveal your beautiful sun kissed glow. In a rush? Try our rapid clear solution — on and off in 2–3 hours." },
             ].map(({ num, title, desc }) => (
-              <div key={num} className="border border-white/10 rounded-3xl p-8 hover:border-[#b08850] transition-colors">
-                <p className="text-4xl font-black text-[#b08850] mb-4">{num}</p>
+              <div key={num} className="border border-white/10 rounded-3xl p-8 hover:border-[#a46746] transition-colors">
+                <p className="text-4xl font-black text-[#a46746] mb-4">{num}</p>
                 <h3 className="text-xl font-bold mb-3">{title}</h3>
                 <p className="text-white/60 leading-relaxed">{desc}</p>
               </div>
@@ -162,7 +162,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               href="/how-it-works"
-              className="inline-flex items-center border-2 border-[#b08850] text-[#b08850] px-7 py-3 rounded-full font-semibold hover:bg-[#b08850] hover:text-white transition-colors text-sm uppercase tracking-wider"
+              className="inline-flex items-center border-2 border-[#a46746] text-[#a46746] px-7 py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm uppercase tracking-wider"
             >
               Full Guide →
             </Link>
@@ -173,23 +173,23 @@ export default function Home() {
       {/* PRICING PREVIEW */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">Transparent &amp; Simple</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Transparent &amp; Simple</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Our Pricing</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">No hidden fees. Just beautiful tans at honest prices.</p>
           <div className="grid md:grid-cols-3 gap-6">
 
             {/* Casual */}
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-3">Casual Tan</p>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Casual Tan</p>
               <div className="flex items-end gap-1 mb-6">
                 <span className="text-5xl font-black">$35</span>
                 <span className="text-[#5a4a3a] mb-1.5">/ session</span>
               </div>
               <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> 1x automated spray tan session</li>
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> Valid for 2 months</li>
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> Private booth experience</li>
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> Choose your shade &amp; depth</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 1x automated spray tan session</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 2 months</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Private booth experience</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your shade &amp; depth</li>
               </ul>
               <Link href="/book-now" className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm">
                 Buy Now
@@ -198,35 +198,35 @@ export default function Home() {
 
             {/* 5 Pack */}
             <div className="bg-[#1a1a1a] text-white rounded-3xl p-8 shadow-xl flex flex-col relative overflow-hidden">
-              <div className="absolute top-5 right-5 bg-[#b08850] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</div>
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-3">5 Pack</p>
+              <div className="absolute top-5 right-5 bg-[#a46746] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</div>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">5 Pack</p>
               <div className="flex items-end gap-1 mb-1">
                 <span className="text-5xl font-black">$160</span>
               </div>
               <p className="text-white/50 text-sm mb-6">$33 per tan · Save $15</p>
               <ul className="space-y-3 text-white/70 text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> 5x automated spray tan sessions</li>
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> Valid for 5 months</li>
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> Name-specific booking</li>
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> Private booth experience</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 5x automated spray tan sessions</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 5 months</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Name-specific booking</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Private booth experience</li>
               </ul>
-              <Link href="/book-now" className="block text-center bg-[#b08850] text-white py-3 rounded-full font-semibold hover:bg-[#8a6830] transition-colors text-sm">
+              <Link href="/book-now" className="block text-center bg-[#a46746] text-white py-3 rounded-full font-semibold hover:bg-[#7d4e33] transition-colors text-sm">
                 Buy Now
               </Link>
             </div>
 
             {/* 10 Pack */}
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-3">10 Pack</p>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">10 Pack</p>
               <div className="flex items-end gap-1 mb-1">
                 <span className="text-5xl font-black">$300</span>
               </div>
               <p className="text-[#5a4a3a] text-sm mb-6">$30 per tan · Save $50</p>
               <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> 10x automated spray tan sessions</li>
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> Valid for 10 months</li>
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> Name-specific booking</li>
-                <li className="flex items-start gap-2"><span className="text-[#b08850] mt-0.5">✓</span> Best value per session</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 10x automated spray tan sessions</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 10 months</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Name-specific booking</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Best value per session</li>
               </ul>
               <Link href="/book-now" className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm">
                 Buy Now
@@ -237,7 +237,7 @@ export default function Home() {
           <div className="text-center mt-10">
             <Link
               href="/pricing"
-              className="text-sm font-semibold tracking-wider uppercase text-[#b08850] border-b-2 border-[#b08850] pb-0.5 hover:text-[#8a6830] hover:border-[#8a6830] transition-colors"
+              className="text-sm font-semibold tracking-wider uppercase text-[#a46746] border-b-2 border-[#a46746] pb-0.5 hover:text-[#7d4e33] hover:border-[#7d4e33] transition-colors"
             >
               View All Options →
             </Link>
@@ -248,25 +248,25 @@ export default function Home() {
       {/* TESTIMONIALS */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-4xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">What Our Clients Say</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">What Our Clients Say</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-14">Real Glows. Real Reviews.</h2>
 
           <div className="relative bg-[#fdf6ec] rounded-3xl p-8 md:p-12 shadow-sm border border-[#e8d9c3] text-center">
             <div className="flex justify-center gap-1 mb-6">
               {Array.from({ length: testimonials[testimonialIndex].stars }).map((_, i) => (
-                <span key={i} className="text-[#b08850] text-xl">★</span>
+                <span key={i} className="text-[#a46746] text-xl">★</span>
               ))}
             </div>
             <p className="text-[#3a2e24] text-lg md:text-xl leading-relaxed italic mb-8 min-h-[96px]">
               &ldquo;{testimonials[testimonialIndex].text}&rdquo;
             </p>
             <p className="font-bold text-[#1a1a1a] uppercase tracking-widest text-sm">{testimonials[testimonialIndex].name}</p>
-            <p className="text-[#b08850] text-xs tracking-wider uppercase mt-1">{testimonials[testimonialIndex].location}</p>
+            <p className="text-[#a46746] text-xs tracking-wider uppercase mt-1">{testimonials[testimonialIndex].location}</p>
 
             <div className="flex items-center justify-center gap-4 mt-8">
               <button
                 onClick={prevTestimonial}
-                className="w-10 h-10 rounded-full border-2 border-[#e8d9c3] flex items-center justify-center text-[#b08850] hover:border-[#b08850] transition-colors text-lg font-bold"
+                className="w-10 h-10 rounded-full border-2 border-[#e8d9c3] flex items-center justify-center text-[#a46746] hover:border-[#a46746] transition-colors text-lg font-bold"
                 aria-label="Previous review"
               >
                 ‹
@@ -275,13 +275,13 @@ export default function Home() {
                 <button
                   key={i}
                   onClick={() => setTestimonialIndex(i)}
-                  className={`w-2 h-2 rounded-full transition-colors ${i === testimonialIndex ? "bg-[#b08850]" : "bg-[#e8d9c3]"}`}
+                  className={`w-2 h-2 rounded-full transition-colors ${i === testimonialIndex ? "bg-[#a46746]" : "bg-[#e8d9c3]"}`}
                   aria-label={`Go to review ${i + 1}`}
                 />
               ))}
               <button
                 onClick={nextTestimonial}
-                className="w-10 h-10 rounded-full border-2 border-[#e8d9c3] flex items-center justify-center text-[#b08850] hover:border-[#b08850] transition-colors text-lg font-bold"
+                className="w-10 h-10 rounded-full border-2 border-[#e8d9c3] flex items-center justify-center text-[#a46746] hover:border-[#a46746] transition-colors text-lg font-bold"
                 aria-label="Next review"
               >
                 ›
@@ -294,7 +294,7 @@ export default function Home() {
               href="https://www.google.com/search?q=tanned+co+sydney+reviews"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold tracking-wider uppercase text-[#b08850] border-b-2 border-[#b08850] pb-0.5 hover:text-[#8a6830] hover:border-[#8a6830] transition-colors"
+              className="text-sm font-semibold tracking-wider uppercase text-[#a46746] border-b-2 border-[#a46746] pb-0.5 hover:text-[#7d4e33] hover:border-[#7d4e33] transition-colors"
             >
               Read More Reviews →
             </a>
@@ -305,7 +305,7 @@ export default function Home() {
       {/* FAQ TEASER */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-3xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">Got Questions?</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Got Questions?</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-14">FAQ</h2>
           <div className="space-y-3">
             {faqs.map((faq, i) => (
@@ -315,7 +315,7 @@ export default function Home() {
                   className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-[#1a1a1a] hover:bg-[#fdf6ec] transition-colors"
                 >
                   <span className="pr-4">{faq.q}</span>
-                  <span className={`text-[#b08850] text-xl font-black flex-shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
+                  <span className={`text-[#a46746] text-xl font-black flex-shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
                 </button>
                 {openFaq === i && (
                   <div className="px-6 pb-6 text-[#5a4a3a] leading-relaxed text-sm border-t border-[#e8d9c3] pt-4">
@@ -326,7 +326,7 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link href="/faq" className="text-sm font-semibold tracking-wider uppercase text-[#b08850] border-b-2 border-[#b08850] pb-0.5 hover:text-[#8a6830] hover:border-[#8a6830] transition-colors">
+            <Link href="/faq" className="text-sm font-semibold tracking-wider uppercase text-[#a46746] border-b-2 border-[#a46746] pb-0.5 hover:text-[#7d4e33] hover:border-[#7d4e33] transition-colors">
               See All FAQs →
             </Link>
           </div>
@@ -336,17 +336,17 @@ export default function Home() {
       {/* CONTACT TEASER */}
       <section className="py-20 md:py-28 bg-[#1a1a1a] text-white">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">Find Us</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Find Us</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">Visit Us</h2>
           <div className="grid md:grid-cols-2 gap-12">
 
             {/* Locations list */}
             <div>
-              <h3 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#b08850]">Our Locations</h3>
+              <h3 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#a46746]">Our Locations</h3>
               <div className="space-y-3">
                 {locations.map((loc) => (
                   <div key={loc.name} className="flex items-start gap-3 border-b border-white/10 pb-3">
-                    <span className="text-[#b08850] mt-0.5">📍</span>
+                    <span className="text-[#a46746] mt-0.5">📍</span>
                     <p className="text-white/80">{loc.name}</p>
                   </div>
                 ))}
@@ -356,7 +356,7 @@ export default function Home() {
             {/* Get in touch */}
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-bold uppercase tracking-widest mb-4 text-[#b08850]">Get In Touch</h3>
+                <h3 className="text-lg font-bold uppercase tracking-widest mb-4 text-[#a46746]">Get In Touch</h3>
                 <div className="space-y-3">
                   <a href="mailto:hello@tannedco.com.au" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
                     <span>✉️</span> hello@tannedco.com.au
@@ -368,7 +368,7 @@ export default function Home() {
               </div>
               <Link
                 href="/contact"
-                className="inline-flex items-center border-2 border-[#b08850] text-[#b08850] px-7 py-3 rounded-full font-semibold hover:bg-[#b08850] hover:text-white transition-colors text-sm uppercase tracking-wider"
+                className="inline-flex items-center border-2 border-[#a46746] text-[#a46746] px-7 py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm uppercase tracking-wider"
               >
                 See All Locations →
               </Link>

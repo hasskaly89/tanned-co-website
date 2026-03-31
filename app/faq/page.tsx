@@ -76,7 +76,7 @@ export default function FAQ() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-3">Got Questions?</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Got Questions?</p>
           <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">FAQs</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Everything you need to know before your first tan.
@@ -89,7 +89,7 @@ export default function FAQ() {
         <div className="max-w-3xl mx-auto px-6 space-y-14">
           {categories.map((cat) => (
             <div key={cat.title}>
-              <h2 className="text-2xl font-black uppercase tracking-wide mb-6 pb-3 border-b-2 border-[#b08850] text-[#1a1a1a]">
+              <h2 className="text-2xl font-black uppercase tracking-wide mb-6 pb-3 border-b-2 border-[#a46746] text-[#1a1a1a]">
                 {cat.title}
               </h2>
               <div className="space-y-3">
@@ -102,7 +102,7 @@ export default function FAQ() {
                         className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-[#1a1a1a] hover:bg-[#fdf6ec] transition-colors"
                       >
                         <span className="pr-4">{faq.q}</span>
-                        <span className={`text-[#b08850] text-xl font-black flex-shrink-0 transition-transform duration-200 ${openItem === key ? "rotate-45" : ""}`}>+</span>
+                        <span className={`text-[#a46746] text-xl font-black flex-shrink-0 transition-transform duration-200 ${openItem === key ? "rotate-45" : ""}`}>+</span>
                       </button>
                       {openItem === key && (
                         <div className="px-6 pb-6 text-[#5a4a3a] leading-relaxed text-sm border-t border-[#e8d9c3] pt-4">
@@ -121,7 +121,7 @@ export default function FAQ() {
       {/* STILL HAVE QUESTIONS */}
       <section className="py-20 bg-[#fdf0d5] text-center">
         <div className="max-w-2xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4">We&apos;re Here to Help</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">We&apos;re Here to Help</p>
           <h2 className="text-3xl md:text-4xl font-black uppercase mb-4 text-[#1a1a1a]">Still Have Questions?</h2>
           <p className="text-[#5a4a3a] text-lg mb-8">
             Can&apos;t find what you&apos;re looking for? Reach out to our team — we&apos;re happy to help.

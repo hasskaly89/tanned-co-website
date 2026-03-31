@@ -29,7 +29,7 @@ export default function Navbar({ activePath = "/", withBanner = false }: { activ
               href={l.href}
               className={`transition-colors ${
                 l.href === activePath
-                  ? "text-[#1a1a1a] border-b-2 border-[#b08850] pb-0.5"
+                  ? "text-[#1a1a1a] border-b-2 border-[#a46746] pb-0.5"
                   : "text-[#5a4a3a] hover:text-[#1a1a1a]"
               }`}
             >

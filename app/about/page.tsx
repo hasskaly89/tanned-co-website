@@ -44,14 +44,14 @@ export default function About() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-3">Who We Are</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Who We Are</p>
           <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Our Story</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl mb-8">
             Sydney&apos;s first automated spray tanning studio — where luxury meets convenience.
           </p>
           <Link
             href="/book-now"
-            className="inline-flex items-center bg-[#b08850] hover:bg-[#8a6830] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
+            className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
           >
             Book Your Tan →
           </Link>
@@ -62,7 +62,7 @@ export default function About() {
       <section className="py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4">How It Started</p>
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">How It Started</p>
             <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-6">
               Built for You
             </h2>
@@ -87,7 +87,7 @@ export default function About() {
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((s) => (
             <div key={s.label} className="bg-[#f5e6cc] rounded-2xl p-6 text-center shadow-sm">
-              <p className="text-4xl font-black text-[#b08850] mb-1">{s.value}</p>
+              <p className="text-4xl font-black text-[#a46746] mb-1">{s.value}</p>
               <p className="text-xs uppercase tracking-widest text-[#5a4a3a] font-semibold">{s.label}</p>
             </div>
           ))}
@@ -98,7 +98,7 @@ export default function About() {
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4">Our Mission</p>
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Our Mission</p>
             <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-6">
               Your Glow, Your Way
             </h2>
@@ -121,7 +121,7 @@ export default function About() {
       {/* OUR BOOTHS */}
       <section className="py-20 md:py-28 bg-[#1a1a1a] text-white">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">The Technology</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Technology</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">
             State of the Art Tanning Booths
           </h2>
@@ -136,7 +136,7 @@ export default function About() {
               <ul className="space-y-4">
                 {boothPoints.map((point) => (
                   <li key={point} className="flex items-start gap-3">
-                    <span className="text-[#b08850] font-bold mt-0.5 text-lg">✓</span>
+                    <span className="text-[#a46746] font-bold mt-0.5 text-lg">✓</span>
                     <span className="text-white/80 text-base">{point}</span>
                   </li>
                 ))}
@@ -154,7 +154,7 @@ export default function About() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/book-now"
-              className="inline-flex items-center bg-[#b08850] hover:bg-[#8a6830] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
+              className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
             >
               Book Now
             </Link>

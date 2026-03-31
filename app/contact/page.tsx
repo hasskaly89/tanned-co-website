@@ -56,7 +56,7 @@ export default function Contact() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-3">Find Us</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Find Us</p>
           <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Find Us</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             5 convenient Sydney locations, open 7 days a week.
@@ -67,7 +67,7 @@ export default function Contact() {
       {/* LOCATIONS GRID */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">Our Studios</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Our Studios</p>
           <h2 className="text-4xl font-black uppercase text-center mb-14">Our Locations</h2>
 
           {/* First 3 locations */}
@@ -75,11 +75,11 @@ export default function Contact() {
             {locations.slice(0, 3).map((loc) => (
               <div key={loc.name} className="bg-white rounded-2xl p-7 border border-[#e8d9c3] shadow-sm flex flex-col">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[#b08850] text-xl">📍</span>
+                  <span className="text-[#a46746] text-xl">📍</span>
                   <h3 className="font-black uppercase tracking-wide text-[#1a1a1a]">{loc.name}</h3>
                 </div>
                 <p className="text-[#5a4a3a] text-sm mb-2">{loc.address}</p>
-                <p className="text-xs text-[#b08850] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
+                <p className="text-xs text-[#a46746] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
                 <a
                   href={loc.maps}
                   target="_blank"
@@ -97,11 +97,11 @@ export default function Contact() {
             {locations.slice(3).map((loc) => (
               <div key={loc.name} className="bg-white rounded-2xl p-7 border border-[#e8d9c3] shadow-sm flex flex-col">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[#b08850] text-xl">📍</span>
+                  <span className="text-[#a46746] text-xl">📍</span>
                   <h3 className="font-black uppercase tracking-wide text-[#1a1a1a]">{loc.name}</h3>
                 </div>
                 <p className="text-[#5a4a3a] text-sm mb-2">{loc.address}</p>
-                <p className="text-xs text-[#b08850] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
+                <p className="text-xs text-[#a46746] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
                 <a
                   href={loc.maps}
                   target="_blank"
@@ -123,26 +123,26 @@ export default function Contact() {
           {/* Left: contact info */}
           <div className="space-y-8">
             <div>
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4">Contact Info</p>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Contact Info</p>
               <h2 className="text-3xl md:text-4xl font-black uppercase mb-8">Get In Touch</h2>
               <div className="space-y-4">
                 <a href="mailto:hello@tannedco.com.au" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors text-base">
-                  <span className="text-[#b08850]">✉</span> hello@tannedco.com.au
+                  <span className="text-[#a46746]">✉</span> hello@tannedco.com.au
                 </a>
                 <a href="tel:1300826633" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors text-base">
-                  <span className="text-[#b08850]">☎</span> 1300 826 633
+                  <span className="text-[#a46746]">☎</span> 1300 826 633
                 </a>
               </div>
             </div>
 
             <div>
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-4 text-[#b08850]">Follow Us</h3>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-4 text-[#a46746]">Follow Us</h3>
               <div className="flex flex-wrap gap-3">
                 <a
                   href="http://instagram.com/tannedco_"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider border border-white/20 rounded-full px-4 py-2 hover:border-[#b08850] hover:text-[#b08850]"
+                  className="text-white/70 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider border border-white/20 rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
                 >
                   Instagram
                 </a>
@@ -150,7 +150,7 @@ export default function Contact() {
                   href="https://www.tiktok.com/@tannedco_"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider border border-white/20 rounded-full px-4 py-2 hover:border-[#b08850] hover:text-[#b08850]"
+                  className="text-white/70 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider border border-white/20 rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
                 >
                   TikTok
                 </a>
@@ -158,7 +158,7 @@ export default function Contact() {
                   href="https://www.facebook.com/profile.php?id=100086326464692"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider border border-white/20 rounded-full px-4 py-2 hover:border-[#b08850] hover:text-[#b08850]"
+                  className="text-white/70 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider border border-white/20 rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
                 >
                   Facebook
                 </a>
@@ -166,10 +166,10 @@ export default function Contact() {
             </div>
 
             <div>
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-4 text-[#b08850]">Book Now</h3>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-4 text-[#a46746]">Book Now</h3>
               <Link
                 href="/book-now"
-                className="inline-flex items-center bg-[#b08850] hover:bg-[#8a6830] text-white px-7 py-3 rounded-full font-semibold transition-colors text-sm"
+                className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-7 py-3 rounded-full font-semibold transition-colors text-sm"
               >
                 Book Your Tan →
               </Link>
@@ -178,7 +178,7 @@ export default function Contact() {
 
           {/* Right: contact form */}
           <div>
-            <h3 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#b08850]">Send Us a Message</h3>
+            <h3 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#a46746]">Send Us a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label htmlFor="name" className="block text-xs font-bold uppercase tracking-widest text-white/50 mb-2">
@@ -191,7 +191,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Jane Smith"
-                  className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#b08850] transition-colors"
+                  className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#a46746] transition-colors"
                 />
               </div>
               <div>
@@ -205,7 +205,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="jane@example.com"
-                  className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#b08850] transition-colors"
+                  className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#a46746] transition-colors"
                 />
               </div>
               <div>
@@ -219,12 +219,12 @@ export default function Contact() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="How can we help you?"
-                  className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#b08850] transition-colors resize-none"
+                  className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#a46746] transition-colors resize-none"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#b08850] hover:bg-[#8a6830] text-white py-4 rounded-full font-semibold uppercase tracking-widest transition-colors"
+                className="w-full bg-[#a46746] hover:bg-[#7d4e33] text-white py-4 rounded-full font-semibold uppercase tracking-widest transition-colors"
               >
                 Send Message
               </button>

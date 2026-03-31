@@ -99,7 +99,7 @@ export default function HowItWorks() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-3">Step by Step</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Step by Step</p>
           <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">How It Works</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Your step-by-step guide to a perfect automated spray tan.
@@ -110,12 +110,12 @@ export default function HowItWorks() {
       {/* 4-STEP PROCESS */}
       <section className="py-20 md:py-28 bg-[#1a1a1a] text-white">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">The Process</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Process</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">4 Simple Steps</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
             {steps.map(({ num, title, desc }) => (
-              <div key={num} className="border border-white/10 rounded-3xl p-8 hover:border-[#b08850] transition-colors flex flex-col">
-                <p className="text-5xl font-black text-[#b08850] mb-5">{num}</p>
+              <div key={num} className="border border-white/10 rounded-3xl p-8 hover:border-[#a46746] transition-colors flex flex-col">
+                <p className="text-5xl font-black text-[#a46746] mb-5">{num}</p>
                 <h3 className="text-lg font-bold mb-3 uppercase tracking-wide">{title}</h3>
                 <p className="text-white/60 leading-relaxed text-sm flex-1">{desc}</p>
               </div>
@@ -141,7 +141,7 @@ export default function HowItWorks() {
       {/* PREPARATION GUIDE */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">In The Room</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">In The Room</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Before You Step In</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Follow these 4 steps inside your tanning room before starting your session.</p>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -154,7 +154,7 @@ export default function HowItWorks() {
                     alt={title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-3 left-3 bg-[#b08850] text-white text-xs font-black uppercase tracking-widest rounded-full w-9 h-9 flex items-center justify-center shadow-md">
+                  <div className="absolute top-3 left-3 bg-[#a46746] text-white text-xs font-black uppercase tracking-widest rounded-full w-9 h-9 flex items-center justify-center shadow-md">
                     {step}
                   </div>
                 </div>
@@ -172,7 +172,7 @@ export default function HowItWorks() {
       {/* IN-BOOTH VISUAL GUIDE */}
       <section className="py-20 md:py-28 bg-[#1a1a1a] text-white">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">Inside the Booth</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Inside the Booth</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Your Booth Guide</h2>
           <p className="text-center text-white/60 mb-16 max-w-lg mx-auto">Once you step in, the booth guides you through everything. Here's what to expect.</p>
           <div className="grid md:grid-cols-3 gap-6">
@@ -192,7 +192,7 @@ export default function HowItWorks() {
       {/* SHADE OPTIONS */}
       <section className="py-20 md:py-28 bg-[#fdf6ec]">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">Tan Colours</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Tan Colours</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Choose Your Shade</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">3 signature colours, each available in 3 depths — 9 shades total so you can find your perfect glow.</p>
           <div className="grid md:grid-cols-3 gap-8">
@@ -213,13 +213,13 @@ export default function HowItWorks() {
                   ))}
                 </div>
                 {/* Tag */}
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#b08850] mb-2">{tag}</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#a46746] mb-2">{tag}</span>
                 {/* Name */}
                 <h3 className="text-xl font-black uppercase tracking-wide text-[#1a1a1a] mb-3">{name}</h3>
                 {/* Description */}
                 <p className="text-[#5a4a3a] text-sm leading-relaxed flex-1 mb-5">{desc}</p>
                 {/* Rinse time */}
-                <div className="flex items-center gap-2 bg-[#fdf0d5] rounded-full px-4 py-2 text-xs font-semibold text-[#b08850] uppercase tracking-wider w-fit">
+                <div className="flex items-center gap-2 bg-[#fdf0d5] rounded-full px-4 py-2 text-xs font-semibold text-[#a46746] uppercase tracking-wider w-fit">
                   <span>⏱</span> {rinse}
                 </div>
               </div>
@@ -231,12 +231,12 @@ export default function HowItWorks() {
       {/* AFTERCARE */}
       <section className="py-20 md:py-28 bg-[#1a1a1a] text-white">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">After Your Session</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">After Your Session</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">Aftercare Tips</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
             {aftercare.map((tip) => (
-              <div key={tip} className="border border-white/10 rounded-2xl p-6 flex items-start gap-3 hover:border-[#b08850] transition-colors">
-                <span className="text-[#b08850] font-bold text-lg mt-0.5">✓</span>
+              <div key={tip} className="border border-white/10 rounded-2xl p-6 flex items-start gap-3 hover:border-[#a46746] transition-colors">
+                <span className="text-[#a46746] font-bold text-lg mt-0.5">✓</span>
                 <span className="text-white/80 leading-relaxed">{tip}</span>
               </div>
             ))}

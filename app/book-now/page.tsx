@@ -38,7 +38,7 @@ export default function BookNow() {
           </p>
 
           {/* Divider */}
-          <div className="w-16 h-0.5 bg-[#b08850] my-4" />
+          <div className="w-16 h-0.5 bg-[#a46746] my-4" />
 
           {/* Choose location heading */}
           <h2 className="text-2xl md:text-4xl font-bold text-white">
@@ -50,7 +50,7 @@ export default function BookNow() {
             href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center justify-center bg-[#8a7550] hover:bg-[#6e5d3e] text-white text-lg md:text-xl font-bold uppercase tracking-widest px-16 py-5 rounded-sm transition-colors min-w-[320px] shadow-xl"
+            className="mt-4 inline-flex items-center justify-center bg-[#a46746] hover:bg-[#7d4e33] text-white text-lg md:text-xl font-bold uppercase tracking-widest px-16 py-5 rounded-sm transition-colors min-w-[320px] shadow-xl"
           >
             Book Now
           </a>
@@ -69,7 +69,7 @@ export default function BookNow() {
               href="https://apps.apple.com/us/app/tannedco/id1659547172"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#8a7550] hover:bg-[#6e5d3e] text-white text-lg font-bold uppercase tracking-widest px-12 py-5 rounded-sm transition-colors min-w-[260px] shadow-xl"
+              className="inline-flex items-center justify-center bg-[#a46746] hover:bg-[#7d4e33] text-white text-lg font-bold uppercase tracking-widest px-12 py-5 rounded-sm transition-colors min-w-[260px] shadow-xl"
             >
               Apple App
             </a>
@@ -77,7 +77,7 @@ export default function BookNow() {
               href="https://play.google.com/store/apps/details?id=com.treshna.memberportal.tannedco"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-[#8a7550] hover:bg-[#6e5d3e] text-white text-lg font-bold uppercase tracking-widest px-12 py-5 rounded-sm transition-colors min-w-[260px] shadow-xl"
+              className="inline-flex items-center justify-center bg-[#a46746] hover:bg-[#7d4e33] text-white text-lg font-bold uppercase tracking-widest px-12 py-5 rounded-sm transition-colors min-w-[260px] shadow-xl"
             >
               Android App
             </a>
