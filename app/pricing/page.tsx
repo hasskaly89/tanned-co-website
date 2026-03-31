@@ -135,57 +135,6 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* PACK VALIDITY */}
-      <section className="py-20 md:py-28 bg-[#fdf6ec]">
-        <div className="max-w-5xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Pack Details</p>
-          <h2 className="text-4xl font-black uppercase text-center mb-14">Pack Validity</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Casual",
-                price: "$35",
-                validity: "Valid for 2 months",
-                note: "Flexible one-off sessions",
-                points: ["No commitment", "Use at any location", "Buy as needed"],
-              },
-              {
-                title: "5 Pack",
-                price: "$160",
-                validity: "Valid for 5 months",
-                note: "Name-specific",
-                points: ["Name linked to account", "Can be used across all locations", "Best for regular tanners"],
-                highlight: true,
-              },
-              {
-                title: "10 Pack",
-                price: "$300",
-                validity: "Valid for 10 months",
-                note: "Name-specific · Best value",
-                points: ["Name linked to account", "Can be used across all locations", "Maximum savings"],
-              },
-            ].map((p) => (
-              <div
-                key={p.title}
-                className={`rounded-2xl p-7 border text-center ${p.highlight ? "bg-[#1a1a1a] text-white border-[#a46746]" : "bg-white border-[#e8d9c3]"}`}
-              >
-                <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${p.highlight ? "text-[#a46746]" : "text-[#a46746]"}`}>{p.title}</p>
-                <p className={`text-4xl font-black mb-1 ${p.highlight ? "text-white" : "text-[#1a1a1a]"}`}>{p.price}</p>
-                <p className={`text-sm font-semibold mb-1 ${p.highlight ? "text-[#a46746]" : "text-[#a46746]"}`}>{p.validity}</p>
-                <p className={`text-xs mb-5 ${p.highlight ? "text-white/50" : "text-[#5a4a3a]"}`}>{p.note}</p>
-                <ul className="space-y-2">
-                  {p.points.map((pt) => (
-                    <li key={pt} className={`text-sm flex items-start gap-2 text-left ${p.highlight ? "text-white/70" : "text-[#5a4a3a]"}`}>
-                      <span className="text-[#a46746] mt-0.5">✓</span>{pt}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FAQ STRIP */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-3xl mx-auto px-6">
