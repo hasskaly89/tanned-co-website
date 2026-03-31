@@ -26,32 +26,33 @@ const steps = [
 ];
 
 const prepTips = [
-  { icon: "🧼", title: "Exfoliate", desc: "Exfoliate 24 hours before your tan. Focus on elbows, knees, ankles and wrists." },
-  { icon: "💧", title: "Moisturise", desc: "Apply light moisturiser the night before. Avoid heavy oils on the day." },
-  { icon: "👗", title: "Wear Dark Loose Clothing", desc: "Wear dark, loose-fitting clothes to your appointment to avoid any transfer." },
-  { icon: "💄", title: "Come Clean", desc: "No deodorant, perfume, makeup or moisturiser on the day of your tan." },
+  { step: "01", icon: "💍", title: "Undress & Remove Jewellery", desc: "Get undressed and remove any jewellery before stepping into the booth." },
+  { step: "02", icon: "🧢", title: "Put On Hair Cap", desc: "Put on a hair cap and leave your hairline and ears exposed for even coverage." },
+  { step: "03", icon: "🤲", title: "Apply Blending Cream", desc: "Apply blending cream to your palms, back of hands and feet including nails to prevent over-absorption." },
+  { step: "04", icon: "👣", title: "Apply Sticky Feet", desc: "Apply sticky feet to the bottom of your feet to keep them clean during your session." },
 ];
 
 const shades = [
   {
-    name: "Sol Golden",
-    desc: "A warm, golden bronze. Perfect for fair to medium skin tones. Rinse after 6–8 hours.",
-    swatch: "#c8a86b",
+    name: "Rapid Venetian",
+    tag: "Most Popular",
+    desc: "Rich chocolate brown and subtle violet undertones — the ideal choice to achieve a timeless European tan. Works for all skin tones and busy tanners.",
+    rinse: "Rinse after 2–3 hours",
+    swatches: ["#c4956a", "#a06b42", "#6b3f22"],
   },
   {
-    name: "Deep Bronze",
-    desc: "A deeper, richer tan for those wanting maximum colour. Rinse after 6–8 hours.",
-    swatch: "#8b5e3c",
+    name: "Malibu",
+    tag: "Deep Olive Bronze",
+    desc: "Caramel and violet undertones — our highly sought-after neutral base solution that delivers a stunning deep olive bronze tan. Best for olive undertones.",
+    rinse: "Rinse after 6–8 hours or sleep in",
+    swatches: ["#c49a6c", "#9e6e42", "#6b4020"],
   },
   {
-    name: "Clear / Natural",
-    desc: "A clear solution that develops naturally. Perfect for first-timers. Suits all skin tones.",
-    swatch: "#e8d5b7",
-  },
-  {
-    name: "Rapid Express",
-    desc: "In a rush? Our express formula develops in just 2–3 hours for the same beautiful result.",
-    swatch: "#d4935a",
+    name: "Monterey",
+    tag: "Golden Beach Tan",
+    desc: "A unique blend of golden and coffee brown undertones — the ideal choice to achieve that iconic beach tan. Great for fair undertones or those who burn easily.",
+    rinse: "Rinse after 6–8 hours or sleep in",
+    swatches: ["#d4a96a", "#b8823a", "#8a5c20"],
   },
 ];
 
@@ -98,12 +99,14 @@ export default function HowItWorks() {
       {/* PREPARATION GUIDE */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">Prep Tips</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">Before You Arrive</h2>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">In The Room</p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Before You Step In</h2>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Follow these 4 steps inside your tanning room before starting your session.</p>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {prepTips.map(({ icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-2xl p-7 border border-[#e8d9c3] shadow-sm text-center">
-                <div className="text-4xl mb-4">{icon}</div>
+            {prepTips.map(({ step, icon, title, desc }) => (
+              <div key={title} className="bg-white rounded-2xl p-7 border border-[#e8d9c3] shadow-sm text-center flex flex-col items-center">
+                <p className="text-3xl font-black text-[#b08850] mb-2">{step}</p>
+                <div className="text-3xl mb-4">{icon}</div>
                 <h3 className="font-bold uppercase tracking-wide text-sm text-[#1a1a1a] mb-3">{title}</h3>
                 <p className="text-[#5a4a3a] text-sm leading-relaxed">{desc}</p>
               </div>
@@ -116,16 +119,35 @@ export default function HowItWorks() {
       <section className="py-20 md:py-28 bg-[#fdf6ec]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#b08850] mb-4 text-center">Tan Colours</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">Choose Your Shade</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {shades.map(({ name, desc, swatch }) => (
-              <div key={name} className="bg-white rounded-2xl p-7 border border-[#e8d9c3] shadow-sm text-center flex flex-col items-center">
-                <div
-                  className="w-16 h-16 rounded-full mb-5 shadow-md border border-[#e8d9c3]"
-                  style={{ backgroundColor: swatch }}
-                />
-                <h3 className="font-bold uppercase tracking-wide text-sm text-[#1a1a1a] mb-3">{name}</h3>
-                <p className="text-[#5a4a3a] text-sm leading-relaxed">{desc}</p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Choose Your Shade</h2>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">3 signature colours, each available in 3 depths — 9 shades total so you can find your perfect glow.</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {shades.map(({ name, tag, desc, rinse, swatches }) => (
+              <div key={name} className="bg-white rounded-3xl p-8 border border-[#e8d9c3] shadow-sm flex flex-col">
+                {/* Colour swatches — light, medium, dark */}
+                <div className="flex gap-3 mb-6">
+                  {swatches.map((colour, i) => (
+                    <div key={i} className="flex flex-col items-center gap-1.5 flex-1">
+                      <div
+                        className="w-full aspect-square rounded-xl shadow-sm border border-[#e8d9c3]"
+                        style={{ backgroundColor: colour }}
+                      />
+                      <span className="text-[10px] uppercase tracking-widest text-[#5a4a3a]">
+                        {i === 0 ? "Light" : i === 1 ? "Medium" : "Dark"}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                {/* Tag */}
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#b08850] mb-2">{tag}</span>
+                {/* Name */}
+                <h3 className="text-xl font-black uppercase tracking-wide text-[#1a1a1a] mb-3">{name}</h3>
+                {/* Description */}
+                <p className="text-[#5a4a3a] text-sm leading-relaxed flex-1 mb-5">{desc}</p>
+                {/* Rinse time */}
+                <div className="flex items-center gap-2 bg-[#fdf0d5] rounded-full px-4 py-2 text-xs font-semibold text-[#b08850] uppercase tracking-wider w-fit">
+                  <span>⏱</span> {rinse}
+                </div>
               </div>
             ))}
           </div>
