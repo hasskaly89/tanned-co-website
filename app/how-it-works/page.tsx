@@ -158,37 +158,6 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* PREPARATION GUIDE */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">In The Room</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Before You Step In</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Follow these 4 steps inside your tanning room before starting your session.</p>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {prepTips.map(({ step, title, desc, img }) => (
-              <div key={title} className="bg-white rounded-2xl overflow-hidden border border-[#e8d9c3] shadow-sm flex flex-col">
-                {/* Photo */}
-                <div className="relative aspect-[3/4] overflow-hidden">
-                  <img
-                    src={img}
-                    alt={title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-3 left-3 bg-[#a46746] text-white text-xs font-black uppercase tracking-widest rounded-full w-9 h-9 flex items-center justify-center shadow-md">
-                    {step}
-                  </div>
-                </div>
-                {/* Text */}
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="font-bold uppercase tracking-wide text-sm text-[#1a1a1a] mb-2">{title}</h3>
-                  <p className="text-[#5a4a3a] text-sm leading-relaxed">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* SHADE OPTIONS */}
       <section className="py-20 md:py-28 bg-[#fdf6ec]">
         <div className="max-w-6xl mx-auto px-6">
@@ -221,6 +190,37 @@ export default function HowItWorks() {
                 {/* Rinse time */}
                 <div className="flex items-center gap-2 bg-[#fdf0d5] rounded-full px-4 py-2 text-xs font-semibold text-[#a46746] uppercase tracking-wider w-fit">
                   <span>⏱</span> {rinse}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PREPARATION GUIDE */}
+      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">In The Room</p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Before You Step In</h2>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Follow these 4 steps inside your tanning room before starting your session.</p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {prepTips.map(({ step, title, desc, img }) => (
+              <div key={title} className="bg-white rounded-2xl overflow-hidden border border-[#e8d9c3] shadow-sm flex flex-col">
+                {/* Photo */}
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <img
+                    src={img}
+                    alt={title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-3 left-3 bg-[#a46746] text-white text-xs font-black uppercase tracking-widest rounded-full w-9 h-9 flex items-center justify-center shadow-md">
+                    {step}
+                  </div>
+                </div>
+                {/* Text */}
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="font-bold uppercase tracking-wide text-sm text-[#1a1a1a] mb-2">{title}</h3>
+                  <p className="text-[#5a4a3a] text-sm leading-relaxed">{desc}</p>
                 </div>
               </div>
             ))}
