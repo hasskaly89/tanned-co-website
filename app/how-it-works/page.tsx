@@ -138,6 +138,26 @@ export default function HowItWorks() {
         </div>
       </div>
 
+      {/* IN-BOOTH VISUAL GUIDE */}
+      <section className="py-20 md:py-28 bg-[#fdf6ec] text-[#1a1a1a]">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Inside the Booth</p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Your Booth Guide</h2>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Once you step in, the booth guides you through everything. Here's what to expect.</p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6933d56e-70e2-44c5-8fbe-dde2aac05421/1.png", label: "Step 1" },
+              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c3e14383-d601-4ac6-b8b2-02393874f08a/2.png", label: "Step 2" },
+              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6d1c8f20-ab3e-4eae-adf5-62c594a286df/3.png", label: "Step 3" },
+            ].map(({ img, label }) => (
+              <div key={label} className="rounded-2xl overflow-hidden border border-[#e8d9c3]">
+                <img src={img} alt={label} className="w-full object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PREPARATION GUIDE */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
@@ -163,26 +183,6 @@ export default function HowItWorks() {
                   <h3 className="font-bold uppercase tracking-wide text-sm text-[#1a1a1a] mb-2">{title}</h3>
                   <p className="text-[#5a4a3a] text-sm leading-relaxed">{desc}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* IN-BOOTH VISUAL GUIDE */}
-      <section className="py-20 md:py-28 bg-[#fdf6ec] text-[#1a1a1a]">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Inside the Booth</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Your Booth Guide</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Once you step in, the booth guides you through everything. Here's what to expect.</p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6933d56e-70e2-44c5-8fbe-dde2aac05421/1.png", label: "Step 1" },
-              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c3e14383-d601-4ac6-b8b2-02393874f08a/2.png", label: "Step 2" },
-              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6d1c8f20-ab3e-4eae-adf5-62c594a286df/3.png", label: "Step 3" },
-            ].map(({ img, label }) => (
-              <div key={label} className="rounded-2xl overflow-hidden border border-[#e8d9c3]">
-                <img src={img} alt={label} className="w-full object-cover" />
               </div>
             ))}
           </div>
