@@ -159,7 +159,7 @@ export default function HowItWorks() {
       </section>
 
       {/* SHADE OPTIONS */}
-      <section className="py-20 md:py-28 bg-[#fdf6ec]">
+      <section className="pb-20 md:pb-28 bg-[#fdf6ec]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Tan Colours</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Choose Your Shade</h2>
