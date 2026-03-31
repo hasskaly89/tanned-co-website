@@ -142,7 +142,7 @@ export default function Home() {
       <InstagramFeed />
 
       {/* HOW IT WORKS */}
-      <section className="py-20 md:py-28 bg-[#1a1a1a] text-white">
+      <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Simple &amp; Fast</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">How It Works</h2>
@@ -152,10 +152,10 @@ export default function Home() {
               { num: "02", title: "Step Into Your Booth", desc: "Enter your private tanning room. The booth senses your height and guides you through 4 positions for full coverage." },
               { num: "03", title: "Walk Out Glowing", desc: "Develop for 6–8 hours, shower, and reveal your beautiful sun kissed glow. In a rush? Try our rapid clear solution — on and off in 2–3 hours." },
             ].map(({ num, title, desc }) => (
-              <div key={num} className="border border-white/10 rounded-3xl p-8 hover:border-[#a46746] transition-colors">
+              <div key={num} className="border border-[#e8d9c3] rounded-3xl p-8 hover:border-[#a46746] transition-colors">
                 <p className="text-4xl font-black text-[#a46746] mb-4">{num}</p>
                 <h3 className="text-xl font-bold mb-3">{title}</h3>
-                <p className="text-white/60 leading-relaxed">{desc}</p>
+                <p className="text-[#5a4a3a] leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -334,7 +334,7 @@ export default function Home() {
       </section>
 
       {/* CONTACT TEASER */}
-      <section className="py-20 md:py-28 bg-[#1a1a1a] text-white">
+      <section className="py-20 md:py-28 bg-[#fdf6ec] text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Find Us</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">Visit Us</h2>
@@ -345,9 +345,9 @@ export default function Home() {
               <h3 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#a46746]">Our Locations</h3>
               <div className="space-y-3">
                 {locations.map((loc) => (
-                  <div key={loc.name} className="flex items-start gap-3 border-b border-white/10 pb-3">
+                  <div key={loc.name} className="flex items-start gap-3 border-b border-[#e8d9c3] pb-3">
                     <span className="text-[#a46746] mt-0.5">📍</span>
-                    <p className="text-white/80">{loc.name}</p>
+                    <p className="text-[#3a2e24]">{loc.name}</p>
                   </div>
                 ))}
               </div>
@@ -358,10 +358,10 @@ export default function Home() {
               <div>
                 <h3 className="text-lg font-bold uppercase tracking-widest mb-4 text-[#a46746]">Get In Touch</h3>
                 <div className="space-y-3">
-                  <a href="mailto:hello@tannedco.com.au" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                  <a href="mailto:hello@tannedco.com.au" className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors">
                     <span>✉️</span> hello@tannedco.com.au
                   </a>
-                  <a href="tel:1300826633" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                  <a href="tel:1300826633" className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors">
                     <span>📞</span> 1300 826 633
                   </a>
                 </div>

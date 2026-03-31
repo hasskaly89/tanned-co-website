@@ -119,7 +119,7 @@ export default function About() {
       </section>
 
       {/* OUR BOOTHS */}
-      <section className="py-20 md:py-28 bg-[#1a1a1a] text-white">
+      <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Technology</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">
@@ -130,14 +130,14 @@ export default function About() {
               <img src={IMGS.booth} alt="Tanned Co. booth" className="w-full h-full object-cover" />
             </div>
             <div>
-              <p className="text-white/70 text-lg leading-relaxed mb-8">
+              <p className="text-[#5a4a3a] text-lg leading-relaxed mb-8">
                 Our VersaSpa Pro booths are the gold standard in automated spray tanning. Every session is guided, heated, and self-cleaning — delivering consistent, beautiful results every single time.
               </p>
               <ul className="space-y-4">
                 {boothPoints.map((point) => (
                   <li key={point} className="flex items-start gap-3">
                     <span className="text-[#a46746] font-bold mt-0.5 text-lg">✓</span>
-                    <span className="text-white/80 text-base">{point}</span>
+                    <span className="text-[#3a2e24] text-base">{point}</span>
                   </li>
                 ))}
               </ul>
@@ -147,10 +147,10 @@ export default function About() {
       </section>
 
       {/* CTA BANNER */}
-      <section className="py-20 md:py-28 bg-[#1a1a1a] text-white border-t border-white/10">
+      <section className="py-20 md:py-28 bg-[#fdf6ec] text-[#1a1a1a] border-t border-[#e8d9c3]">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-black uppercase mb-6">Ready to Get Your Glow?</h2>
-          <p className="text-white/60 text-lg mb-10">Book your session online in seconds. Walk in, walk out glowing.</p>
+          <p className="text-[#5a4a3a] text-lg mb-10">Book your session online in seconds. Walk in, walk out glowing.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/book-now"
@@ -160,7 +160,7 @@ export default function About() {
             </Link>
             <Link
               href="/how-it-works"
-              className="inline-flex items-center border-2 border-white/30 text-white px-8 py-3.5 rounded-full font-semibold hover:border-white transition-colors"
+              className="inline-flex items-center border-2 border-[#d0c0aa] text-[#1a1a1a] px-8 py-3.5 rounded-full font-semibold hover:border-[#a46746] transition-colors"
             >
               How It Works →
             </Link>

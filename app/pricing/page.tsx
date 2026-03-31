@@ -119,11 +119,11 @@ export default function Pricing() {
       </section>
 
       {/* MEMBERSHIP BANNER */}
-      <section className="py-16 bg-[#1a1a1a] text-white">
+      <section className="py-16 bg-white text-[#1a1a1a]">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Go Further</p>
           <h2 className="text-3xl md:text-4xl font-black uppercase mb-4">Looking for Something More Regular?</h2>
-          <p className="text-white/60 text-lg mb-8">
+          <p className="text-[#5a4a3a] text-lg mb-8">
             We offer membership options for our most dedicated glow-getters. Get in touch to find out what&apos;s available at your nearest location.
           </p>
           <Link
@@ -213,10 +213,10 @@ export default function Pricing() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-[#1a1a1a] text-white text-center">
+      <section className="py-20 bg-[#fdf6ec] text-[#1a1a1a] text-center">
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="text-4xl font-black uppercase mb-6">Book Your First Tan</h2>
-          <p className="text-white/60 text-lg mb-10">Ready to glow? Book online in seconds.</p>
+          <p className="text-[#5a4a3a] text-lg mb-10">Ready to glow? Book online in seconds.</p>
           <Link
             href="/book-now"
             className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-10 py-4 rounded-full font-semibold transition-colors text-base"

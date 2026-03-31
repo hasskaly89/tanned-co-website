@@ -117,7 +117,7 @@ export default function Contact() {
       </section>
 
       {/* GET IN TOUCH */}
-      <section className="py-20 md:py-28 bg-[#1a1a1a] text-white">
+      <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14">
 
           {/* Left: contact info */}
@@ -126,10 +126,10 @@ export default function Contact() {
               <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Contact Info</p>
               <h2 className="text-3xl md:text-4xl font-black uppercase mb-8">Get In Touch</h2>
               <div className="space-y-4">
-                <a href="mailto:hello@tannedco.com.au" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors text-base">
+                <a href="mailto:hello@tannedco.com.au" className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors text-base">
                   <span className="text-[#a46746]">✉</span> hello@tannedco.com.au
                 </a>
-                <a href="tel:1300826633" className="flex items-center gap-3 text-white/80 hover:text-white transition-colors text-base">
+                <a href="tel:1300826633" className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors text-base">
                   <span className="text-[#a46746]">☎</span> 1300 826 633
                 </a>
               </div>
@@ -142,7 +142,7 @@ export default function Contact() {
                   href="http://instagram.com/tannedco_"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider border border-white/20 rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
+                  className="text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors font-medium text-sm uppercase tracking-wider border border-[#e8d9c3] rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
                 >
                   Instagram
                 </a>
@@ -150,7 +150,7 @@ export default function Contact() {
                   href="https://www.tiktok.com/@tannedco_"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider border border-white/20 rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
+                  className="text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors font-medium text-sm uppercase tracking-wider border border-[#e8d9c3] rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
                 >
                   TikTok
                 </a>
@@ -158,7 +158,7 @@ export default function Contact() {
                   href="https://www.facebook.com/profile.php?id=100086326464692"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider border border-white/20 rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
+                  className="text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors font-medium text-sm uppercase tracking-wider border border-[#e8d9c3] rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
                 >
                   Facebook
                 </a>
@@ -181,7 +181,7 @@ export default function Contact() {
             <h3 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#a46746]">Send Us a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="name" className="block text-xs font-bold uppercase tracking-widest text-white/50 mb-2">
+                <label htmlFor="name" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
                   Your Name
                 </label>
                 <input
@@ -191,11 +191,11 @@ export default function Contact() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Jane Smith"
-                  className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#a46746] transition-colors"
+                  className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-white/50 mb-2">
+                <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
                   Email Address
                 </label>
                 <input
@@ -205,11 +205,11 @@ export default function Contact() {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="jane@example.com"
-                  className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#a46746] transition-colors"
+                  className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest text-white/50 mb-2">
+                <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
                   Message
                 </label>
                 <textarea
@@ -219,7 +219,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="How can we help you?"
-                  className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#a46746] transition-colors resize-none"
+                  className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors resize-none"
                 />
               </div>
               <button
