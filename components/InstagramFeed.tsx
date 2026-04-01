@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import type { InstagramPost } from "@/app/api/instagram/route";
 
 const FALLBACK_IMAGES = [
@@ -67,10 +68,11 @@ export default function InstagramFeed() {
               rel="noopener noreferrer"
               className="relative aspect-square overflow-hidden rounded-xl group"
             >
-              <img
+              <Image
                 src={post.media_url}
                 alt={post.caption ?? "Tanned Co. Instagram post"}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">

@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn the story behind Tanned Co. — Sydney's first fully automated spray tanning studio. VersaSpa booths, private rooms, 5 locations and open 7 days a week.",
+};
 
 const IMGS = {
   story: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg",
@@ -37,10 +45,12 @@ export default function About() {
 
       {/* PAGE HERO */}
       <section className="relative h-[70vh] min-h-[520px] flex items-end">
-        <img
+        <Image
           src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg"
           alt="Tanned Co. studio"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          fill
+          className="object-cover object-center"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
@@ -76,8 +86,8 @@ export default function About() {
               With 5 convenient Sydney locations and doors open 7 days a week, getting your glow has never been easier.
             </p>
           </div>
-          <div className="rounded-3xl overflow-hidden shadow-xl aspect-[4/5]">
-            <img src={IMGS.story} alt="Tanned Co. result" className="w-full h-full object-cover" />
+          <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/5]">
+            <Image src={IMGS.story} alt="Tanned Co. result" fill className="object-cover" />
           </div>
         </div>
       </section>
@@ -126,8 +136,8 @@ export default function About() {
             State of the Art Tanning Booths
           </h2>
           <div className="grid md:grid-cols-2 gap-14 items-center">
-            <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/5]">
-              <img src={IMGS.booth} alt="Tanned Co. booth" className="w-full h-full object-cover" />
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5]">
+              <Image src={IMGS.booth} alt="Tanned Co. booth" fill className="object-cover" />
             </div>
             <div>
               <p className="text-[#5a4a3a] text-lg leading-relaxed mb-8">

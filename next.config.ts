@@ -2,7 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["images.squarespace-cdn.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.squarespace-cdn.com",
+        pathname: "/**",
+      },
+    ],
   },
 };
 

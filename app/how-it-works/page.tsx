@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "How It Works",
+  description:
+    "Step-by-step guide to your perfect automated spray tan at Tanned Co. 4 simple steps, 3 signature shades (Rapid Venetian, Malibu, Monterey), full privacy guaranteed.",
+};
 
 const steps = [
   {
@@ -92,10 +100,12 @@ export default function HowItWorks() {
 
       {/* PAGE HERO */}
       <section className="relative h-[70vh] min-h-[520px] flex items-end">
-        <img
+        <Image
           src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg"
           alt="Inside a Tanned Co. tanning booth"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          fill
+          className="object-cover object-center"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
@@ -126,10 +136,11 @@ export default function HowItWorks() {
 
       {/* FULL-WIDTH DEMO PHOTO */}
       <div className="relative h-[400px] md:h-[520px] overflow-hidden">
-        <img
+        <Image
           src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/f7fcbfad-4a79-4e5e-b6e1-0ea0acdc15e1/DSCF3643.jpg"
           alt="Inside a Tanned Co. tanning booth"
-          className="w-full h-full object-cover object-center"
+          fill
+          className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
           <p className="text-white text-2xl md:text-4xl font-black uppercase tracking-widest text-center drop-shadow-lg">
@@ -150,8 +161,8 @@ export default function HowItWorks() {
               { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c3e14383-d601-4ac6-b8b2-02393874f08a/2.png", label: "Step 2" },
               { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6d1c8f20-ab3e-4eae-adf5-62c594a286df/3.png", label: "Step 3" },
             ].map(({ img, label }) => (
-              <div key={label} className="rounded-2xl overflow-hidden border border-[#e8d9c3]">
-                <img src={img} alt={label} className="w-full object-cover" />
+              <div key={label} className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-[#e8d9c3]">
+                <Image src={img} alt={label} fill className="object-cover" />
               </div>
             ))}
           </div>
@@ -208,10 +219,11 @@ export default function HowItWorks() {
               <div key={title} className="bg-white rounded-2xl overflow-hidden border border-[#e8d9c3] shadow-sm flex flex-col">
                 {/* Photo */}
                 <div className="relative aspect-[3/4] overflow-hidden">
-                  <img
+                  <Image
                     src={img}
                     alt={title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                   <div className="absolute top-3 left-3 bg-[#a46746] text-white text-xs font-black uppercase tracking-widest rounded-full w-9 h-9 flex items-center justify-center shadow-md">
                     {step}

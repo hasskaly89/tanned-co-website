@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import InstagramFeed from "@/components/InstagramFeed";
@@ -84,24 +85,34 @@ export default function Home() {
 
       <Navbar activePath="/" withBanner={bannerVisible} />
 
-      {/* FLOATING BOOK NOW BUTTON */}
+      {/* FLOATING BOOK NOW BUTTON — desktop only (mobile uses sticky bar in layout) */}
       <Link
         href="/book-now"
-        className="fixed bottom-6 right-6 z-50 bg-[#a46746] hover:bg-[#7d4e33] text-white text-sm font-bold uppercase tracking-widest px-6 py-3.5 rounded-full shadow-2xl transition-colors flex items-center gap-2"
+        className="hidden md:inline-flex fixed bottom-6 right-6 z-50 bg-[#a46746] hover:bg-[#7d4e33] text-white text-sm font-bold uppercase tracking-widest px-6 py-3.5 rounded-full shadow-2xl transition-colors items-center gap-2"
       >
         <span>☀</span> Book Now
       </Link>
 
       {/* HERO */}
       <section className="relative h-screen min-h-[600px] flex items-end">
-        <img
+        <h1 className="sr-only">Tanned Co. — Sydney&apos;s Automated Spray Tanning Studio</h1>
+        <Image
           src={IMGS.hero}
           alt="Tanned Co. studio"
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          fill
+          className="object-cover object-top"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-20 md:pb-28">
-          <img src="/logo_transparent.png" alt="Tanned Co." className="w-full max-w-3xl brightness-0 invert mb-6" />
+          <Image
+            src="/logo_transparent.png"
+            alt="Tanned Co."
+            width={900}
+            height={200}
+            className="w-full max-w-3xl brightness-0 invert mb-6"
+            style={{ height: "auto" }}
+          />
           <p className="text-white/90 text-lg md:text-xl max-w-md mb-8">
             Sydney&apos;s first automated spray tanning studio. Private booths. Perfect results. 7 days a week.
           </p>
@@ -132,8 +143,8 @@ export default function Home() {
               Learn More →
             </Link>
           </div>
-          <div className="rounded-3xl overflow-hidden shadow-xl aspect-[4/5]">
-            <img src={IMGS.about} alt="Tanned Co. result" className="w-full h-full object-cover" />
+          <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/5]">
+            <Image src={IMGS.about} alt="Tanned Co. result" fill className="object-cover" />
           </div>
         </div>
       </section>
