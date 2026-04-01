@@ -28,6 +28,18 @@ const faqs = [
     q: "How long do I leave my tan on before showering?",
     a: "We recommend leaving your tan on for 6–8 hours. For a darker result you can sleep in it. We also offer a 2-hour rapid clear solution that develops into a deep sunkissed glow and needs to be washed off after 2–3 hours max.",
   },
+  {
+    q: "How long does a spray tan last?",
+    a: "Most clients find their tan lasts 5–7 days with proper aftercare. Moisturising daily and avoiding long hot showers will help extend your glow.",
+  },
+  {
+    q: "Is it really completely private?",
+    a: "Yes, 100%. You enter a private room, lock the door, and the entire process is self-guided. No staff, no other clients — just you and the booth.",
+  },
+  {
+    q: "What if I've never had a spray tan before?",
+    a: "That's exactly what we're designed for. The booth gives you clear voice and screen prompts at every step. Most first-timers say it was way easier than they expected.",
+  },
 ];
 
 const locations = [
@@ -41,6 +53,7 @@ const locations = [
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [bannerVisible, setBannerVisible] = useState(true);
+  const [promoVisible, setPromoVisible] = useState(true);
 
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
@@ -133,6 +146,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SAVE10 PROMO */}
+      {promoVisible && (
+        <div className="relative bg-[#fdf0d5] border-b border-[#e8d9c3] py-3.5 px-6 text-center">
+          <p className="text-sm text-[#3a2e24]">
+            ✨ New to Tanned Co? Get{" "}
+            <strong className="text-[#1a1a1a]">10% off your first tan</strong> — use code{" "}
+            <span className="font-black tracking-widest text-[#a46746]">SAVE10</span>{" "}
+            at checkout.
+          </p>
+          <button
+            onClick={() => setPromoVisible(false)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9a8a7a] hover:text-[#1a1a1a] transition-colors text-lg leading-none"
+            aria-label="Dismiss offer"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
       {/* ABOUT TEASER */}
       <section className="py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
@@ -150,6 +182,13 @@ export default function Home() {
             >
               Learn More →
             </Link>
+            <div className="flex items-center gap-2 mt-5">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9a8a7a]">Powered by</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#a46746] border border-[#a46746]/40 rounded-full px-3 py-1 bg-[#a46746]/5">
+                VersaSpa Pro
+              </span>
+              <span className="text-[10px] text-[#9a8a7a]">— world&apos;s leading automated spray tan system</span>
+            </div>
           </div>
           <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/5]">
             <Image src={IMGS.about} alt="Tanned Co. result" fill className="object-cover" />
@@ -157,47 +196,94 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BEFORE / AFTER */}
+      {/* PAIN POINT — No More Tanning Horror Stories */}
+      <section className="py-16 md:py-20 bg-white border-y border-[#e8d9c3]">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">We Get It</p>
+          <h2 className="text-3xl md:text-4xl font-black uppercase leading-tight mb-5">
+            No More Tanning Horror Stories
+          </h2>
+          <p className="text-[#5a4a3a] text-lg leading-relaxed mb-8">
+            You&apos;ve probably had at least one bad spray tan experience — streaky legs, orange palms, or standing half-dressed in front of a stranger. At Tanned Co, every session is completely private, automated, and designed for a perfectly even result. No more guesswork.
+          </p>
+          <Link
+            href="/how-it-works"
+            className="inline-flex items-center border-2 border-[#a46746] text-[#a46746] px-7 py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm uppercase tracking-wider"
+          >
+            See How It Works →
+          </Link>
+        </div>
+      </section>
+
+      {/* REAL RESULTS — Before/After grid */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Real Results</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">The Transformation</h2>
           <p className="text-center text-[#5a4a3a] mb-14 max-w-md mx-auto">
-            Walk in natural. Walk out glowing. Every single time.
+            See what a Tanned Co session looks like on real skin tones.
           </p>
-          <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {/* Before */}
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-sm">
-              <Image
-                src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/66cba3e8-b0f9-4756-859a-70bf1be4aa45/DSCF2443.jpg"
-                alt="Natural skin before Tanned Co. spray tan"
-                fill
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-5 left-5">
-                <span className="bg-white text-[#1a1a1a] text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full">
-                  Before
-                </span>
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {/* Pair 1 — real images */}
+            <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-2">
+                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#e8d9c3]">
+                  <Image
+                    src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/66cba3e8-b0f9-4756-859a-70bf1be4aa45/DSCF2443.jpg"
+                    alt="Natural skin before Tanned Co. spray tan"
+                    fill
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute bottom-2 left-0 right-0 text-center">
+                    <span className="bg-white/90 text-[#1a1a1a] text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded-full">Before</span>
+                  </div>
+                </div>
+                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
+                  <Image
+                    src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg"
+                    alt="Spray tan result after Tanned Co."
+                    fill
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute bottom-2 left-0 right-0 text-center">
+                    <span className="bg-[#a46746]/90 text-white text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded-full">After</span>
+                  </div>
+                </div>
               </div>
+              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Rapid Venetian · Medium</p>
             </div>
-            {/* After */}
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-xl">
-              <Image
-                src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg"
-                alt="Beautiful spray tan result after Tanned Co."
-                fill
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-5 left-5">
-                <span className="bg-[#a46746] text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full">
-                  After Tanned Co. ✨
-                </span>
+
+            {/* Pair 2 — placeholder */}
+            <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-2">
+                <div className="relative aspect-[3/4] rounded-2xl bg-[#e8d9c3] flex items-center justify-center">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#9a8a7a] text-center px-2">Before</span>
+                </div>
+                <div className="relative aspect-[3/4] rounded-2xl bg-[#c4a882] flex items-center justify-center">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white text-center px-2">After</span>
+                </div>
               </div>
+              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Malibu · Dark</p>
+              <p className="text-center text-[10px] text-[#9a8a7a] italic">Client photos coming soon</p>
             </div>
+
+            {/* Pair 3 — placeholder */}
+            <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-2">
+                <div className="relative aspect-[3/4] rounded-2xl bg-[#e8d9c3] flex items-center justify-center">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#9a8a7a] text-center px-2">Before</span>
+                </div>
+                <div className="relative aspect-[3/4] rounded-2xl bg-[#d4b896] flex items-center justify-center">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white text-center px-2">After</span>
+                </div>
+              </div>
+              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Monterey · Light</p>
+              <p className="text-center text-[10px] text-[#9a8a7a] italic">Client photos coming soon</p>
+            </div>
+
           </div>
-          <div className="text-center mt-10">
+          <div className="text-center mt-12">
             <Link
               href="/book-now"
               className="inline-flex items-center bg-[#1a1a1a] hover:bg-[#3a2e24] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"

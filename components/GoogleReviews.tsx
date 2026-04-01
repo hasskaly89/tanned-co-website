@@ -19,6 +19,20 @@ const reviews = [
     date: "1 month ago",
   },
   {
+    name: "Sarah L.",
+    location: "Woollahra",
+    rating: 5,
+    text: "I was so nervous for my first spray tan but Tanned Co made it so easy. The booth guides you through everything and my tan lasted over a week!",
+    date: "2 months ago",
+  },
+  {
+    name: "Emma K.",
+    location: "Smeaton Grange",
+    rating: 5,
+    text: "Best spray tan I've ever had. No streaks, no weird smell, and I was in and out in under 10 minutes. Already booked my next one.",
+    date: "3 weeks ago",
+  },
+  {
     name: "Tara B.",
     location: "Kings Park",
     rating: 5,
@@ -26,11 +40,18 @@ const reviews = [
     date: "3 weeks ago",
   },
   {
+    name: "Mia R.",
+    location: "Edensor Park",
+    rating: 5,
+    text: "I've tried every tanning place in Sydney and Tanned Co is hands down the best. The private booth is a complete game changer.",
+    date: "1 month ago",
+  },
+  {
     name: "Rachel K.",
     location: "Edensor Park",
     rating: 5,
     text: "The rapid clear solution is a game changer — had a wedding the next day and it was perfect. Will never go back to a regular spray tan salon.",
-    date: "1 month ago",
+    date: "2 months ago",
   },
 ];
 
@@ -91,7 +112,7 @@ export default function GoogleReviews() {
         </div>
 
         {/* Review cards */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {reviews.map((r) => (
             <div
               key={r.name}
