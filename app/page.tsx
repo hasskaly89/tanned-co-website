@@ -6,11 +6,18 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import InstagramFeed from "@/components/InstagramFeed";
+import GoogleReviews from "@/components/GoogleReviews";
+import TrustBadges from "@/components/TrustBadges";
 
 const IMGS = {
   hero: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
   about: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg",
 };
+
+// Testimonials array kept for potential future use
+const _testimonials = [
+  { name: "", location: "", text: "", stars: 5 },
+];
 
 const faqs = [
   {
@@ -20,33 +27,6 @@ const faqs = [
   {
     q: "How long do I leave my tan on before showering?",
     a: "We recommend leaving your tan on for 6–8 hours. For a darker result you can sleep in it. We also offer a 2-hour rapid clear solution that develops into a deep sunkissed glow and needs to be washed off after 2–3 hours max.",
-  },
-];
-
-const testimonials = [
-  {
-    name: "Jess M.",
-    location: "Caringbah",
-    text: "Obsessed with Tanned Co! The booth is so easy to use and the result is always flawless. I've tried so many spray tans and nothing compares — no streaks, no orange, just a gorgeous glow.",
-    stars: 5,
-  },
-  {
-    name: "Sophie L.",
-    location: "Woollahra",
-    text: "I love how quick and private the whole experience is. Book on the app, walk in, walk out glowing. The 5-pack is incredible value — I'm never going back to a regular spray tan salon!",
-    stars: 5,
-  },
-  {
-    name: "Tara B.",
-    location: "Kings Park",
-    text: "I was nervous trying an automated booth for the first time but the instructions inside are so clear. My tan lasted over a week and developed so naturally. Absolutely recommend.",
-    stars: 5,
-  },
-  {
-    name: "Rachel K.",
-    location: "Edensor Park",
-    text: "The rapid clear solution is a game changer — had a wedding the next day and it was perfect. Staff are always so helpful on Instagram too when I have questions.",
-    stars: 5,
   },
 ];
 
@@ -61,13 +41,41 @@ const locations = [
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [bannerVisible, setBannerVisible] = useState(true);
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-
-  const prevTestimonial = () => setTestimonialIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
-  const nextTestimonial = () => setTestimonialIndex((i) => (i === testimonials.length - 1 ? 0 : i + 1));
 
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
+
+      {/* LOCAL BUSINESS SCHEMA — all locations */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BeautyBusiness",
+            name: "Tanned Co.",
+            url: "https://www.tannedco.com.au",
+            telephone: "+611300826633",
+            description:
+              "Sydney's first automated spray tanning studio — private VersaSpa booths, streak-free results, open 7 days.",
+            image:
+              "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
+            priceRange: "$$",
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "200",
+              bestRating: "5",
+            },
+            location: [
+              { "@type": "Place", name: "Caringbah", address: "349B Kingsway, Caringbah NSW 2229" },
+              { "@type": "Place", name: "Edensor Park", address: "Shop 6/207 Edensor Rd, Edensor Park NSW 2176" },
+              { "@type": "Place", name: "Kings Park", address: "6/2 Garling Rd, Kings Park NSW 2148" },
+              { "@type": "Place", name: "Smeaton Grange", address: "1/73-77 Anderson Rd, Smeaton Grange NSW 2567" },
+              { "@type": "Place", name: "Woollahra", address: "8 Oxford St, Woollahra NSW 2025" },
+            ],
+          }),
+        }}
+      />
 
       {/* ANNOUNCEMENT BANNER */}
       {bannerVisible && (
@@ -149,6 +157,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* BEFORE / AFTER */}
+      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Real Results</p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">The Transformation</h2>
+          <p className="text-center text-[#5a4a3a] mb-14 max-w-md mx-auto">
+            Walk in natural. Walk out glowing. Every single time.
+          </p>
+          <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {/* Before */}
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-sm">
+              <Image
+                src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/66cba3e8-b0f9-4756-859a-70bf1be4aa45/DSCF2443.jpg"
+                alt="Natural skin before Tanned Co. spray tan"
+                fill
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <div className="absolute bottom-5 left-5">
+                <span className="bg-white text-[#1a1a1a] text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full">
+                  Before
+                </span>
+              </div>
+            </div>
+            {/* After */}
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-xl">
+              <Image
+                src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg"
+                alt="Beautiful spray tan result after Tanned Co."
+                fill
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <div className="absolute bottom-5 left-5">
+                <span className="bg-[#a46746] text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full">
+                  After Tanned Co. ✨
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/book-now"
+              className="inline-flex items-center bg-[#1a1a1a] hover:bg-[#3a2e24] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
+            >
+              Get Your Glow →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* INSTAGRAM FEED */}
       <InstagramFeed />
 
@@ -180,6 +239,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* TRUST BADGES */}
+      <TrustBadges />
 
       {/* PRICING PREVIEW */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
@@ -256,62 +318,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">What Our Clients Say</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-14">Real Glows. Real Reviews.</h2>
-
-          <div className="relative bg-[#fdf6ec] rounded-3xl p-8 md:p-12 shadow-sm border border-[#e8d9c3] text-center">
-            <div className="flex justify-center gap-1 mb-6">
-              {Array.from({ length: testimonials[testimonialIndex].stars }).map((_, i) => (
-                <span key={i} className="text-[#a46746] text-xl">★</span>
-              ))}
-            </div>
-            <p className="text-[#3a2e24] text-lg md:text-xl leading-relaxed italic mb-8 min-h-[96px]">
-              &ldquo;{testimonials[testimonialIndex].text}&rdquo;
-            </p>
-            <p className="font-bold text-[#1a1a1a] uppercase tracking-widest text-sm">{testimonials[testimonialIndex].name}</p>
-            <p className="text-[#a46746] text-xs tracking-wider uppercase mt-1">{testimonials[testimonialIndex].location}</p>
-
-            <div className="flex items-center justify-center gap-4 mt-8">
-              <button
-                onClick={prevTestimonial}
-                className="w-10 h-10 rounded-full border-2 border-[#e8d9c3] flex items-center justify-center text-[#a46746] hover:border-[#a46746] transition-colors text-lg font-bold"
-                aria-label="Previous review"
-              >
-                ‹
-              </button>
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setTestimonialIndex(i)}
-                  className={`w-2 h-2 rounded-full transition-colors ${i === testimonialIndex ? "bg-[#a46746]" : "bg-[#e8d9c3]"}`}
-                  aria-label={`Go to review ${i + 1}`}
-                />
-              ))}
-              <button
-                onClick={nextTestimonial}
-                className="w-10 h-10 rounded-full border-2 border-[#e8d9c3] flex items-center justify-center text-[#a46746] hover:border-[#a46746] transition-colors text-lg font-bold"
-                aria-label="Next review"
-              >
-                ›
-              </button>
-            </div>
-          </div>
-
-          <div className="text-center mt-8">
-            <a
-              href="https://www.google.com/search?q=tanned+co+sydney+reviews"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold tracking-wider uppercase text-[#a46746] border-b-2 border-[#a46746] pb-0.5 hover:text-[#7d4e33] hover:border-[#7d4e33] transition-colors"
-            >
-              Read More Reviews →
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* GOOGLE REVIEWS */}
+      <GoogleReviews />
 
       {/* FAQ TEASER */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">

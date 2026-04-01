@@ -4,10 +4,20 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+const OG_IMAGE =
+  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg";
+
 export const metadata: Metadata = {
   title: "About Us",
   description:
     "Learn the story behind Tanned Co. — Sydney's first fully automated spray tanning studio. VersaSpa booths, private rooms, 5 locations and open 7 days a week.",
+  alternates: { canonical: "https://www.tannedco.com.au/about" },
+  openGraph: {
+    title: "About Us | Tanned Co.",
+    description: "Sydney's first automated spray tan studio — where luxury meets convenience.",
+    url: "https://www.tannedco.com.au/about",
+    images: [{ url: OG_IMAGE, width: 1200, height: 800 }],
+  },
 };
 
 const IMGS = {

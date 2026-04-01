@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 
 const locations = [
   {
@@ -46,6 +47,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
+      <LocalBusinessSchema />
       <Navbar activePath="/contact" />
 
       {/* HERO */}
@@ -83,14 +85,22 @@ export default function Contact() {
                 </div>
                 <p className="text-[#5a4a3a] text-sm mb-2">{loc.address}</p>
                 <p className="text-xs text-[#a46746] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
-                <a
-                  href={loc.maps}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center justify-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-2.5 rounded-full text-sm font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
-                >
-                  Get Directions →
-                </a>
+                <div className="flex gap-2 mt-auto">
+                  <a
+                    href={loc.maps}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-2.5 rounded-full text-sm font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
+                  >
+                    Directions →
+                  </a>
+                  <Link
+                    href={`/locations/${loc.name.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="flex-1 inline-flex items-center justify-center border-2 border-[#a46746] text-[#a46746] py-2.5 rounded-full text-sm font-semibold hover:bg-[#a46746] hover:text-white transition-colors"
+                  >
+                    View Studio
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -105,14 +115,22 @@ export default function Contact() {
                 </div>
                 <p className="text-[#5a4a3a] text-sm mb-2">{loc.address}</p>
                 <p className="text-xs text-[#a46746] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
-                <a
-                  href={loc.maps}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center justify-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-2.5 rounded-full text-sm font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
-                >
-                  Get Directions →
-                </a>
+                <div className="flex gap-2 mt-auto">
+                  <a
+                    href={loc.maps}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-2.5 rounded-full text-sm font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
+                  >
+                    Directions →
+                  </a>
+                  <Link
+                    href={`/locations/${loc.name.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="flex-1 inline-flex items-center justify-center border-2 border-[#a46746] text-[#a46746] py-2.5 rounded-full text-sm font-semibold hover:bg-[#a46746] hover:text-white transition-colors"
+                  >
+                    View Studio
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

@@ -28,22 +28,78 @@ export default function BookNow() {
         </div>
       </section>
 
+      {/* BOOKING STEPS */}
+      <section className="py-14 bg-white border-b border-[#e8d9c3]">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="flex items-center justify-center gap-2 md:gap-4 text-xs font-bold uppercase tracking-wider">
+            {[
+              { n: "1", label: "Choose Location" },
+              { n: "2", label: "Pick a Time" },
+              { n: "3", label: "Walk In & Glow" },
+            ].map(({ n, label }, i, arr) => (
+              <div key={n} className="flex items-center gap-2 md:gap-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-8 h-8 rounded-full bg-[#a46746] text-white flex items-center justify-center text-sm font-black flex-shrink-0">
+                    {n}
+                  </span>
+                  <span className="text-[#1a1a1a] hidden sm:inline">{label}</span>
+                </div>
+                {i < arr.length - 1 && (
+                  <span className="text-[#e8d9c3] font-black text-lg">→</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* BOOK ONLINE */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Book Online</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-6">Choose Your Location & Time</h2>
-          <p className="text-[#5a4a3a] text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-6">Choose Your Location &amp; Time</h2>
+          <p className="text-[#5a4a3a] text-lg leading-relaxed mb-3 max-w-xl mx-auto">
             Book your session online in seconds. Select your preferred Sydney location, pick a time that suits you, and walk in ready to glow.
           </p>
+          {/* Pricing reminder */}
+          <div className="flex items-center justify-center gap-6 mb-10 text-sm text-[#5a4a3a]">
+            <span className="flex items-center gap-1.5"><span className="text-[#a46746] font-bold">$35</span> Casual</span>
+            <span className="text-[#e8d9c3]">|</span>
+            <span className="flex items-center gap-1.5"><span className="text-[#a46746] font-bold">$160</span> 5 Pack</span>
+            <span className="text-[#e8d9c3]">|</span>
+            <span className="flex items-center gap-1.5"><span className="text-[#a46746] font-bold">$300</span> 10 Pack</span>
+          </div>
           <a
             href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-[#1a1a1a] hover:bg-[#3a2e24] text-white text-base font-bold uppercase tracking-widest px-12 py-4 rounded-full transition-colors shadow-md"
+            className="inline-flex items-center justify-center bg-[#a46746] hover:bg-[#7d4e33] text-white text-base font-bold uppercase tracking-widest px-12 py-4 rounded-full transition-colors shadow-md"
           >
-            Book Now →
+            ☀ Book Now →
           </a>
+          <p className="text-xs text-[#9a8a7a] mt-4">Opens our secure booking portal in a new tab</p>
+        </div>
+      </section>
+
+      {/* FIRST TIME? */}
+      <section className="py-14 bg-white border-y border-[#e8d9c3]">
+        <div className="max-w-4xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">First Time?</p>
+          <h2 className="text-2xl font-black uppercase text-center mb-10 text-[#1a1a1a]">What to Expect</h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
+            {[
+              { icon: "👗", title: "Wear Dark Clothes", desc: "Loose, dark clothing to avoid bronzer transfer after your session." },
+              { icon: "🚿", title: "Exfoliate First", desc: "Shower and exfoliate the day before for the most even tan." },
+              { icon: "🚫", title: "No Deodorant", desc: "Arrive without deodorant, perfume or moisturiser on skin." },
+              { icon: "⏱", title: "Leave it On", desc: "Wait 6–8 hours before showering. For rapid, rinse after 2–3 hrs." },
+            ].map((t) => (
+              <div key={t.title} className="bg-[#fdf6ec] rounded-2xl p-5 border border-[#e8d9c3] text-center">
+                <div className="text-3xl mb-3">{t.icon}</div>
+                <p className="font-bold uppercase tracking-wide text-xs text-[#1a1a1a] mb-2">{t.title}</p>
+                <p className="text-[#5a4a3a] text-sm leading-relaxed">{t.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

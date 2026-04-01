@@ -4,10 +4,20 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+const OG_IMAGE =
+  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg";
+
 export const metadata: Metadata = {
   title: "How It Works",
   description:
     "Step-by-step guide to your perfect automated spray tan at Tanned Co. 4 simple steps, 3 signature shades (Rapid Venetian, Malibu, Monterey), full privacy guaranteed.",
+  alternates: { canonical: "https://www.tannedco.com.au/how-it-works" },
+  openGraph: {
+    title: "How It Works | Tanned Co.",
+    description: "Your step-by-step guide to a perfect automated spray tan.",
+    url: "https://www.tannedco.com.au/how-it-works",
+    images: [{ url: OG_IMAGE, width: 1200, height: 800 }],
+  },
 };
 
 const steps = [
