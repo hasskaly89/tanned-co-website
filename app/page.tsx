@@ -225,31 +225,15 @@ export default function Home() {
           </p>
           <div className="grid md:grid-cols-3 gap-8">
 
-            {/* Pair 1 — real images */}
+            {/* Pair 1 — real combined before/after */}
             <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-2">
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#e8d9c3]">
-                  <Image
-                    src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/66cba3e8-b0f9-4756-859a-70bf1be4aa45/DSCF2443.jpg"
-                    alt="Natural skin before Tanned Co. spray tan"
-                    fill
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute bottom-2 left-0 right-0 text-center">
-                    <span className="bg-white/90 text-[#1a1a1a] text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded-full">Before</span>
-                  </div>
-                </div>
-                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
-                  <Image
-                    src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg"
-                    alt="Spray tan result after Tanned Co."
-                    fill
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute bottom-2 left-0 right-0 text-center">
-                    <span className="bg-[#a46746]/90 text-white text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded-full">After</span>
-                  </div>
-                </div>
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
+                <Image
+                  src="/before-after-tan.jpg"
+                  alt="Before and after Tanned Co. spray tan result"
+                  fill
+                  className="object-cover object-center"
+                />
               </div>
               <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Rapid Venetian · Medium</p>
             </div>
