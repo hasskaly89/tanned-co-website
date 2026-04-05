@@ -334,9 +334,14 @@ export default function Home() {
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Private booth experience</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your shade &amp; depth</li>
               </ul>
-              <Link href="/book-now" className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm">
-                Buy Now
-              </Link>
+              <a
+                href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
+              >
+                Book Casual Tan →
+              </a>
             </div>
 
             {/* 5 Pack */}
@@ -353,9 +358,14 @@ export default function Home() {
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Name-specific booking</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Private booth experience</li>
               </ul>
-              <Link href="/book-now" className="block text-center bg-[#a46746] text-white py-3 rounded-full font-semibold hover:bg-[#7d4e33] transition-colors text-sm">
-                Buy Now
-              </Link>
+              <a
+                href="https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-center bg-[#a46746] text-white py-3 rounded-full font-semibold hover:bg-[#7d4e33] transition-colors text-sm"
+              >
+                Buy 5 Pack →
+              </a>
             </div>
 
             {/* 10 Pack */}
@@ -371,9 +381,14 @@ export default function Home() {
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Name-specific booking</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Best value per session</li>
               </ul>
-              <Link href="/book-now" className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm">
-                Buy Now
-              </Link>
+              <a
+                href="https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
+              >
+                Buy 10 Pack →
+              </a>
             </div>
 
           </div>
