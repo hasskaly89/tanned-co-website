@@ -61,7 +61,7 @@ export default function Contact() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">5 Sydney Locations</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">5 Sydney Locations</p>
           <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Contact Us</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             5 convenient Sydney locations, open 7 days a week.
