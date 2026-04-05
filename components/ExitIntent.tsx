@@ -56,32 +56,39 @@ export default function ExitIntent() {
         </button>
 
         {/* Sun icon */}
-        <div className="text-5xl mb-4">☀️</div>
+        <div className="text-5xl mb-4">✨</div>
 
         <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">
-          Wait — Don&apos;t Leave!
+          First Timer? Don&apos;t Leave!
         </p>
         <h2 className="text-3xl font-black uppercase leading-tight text-[#1a1a1a] mb-3">
-          Your Perfect Tan Is Only $35
+          10% Off Your First Tan
         </h2>
-        <p className="text-[#5a4a3a] text-base leading-relaxed mb-8">
-          First time? Walk-in sessions start from just <strong>$35</strong>. Private booth,
-          guided experience, flawless results — book online in seconds.
+        <p className="text-[#5a4a3a] text-base leading-relaxed mb-5">
+          New to Tanned Co.? Use the code below at checkout and get <strong>10% off</strong> your first session.
         </p>
 
+        {/* Promo code */}
+        <div className="bg-[#fdf0d5] border-2 border-dashed border-[#a46746] rounded-2xl px-6 py-4 mb-8">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#5a4a3a] mb-1">Your discount code</p>
+          <p className="text-3xl font-black tracking-[0.3em] text-[#a46746]">SAVE10</p>
+        </div>
+
         <div className="flex flex-col gap-3">
-          <Link
-            href="/book-now"
+          <a
+            href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setVisible(false)}
             className="w-full flex items-center justify-center gap-2 bg-[#a46746] hover:bg-[#7d4e33] text-white text-sm font-bold uppercase tracking-widest py-4 rounded-full transition-colors"
           >
-            <span>☀</span> Book My Tan — $35
-          </Link>
+            <span>☀</span> Claim My 10% Off
+          </a>
           <button
             onClick={() => setVisible(false)}
             className="text-xs text-[#9a8a7a] hover:text-[#5a4a3a] transition-colors underline"
           >
-            No thanks, I&apos;ll continue browsing
+            No thanks, I&apos;ll pay full price
           </button>
         </div>
       </div>
