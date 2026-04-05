@@ -133,14 +133,13 @@ export default function HowItWorks() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Watch & Learn</p>
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center text-white mb-4">See It In Action</h2>
           <p className="text-center text-white/60 mb-12 max-w-md mx-auto">Watch how easy your first Tanned Co. session really is.</p>
-          {/* TODO: replace src with YouTube/Vimeo embed URL once uploaded */}
-          <div className="rounded-3xl overflow-hidden shadow-2xl aspect-video bg-black">
-            <video
-              src="/how-to.mp4"
-              controls
-              playsInline
-              className="w-full h-full object-cover"
-              poster="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg"
+          <div className="max-w-sm mx-auto rounded-3xl overflow-hidden shadow-2xl aspect-[9/16] bg-black">
+            <iframe
+              src="https://www.youtube.com/embed/id2bnsvVdQk?autoplay=0&rel=0&modestbranding=1"
+              title="How to use Tanned Co."
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
             />
           </div>
         </div>
