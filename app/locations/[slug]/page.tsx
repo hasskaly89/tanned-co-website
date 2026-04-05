@@ -87,12 +87,14 @@ export default async function LocationPage({
           <p className="text-white/80 text-lg md:text-xl max-w-xl mb-8">
             Automated spray tanning in {loc.shortName}. Private booths, flawless results, open 7 days a week.
           </p>
-          <Link
-            href="/book-now"
+          <a
+            href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
           >
             Book at {loc.shortName} →
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -147,13 +149,31 @@ export default async function LocationPage({
                   </div>
                 </div>
               </div>
-              <div className="mt-8 pt-6 border-t border-[#e8d9c3]">
-                <Link
-                  href="/book-now"
-                  className="block w-full text-center bg-[#a46746] hover:bg-[#7d4e33] text-white py-4 rounded-full font-bold uppercase tracking-widest transition-colors text-sm"
+              <div className="mt-8 pt-6 border-t border-[#e8d9c3] space-y-3">
+                <a
+                  href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center bg-[#a46746] hover:bg-[#7d4e33] text-white py-3.5 rounded-full font-bold uppercase tracking-widest transition-colors text-sm"
                 >
-                  Book at {loc.shortName}
-                </Link>
+                  Book Casual Tan — $35
+                </a>
+                <a
+                  href="https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
+                >
+                  Buy 5 Pack — $160
+                </a>
+                <a
+                  href="https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
+                >
+                  Buy 10 Pack — $300
+                </a>
               </div>
             </div>
 
@@ -244,19 +264,31 @@ export default async function LocationPage({
           <p className="text-[#5a4a3a] text-lg mb-10">
             Sessions from $35. Book online in seconds, walk in ready to glow.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/book-now"
-              className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-10 py-4 rounded-full font-semibold transition-colors text-base"
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
+            <a
+              href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-8 py-4 rounded-full font-semibold transition-colors text-sm uppercase tracking-wider"
             >
-              Book Now →
-            </Link>
-            <Link
-              href="/how-it-works"
-              className="inline-flex items-center border-2 border-[#d0c0aa] text-[#1a1a1a] px-10 py-4 rounded-full font-semibold hover:border-[#a46746] transition-colors"
+              Book Casual Tan — $35
+            </a>
+            <a
+              href="https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center bg-[#1a1a1a] hover:bg-[#3a2e24] text-white px-8 py-4 rounded-full font-semibold transition-colors text-sm uppercase tracking-wider"
             >
-              How It Works
-            </Link>
+              Buy 5 Pack — $160
+            </a>
+            <a
+              href="https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center bg-[#1a1a1a] hover:bg-[#3a2e24] text-white px-8 py-4 rounded-full font-semibold transition-colors text-sm uppercase tracking-wider"
+            >
+              Buy 10 Pack — $300
+            </a>
           </div>
         </div>
       </section>
