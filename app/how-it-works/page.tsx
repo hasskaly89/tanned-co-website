@@ -162,9 +162,9 @@ export default function HowItWorks() {
       {/* IN-BOOTH VISUAL GUIDE */}
       <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Inside the Booth</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Your Booth Guide</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Once you step in, the booth guides you through everything. Here&apos;s what to expect.</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Book in Seconds</p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Book Via the App</h2>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Download the Tanned Co. app, choose your location and time, and walk straight in. No check-in, no waiting.</p>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6933d56e-70e2-44c5-8fbe-dde2aac05421/1.png", label: "Step 1" },
