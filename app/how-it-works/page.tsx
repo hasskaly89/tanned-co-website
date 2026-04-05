@@ -127,6 +127,25 @@ export default function HowItWorks() {
         </div>
       </section>
 
+      {/* HOW TO VIDEO */}
+      <section className="py-20 md:py-28 bg-[#1a1a1a]">
+        <div className="max-w-4xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Watch & Learn</p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase text-center text-white mb-4">See It In Action</h2>
+          <p className="text-center text-white/60 mb-12 max-w-md mx-auto">Watch how easy your first Tanned Co. session really is.</p>
+          {/* TODO: replace src with YouTube/Vimeo embed URL once uploaded */}
+          <div className="rounded-3xl overflow-hidden shadow-2xl aspect-video bg-black">
+            <video
+              src="/how-to.mp4"
+              controls
+              playsInline
+              className="w-full h-full object-cover"
+              poster="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* 4-STEP PROCESS */}
       <section className="py-20 md:py-28 bg-[#fdf0d5] text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
@@ -159,22 +178,67 @@ export default function HowItWorks() {
         </div>
       </div>
 
-      {/* IN-BOOTH VISUAL GUIDE */}
+      {/* BOOK VIA THE APP */}
       <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Inside the Booth</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Your Booth Guide</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Once you step in, the booth guides you through everything. Here's what to expect.</p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6933d56e-70e2-44c5-8fbe-dde2aac05421/1.png", label: "Step 1" },
-              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c3e14383-d601-4ac6-b8b2-02393874f08a/2.png", label: "Step 2" },
-              { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6d1c8f20-ab3e-4eae-adf5-62c594a286df/3.png", label: "Step 3" },
-            ].map(({ img, label }) => (
-              <div key={label} className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-[#e8d9c3]">
-                <Image src={img} alt={label} fill className="object-cover" />
+          <div className="grid md:grid-cols-2 gap-14 items-center">
+
+            {/* Left: steps + app buttons */}
+            <div>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Book in Seconds</p>
+              <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-6">Book Your Tan via the App</h2>
+              <p className="text-[#5a4a3a] text-lg leading-relaxed mb-10">
+                Download the Tanned Co. app to book your session in seconds. Choose your location, pick your time, and walk straight in — no waiting, no check-in.
+              </p>
+              <div className="space-y-5 mb-10">
+                {[
+                  { n: "01", title: "Download the App", desc: "Available on iOS and Android — free to download." },
+                  { n: "02", title: "Choose Your Location", desc: "Pick from any of our 5 Sydney studios." },
+                  { n: "03", title: "Select a Time", desc: "Book for today, tomorrow, or whenever suits you." },
+                  { n: "04", title: "Walk In & Glow", desc: "Your room is ready when you arrive. No check-in needed." },
+                ].map(({ n, title, desc }) => (
+                  <div key={n} className="flex items-start gap-4">
+                    <span className="text-2xl font-black text-[#a46746] w-10 flex-shrink-0">{n}</span>
+                    <div>
+                      <p className="font-bold uppercase tracking-wide text-sm text-[#1a1a1a] mb-1">{title}</p>
+                      <p className="text-[#5a4a3a] text-sm leading-relaxed">{desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="https://apps.apple.com/us/app/tannedco/id1659547172"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 bg-[#1a1a1a] hover:bg-[#3a2e24] text-white text-sm font-bold uppercase tracking-widest px-7 py-3.5 rounded-full transition-colors"
+                >
+                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                  App Store
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.treshna.memberportal.tannedco"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 bg-[#1a1a1a] hover:bg-[#3a2e24] text-white text-sm font-bold uppercase tracking-widest px-7 py-3.5 rounded-full transition-colors"
+                >
+                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.24.99.2l12.6-12.6-3.54-3.54L3.18 23.76zM20.65 10.24l-2.71-1.56-3.84 3.84 3.84 3.84 2.73-1.58c.78-.45.78-1.54-.02-2zM2.01 1.36c-.06.19-.01.4.13.56l10.59 10.59L9.19 16.05 2.01 1.36zM12.73 12.51l2.54-2.54-10.6-6.12 8.06 8.66z"/></svg>
+                  Google Play
+                </a>
+              </div>
+            </div>
+
+            {/* Right: app image */}
+            <div className="relative rounded-3xl overflow-hidden shadow-xl">
+              <Image
+                src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/e661168a-a595-4949-a52f-ee0a882cceb9/Untitled+design+%2813%29.png"
+                alt="Tanned Co. app booking screen"
+                width={600}
+                height={700}
+                className="w-full h-auto"
+              />
+            </div>
+
           </div>
         </div>
       </section>
