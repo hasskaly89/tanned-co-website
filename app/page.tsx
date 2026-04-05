@@ -392,14 +392,6 @@ export default function Home() {
             </div>
 
           </div>
-          <div className="text-center mt-10">
-            <Link
-              href="/pricing"
-              className="text-sm font-semibold tracking-wider uppercase text-[#a46746] border-b-2 border-[#a46746] pb-0.5 hover:text-[#7d4e33] hover:border-[#7d4e33] transition-colors"
-            >
-              View All Options →
-            </Link>
-          </div>
         </div>
       </section>
 
