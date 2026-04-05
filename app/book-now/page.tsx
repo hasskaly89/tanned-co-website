@@ -55,29 +55,91 @@ export default function BookNow() {
 
       {/* BOOK ONLINE */}
       <section className="py-20 md:py-28 bg-[#fdf0d5]">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Book Online</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-6">Choose Your Location &amp; Time</h2>
-          <p className="text-[#5a4a3a] text-lg leading-relaxed mb-3 max-w-xl mx-auto">
-            Book your session online in seconds. Select your preferred Sydney location, pick a time that suits you, and walk in ready to glow.
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Book Online</p>
+          <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-4 text-center">Choose Your Option</h2>
+          <p className="text-[#5a4a3a] text-lg leading-relaxed mb-14 max-w-xl mx-auto text-center">
+            Pick the option that suits you and book directly — no account needed for casual sessions.
           </p>
-          {/* Pricing reminder */}
-          <div className="flex items-center justify-center gap-6 mb-10 text-sm text-[#5a4a3a]">
-            <span className="flex items-center gap-1.5"><span className="text-[#a46746] font-bold">$35</span> Casual</span>
-            <span className="text-[#e8d9c3]">|</span>
-            <span className="flex items-center gap-1.5"><span className="text-[#a46746] font-bold">$160</span> 5 Pack</span>
-            <span className="text-[#e8d9c3]">|</span>
-            <span className="flex items-center gap-1.5"><span className="text-[#a46746] font-bold">$300</span> 10 Pack</span>
+          <div className="grid md:grid-cols-3 gap-6">
+
+            {/* Casual */}
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Casual Tan</p>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-5xl font-black">$35</span>
+                <span className="text-[#5a4a3a] mb-1.5">/ session</span>
+              </div>
+              <p className="text-[#5a4a3a] text-sm mb-6">Pay as you go</p>
+              <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 1x automated spray tan session</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 2 months from purchase</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your colour &amp; depth</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> All 5 Sydney locations</li>
+              </ul>
+              <a
+                href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
+              >
+                Book Casual Tan →
+              </a>
+            </div>
+
+            {/* 5 Pack */}
+            <div className="bg-[#1a1a1a] text-white rounded-3xl p-8 shadow-xl flex flex-col relative overflow-hidden scale-[1.02]">
+              <div className="absolute top-5 right-5">
+                <span className="bg-[#a46746] text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full">Best Value</span>
+              </div>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">5 Pack</p>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-5xl font-black">$160</span>
+                <span className="text-white/60 mb-1.5">/ 5 sessions</span>
+              </div>
+              <p className="text-white/60 text-sm mb-6">$32 per tan — save $15</p>
+              <ul className="space-y-3 text-white/80 text-sm flex-1 mb-8">
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 5x automated spray tan sessions</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 6 months from purchase</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your colour &amp; depth</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> All 5 Sydney locations</li>
+              </ul>
+              <a
+                href="https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-center bg-[#a46746] hover:bg-[#7d4e33] text-white py-3.5 rounded-full font-semibold transition-colors"
+              >
+                Buy 5 Pack →
+              </a>
+            </div>
+
+            {/* 10 Pack */}
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">10 Pack</p>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-5xl font-black">$300</span>
+                <span className="text-[#5a4a3a] mb-1.5">/ 10 sessions</span>
+              </div>
+              <p className="text-[#5a4a3a] text-sm mb-6">$30 per tan — save $50</p>
+              <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 10x automated spray tan sessions</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 12 months from purchase</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your colour &amp; depth</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> All 5 Sydney locations</li>
+              </ul>
+              <a
+                href="https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
+              >
+                Buy 10 Pack →
+              </a>
+            </div>
+
           </div>
-          <a
-            href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-[#a46746] hover:bg-[#7d4e33] text-white text-base font-bold uppercase tracking-widest px-12 py-4 rounded-full transition-colors shadow-md"
-          >
-            ☀ Book Now →
-          </a>
-          <p className="text-xs text-[#9a8a7a] mt-4">Opens our secure booking portal in a new tab</p>
+          <p className="text-xs text-[#9a8a7a] mt-8 text-center">Each option opens our secure booking portal in a new tab</p>
         </div>
       </section>
 
