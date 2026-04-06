@@ -461,12 +461,20 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              <Link
-                href="/locations"
-                className="inline-flex items-center border-2 border-[#a46746] text-[#a46746] px-7 py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm uppercase tracking-wider"
-              >
-                See All Locations →
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/locations"
+                  className="inline-flex items-center border-2 border-[#a46746] text-[#a46746] px-7 py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm uppercase tracking-wider"
+                >
+                  See All Locations →
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm uppercase tracking-wider"
+                >
+                  Contact Us →
+                </Link>
+              </div>
             </div>
 
           </div>
