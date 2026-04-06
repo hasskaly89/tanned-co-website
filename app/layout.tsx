@@ -61,6 +61,10 @@ export default function RootLayout({
         {children}
         <MobileCTA />
         <ExitIntent />
+        {/* Zapier Bronze Bot */}
+        <script async type="module" src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js" />
+        {/* @ts-ignore */}
+        <zapier-interfaces-chatbot-embed is-popup="true" chatbot-id="cmfqb930n005zqwkyx24pvzha" />
       </body>
     </html>
   );
