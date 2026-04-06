@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LOCATIONS } from "@/lib/locations";
 
 const socials = [
@@ -35,7 +36,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#111] py-10 px-6">
       <div className="max-w-6xl mx-auto flex flex-col items-center gap-6">
-        <img src="/logo.png" alt="Tanned Co." className="h-6 object-contain brightness-0 invert opacity-50" />
+        <Image src="/logo.png" alt="Tanned Co." width={120} height={24} className="h-6 w-auto object-contain brightness-0 invert opacity-50" />
 
         {/* Social icons */}
         <div className="flex items-center gap-5">

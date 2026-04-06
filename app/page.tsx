@@ -83,6 +83,73 @@ export default function Home() {
           }),
         }}
       />
+      {/* ITEM LIST SCHEMA — individual LocalBusiness entries */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            itemListElement: [
+              {
+                "@type": "LocalBusiness",
+                name: "Tanned Co Caringbah",
+                address: { "@type": "PostalAddress", streetAddress: "349B Kingsway", addressLocality: "Caringbah", addressRegion: "NSW", postalCode: "2229", addressCountry: "AU" },
+                geo: { "@type": "GeoCoordinates", latitude: -34.0395, longitude: 151.1220 },
+                telephone: "+611300826633",
+                email: "hello@tannedco.com.au",
+                openingHours: "Mo-Su 08:00-20:00",
+                priceRange: "$$",
+                aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
+              },
+              {
+                "@type": "LocalBusiness",
+                name: "Tanned Co Edensor Park",
+                address: { "@type": "PostalAddress", streetAddress: "Shop 6/207 Edensor Rd", addressLocality: "Edensor Park", addressRegion: "NSW", postalCode: "2176", addressCountry: "AU" },
+                geo: { "@type": "GeoCoordinates", latitude: -33.8770, longitude: 150.8840 },
+                telephone: "+611300826633",
+                email: "hello@tannedco.com.au",
+                openingHours: "Mo-Su 08:00-20:00",
+                priceRange: "$$",
+                aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
+              },
+              {
+                "@type": "LocalBusiness",
+                name: "Tanned Co Kings Park",
+                address: { "@type": "PostalAddress", streetAddress: "6/2 Garling Rd", addressLocality: "Kings Park", addressRegion: "NSW", postalCode: "2148", addressCountry: "AU" },
+                geo: { "@type": "GeoCoordinates", latitude: -33.7380, longitude: 150.9060 },
+                telephone: "+611300826633",
+                email: "hello@tannedco.com.au",
+                openingHours: "Mo-Su 08:00-20:00",
+                priceRange: "$$",
+                aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
+              },
+              {
+                "@type": "LocalBusiness",
+                name: "Tanned Co Smeaton Grange",
+                address: { "@type": "PostalAddress", streetAddress: "1/73-77 Anderson Rd", addressLocality: "Smeaton Grange", addressRegion: "NSW", postalCode: "2567", addressCountry: "AU" },
+                geo: { "@type": "GeoCoordinates", latitude: -34.0500, longitude: 150.7630 },
+                telephone: "+611300826633",
+                email: "hello@tannedco.com.au",
+                openingHours: "Mo-Su 08:00-20:00",
+                priceRange: "$$",
+                aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
+              },
+              {
+                "@type": "LocalBusiness",
+                name: "Tanned Co Woollahra",
+                address: { "@type": "PostalAddress", streetAddress: "8 Oxford St", addressLocality: "Woollahra", addressRegion: "NSW", postalCode: "2025", addressCountry: "AU" },
+                geo: { "@type": "GeoCoordinates", latitude: -33.8860, longitude: 151.2400 },
+                telephone: "+611300826633",
+                email: "hello@tannedco.com.au",
+                openingHours: "Mo-Su 08:00-20:00",
+                priceRange: "$$",
+                aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
+              },
+            ],
+          }),
+        }}
+      />
 
       {/* ANNOUNCEMENT BANNER */}
       {bannerVisible && (

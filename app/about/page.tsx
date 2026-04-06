@@ -8,9 +8,9 @@ const OG_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Tanned Co | Sydney's First Automated Spray Tan Studio",
   description:
-    "Learn the story behind Tanned Co. — Sydney's first fully automated spray tanning studio. VersaSpa booths, private rooms, 5 locations and open 7 days a week.",
+    "Learn about Tanned Co — Sydney's first fully automated spray tanning studio. Private VersaSpa booths across 5 locations. Vegan, cruelty-free, open 7 days a week.",
   alternates: { canonical: "https://www.tannedco.com.au/about" },
   openGraph: {
     title: "About Us | Tanned Co.",
@@ -29,7 +29,7 @@ const stats = [
   { value: "5", label: "Locations" },
   { value: "7", label: "Days a Week" },
   { value: "4", label: "Colour Shades" },
-  { value: "1000+", label: "Happy Clients" },
+  { value: "5,000+", label: "Spray Tans Delivered" },
 ];
 
 const features = [

@@ -8,9 +8,9 @@ const OG_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg";
 
 export const metadata: Metadata = {
-  title: "How It Works",
+  title: "How Automated Spray Tanning Works | Step-by-Step Guide | Tanned Co",
   description:
-    "Step-by-step guide to your perfect automated spray tan at Tanned Co. 4 simple steps, 3 signature shades (Rapid Venetian, Malibu, Monterey), full privacy guaranteed.",
+    "See how a Tanned Co automated spray tan works. Book online, walk into your private booth, and walk out glowing in minutes. No staff, no waiting. Full guide with photos.",
   alternates: { canonical: "https://www.tannedco.com.au/how-it-works" },
   openGraph: {
     title: "How It Works | Tanned Co.",

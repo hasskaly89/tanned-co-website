@@ -331,6 +331,36 @@ export default async function LocationPage({
         </section>
       )}
 
+      {/* REVIEWS SECTION — shown for all locations that have reviews */}
+      {loc.reviews && loc.reviews.length > 0 && (
+        <section className="py-12 md:py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-6">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">
+              {loc.shortName} Clients Love It
+            </p>
+            <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-12">
+              What They&apos;re Saying
+            </h2>
+            <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
+              {loc.reviews.map(({ name, suburb, text, rating }) => (
+                <div key={name} className="break-inside-avoid bg-[#fdf6ec] rounded-2xl p-6 border border-[#e8d9c3]">
+                  <div className="flex gap-0.5 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className={`text-sm ${i < rating ? "text-[#a46746]" : "text-gray-300"}`}>★</span>
+                    ))}
+                  </div>
+                  <p className="text-[#3a2e24] text-sm leading-relaxed mb-4">&ldquo;{text}&rdquo;</p>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{name}</p>
+                    <p className="text-xs text-[#5a4a3a]">{suburb}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <Footer />
     </div>
   );
