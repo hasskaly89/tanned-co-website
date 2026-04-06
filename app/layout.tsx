@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MobileCTA from "@/components/MobileCTA";
 import ExitIntent from "@/components/ExitIntent";
+import BronzeBot from "@/components/BronzeBot";
 import { SITE_URL } from "@/lib/locations";
 
 const geistSans = Geist({
@@ -61,10 +62,7 @@ export default function RootLayout({
         {children}
         <MobileCTA />
         <ExitIntent />
-        {/* Zapier Bronze Bot */}
-        <script async type="module" src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js" />
-        {/* @ts-ignore */}
-        <zapier-interfaces-chatbot-embed is-popup="true" chatbot-id="cmfqb930n005zqwkyx24pvzha" />
+        <BronzeBot />
       </body>
     </html>
   );
