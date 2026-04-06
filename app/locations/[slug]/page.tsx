@@ -37,12 +37,6 @@ export async function generateMetadata({
   };
 }
 
-const services = [
-  { icon: "☀️", title: "Automated Spray Tan", desc: "VersaSpa booth — voice guided, heated, self-cleaning." },
-  { icon: "🌿", title: "3 Signature Shades", desc: "Rapid Venetian, Malibu & Monterey, each in 3 depths." },
-  { icon: "⚡", title: "Express Session", desc: "In and out in under 15 minutes — no waiting." },
-  { icon: "🔒", title: "100% Private", desc: "Your own room. No staff. No awkwardness." },
-];
 
 const howToBook = [
   { num: "01", text: "Download the Tanned Co. app or book online" },
@@ -211,30 +205,6 @@ export default async function LocationPage({
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHAT'S AVAILABLE */}
-      <section className="py-12 md:py-28 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">
-            At This Studio
-          </p>
-          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">
-            What&apos;s Available
-          </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {services.map((s) => (
-              <div
-                key={s.title}
-                className="bg-[#fdf6ec] rounded-2xl p-6 border border-[#e8d9c3] text-center shadow-sm"
-              >
-                <div className="text-4xl mb-4">{s.icon}</div>
-                <h3 className="font-bold uppercase tracking-wide text-sm text-[#1a1a1a] mb-2">{s.title}</h3>
-                <p className="text-[#5a4a3a] text-sm leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
