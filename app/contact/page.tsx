@@ -7,41 +7,33 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 
-const locations = [
-  {
-    name: "Caringbah",
-    address: "349B Kingsway, Caringbah NSW",
-    maps: "https://www.google.com/maps/search/?api=1&query=349B+Kingsway+Caringbah+NSW",
-  },
-  {
-    name: "Edensor Park",
-    address: "Shop 6/207 Edensor Rd, Edensor Park NSW",
-    maps: "https://www.google.com/maps/search/?api=1&query=Shop+6%2F207+Edensor+Rd+Edensor+Park+NSW",
-  },
-  {
-    name: "Kings Park",
-    address: "6/2 Garling Rd, Kings Park NSW",
-    maps: "https://www.google.com/maps/search/?api=1&query=6%2F2+Garling+Rd+Kings+Park+NSW",
-  },
-  {
-    name: "Smeaton Grange",
-    address: "1/73-77 Anderson Rd, Smeaton Grange NSW",
-    maps: "https://www.google.com/maps/search/?api=1&query=1%2F73-77+Anderson+Rd+Smeaton+Grange+NSW",
-  },
-  {
-    name: "Woollahra",
-    address: "8 Oxford St, Woollahra NSW",
-    maps: "https://www.google.com/maps/search/?api=1&query=8+Oxford+St+Woollahra+NSW",
-  },
+const enquiryTypes = [
+  "General Enquiry",
+  "Booking Help",
+  "Product / Tan Question",
+  "Franchise Information",
+  "Partnership / Collaboration",
+  "Other",
 ];
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    enquiryType: "",
+    message: "",
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent("Enquiry from Tanned Co Website");
-    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
+    const subject = encodeURIComponent(
+      formData.enquiryType
+        ? `${formData.enquiryType} — Tanned Co Website`
+        : "Enquiry from Tanned Co Website"
+    );
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nEnquiry Type: ${formData.enquiryType}\n\nMessage:\n${formData.message}`
+    );
     window.location.href = `mailto:hello@tannedco.com.au?subject=${subject}&body=${body}`;
   };
 
@@ -54,90 +46,22 @@ export default function Contact() {
       <section className="relative h-[70vh] min-h-[520px] flex items-end">
         <Image
           src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg"
-          alt="Tanned Co. studio location"
+          alt="Tanned Co. studio"
           fill
           className="object-cover object-center"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">5 Sydney Locations</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">We&apos;d Love to Hear From You</p>
           <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Contact Us</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
-            5 convenient Sydney locations, open 7 days a week.
+            Got a question, franchise enquiry, or just want to say hi? Drop us a message.
           </p>
         </div>
       </section>
 
-      {/* LOCATIONS GRID */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Our Studios</p>
-          <h2 className="text-4xl font-black uppercase text-center mb-14">Our Locations</h2>
-
-          {/* First 3 locations */}
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
-            {locations.slice(0, 3).map((loc) => (
-              <div key={loc.name} className="bg-white rounded-2xl p-7 border border-[#e8d9c3] shadow-sm flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[#a46746] text-xl">📍</span>
-                  <h3 className="font-black uppercase tracking-wide text-[#1a1a1a]">{loc.name}</h3>
-                </div>
-                <p className="text-[#5a4a3a] text-sm mb-2">{loc.address}</p>
-                <p className="text-xs text-[#a46746] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
-                <div className="flex gap-2 mt-auto">
-                  <a
-                    href={loc.maps}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-2.5 rounded-full text-sm font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
-                  >
-                    Directions →
-                  </a>
-                  <Link
-                    href={`/locations/${loc.name.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="flex-1 inline-flex items-center justify-center border-2 border-[#a46746] text-[#a46746] py-2.5 rounded-full text-sm font-semibold hover:bg-[#a46746] hover:text-white transition-colors"
-                  >
-                    View Studio
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Last 2 locations centered */}
-          <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            {locations.slice(3).map((loc) => (
-              <div key={loc.name} className="bg-white rounded-2xl p-7 border border-[#e8d9c3] shadow-sm flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[#a46746] text-xl">📍</span>
-                  <h3 className="font-black uppercase tracking-wide text-[#1a1a1a]">{loc.name}</h3>
-                </div>
-                <p className="text-[#5a4a3a] text-sm mb-2">{loc.address}</p>
-                <p className="text-xs text-[#a46746] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
-                <div className="flex gap-2 mt-auto">
-                  <a
-                    href={loc.maps}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-2.5 rounded-full text-sm font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
-                  >
-                    Directions →
-                  </a>
-                  <Link
-                    href={`/locations/${loc.name.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="flex-1 inline-flex items-center justify-center border-2 border-[#a46746] text-[#a46746] py-2.5 rounded-full text-sm font-semibold hover:bg-[#a46746] hover:text-white transition-colors"
-                  >
-                    View Studio
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* GET IN TOUCH */}
+      {/* CONTACT SECTION */}
       <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14">
 
@@ -195,6 +119,16 @@ export default function Contact() {
                 Book Your Tan →
               </Link>
             </div>
+
+            <div>
+              <h3 className="text-sm font-bold uppercase tracking-widest mb-4 text-[#a46746]">Our Locations</h3>
+              <Link
+                href="/locations"
+                className="inline-flex items-center border-2 border-[#1a1a1a] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white px-7 py-3 rounded-full font-semibold transition-colors text-sm"
+              >
+                View All Studios →
+              </Link>
+            </div>
           </div>
 
           {/* Right: contact form */}
@@ -228,6 +162,23 @@ export default function Contact() {
                   placeholder="jane@example.com"
                   className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
                 />
+              </div>
+              <div>
+                <label htmlFor="enquiryType" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
+                  Enquiry Type
+                </label>
+                <select
+                  id="enquiryType"
+                  required
+                  value={formData.enquiryType}
+                  onChange={(e) => setFormData({ ...formData, enquiryType: e.target.value })}
+                  className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] focus:outline-none focus:border-[#a46746] transition-colors appearance-none cursor-pointer"
+                >
+                  <option value="" disabled>Select an option...</option>
+                  {enquiryTypes.map((type) => (
+                    <option key={type} value={type}>{type}</option>
+                  ))}
+                </select>
               </div>
               <div>
                 <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
