@@ -41,7 +41,7 @@ export default function Pricing() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Transparent &amp; Simple</p>
-          <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Simple, Honest Pricing</h1>
+          <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Simple, Honest Pricing</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             No hidden fees. No awkward upsells. Just beautiful tans.
           </p>
@@ -49,10 +49,10 @@ export default function Pricing() {
       </section>
 
       {/* PRICING CARDS */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Transparent &amp; Simple</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Our Pricing</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Our Pricing</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">No hidden fees. Just beautiful tans at honest prices.</p>
           <div className="grid md:grid-cols-3 gap-6">
 
@@ -145,7 +145,7 @@ export default function Pricing() {
       </div>
 
       {/* FAQ STRIP */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-3xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Pricing Questions</p>
           <h2 className="text-4xl font-black uppercase text-center mb-14">Common Questions</h2>

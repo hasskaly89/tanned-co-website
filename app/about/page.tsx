@@ -65,7 +65,7 @@ export default function About() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Who We Are</p>
-          <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Our Story</h1>
+          <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Our Story</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl mb-8">
             Sydney&apos;s first automated spray tanning studio — where luxury meets convenience.
           </p>
@@ -79,11 +79,11 @@ export default function About() {
       </section>
 
       {/* OUR STORY */}
-      <section className="py-20 md:py-28">
+      <section className="py-12 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
           <div>
             <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">How It Started</p>
-            <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-6">
+            <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight mb-6">
               Built for You
             </h2>
             <p className="text-[#5a4a3a] text-lg leading-relaxed mb-5">
@@ -115,11 +115,11 @@ export default function About() {
       </section>
 
       {/* OUR MISSION */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Our Mission</p>
-            <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-6">
+            <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight mb-6">
               Your Glow, Your Way
             </h2>
             <p className="text-[#5a4a3a] text-lg leading-relaxed">
@@ -139,10 +139,10 @@ export default function About() {
       </section>
 
       {/* OUR BOOTHS */}
-      <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
+      <section className="py-12 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Technology</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">
             State of the Art Tanning Booths
           </h2>
           <div className="grid md:grid-cols-2 gap-14 items-center">
@@ -167,9 +167,9 @@ export default function About() {
       </section>
 
       {/* CTA BANNER */}
-      <section className="py-20 md:py-28 bg-[#fdf6ec] text-[#1a1a1a] border-t border-[#e8d9c3]">
+      <section className="py-12 md:py-28 bg-[#fdf6ec] text-[#1a1a1a] border-t border-[#e8d9c3]">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-black uppercase mb-6">Ready to Get Your Glow?</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase mb-6">Ready to Get Your Glow?</h2>
           <p className="text-[#5a4a3a] text-lg mb-10">Book your session online in seconds. Walk in, walk out glowing.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

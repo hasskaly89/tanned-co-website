@@ -81,7 +81,7 @@ export default async function LocationPage({
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">
             Sydney — {loc.shortName}
           </p>
-          <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">
+          <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">
             Spray Tan<br />{loc.shortName}
           </h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl mb-8">
@@ -215,12 +215,12 @@ export default async function LocationPage({
       </section>
 
       {/* WHAT'S AVAILABLE */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-12 md:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">
             At This Studio
           </p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">
             What&apos;s Available
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -243,12 +243,12 @@ export default async function LocationPage({
 
       {/* TESTIMONIALS — only shown for locations that have them */}
       {loc.testimonials && loc.testimonials.length > 0 && (
-        <section className="py-20 md:py-28 bg-white">
+        <section className="py-12 md:py-28 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">
               {loc.shortName} Locals Love It
             </p>
-            <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-14">
+            <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-14">
               What They&apos;re Saying
             </h2>
             <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
@@ -272,7 +272,7 @@ export default async function LocationPage({
       )}
 
       {/* OTHER LOCATIONS */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">
             5 Sydney Studios
@@ -299,9 +299,9 @@ export default async function LocationPage({
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-28 bg-white text-center">
+      <section className="py-12 md:py-28 bg-white text-center">
         <div className="max-w-2xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#1a1a1a]">
+          <h2 className="text-2xl md:text-5xl font-black uppercase mb-6 text-[#1a1a1a]">
             Book Your Tan in {loc.shortName}
           </h2>
           <p className="text-[#5a4a3a] text-lg mb-10">

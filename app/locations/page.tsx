@@ -34,7 +34,7 @@ export default function LocationsPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Sydney — 5 Studios</p>
-          <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Our Locations</h1>
+          <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Our Locations</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             5 convenient Sydney studios open 7 days a week. Find your nearest Tanned Co.
           </p>
@@ -42,10 +42,10 @@ export default function LocationsPage() {
       </section>
 
       {/* LOCATIONS GRID */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Find Us</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">5 Sydney Studios</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">5 Sydney Studios</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Private booths, flawless results, open 7 days. Sessions from $35.</p>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -98,9 +98,9 @@ export default function LocationsPage() {
       <TrustBadges />
 
       {/* CTA */}
-      <section className="py-20 md:py-28 bg-white text-center">
+      <section className="py-12 md:py-28 bg-white text-center">
         <div className="max-w-2xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#1a1a1a]">Ready to Glow?</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase mb-6 text-[#1a1a1a]">Ready to Glow?</h2>
           <p className="text-[#5a4a3a] text-lg mb-10">Book your session online in seconds. Walk in, walk out glowing.</p>
           <a
             href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"

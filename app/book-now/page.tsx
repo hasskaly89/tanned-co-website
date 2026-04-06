@@ -21,7 +21,7 @@ export default function BookNow() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Tanned Co.</p>
-          <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Book Your Tan</h1>
+          <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Book Your Tan</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Private. Automated. Flawless. Choose your location and time below.
           </p>
@@ -54,10 +54,10 @@ export default function BookNow() {
       </section>
 
       {/* BOOK ONLINE */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Book Online</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-4 text-center">Choose Your Option</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight mb-4 text-center">Choose Your Option</h2>
           <p className="text-[#5a4a3a] text-lg leading-relaxed mb-14 max-w-xl mx-auto text-center">
             Pick the option that suits you and book directly — no account needed for casual sessions.
           </p>
@@ -88,7 +88,7 @@ export default function BookNow() {
             </div>
 
             {/* 5 Pack */}
-            <div className="bg-[#1a1a1a] text-white rounded-3xl p-8 shadow-xl flex flex-col relative overflow-hidden scale-[1.02]">
+            <div className="bg-[#1a1a1a] text-white rounded-3xl p-8 shadow-xl flex flex-col relative overflow-hidden md:scale-[1.02]">
               <div className="absolute top-5 right-5">
                 <span className="bg-[#a46746] text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full">Best Value</span>
               </div>
@@ -169,7 +169,7 @@ export default function BookNow() {
       <section className="py-14 bg-white border-y border-[#e8d9c3]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-6 text-center">Our Sydney Locations</p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
             {[
               "Caringbah",
               "Edensor Park",
@@ -187,10 +187,10 @@ export default function BookNow() {
       </section>
 
       {/* DOWNLOAD APP */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">On Your Phone</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-6">Download the App</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight mb-6">Download the App</h2>
           <p className="text-[#5a4a3a] text-lg leading-relaxed mb-10 max-w-xl mx-auto">
             Booking a casual session or using your membership is easy with the Tanned Co. app. Tap the links below to go straight to the booking page.
           </p>

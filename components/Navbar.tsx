@@ -21,7 +21,7 @@ export default function Navbar({ activePath = "/", withBanner = false }: { activ
     <nav className={`fixed ${withBanner ? "top-10" : "top-0"} left-0 right-0 z-50 bg-[#fdf6ec]/90 backdrop-blur-sm border-b border-[#e8d9c3] transition-all duration-300`}>
       <div className="max-w-6xl mx-auto px-6 p-0 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          <Image src="/logo.png" alt="Tanned Co." width={300} height={112} className="h-28 w-auto object-contain" />
+          <Image src="/logo.png" alt="Tanned Co." width={300} height={112} className="h-14 md:h-28 w-auto object-contain" />
         </Link>
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium tracking-wider uppercase">

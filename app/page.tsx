@@ -179,11 +179,11 @@ export default function Home() {
       )}
 
       {/* ABOUT TEASER */}
-      <section className="py-20 md:py-28">
+      <section className="py-12 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Your Go-To Destination</p>
-            <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-6">
+            <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight mb-6">
               Luxury Tanning, Your Way
             </h2>
             <p className="text-[#5a4a3a] text-lg leading-relaxed mb-8">
@@ -229,10 +229,10 @@ export default function Home() {
       </section>
 
       {/* REAL RESULTS — Before/After grid */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Real Results</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">The Transformation</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">The Transformation</h2>
           <p className="text-center text-[#5a4a3a] mb-14 max-w-md mx-auto">
             See what a Tanned Co session looks like on real skin tones.
           </p>
@@ -295,10 +295,10 @@ export default function Home() {
       <InstagramFeed />
 
       {/* HOW IT WORKS */}
-      <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
+      <section className="py-12 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Simple &amp; Fast</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">How It Works</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               { num: "01", title: "Book Online", desc: "Choose your location, date, and preferred tan shade through our easy online booking or app." },
@@ -327,10 +327,10 @@ export default function Home() {
       <TrustBadges />
 
       {/* PRICING PREVIEW */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Transparent &amp; Simple</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Our Pricing</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Our Pricing</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">No hidden fees. Just beautiful tans at honest prices.</p>
           <div className="grid md:grid-cols-3 gap-6">
 
@@ -412,10 +412,10 @@ export default function Home() {
       <GoogleReviews />
 
       {/* FAQ TEASER */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-3xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Got Questions?</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-14">FAQ</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-14">FAQ</h2>
           <div className="space-y-3">
             {faqs.map((faq, i) => (
               <div key={i} className="bg-white rounded-2xl overflow-hidden border border-[#e8d9c3]">
@@ -443,10 +443,10 @@ export default function Home() {
       </section>
 
       {/* CONTACT TEASER */}
-      <section className="py-20 md:py-28 bg-[#fdf6ec] text-[#1a1a1a]">
+      <section className="py-12 md:py-28 bg-[#fdf6ec] text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Find Us</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">Visit Us</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">Visit Us</h2>
           <div className="grid md:grid-cols-2 gap-12">
 
             {/* Locations list */}

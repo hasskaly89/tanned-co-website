@@ -82,7 +82,7 @@ export default function GoogleReviews() {
             <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">
               What Clients Are Saying
             </p>
-            <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight">
+            <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight">
               Real Glows. Real Reviews.
             </h2>
           </div>

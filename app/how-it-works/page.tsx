@@ -120,7 +120,7 @@ export default function HowItWorks() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Step by Step</p>
-          <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">How It Works</h1>
+          <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">How It Works</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Your step-by-step guide to a perfect automated spray tan.
           </p>
@@ -128,10 +128,10 @@ export default function HowItWorks() {
       </section>
 
       {/* 4-STEP PROCESS */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5] text-[#1a1a1a]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5] text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Process</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">4 Simple Steps</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">4 Simple Steps</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
             {steps.map(({ num, title, desc }) => (
               <div key={num} className="border border-[#e8d9c3] rounded-3xl p-8 hover:border-[#a46746] transition-colors flex flex-col">
@@ -160,10 +160,10 @@ export default function HowItWorks() {
       </div>
 
       {/* IN-BOOTH VISUAL GUIDE */}
-      <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
+      <section className="py-12 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Book in Seconds</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Book Via the App</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Book Via the App</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Download the Tanned Co. app, choose your location and time, and walk straight in. No check-in, no waiting.</p>
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -180,10 +180,10 @@ export default function HowItWorks() {
       </section>
 
       {/* SHADE OPTIONS */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Tan Colours</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Choose Your Shade</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Choose Your Shade</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">3 signature colours, each available in 3 depths — 9 shades total so you can find your perfect glow.</p>
           <div className="grid md:grid-cols-3 gap-8">
             {shades.map(({ name, tag, desc, rinse, swatches }) => (
@@ -219,10 +219,10 @@ export default function HowItWorks() {
       </section>
 
       {/* PREPARATION GUIDE */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-12 md:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">In The Room</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">Before You Step In</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Before You Step In</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Follow these 4 steps inside your tanning room before starting your session.</p>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
             {prepTips.map(({ step, title, desc, img }) => (
@@ -251,10 +251,10 @@ export default function HowItWorks() {
       </section>
 
       {/* AFTERCARE */}
-      <section className="py-20 md:py-28 bg-[#fdf0d5] text-[#1a1a1a]">
+      <section className="py-12 md:py-28 bg-[#fdf0d5] text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">After Your Session</p>
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-16">Aftercare Tips</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">Aftercare Tips</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
             {aftercare.map((tip) => (
               <div key={tip} className="border border-[#e8d9c3] rounded-2xl p-6 flex items-start gap-3 hover:border-[#a46746] transition-colors">
@@ -267,9 +267,9 @@ export default function HowItWorks() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-28 bg-white text-center">
+      <section className="py-12 md:py-28 bg-white text-center">
         <div className="max-w-2xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 text-[#1a1a1a]">Ready to Book?</h2>
+          <h2 className="text-2xl md:text-5xl font-black uppercase mb-6 text-[#1a1a1a]">Ready to Book?</h2>
           <p className="text-[#5a4a3a] text-lg mb-10">Book your session in seconds. Walk in, walk out glowing.</p>
           <Link
             href="/book-now"

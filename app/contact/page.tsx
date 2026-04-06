@@ -62,7 +62,7 @@ export default function Contact() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">We&apos;d Love to Hear From You</p>
-          <h1 className="text-5xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Contact Us</h1>
+          <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Contact Us</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Got a question, franchise enquiry, or just want to say hi? Drop us a message.
           </p>
@@ -70,7 +70,7 @@ export default function Contact() {
       </section>
 
       {/* CONTACT SECTION */}
-      <section className="py-20 md:py-28 bg-white text-[#1a1a1a]">
+      <section className="py-12 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14">
 
           {/* Left: contact info */}
