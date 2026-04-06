@@ -149,7 +149,20 @@ export default async function LocationPage({
                   </div>
                 </div>
               </div>
-              <div className="mt-8 pt-6 border-t border-[#e8d9c3] space-y-3">
+              {/* Google Maps embed */}
+              <div className="mt-6 rounded-2xl overflow-hidden border border-[#e8d9c3]">
+                <iframe
+                  title={`Map of Tanned Co. ${loc.shortName}`}
+                  src={`https://maps.google.com/maps?q=${loc.lat},${loc.lng}&z=15&output=embed`}
+                  width="100%"
+                  height="200"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-[#e8d9c3] space-y-3">
                 <a
                   href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
                   target="_blank"
