@@ -65,7 +65,7 @@ export default async function LocationPage({
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
       <LocalBusinessSchema slug={slug} />
-      <Navbar activePath="/contact" />
+      <Navbar activePath={`/locations/${slug}`} />
 
       {/* HERO */}
       <section className="relative h-[70vh] min-h-[520px] flex items-end">
