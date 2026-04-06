@@ -3,6 +3,18 @@ export interface Testimonial {
   text: string;
 }
 
+export interface BookingUrls {
+  casual: string;
+  fivePack: string;
+  tenPack: string;
+}
+
+export const DEFAULT_BOOKING_URLS: BookingUrls = {
+  casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107",
+  fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf",
+  tenPack: "https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373",
+};
+
 export interface LocationData {
   slug: string;
   shortName: string;
@@ -19,6 +31,7 @@ export interface LocationData {
   phone: string;
   nearbySuburbs: string[];
   parkingNote: string;
+  bookingUrls?: BookingUrls;
   testimonials?: Testimonial[];
 }
 
@@ -73,6 +86,11 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Wetherill Park", "Bossley Park", "Prairiewood", "Greenfield Park", "St Johns Park"],
     parkingNote: "Free parking available in the shopping complex car park.",
+    bookingUrls: {
+      casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=5",
+      fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=5",
+      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373?companyid=5",
+    },
   },
   {
     slug: "kings-park",

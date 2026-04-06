@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import TrustBadges from "@/components/TrustBadges";
-import { LOCATIONS, SITE_URL } from "@/lib/locations";
+import { LOCATIONS, DEFAULT_BOOKING_URLS, SITE_URL } from "@/lib/locations";
 
 export function generateStaticParams() {
   return LOCATIONS.map((loc) => ({ slug: loc.slug }));
@@ -60,6 +60,7 @@ export default async function LocationPage({
   const loc = LOCATIONS.find((l) => l.slug === slug);
   if (!loc) notFound();
 
+  const urls = { ...DEFAULT_BOOKING_URLS, ...loc.bookingUrls };
   const otherLocations = LOCATIONS.filter((l) => l.slug !== slug);
 
   return (
@@ -88,7 +89,7 @@ export default async function LocationPage({
             Automated spray tanning in {loc.shortName}. Private booths, flawless results, open 7 days a week.
           </p>
           <a
-            href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
+            href={urls.casual}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
@@ -164,7 +165,7 @@ export default async function LocationPage({
 
               <div className="mt-6 pt-6 border-t border-[#e8d9c3] space-y-3">
                 <a
-                  href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
+                  href={urls.casual}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center bg-[#a46746] hover:bg-[#7d4e33] text-white py-3.5 rounded-full font-bold uppercase tracking-widest transition-colors text-sm"
@@ -172,7 +173,7 @@ export default async function LocationPage({
                   Book Casual Tan — $35
                 </a>
                 <a
-                  href="https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf"
+                  href={urls.fivePack}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
@@ -180,7 +181,7 @@ export default async function LocationPage({
                   Buy 5 Pack — $160
                 </a>
                 <a
-                  href="https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373"
+                  href={urls.tenPack}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
@@ -309,7 +310,7 @@ export default async function LocationPage({
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
             <a
-              href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
+              href={urls.casual}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-8 py-4 rounded-full font-semibold transition-colors text-sm uppercase tracking-wider"
@@ -317,7 +318,7 @@ export default async function LocationPage({
               Book Casual Tan — $35
             </a>
             <a
-              href="https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf"
+              href={urls.fivePack}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center bg-[#1a1a1a] hover:bg-[#3a2e24] text-white px-8 py-4 rounded-full font-semibold transition-colors text-sm uppercase tracking-wider"
@@ -325,7 +326,7 @@ export default async function LocationPage({
               Buy 5 Pack — $160
             </a>
             <a
-              href="https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373"
+              href={urls.tenPack}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center bg-[#1a1a1a] hover:bg-[#3a2e24] text-white px-8 py-4 rounded-full font-semibold transition-colors text-sm uppercase tracking-wider"
