@@ -55,6 +55,11 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Cronulla", "Miranda", "Gymea", "Sutherland", "Taren Point", "Woolooware"],
     parkingNote: "Street parking available on Kingsway. Easy access from Caringbah train station.",
+    bookingUrls: {
+      casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=2",
+      fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=2",
+      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373?companyid=2",
+    },
     testimonials: [
       { name: "Shannon Harley", text: "Easy process. I popped in at 8pm on a Friday night, went home and went to bed - woke up with an even tan and ready for the weekend. Love the flexible hours!" },
       { name: "Angela Maclean", text: "I had such a fantastic experience at Tanned Co! The booking process was seamless and super easy, and I loved how simple the tanning booth was to use. The studio was spotless, and the location is so convenient. It's clear they've thought of everything to make the whole process smooth and enjoyable. Definitely my go-to for a great tan!" },
