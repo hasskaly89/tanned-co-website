@@ -133,6 +133,11 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Camden", "Narellan", "Mount Annan", "Oran Park", "Gregory Hills"],
     parkingNote: "Ample free parking in the Anderson Rd complex.",
+    bookingUrls: {
+      casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=4",
+      fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=4",
+      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373?companyid=4",
+    },
   },
   {
     slug: "woollahra",
