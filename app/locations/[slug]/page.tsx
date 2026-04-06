@@ -307,43 +307,6 @@ export default async function LocationPage({
         </section>
       )}
 
-      {/* CTA */}
-      <section className="py-12 md:py-28 bg-white text-center">
-        <div className="max-w-2xl mx-auto px-6">
-          <h2 className="text-2xl md:text-5xl font-black uppercase mb-6 text-[#1a1a1a]">
-            Book Your Tan in {loc.shortName}
-          </h2>
-          <p className="text-[#5a4a3a] text-lg mb-10">
-            Sessions from $35. Book online in seconds, walk in ready to glow.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4">
-            <a
-              href={urls.casual}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-8 py-4 rounded-full font-semibold transition-colors text-sm uppercase tracking-wider"
-            >
-              Book Casual Tan — $35
-            </a>
-            <a
-              href={urls.fivePack}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-[#1a1a1a] hover:bg-[#3a2e24] text-white px-8 py-4 rounded-full font-semibold transition-colors text-sm uppercase tracking-wider"
-            >
-              Buy 5 Pack — $160
-            </a>
-            <a
-              href={urls.tenPack}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-[#1a1a1a] hover:bg-[#3a2e24] text-white px-8 py-4 rounded-full font-semibold transition-colors text-sm uppercase tracking-wider"
-            >
-              Buy 10 Pack — $300
-            </a>
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>
