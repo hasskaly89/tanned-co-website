@@ -109,6 +109,11 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Blacktown", "Quakers Hill", "Marayong", "Seven Hills", "Pendle Hill"],
     parkingNote: "Free on-site parking. Located in a small retail complex on Garling Rd.",
+    bookingUrls: {
+      casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=6",
+      fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=6",
+      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373?companyid=6",
+    },
   },
   {
     slug: "smeaton-grange",
