@@ -100,13 +100,6 @@ export default function Home() {
 
       <Navbar activePath="/" withBanner={bannerVisible} />
 
-      {/* FLOATING BOOK NOW BUTTON — desktop only (mobile uses sticky bar in layout) */}
-      <Link
-        href="/book-now"
-        className="hidden md:inline-flex fixed bottom-6 right-6 z-50 bg-[#a46746] hover:bg-[#7d4e33] text-white text-sm font-bold uppercase tracking-widest px-6 py-3.5 rounded-full shadow-2xl transition-colors items-center gap-2"
-      >
-        <span>☀</span> Book Now
-      </Link>
 
       {/* HERO */}
       <section className="relative h-screen min-h-[600px] flex items-end">
