@@ -39,10 +39,17 @@ export async function generateMetadata({
 
 
 const howToBook = [
-  { num: "01", text: "Download the Tanned Co. app or book online" },
-  { num: "02", text: "Select this location, choose your date & time" },
-  { num: "03", text: "Walk in — your room will be ready for you" },
-  { num: "04", text: "Follow the in-booth prompts and walk out glowing" },
+  { num: "01", title: "Book It", text: "Download the app or book online. Pick your time — we're open 7 days so you can squeeze in a glow whenever it suits." },
+  { num: "02", title: "Prep", text: "Exfoliate and shave 24 hours before. End your shower with a cold rinse to close your pores. Future you will be grateful." },
+  { num: "03", title: "Step In", text: "Our smart sensors detect your height and guide you through each position. Apply barrier cream to hands, elbows, knees and ankles, then follow the voice prompts." },
+  { num: "04", title: "Pick Your Shade", text: "Choose from 4 gorgeous colours with 3 depth levels each — from sun-kissed glow to deep bronze, all matched to avoid the orange situation." },
+  { num: "05", title: "Glow Up", text: "Rinse hands and face after 30 mins, then let your tan develop for 6–8 hours. Peak gorgeousness hits within 24 hours. No streaks, no mess, no regrets." },
+];
+
+const studioFeatures = [
+  { icon: "🔥", title: "Your Private, Heated Booth", text: "Step into a fully automated spray tan booth that senses your height and guides you through for flawless coverage every time." },
+  { icon: "☀️", title: "Custom Colour Match", text: "Choose from 4 colours with 3 depth levels. From subtle glow to deep bronze — perfectly matched to your skin tone." },
+  { icon: "✨", title: "Rapid Results That Last", text: "See your golden glow develop in just 2–3 hours, reaching peak gorgeousness within 24 hours. No streaks, no orange — just pure radiance." },
 ];
 
 export default async function LocationPage({
@@ -190,11 +197,14 @@ export default async function LocationPage({
               <h2 className="text-2xl font-black uppercase tracking-wide text-[#1a1a1a] mb-8">
                 How to Book at {loc.shortName}
               </h2>
-              <div className="space-y-5">
-                {howToBook.map(({ num, text }) => (
+              <div className="space-y-6">
+                {howToBook.map(({ num, title, text }) => (
                   <div key={num} className="flex items-start gap-5">
                     <span className="text-2xl font-black text-[#a46746] w-10 flex-shrink-0">{num}</span>
-                    <p className="text-[#3a2e24] text-base leading-relaxed pt-1">{text}</p>
+                    <div>
+                      <p className="font-bold text-sm uppercase tracking-wide text-[#1a1a1a] mb-1">{title}</p>
+                      <p className="text-[#3a2e24] text-sm leading-relaxed">{text}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -205,6 +215,23 @@ export default async function LocationPage({
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* STUDIO FEATURES */}
+      <section className="py-12 md:py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Why Tanned Co.</p>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-12">What Makes Us Different</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {studioFeatures.map((f) => (
+              <div key={f.title} className="bg-[#fdf6ec] rounded-3xl p-8 border border-[#e8d9c3]">
+                <div className="text-4xl mb-4">{f.icon}</div>
+                <h3 className="font-black uppercase tracking-wide text-[#1a1a1a] mb-3">{f.title}</h3>
+                <p className="text-[#5a4a3a] text-sm leading-relaxed">{f.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -277,6 +304,32 @@ export default async function LocationPage({
         </section>
       )}
 
+      {/* TESTIMONIALS FALLBACK — shown when Google Reviews not yet live */}
+      {!googleReviews && loc.testimonials && loc.testimonials.length > 0 && (
+        <section className="py-12 md:py-20 bg-[#fdf6ec]">
+          <div className="max-w-6xl mx-auto px-6">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">
+              {loc.shortName} Clients Love It
+            </p>
+            <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-12">
+              What They&apos;re Saying
+            </h2>
+            <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
+              {loc.testimonials.map(({ name, text }) => (
+                <div key={name} className="break-inside-avoid bg-white rounded-2xl p-6 border border-[#e8d9c3]">
+                  <div className="flex gap-0.5 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="text-[#a46746] text-sm">★</span>
+                    ))}
+                  </div>
+                  <p className="text-[#3a2e24] text-sm leading-relaxed mb-4">&ldquo;{text}&rdquo;</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <Footer />
     </div>
