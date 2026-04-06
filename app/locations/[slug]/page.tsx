@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import TrustBadges from "@/components/TrustBadges";
 import { LOCATIONS, DEFAULT_BOOKING_URLS, SITE_URL } from "@/lib/locations";
+import { getGoogleReviews } from "@/lib/google-reviews";
 
 export function generateStaticParams() {
   return LOCATIONS.map((loc) => ({ slug: loc.slug }));
@@ -61,7 +61,7 @@ export default async function LocationPage({
   if (!loc) notFound();
 
   const urls = { ...DEFAULT_BOOKING_URLS, ...loc.bookingUrls };
-  const otherLocations = LOCATIONS.filter((l) => l.slug !== slug);
+  const googleReviews = loc.placeId ? await getGoogleReviews(loc.placeId) : null;
 
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
@@ -242,62 +242,70 @@ export default async function LocationPage({
       {/* TRUST BADGES */}
       <TrustBadges />
 
-      {/* TESTIMONIALS — only shown for locations that have them */}
-      {loc.testimonials && loc.testimonials.length > 0 && (
+      {/* GOOGLE REVIEWS */}
+      {googleReviews && googleReviews.reviews.length > 0 && (
         <section className="py-12 md:py-28 bg-white">
           <div className="max-w-6xl mx-auto px-6">
             <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">
-              {loc.shortName} Locals Love It
+              Google Reviews
             </p>
-            <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-14">
-              What They&apos;re Saying
+            <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">
+              What Our Clients Say
             </h2>
+            {/* Overall rating */}
+            <div className="flex items-center justify-center gap-3 mb-12">
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className={`text-xl ${i < Math.round(googleReviews.rating) ? "text-[#a46746]" : "text-gray-300"}`}>★</span>
+                ))}
+              </div>
+              <span className="font-black text-xl text-[#1a1a1a]">{googleReviews.rating.toFixed(1)}</span>
+              <span className="text-sm text-[#5a4a3a]">({googleReviews.user_ratings_total} reviews on Google)</span>
+            </div>
             <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
-              {loc.testimonials.map(({ name, text }) => (
+              {googleReviews.reviews.map((review) => (
                 <div
-                  key={name}
+                  key={review.author_name}
                   className="break-inside-avoid bg-[#fdf6ec] rounded-2xl p-6 border border-[#e8d9c3]"
                 >
+                  <div className="flex items-center gap-3 mb-3">
+                    {review.profile_photo_url && (
+                      <Image
+                        src={review.profile_photo_url}
+                        alt={review.author_name}
+                        width={36}
+                        height={36}
+                        className="rounded-full"
+                      />
+                    )}
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{review.author_name}</p>
+                      <p className="text-xs text-[#5a4a3a]">{review.relative_time_description}</p>
+                    </div>
+                  </div>
                   <div className="flex gap-0.5 mb-3">
                     {[...Array(5)].map((_, i) => (
-                      <span key={i} className="text-[#a46746] text-sm">★</span>
+                      <span key={i} className={`text-sm ${i < review.rating ? "text-[#a46746]" : "text-gray-300"}`}>★</span>
                     ))}
                   </div>
-                  <p className="text-[#3a2e24] text-sm leading-relaxed mb-4">&ldquo;{text}&rdquo;</p>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{name}</p>
+                  <p className="text-[#3a2e24] text-sm leading-relaxed">&ldquo;{review.text}&rdquo;</p>
                 </div>
               ))}
+            </div>
+            {/* Link to all reviews */}
+            <div className="text-center mt-10">
+              <a
+                href={`https://search.google.com/local/reviews?placeid=${loc.placeId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1a1a1a] hover:text-white transition-colors"
+              >
+                See All Reviews on Google →
+              </a>
             </div>
           </div>
         </section>
       )}
-
-      {/* OTHER LOCATIONS */}
-      <section className="py-12 md:py-28 bg-[#fdf0d5]">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">
-            5 Sydney Studios
-          </p>
-          <h2 className="text-4xl font-black uppercase text-center mb-14">
-            Other Locations
-          </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-            {otherLocations.map((other) => (
-              <Link
-                key={other.slug}
-                href={`/locations/${other.slug}`}
-                className="bg-white rounded-2xl p-6 border border-[#e8d9c3] hover:border-[#a46746] transition-colors group"
-              >
-                <p className="text-sm font-black uppercase tracking-wide text-[#1a1a1a] group-hover:text-[#a46746] transition-colors mb-1">
-                  {other.shortName}
-                </p>
-                <p className="text-xs text-[#5a4a3a]">{other.address}</p>
-                <p className="text-xs text-[#a46746] font-semibold mt-2">Open 7 days →</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="py-12 md:py-28 bg-white text-center">

@@ -31,6 +31,7 @@ export interface LocationData {
   phone: string;
   nearbySuburbs: string[];
   parkingNote: string;
+  placeId?: string;
   bookingUrls?: BookingUrls;
   testimonials?: Testimonial[];
 }
@@ -55,6 +56,7 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Cronulla", "Miranda", "Gymea", "Sutherland", "Taren Point", "Woolooware"],
     parkingNote: "Street parking available on Kingsway. Easy access from Caringbah train station.",
+    placeId: "ChIJyws_3_7HEmuFKYC-9ykPuw",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=2",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=2",
@@ -91,6 +93,7 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Wetherill Park", "Bossley Park", "Prairiewood", "Greenfield Park", "St Johns Park"],
     parkingNote: "Free parking available in the shopping complex car park.",
+    placeId: "ChIJEYBmsIqXEmtX8pY2qy_0Bw",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=5",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=5",
@@ -114,6 +117,7 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Blacktown", "Quakers Hill", "Marayong", "Seven Hills", "Pendle Hill"],
     parkingNote: "Free on-site parking. Located in a small retail complex on Garling Rd.",
+    placeId: "ChIJS2Ya_2eZEmu_T9577IDgBg",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=6",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=6",
@@ -138,6 +142,7 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Camden", "Narellan", "Mount Annan", "Oran Park", "Gregory Hills"],
     parkingNote: "Ample free parking in the Anderson Rd complex.",
+    placeId: "ChIJq75oaQrxEmulgNUgcVqJJA",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=4",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=4",
@@ -161,6 +166,7 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Paddington", "Double Bay", "Bondi Junction", "Edgecliff", "Rose Bay"],
     parkingNote: "Street parking on Oxford St and nearby side streets. Close to Edgecliff station.",
+    placeId: "ChIJPxc9zA6vEmv_K_H11VQCPQ",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=3",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=3",
