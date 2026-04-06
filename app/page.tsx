@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import InstagramFeed from "@/components/InstagramFeed";
 import GoogleReviews from "@/components/GoogleReviews";
 import TrustBadges from "@/components/TrustBadges";
+import { LOCATIONS } from "@/lib/locations";
 
 const IMGS = {
   hero: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
@@ -42,13 +43,6 @@ const faqs = [
   },
 ];
 
-const locations = [
-  { name: "349B Kingsway, Caringbah" },
-  { name: "Shop 6/207 Edensor Rd, Edensor Park" },
-  { name: "6/2 Garling Rd, Kings Park" },
-  { name: "1/73-77 Anderson Rd, Smeaton Grange" },
-  { name: "8 Oxford St, Woollahra" },
-];
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -440,11 +434,16 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#a46746]">Our Locations</h3>
               <div className="space-y-3">
-                {locations.map((loc) => (
-                  <div key={loc.name} className="flex items-start gap-3 border-b border-[#e8d9c3] pb-3">
-                    <span className="text-[#a46746] mt-0.5">📍</span>
-                    <p className="text-[#3a2e24]">{loc.name}</p>
-                  </div>
+                {LOCATIONS.map((loc) => (
+                  <Link
+                    key={loc.slug}
+                    href={`/locations/${loc.slug}`}
+                    className="flex items-center gap-3 border-b border-[#e8d9c3] pb-3 group"
+                  >
+                    <span className="text-[#a46746]">📍</span>
+                    <span className="text-[#3a2e24] font-medium group-hover:text-[#a46746] transition-colors">{loc.shortName}</span>
+                    <span className="ml-auto text-xs text-[#a46746] opacity-0 group-hover:opacity-100 transition-opacity">View →</span>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -463,7 +462,7 @@ export default function Home() {
                 </div>
               </div>
               <Link
-                href="/contact"
+                href="/locations"
                 className="inline-flex items-center border-2 border-[#a46746] text-[#a46746] px-7 py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm uppercase tracking-wider"
               >
                 See All Locations →
