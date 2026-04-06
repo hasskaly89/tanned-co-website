@@ -23,18 +23,26 @@ export default function Contact() {
     enquiryType: "",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(
-      formData.enquiryType
-        ? `${formData.enquiryType} — Tanned Co Website`
-        : "Enquiry from Tanned Co Website"
-    );
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\nEnquiry Type: ${formData.enquiryType}\n\nMessage:\n${formData.message}`
-    );
-    window.location.href = `mailto:hello@tannedco.com.au?subject=${subject}&body=${body}`;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", enquiryType: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -134,73 +142,92 @@ export default function Contact() {
           {/* Right: contact form */}
           <div>
             <h3 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#a46746]">Send Us a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label htmlFor="name" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
-                  Your Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Jane Smith"
-                  className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
-                  Email Address
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="jane@example.com"
-                  className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
-                />
-              </div>
-              <div>
-                <label htmlFor="enquiryType" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
-                  Enquiry Type
-                </label>
-                <select
-                  id="enquiryType"
-                  required
-                  value={formData.enquiryType}
-                  onChange={(e) => setFormData({ ...formData, enquiryType: e.target.value })}
-                  className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] focus:outline-none focus:border-[#a46746] transition-colors appearance-none cursor-pointer"
+
+            {status === "success" ? (
+              <div className="bg-[#fdf0d5] border border-[#e8d9c3] rounded-2xl p-8 text-center">
+                <div className="text-4xl mb-4">✨</div>
+                <h4 className="text-xl font-black uppercase text-[#1a1a1a] mb-2">Message Sent!</h4>
+                <p className="text-[#5a4a3a] mb-6">Thanks for reaching out. We&apos;ll get back to you shortly.</p>
+                <button
+                  onClick={() => setStatus("idle")}
+                  className="text-sm font-semibold text-[#a46746] hover:text-[#7d4e33] underline transition-colors"
                 >
-                  <option value="" disabled>Select an option...</option>
-                  {enquiryTypes.map((type) => (
-                    <option key={type} value={type}>{type}</option>
-                  ))}
-                </select>
+                  Send another message
+                </button>
               </div>
-              <div>
-                <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  required
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="How can we help you?"
-                  className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-[#a46746] hover:bg-[#7d4e33] text-white py-4 rounded-full font-semibold uppercase tracking-widest transition-colors"
-              >
-                Send Message
-              </button>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div>
+                  <label htmlFor="name" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
+                    Your Name
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="Jane Smith"
+                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="jane@example.com"
+                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="enquiryType" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
+                    Enquiry Type
+                  </label>
+                  <select
+                    id="enquiryType"
+                    required
+                    value={formData.enquiryType}
+                    onChange={(e) => setFormData({ ...formData, enquiryType: e.target.value })}
+                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] focus:outline-none focus:border-[#a46746] transition-colors appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>Select an option...</option>
+                    {enquiryTypes.map((type) => (
+                      <option key={type} value={type}>{type}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    required
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="How can we help you?"
+                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors resize-none"
+                  />
+                </div>
+                {status === "error" && (
+                  <p className="text-sm text-red-600">Something went wrong. Please try again or email us directly at hello@tannedco.com.au</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="w-full bg-[#a46746] hover:bg-[#7d4e33] disabled:opacity-60 disabled:cursor-not-allowed text-white py-4 rounded-full font-semibold uppercase tracking-widest transition-colors"
+                >
+                  {status === "loading" ? "Sending..." : "Send Message"}
+                </button>
+              </form>
+            )}
           </div>
 
         </div>
