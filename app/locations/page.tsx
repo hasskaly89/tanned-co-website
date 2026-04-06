@@ -48,61 +48,43 @@ export default function LocationsPage() {
           <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-4">5 Sydney Studios</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Private booths, flawless results, open 7 days. Sessions from $35.</p>
 
-          {/* First 3 */}
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
-            {LOCATIONS.slice(0, 3).map((loc) => (
-              <div key={loc.slug} className="bg-white rounded-2xl p-7 border border-[#e8d9c3] shadow-sm flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[#a46746] text-xl">📍</span>
-                  <h3 className="font-black uppercase tracking-wide text-[#1a1a1a]">{loc.shortName}</h3>
-                </div>
-                <p className="text-[#5a4a3a] text-sm mb-1">{loc.fullAddress}</p>
-                <p className="text-xs text-[#a46746] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
-                <div className="flex gap-2 mt-auto">
-                  <a
-                    href={loc.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-2.5 rounded-full text-sm font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
-                  >
-                    Directions →
-                  </a>
-                  <Link
-                    href={`/locations/${loc.slug}`}
-                    className="flex-1 inline-flex items-center justify-center border-2 border-[#a46746] text-[#a46746] py-2.5 rounded-full text-sm font-semibold hover:bg-[#a46746] hover:text-white transition-colors"
-                  >
-                    View Studio
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Last 2 centered */}
-          <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            {LOCATIONS.slice(3).map((loc) => (
-              <div key={loc.slug} className="bg-white rounded-2xl p-7 border border-[#e8d9c3] shadow-sm flex flex-col">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[#a46746] text-xl">📍</span>
-                  <h3 className="font-black uppercase tracking-wide text-[#1a1a1a]">{loc.shortName}</h3>
-                </div>
-                <p className="text-[#5a4a3a] text-sm mb-1">{loc.fullAddress}</p>
-                <p className="text-xs text-[#a46746] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
-                <div className="flex gap-2 mt-auto">
-                  <a
-                    href={loc.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-2.5 rounded-full text-sm font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
-                  >
-                    Directions →
-                  </a>
-                  <Link
-                    href={`/locations/${loc.slug}`}
-                    className="flex-1 inline-flex items-center justify-center border-2 border-[#a46746] text-[#a46746] py-2.5 rounded-full text-sm font-semibold hover:bg-[#a46746] hover:text-white transition-colors"
-                  >
-                    View Studio
-                  </Link>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {LOCATIONS.map((loc) => (
+              <div key={loc.slug} className="bg-white rounded-2xl overflow-hidden border border-[#e8d9c3] shadow-sm flex flex-col">
+                {/* Map */}
+                <iframe
+                  title={`Map of Tanned Co. ${loc.shortName}`}
+                  src={`https://maps.google.com/maps?q=${loc.lat},${loc.lng}&z=15&output=embed`}
+                  width="100%"
+                  height="180"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                {/* Details */}
+                <div className="p-7 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-[#a46746] text-xl">📍</span>
+                    <h3 className="font-black uppercase tracking-wide text-[#1a1a1a]">{loc.shortName}</h3>
+                  </div>
+                  <p className="text-[#5a4a3a] text-sm mb-1">{loc.fullAddress}</p>
+                  <p className="text-xs text-[#a46746] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
+                  <div className="flex gap-2 mt-auto">
+                    <a
+                      href={loc.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-2.5 rounded-full text-sm font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
+                    >
+                      Directions →
+                    </a>
+                    <Link
+                      href={`/locations/${loc.slug}`}
+                      className="flex-1 inline-flex items-center justify-center border-2 border-[#a46746] text-[#a46746] py-2.5 rounded-full text-sm font-semibold hover:bg-[#a46746] hover:text-white transition-colors"
+                    >
+                      View Studio
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
