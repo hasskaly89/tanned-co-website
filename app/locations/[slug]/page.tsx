@@ -150,13 +150,13 @@ export default async function LocationPage({
                 </div>
               </div>
               {/* Google Maps embed */}
-              <div className="mt-6 rounded-2xl overflow-hidden border border-[#e8d9c3]">
+              <div className="mt-6 rounded-2xl overflow-hidden border border-[#e8d9c3]" style={{ filter: "grayscale(100%)" }}>
                 <iframe
                   title={`Map of Tanned Co. ${loc.shortName}`}
                   src={`https://maps.google.com/maps?q=${loc.lat},${loc.lng}&z=15&output=embed`}
                   width="100%"
                   height="200"
-                  style={{ border: 0 }}
+                  style={{ border: 0, display: "block" }}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
