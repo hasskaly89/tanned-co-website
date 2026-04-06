@@ -238,12 +238,12 @@ export default function Home() {
           </p>
           <div className="grid md:grid-cols-3 gap-8">
 
-            {/* Pair 1 — real combined before/after */}
+            {/* Pair 1 — Rapid Venetian Medium */}
             <div className="space-y-3">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
                 <Image
-                  src="/before-after-tan.jpg"
-                  alt="Before and after Tanned Co. spray tan result"
+                  src="/before-after-venetian.jpg"
+                  alt="Before and after Rapid Venetian Medium spray tan"
                   fill
                   className="object-cover object-center"
                 />
@@ -251,18 +251,17 @@ export default function Home() {
               <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Rapid Venetian · Medium</p>
             </div>
 
-            {/* Pair 2 — placeholder */}
+            {/* Pair 2 — Malibu Light */}
             <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-2">
-                <div className="relative aspect-[3/4] rounded-2xl bg-[#e8d9c3] flex items-center justify-center">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#9a8a7a] text-center px-2">Before</span>
-                </div>
-                <div className="relative aspect-[3/4] rounded-2xl bg-[#c4a882] flex items-center justify-center">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-white text-center px-2">After</span>
-                </div>
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
+                <Image
+                  src="/before-after-tan.jpg"
+                  alt="Before and after Malibu Light spray tan"
+                  fill
+                  className="object-cover object-center"
+                />
               </div>
-              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Malibu · Dark</p>
-              <p className="text-center text-[10px] text-[#9a8a7a] italic">Client photos coming soon</p>
+              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Malibu · Light</p>
             </div>
 
             {/* Pair 3 — placeholder */}
