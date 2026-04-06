@@ -13,7 +13,7 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: "Tanned Co. Website <onboarding@resend.dev>",
-      to: "hello@tannedco.com.au",
+      to: ["hello@tannedco.com.au", "edensorpark@tannedco.com.au"],
       replyTo: email,
       subject: `${enquiryType} — Tanned Co Website`,
       html: `
