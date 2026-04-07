@@ -205,7 +205,7 @@ export default function HowItWorks() {
                 {/* Description */}
                 <p className="text-[#5a4a3a] text-sm leading-relaxed flex-1 mb-5">{desc}</p>
                 {/* Rinse time */}
-                <div className="flex items-center gap-2 bg-[#fdf0d5] rounded-full px-4 py-2 text-xs font-semibold text-[#a46746] whitespace-nowrap w-fit">
+                <div className="flex items-center gap-2 bg-[#fdf0d5] rounded-full px-4 py-2 text-xs font-bold text-[#a46746] uppercase tracking-normal whitespace-nowrap w-fit">
                   <span>⏱</span> {rinse}
                 </div>
               </div>
