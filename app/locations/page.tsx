@@ -25,10 +25,10 @@ export default function LocationsPage() {
       {/* HERO */}
       <section className="relative h-[70vh] min-h-[520px] flex items-end">
         <Image
-          src="/locations-hero.jpg"
-          alt="Inside a Tanned Co. spray tan studio"
+          src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg"
+          alt="Tanned Co. studios across Sydney"
           fill
-          className="object-cover object-[center_70%]"
+          className="object-cover object-center"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
