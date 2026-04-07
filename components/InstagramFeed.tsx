@@ -44,7 +44,7 @@ export default function InstagramFeed() {
       .then((r) => r.json())
       .then((data) => {
         if (data.posts && data.posts.length > 0) {
-          setPosts(data.posts.slice(0, 9));
+          setPosts(data.posts.slice(0, 6));
         } else {
           setPosts(FALLBACK_IMAGES);
         }
@@ -56,13 +56,13 @@ export default function InstagramFeed() {
   return (
     <section className="py-6">
       {loading ? (
-        <div className="grid grid-cols-3 md:grid-cols-9 gap-1 px-2">
-          {Array.from({ length: 9 }).map((_, i) => (
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-2 px-2">
+          {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="aspect-square rounded-lg bg-[#e8d9c3] animate-pulse" />
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-3 md:grid-cols-9 gap-1 px-2">
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-2 px-2">
           {posts.map((post) => (
             <a
               key={post.id}
