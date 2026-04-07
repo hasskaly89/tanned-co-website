@@ -1,0 +1,11 @@
+# Large video files - too big for Vercel (100MB limit)
+public/*.mp4
+public/*.mov
+public/*.webm
+
+# Local env
+.env.local
+
+# Dev
+.DS_Store
+_saved/
