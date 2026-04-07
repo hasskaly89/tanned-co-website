@@ -31,6 +31,7 @@ export interface LocationData {
   state: string;
   postcode: string;
   fullAddress: string;
+  hours: string;
   mapsUrl: string;
   lat: number;
   lng: number;
@@ -57,9 +58,10 @@ export const LOCATIONS: LocationData[] = [
     state: "NSW",
     postcode: "2229",
     fullAddress: "349B Kingsway, Caringbah NSW 2229",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=349B+Kingsway+Caringbah+NSW",
-    lat: -34.0399,
-    lng: 151.1258,
+    hours: "Open 7 days · 6am – 12am",
+    mapsUrl: "https://www.google.com/maps/place/Tanned+Co+Caringbah/@-34.0409989,151.1217383,17z",
+    lat: -34.0409989,
+    lng: 151.1217383,
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
     phone: "1300 826 633",
@@ -94,10 +96,10 @@ export const LOCATIONS: LocationData[] = [
     state: "NSW",
     postcode: "2176",
     fullAddress: "Shop 6/207 Edensor Rd, Edensor Park NSW 2176",
-    mapsUrl:
-      "https://www.google.com/maps/search/?api=1&query=Shop+6%2F207+Edensor+Rd+Edensor+Park+NSW",
-    lat: -33.8686,
-    lng: 150.8769,
+    hours: "Open 7 days · 6am – 12am",
+    mapsUrl: "https://www.google.com/maps/place/Tanned+Co+Edensor+Park/@-33.8763487,150.877011,17z",
+    lat: -33.8763487,
+    lng: 150.877011,
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg",
     phone: "1300 826 633",
@@ -137,9 +139,10 @@ export const LOCATIONS: LocationData[] = [
     state: "NSW",
     postcode: "2148",
     fullAddress: "6/2 Garling Rd, Kings Park NSW 2148",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=6%2F2+Garling+Rd+Kings+Park+NSW",
-    lat: -33.7623,
-    lng: 150.9315,
+    hours: "Open 7 days · 6am – 12am",
+    mapsUrl: "https://www.google.com/maps/place/Tanned+Co+Kings+Park/@-33.7453629,150.9154175,17z",
+    lat: -33.7453629,
+    lng: 150.9154175,
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/f7fcbfad-4a79-4e5e-b6e1-0ea0acdc15e1/DSCF3643.jpg",
     phone: "1300 826 633",
@@ -167,10 +170,10 @@ export const LOCATIONS: LocationData[] = [
     state: "NSW",
     postcode: "2567",
     fullAddress: "1/73-77 Anderson Rd, Smeaton Grange NSW 2567",
-    mapsUrl:
-      "https://www.google.com/maps/search/?api=1&query=1%2F73-77+Anderson+Rd+Smeaton+Grange+NSW",
-    lat: -34.0264,
-    lng: 150.7400,
+    hours: "Open 7 days · 6am – 12am",
+    mapsUrl: "https://www.google.com/maps/place/Tanned+Co+Smeaton+Grange/@-34.0339258,150.7607107,17z",
+    lat: -34.0339258,
+    lng: 150.7607107,
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg",
     phone: "1300 826 633",
@@ -198,9 +201,10 @@ export const LOCATIONS: LocationData[] = [
     state: "NSW",
     postcode: "2025",
     fullAddress: "8 Oxford St, Woollahra NSW 2025",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=8+Oxford+St+Woollahra+NSW",
-    lat: -33.8836,
-    lng: 151.2327,
+    hours: "Open 7 days · 6am – 12am",
+    mapsUrl: "https://www.google.com/maps/place/Tanned+Co+Woollahra/@-33.8886925,151.232489,17z",
+    lat: -33.8886925,
+    lng: 151.232489,
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg",
     phone: "1300 826 633",

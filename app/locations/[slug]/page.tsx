@@ -130,8 +130,8 @@ export default async function LocationPage({
                   <span className="text-[#a46746] text-xl mt-0.5">🕐</span>
                   <div>
                     <p className="font-semibold text-[#1a1a1a] text-sm uppercase tracking-wider mb-1">Opening Hours</p>
-                    <p className="text-[#5a4a3a]">Monday – Sunday: 8:00am – 8:00pm</p>
-                    <p className="text-xs text-[#a46746] font-semibold mt-1">Open 7 days a week</p>
+                    <p className="text-[#5a4a3a]">Monday – Sunday: 6:00am – 12:00am</p>
+                    <p className="text-xs text-[#a46746] font-semibold mt-1">{loc.hours}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
