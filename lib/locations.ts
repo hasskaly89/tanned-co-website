@@ -39,6 +39,7 @@ export interface LocationData {
   nearbySuburbs: string[];
   parkingNote: string;
   placeId?: string;
+  mapEmbed?: string;
   bookingUrls?: BookingUrls;
   testimonials?: Testimonial[];
   reviews?: Review[];
@@ -65,6 +66,7 @@ export const LOCATIONS: LocationData[] = [
     nearbySuburbs: ["Cronulla", "Miranda", "Gymea", "Sutherland", "Taren Point", "Woolooware"],
     parkingNote: "Street parking available on Kingsway. Easy access from Caringbah train station.",
     placeId: "ChIJyws_3_7HEmuFKYC-9ykPuw",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.8923!2d151.1217383!3d-34.0409989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12c7fedf3f0bcb%3A0xbb0f29f7be802985!2sTanned%20Co%20Caringbah!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=2",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=2",
@@ -102,6 +104,7 @@ export const LOCATIONS: LocationData[] = [
     nearbySuburbs: ["Wetherill Park", "Bossley Park", "Prairiewood", "Greenfield Park", "St Johns Park"],
     parkingNote: "Free parking available in the shopping complex car park.",
     placeId: "ChIJEYBmsIqXEmtX8pY2qy_0Bw",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.5167046702772!2d150.87214544797754!3d-33.876344150603344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12978ab0668011%3A0x7f42fab3696f257!2sTanned%20Co%20Edensor%20Park!5e0!3m2!1sen!2sus!4v1775535255079!5m2!1sen!2sus",
     testimonials: [
       { name: "Shannon Harley", text: "Easy process. I popped in at 8pm on a Friday night, went home and went to bed - woke up with an even tan and ready for the weekend. Love the flexible hours!" },
       { name: "Angela Maclean", text: "The booking process was seamless and super easy, and I loved how simple the tanning booth was to use. The studio was spotless, and the location is so convenient. Definitely my go-to for a great tan!" },
@@ -143,6 +146,7 @@ export const LOCATIONS: LocationData[] = [
     nearbySuburbs: ["Blacktown", "Quakers Hill", "Marayong", "Seven Hills", "Pendle Hill"],
     parkingNote: "Free on-site parking. Located in a small retail complex on Garling Rd.",
     placeId: "ChIJS2Ya_2eZEmu_T9577IDgBg",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.8764!2d150.9154175!3d-33.7453629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129967ff1a664b%3A0x6e080ec7bde4fbf!2sTanned%20Co%20Kings%20Park!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=6",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=6",
@@ -173,6 +177,7 @@ export const LOCATIONS: LocationData[] = [
     nearbySuburbs: ["Camden", "Narellan", "Mount Annan", "Oran Park", "Gregory Hills"],
     parkingNote: "Ample free parking in the Anderson Rd complex.",
     placeId: "ChIJq75oaQrxEmulgNUgcVqJJA",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.6219!2d150.7607107!3d-34.0339258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12f10a6968beab%3A0x24895a7120d580a5!2sTanned%20Co%20Smeaton%20Grange!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=4",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=4",
@@ -202,6 +207,7 @@ export const LOCATIONS: LocationData[] = [
     nearbySuburbs: ["Paddington", "Double Bay", "Bondi Junction", "Edgecliff", "Rose Bay"],
     parkingNote: "Street parking on Oxford St and nearby side streets. Close to Edgecliff station.",
     placeId: "ChIJPxc9zA6vEmv_K_H11VQCPQ",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.7154!2d151.232489!3d-33.8886925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12af0ecc3d173f%3A0x3d0254d5f5f12bff!2sTanned%20Co%20Woollahra!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=3",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=3",
