@@ -23,23 +23,33 @@ export const metadata: Metadata = {
 const steps = [
   {
     num: "01",
-    title: "Download & Book",
-    desc: "Download the Tanned Co. app or book online. Choose your location, date, and preferred tan shade.",
+    title: "Book Online",
+    desc: "Choose your location, date and time through our easy online booking system or via our app.",
   },
   {
     num: "02",
-    title: "Arrive at the Studio",
-    desc: "Walk in at the time of your booking — no check-in, no waiting.",
+    title: "Check In & Enter",
+    desc: "Arrive at your selected appointment time. Use the Bluetooth reader to check in to our salon, then again at the door of your tan room — no queues, no waiting.",
   },
   {
     num: "03",
-    title: "Select Your Shade",
-    desc: "Use the in-room tan menu to select your colour and depth before stepping into the booth.",
+    title: "Prep Like a Pro",
+    desc: "Remove all jewellery and makeup, then apply your hair net, sticky feet and our barrier cream. Everything you need is provided in your private room.",
   },
   {
     num: "04",
+    title: "Choose Your Glow",
+    desc: "Select your shade and depth from our tan menu on the wall of the tan room. Enter the corresponding code using the blue keypad and press 'Start'.",
+  },
+  {
+    num: "05",
+    title: "Step Into the Booth",
+    desc: "Enter the booth and follow the voice prompts — they'll guide you through each position for full, even coverage.",
+  },
+  {
+    num: "06",
     title: "Walk Out Glowing",
-    desc: "The booth guides you through 4 poses in just minutes. Develop for 6–8 hours then shower to reveal your glow — or 2–3 hours for our Rapid Venetian tan.",
+    desc: "You're done! Get dressed and head out with a beautiful sun-kissed glow developing over the next few hours.",
   },
 ];
 
@@ -131,8 +141,8 @@ export default function HowItWorks() {
       <section className="py-12 md:py-28 bg-[#fdf0d5] text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Process</p>
-          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">4 Simple Steps</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">How It Works</h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {steps.map(({ num, title, desc }) => (
               <div key={num} className="border border-[#e8d9c3] rounded-3xl p-8 hover:border-[#a46746] transition-colors flex flex-col">
                 <p className="text-5xl font-black text-[#a46746] mb-5">{num}</p>
