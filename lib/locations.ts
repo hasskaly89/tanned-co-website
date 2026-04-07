@@ -102,7 +102,7 @@ export const LOCATIONS: LocationData[] = [
     lng: 150.877011,
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg",
-    phone: "1300 826 633",
+    phone: "0434 287 198",
     nearbySuburbs: ["Wetherill Park", "Bossley Park", "Prairiewood", "Greenfield Park", "St Johns Park"],
     parkingNote: "Free parking available in the shopping complex car park.",
     placeId: "ChIJEYBmsIqXEmtX8pY2qy_0Bw",
