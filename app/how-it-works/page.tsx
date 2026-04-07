@@ -39,7 +39,7 @@ const steps = [
   {
     num: "04",
     title: "Choose Your Glow",
-    desc: "Select your shade and depth from our tan menu on the wall of the tan room. Enter the corresponding code using the blue keypad and press 'Start'.",
+    desc: "Select your shade and depth from the tan menu on the wall. Enter the corresponding colour code into the blue Tmax box and press 'Start'.",
   },
   {
     num: "05",
