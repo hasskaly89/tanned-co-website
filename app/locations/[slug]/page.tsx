@@ -42,7 +42,7 @@ const howToBook = [
   { num: "01", title: "Book It", text: "Download the app or book online. Pick your time — we're open 7 days so you can squeeze in a glow whenever it suits." },
   { num: "02", title: "Prep", text: "Exfoliate and shave 24 hours before. End your shower with a cold rinse to close your pores. Future you will be grateful." },
   { num: "03", title: "Step In", text: "Our smart sensors detect your height and guide you through each position. Apply barrier cream to hands, elbows, knees and ankles, then follow the voice prompts." },
-  { num: "04", title: "Pick Your Shade", text: "Choose from 4 gorgeous colours with 3 depth levels each — from sun-kissed glow to deep bronze, all matched to avoid the orange situation." },
+  { num: "04", title: "Pick Your Shade", text: "Choose from 3 gorgeous colours with 3 depth levels each — from sun-kissed glow to deep bronze, all matched to avoid the orange situation." },
   { num: "05", title: "Glow Up", text: "Rinse hands and face after 30 mins, then let your tan develop for 6–8 hours. Peak gorgeousness hits within 24 hours. No streaks, no mess, no regrets." },
 ];
 
