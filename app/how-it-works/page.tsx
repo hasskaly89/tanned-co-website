@@ -198,20 +198,6 @@ export default function HowItWorks() {
           <div className="grid md:grid-cols-3 gap-8">
             {shades.map(({ name, tag, desc, rinse, swatches }) => (
               <div key={name} className="bg-white rounded-3xl p-8 border border-[#e8d9c3] shadow-sm flex flex-col">
-                {/* Colour swatches — light, medium, dark */}
-                <div className="flex gap-3 mb-6">
-                  {swatches.map((colour, i) => (
-                    <div key={i} className="flex flex-col items-center gap-1.5 flex-1">
-                      <div
-                        className="w-full aspect-square rounded-xl shadow-sm border border-[#e8d9c3]"
-                        style={{ backgroundColor: colour }}
-                      />
-                      <span className="text-[10px] uppercase tracking-widest text-[#5a4a3a]">
-                        {i === 0 ? "Light" : i === 1 ? "Medium" : "Dark"}
-                      </span>
-                    </div>
-                  ))}
-                </div>
                 {/* Tag */}
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#a46746] mb-2">{tag}</span>
                 {/* Name */}
