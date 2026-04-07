@@ -152,7 +152,7 @@ export default function BookNow() {
             {[
               { icon: "👗", title: "Wear Dark Clothes", desc: "Loose, dark clothing to avoid bronzer transfer after your session." },
               { icon: "🚿", title: "Exfoliate First", desc: "Shower and exfoliate the day before for the most even tan." },
-              { icon: "🚫", title: "No Deodorant", desc: "Arrive without deodorant, perfume or moisturiser on skin." },
+              { icon: "🚫", title: "No Deodorant", desc: "Arrive without deodorant, perfume or moisturiser on your skin." },
               { icon: "⏱", title: "Leave it On", desc: "Wait 6–8 hours before showering. For rapid, rinse after 2–3 hrs." },
             ].map((t) => (
               <div key={t.title} className="bg-[#fdf6ec] rounded-2xl p-5 border border-[#e8d9c3] text-center">

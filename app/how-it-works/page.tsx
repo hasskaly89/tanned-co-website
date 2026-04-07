@@ -29,7 +29,7 @@ const steps = [
   {
     num: "02",
     title: "Arrive at the Studio",
-    desc: "Walk in at your booked time. Enter your private tanning room — no check-in, no waiting.",
+    desc: "Walk in at the time of your booking — no check-in, no waiting.",
   },
   {
     num: "03",
@@ -39,7 +39,7 @@ const steps = [
   {
     num: "04",
     title: "Walk Out Glowing",
-    desc: "The booth guides you through 4 poses in just minutes. Develop for 6–8 hours then shower to reveal your glow.",
+    desc: "The booth guides you through 4 poses in just minutes. Develop for 6–8 hours then shower to reveal your glow — or 2–3 hours for our Rapid Venetian tan.",
   },
 ];
 
@@ -47,7 +47,7 @@ const prepTips = [
   {
     step: "01",
     title: "Undress & Remove Jewellery",
-    desc: "Get undressed and remove any jewellery before stepping into the booth.",
+    desc: "Get undressed and remove any jewellery.",
     img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/66cba3e8-b0f9-4756-859a-70bf1be4aa45/DSCF2443.jpg",
   },
   {

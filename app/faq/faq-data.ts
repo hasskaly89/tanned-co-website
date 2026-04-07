@@ -8,7 +8,7 @@ export const categories = [
       },
       {
         q: "How do I select my tan?",
-        a: "Our booths have 4 colour options with 3 colour depths. In our tanning rooms you'll find a tan menu so you can customise your experience to suit your skin tone and desired result. If you're unsure which colour is right for you, feel free to contact us and we'll help recommend an option!",
+        a: "Our booths have 3 colour options with 3 colour depths. In our tanning rooms you'll find a tan menu so you can customise your experience to suit your skin tone and desired result. If you're unsure which colour is right for you, feel free to contact us and we'll help recommend an option!",
       },
       {
         q: "How long do I leave my tan on before showering?",
