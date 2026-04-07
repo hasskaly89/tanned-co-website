@@ -28,7 +28,7 @@ const IMGS = {
 const stats = [
   { value: "5", label: "Locations" },
   { value: "7", label: "Days a Week" },
-  { value: "4", label: "Colour Shades" },
+  { value: "3", label: "Colour Options" },
   { value: "5,000+", label: "Spray Tans Delivered" },
 ];
 
