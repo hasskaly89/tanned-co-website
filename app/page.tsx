@@ -169,7 +169,7 @@ export default function Home() {
 
 
       {/* HERO */}
-      <section className="relative h-screen min-h-[600px] flex items-end">
+      <section className="relative h-[82vh] md:h-screen min-h-[500px] flex items-end">
         <h1 className="sr-only">Tanned Co. — Sydney&apos;s Automated Spray Tanning Studio</h1>
         <Image
           src={IMGS.hero}
@@ -179,13 +179,13 @@ export default function Home() {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-20 md:pb-28">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-6 md:pb-28">
           <Image
             src="/logo_transparent.png"
             alt="Tanned Co."
             width={900}
             height={200}
-            className="w-full max-w-3xl brightness-0 invert mb-6"
+            className="w-full max-w-[260px] md:max-w-3xl brightness-0 invert mb-4 md:mb-6"
             style={{ height: "auto" }}
           />
           <p className="text-white/90 text-lg md:text-xl max-w-md mb-8">
