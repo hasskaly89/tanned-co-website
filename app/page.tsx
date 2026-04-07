@@ -360,7 +360,7 @@ export default function Home() {
           <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">4 Simple Steps</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { num: "01", title: "Download & Book", desc: "Download our app or book online. Choose your location, date, time and preferred tan shade." },
+              { num: "01", title: "Download & Book", desc: "Choose your location, date and time through our easy online booking system or via our app." },
               { num: "02", title: "Check In & Prep", desc: "Use the Bluetooth reader to access the salon and your tan room. Remove jewellery and makeup, then apply your hair net, sticky feet and barrier cream." },
               { num: "03", title: "Select & Spray", desc: "Choose your shade and depth from the in-room tan menu, enter your code, and step into the booth. Voice prompts guide you through every position." },
               { num: "04", title: "Walk Out Glowing", desc: "Develop for 6–8 hours then shower to reveal your glow — or 2–3 hours with our Rapid Venetian tan." },
