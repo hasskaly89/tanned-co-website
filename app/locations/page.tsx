@@ -28,7 +28,7 @@ export default function LocationsPage() {
           src="/locations-hero.jpg"
           alt="Inside a Tanned Co. spray tan studio"
           fill
-          className="object-cover object-center"
+          className="object-cover object-[center_70%]"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
