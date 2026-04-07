@@ -66,15 +66,9 @@ export default function About() {
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Who We Are</p>
           <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Our Story</h1>
-          <p className="text-white/80 text-lg md:text-xl max-w-xl mb-8">
+          <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Sydney&apos;s first automated spray tanning studio — where luxury meets convenience.
           </p>
-          <Link
-            href="/book-now"
-            className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
-          >
-            Book Your Tan →
-          </Link>
         </div>
       </section>
 
