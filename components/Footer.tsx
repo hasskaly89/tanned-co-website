@@ -54,6 +54,40 @@ export default function Footer() {
           ))}
         </div>
 
+        {/* App store buttons */}
+        <div className="flex items-center gap-3">
+          <a
+            href="https://apps.apple.com/us/app/tannedco/id1659547172"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Download on the App Store"
+            className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors text-white rounded-xl px-4 py-2.5 border border-white/10"
+          >
+            <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            <div className="text-left leading-tight">
+              <p className="text-[9px] text-white/60 uppercase tracking-wider">Download on the</p>
+              <p className="text-sm font-semibold">App Store</p>
+            </div>
+          </a>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.treshna.memberportal.tannedco"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Get it on Google Play"
+            className="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-colors text-white rounded-xl px-4 py-2.5 border border-white/10"
+          >
+            <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.18 23.76c.3.17.64.22.99.16l12.1-6.98-2.56-2.56-10.53 9.38zm-1.7-20.1C1.18 4 1 4.46 1 5.02v13.96c0 .56.18 1.02.48 1.36l.07.07 7.82-7.82v-.18L1.55 4.59l-.07.07zm17.44 9.5l-2.18-1.26-2.82 2.82 2.82 2.82 2.18-1.26c.62-.36.62-.94.62-.94s0-.58-.62-1.18zM4.17.24L16.27 7.22l-2.56 2.56L3.18.4C3.48.34 3.87.07 4.17.24z"/>
+            </svg>
+            <div className="text-left leading-tight">
+              <p className="text-[9px] text-white/60 uppercase tracking-wider">Get it on</p>
+              <p className="text-sm font-semibold">Google Play</p>
+            </div>
+          </a>
+        </div>
+
         {/* Location links */}
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
           {LOCATIONS.map((loc) => (
