@@ -105,7 +105,7 @@ const shades = [
 ];
 
 const aftercare = [
-  "Wait 6–8 hours before showering",
+  "Wait 6-8 hours before showering with Monterey or Malibu; 2-3 hours for Rapid Venetian",
   "Pat dry, don't rub",
   "Moisturise daily to extend your tan",
   "Avoid chlorine and long baths",
