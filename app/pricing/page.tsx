@@ -130,23 +130,6 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* MEMBERSHIP CTA */}
-      <section className="py-16 bg-white border-t border-[#e8d9c3] text-center">
-        <div className="max-w-2xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Tan More, Save More</p>
-          <h2 className="text-2xl md:text-4xl font-black uppercase mb-4 text-[#1a1a1a]">Looking for Something More Regular?</h2>
-          <p className="text-[#5a4a3a] text-lg mb-8">
-            Ask us about our membership options — perfect if you tan weekly or fortnightly.
-          </p>
-          <a
-            href="sms:1300826633?body=Hi%2C%20I%27d%20like%20to%20know%20about%20Tanned%20Co%20membership%20options"
-            className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
-          >
-            Text Us About Membership →
-          </a>
-        </div>
-      </section>
-
       {/* TRUST BADGES */}
       <TrustBadges />
 

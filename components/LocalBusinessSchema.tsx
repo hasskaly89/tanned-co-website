@@ -30,7 +30,7 @@ export default function LocalBusinessSchema({ slug }: { slug?: string }) {
     "@id": `${SITE_URL}/locations/${loc.slug}`,
     name: loc.fullName,
     description:
-      "Sydney's automated spray tanning studio — private VersaSpa booths, streak-free results, open 7 days.",
+      "Sydney's automated spray tanning studio private VersaSpa booths, streak-free results, open 7 days.",
     image: OG_IMAGE,
     url: `${SITE_URL}/locations/${loc.slug}`,
     telephone: "+611300826633",

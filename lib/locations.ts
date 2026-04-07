@@ -219,7 +219,7 @@ export const LOCATIONS: LocationData[] = [
     },
     reviews: [
       { name: "Sophie G.", suburb: "Woollahra", text: "Absolutely love the Woollahra studio. Quick, private, and my tan always looks so natural.", rating: 5 },
-      { name: "Olivia H.", suburb: "Woollahra", text: "The best spray tan in the Eastern Suburbs. VersaSpa booths are amazing — always streak-free.", rating: 5 },
+      { name: "Olivia H.", suburb: "Woollahra", text: "The best spray tan in the Eastern Suburbs. VersaSpa booths are amazing always streak-free.", rating: 5 },
       { name: "Natasha R.", suburb: "Woollahra", text: "I've tried so many tanning places and nothing compares. Tanned Co is simply the best.", rating: 5 },
     ],
   },

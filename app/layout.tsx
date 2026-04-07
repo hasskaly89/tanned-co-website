@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Tanned Co.",
   },
   description:
-    "Sydney's first automated spray tanning studio. Private booths, flawless results, 5 locations open 7 days a week — Caringbah, Woollahra, Kings Park, Edensor Park & Smeaton Grange.",
+    "Sydney's first automated spray tanning studio. Private booths, flawless results, 5 locations open 7 days a week Caringbah, Woollahra, Kings Park, Edensor Park & Smeaton Grange.",
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: SITE_URL },
   openGraph: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 800,
-        alt: "Tanned Co. — Sydney's Automated Spray Tan Studio",
+        alt: "Tanned Co. Sydney's Automated Spray Tan Studio",
       },
     ],
   },

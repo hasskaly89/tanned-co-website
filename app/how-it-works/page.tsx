@@ -29,7 +29,7 @@ const steps = [
   {
     num: "02",
     title: "Check In & Enter",
-    desc: "Arrive at your selected appointment time. Use the Bluetooth reader to check in to our salon, then again at the door of your tan room — no queues, no waiting.",
+    desc: "Arrive at your selected appointment time. Use the Bluetooth reader to check in to our salon, then again at the door of your tan room. No queues, no waiting.",
   },
   {
     num: "03",
@@ -44,7 +44,7 @@ const steps = [
   {
     num: "05",
     title: "Step Into the Booth",
-    desc: "Enter the booth and follow the voice prompts — they'll guide you through each position for full, even coverage.",
+    desc: "Enter the booth and follow the voice prompts. They'll guide you through each position for full, even coverage.",
   },
   {
     num: "06",
@@ -84,21 +84,21 @@ const shades = [
   {
     name: "Rapid Venetian",
     tag: "Most Popular",
-    desc: "Rich chocolate brown and subtle violet undertones — the ideal choice to achieve a timeless European tan. Works for all skin tones and busy tanners.",
+    desc: "Rich chocolate brown and subtle violet undertones the ideal choice to achieve a timeless European tan. Works for all skin tones and busy tanners.",
     rinse: "Rinse after 2–3 hours",
     swatches: ["#c4956a", "#a06b42", "#6b3f22"],
   },
   {
     name: "Malibu",
     tag: "Deep Olive Bronze",
-    desc: "Caramel and violet undertones — our highly sought-after neutral base solution that delivers a stunning deep olive bronze tan. Best for olive undertones.",
+    desc: "Caramel and violet undertones our highly sought-after neutral base solution that delivers a stunning deep olive bronze tan. Best for olive undertones.",
     rinse: "Rinse after 6–8 hours or sleep in",
     swatches: ["#c49a6c", "#9e6e42", "#6b4020"],
   },
   {
     name: "Monterey",
     tag: "Golden Beach Tan",
-    desc: "A unique blend of golden and coffee brown undertones — the ideal choice to achieve that iconic beach tan. Great for fair undertones or those who burn easily.",
+    desc: "A unique blend of golden and coffee brown undertones the ideal choice to achieve that iconic beach tan. Great for fair undertones or those who burn easily.",
     rinse: "Rinse after 6–8 hours or sleep in",
     swatches: ["#d4a96a", "#b8823a", "#8a5c20"],
   },
@@ -194,7 +194,7 @@ export default function HowItWorks() {
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Tan Colours</p>
           <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Choose Your Shade</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">3 signature colours, each available in 3 depths — 9 shades total so you can find your perfect glow.</p>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">3 signature colours, each available in 3 depths 9 shades total so you can find your perfect glow.</p>
           <div className="grid md:grid-cols-3 gap-8">
             {shades.map(({ name, tag, desc, rinse, swatches }) => (
               <div key={name} className="bg-white rounded-3xl p-8 border border-[#e8d9c3] shadow-sm flex flex-col">

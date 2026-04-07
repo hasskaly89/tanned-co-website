@@ -8,7 +8,7 @@ const reviews = [
     name: "Jess M.",
     location: "Caringbah",
     rating: 5,
-    text: "Obsessed with Tanned Co! The booth is so easy to use and the result is always flawless — no streaks, no orange, just a gorgeous glow.",
+    text: "Obsessed with Tanned Co! The booth is so easy to use and the result is always flawless no streaks, no orange, just a gorgeous glow.",
     date: "2 weeks ago",
   },
   {
@@ -50,7 +50,7 @@ const reviews = [
     name: "Rachel K.",
     location: "Edensor Park",
     rating: 5,
-    text: "The rapid clear solution is a game changer — had a wedding the next day and it was perfect. Will never go back to a regular spray tan salon.",
+    text: "The rapid clear solution is a game changer had a wedding the next day and it was perfect. Will never go back to a regular spray tan salon.",
     date: "2 months ago",
   },
 ];

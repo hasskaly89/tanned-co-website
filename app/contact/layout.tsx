@@ -7,7 +7,7 @@ const OG_IMAGE =
 export const metadata: Metadata = {
   title: "Contact & Locations",
   description:
-    "Find your nearest Tanned Co. studio across 5 Sydney locations — Caringbah, Woollahra, Kings Park, Edensor Park and Smeaton Grange. Open 7 days a week. Call 1300 826 633.",
+    "Find your nearest Tanned Co. studio across 5 Sydney locations Caringbah, Woollahra, Kings Park, Edensor Park and Smeaton Grange. Open 7 days a week. Call 1300 826 633.",
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
     title: "Contact & Locations | Tanned Co.",

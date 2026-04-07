@@ -33,7 +33,7 @@ export default function LocationsPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Sydney — 5 Studios</p>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Sydney 5 Studios</p>
           <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Our Locations</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
             5 convenient Sydney studios open 7 days a week. Find your nearest Tanned Co.
@@ -108,7 +108,7 @@ export default function LocationsPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-10 py-4 rounded-full font-semibold transition-colors text-base"
           >
-            Book Casual Tan — $35 →
+            Book Casual Tan $35 →
           </a>
         </div>
       </section>

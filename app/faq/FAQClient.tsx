@@ -79,7 +79,7 @@ export default function FAQClient() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">We&apos;re Here to Help</p>
           <h2 className="text-3xl md:text-4xl font-black uppercase mb-4 text-[#1a1a1a]">Still Have Questions?</h2>
           <p className="text-[#5a4a3a] text-lg mb-8">
-            Can&apos;t find what you&apos;re looking for? Reach out to our team — we&apos;re happy to help.
+            Can&apos;t find what you&apos;re looking for? Reach out to our team we&apos;re happy to help.
           </p>
           <Link
             href="/contact"

@@ -7,7 +7,7 @@ const OG_IMAGE =
 export const metadata: Metadata = {
   title: "Book Your Tan",
   description:
-    "Book your automated spray tan at Tanned Co. online in seconds. Choose from 5 Sydney locations — Caringbah, Woollahra, Kings Park, Edensor Park or Smeaton Grange. Sessions from $35.",
+    "Book your automated spray tan at Tanned Co. online in seconds. Choose from 5 Sydney locations Caringbah, Woollahra, Kings Park, Edensor Park or Smeaton Grange. Sessions from $35.",
   alternates: { canonical: `${SITE_URL}/book-now` },
   openGraph: {
     title: "Book Your Tan | Tanned Co.",

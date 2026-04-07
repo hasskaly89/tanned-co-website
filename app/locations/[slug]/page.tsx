@@ -39,17 +39,17 @@ export async function generateMetadata({
 
 
 const howToBook = [
-  { num: "01", title: "Book It", text: "Download the app or book online. Pick your time — we're open 7 days so you can squeeze in a glow whenever it suits." },
+  { num: "01", title: "Book It", text: "Download the app or book online. Pick your time we're open 7 days so you can squeeze in a glow whenever it suits." },
   { num: "02", title: "Prep", text: "Exfoliate and shave 24 hours before. End your shower with a cold rinse to close your pores. Future you will be grateful." },
   { num: "03", title: "Step In", text: "Our smart sensors detect your height and guide you through each position. Apply barrier cream to hands, elbows, knees and ankles, then follow the voice prompts." },
-  { num: "04", title: "Pick Your Shade", text: "Choose from 3 gorgeous colours with 3 depth levels each — from sun-kissed glow to deep bronze, all matched to avoid the orange situation." },
+  { num: "04", title: "Pick Your Shade", text: "Choose from 3 gorgeous colours with 3 depth levels each from sun-kissed glow to deep bronze, all matched to avoid the orange situation." },
   { num: "05", title: "Glow Up", text: "Rinse hands and face after 30 mins, then let your tan develop for 6–8 hours. Peak gorgeousness hits within 24 hours. No streaks, no mess, no regrets." },
 ];
 
 const studioFeatures = [
   { icon: "🔥", title: "Your Private, Heated Booth", text: "Step into a fully automated spray tan booth that senses your height and guides you through for flawless coverage every time." },
-  { icon: "☀️", title: "Custom Colour Match", text: "Choose from 4 colours with 3 depth levels. From subtle glow to deep bronze — perfectly matched to your skin tone." },
-  { icon: "✨", title: "Rapid Results That Last", text: "See your golden glow develop in just 2–3 hours, reaching peak gorgeousness within 24 hours. No streaks, no orange — just pure radiance." },
+  { icon: "☀️", title: "Custom Colour Match", text: "Choose from 4 colours with 3 depth levels. From subtle glow to deep bronze perfectly matched to your skin tone." },
+  { icon: "✨", title: "Rapid Results That Last", text: "See your golden glow develop in just 2–3 hours, reaching peak gorgeousness within 24 hours. No streaks, no orange just pure radiance." },
 ];
 
 export default async function LocationPage({
@@ -81,7 +81,7 @@ export default async function LocationPage({
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">
-            Sydney — {loc.shortName}
+            Sydney {loc.shortName}
           </p>
           <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">
             Spray Tan<br />{loc.shortName}
@@ -171,7 +171,7 @@ export default async function LocationPage({
                   rel="noopener noreferrer"
                   className="block w-full text-center bg-[#a46746] hover:bg-[#7d4e33] text-white py-3.5 rounded-full font-bold uppercase tracking-widest transition-colors text-sm"
                 >
-                  Book Casual Tan — $35
+                  Book Casual Tan $35
                 </a>
                 <a
                   href={urls.fivePack}
@@ -179,7 +179,7 @@ export default async function LocationPage({
                   rel="noopener noreferrer"
                   className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
                 >
-                  Buy 5 Pack — $160
+                  Buy 5 Pack $160
                 </a>
                 <a
                   href={urls.tenPack}
@@ -187,7 +187,7 @@ export default async function LocationPage({
                   rel="noopener noreferrer"
                   className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
                 >
-                  Buy 10 Pack — $300
+                  Buy 10 Pack $300
                 </a>
               </div>
             </div>
@@ -304,7 +304,7 @@ export default async function LocationPage({
         </section>
       )}
 
-      {/* TESTIMONIALS FALLBACK — shown when Google Reviews not yet live */}
+      {/* TESTIMONIALS FALLBACK shown when Google Reviews not yet live */}
       {!googleReviews && loc.testimonials && loc.testimonials.length > 0 && (
         <section className="py-12 md:py-20 bg-[#fdf6ec]">
           <div className="max-w-6xl mx-auto px-6">
@@ -331,7 +331,7 @@ export default async function LocationPage({
         </section>
       )}
 
-      {/* REVIEWS SECTION — shown for all locations that have reviews */}
+      {/* REVIEWS SECTION shown for all locations that have reviews */}
       {loc.reviews && loc.reviews.length > 0 && (
         <section className="py-12 md:py-20 bg-white">
           <div className="max-w-6xl mx-auto px-6">

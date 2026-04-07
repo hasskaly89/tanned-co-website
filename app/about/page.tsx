@@ -10,11 +10,11 @@ const OG_IMAGE =
 export const metadata: Metadata = {
   title: "About Tanned Co | Sydney's First Automated Spray Tan Studio",
   description:
-    "Learn about Tanned Co — Sydney's first fully automated spray tanning studio. Private VersaSpa booths across 5 locations. Vegan, cruelty-free, open 7 days a week.",
+    "Learn about Tanned Co Sydney's first fully automated spray tanning studio. Private VersaSpa booths across 5 locations. Vegan, cruelty-free, open 7 days a week.",
   alternates: { canonical: "https://www.tannedco.com.au/about" },
   openGraph: {
     title: "About Us | Tanned Co.",
-    description: "Sydney's first automated spray tan studio — where luxury meets convenience.",
+    description: "Sydney's first automated spray tan studio where luxury meets convenience.",
     url: "https://www.tannedco.com.au/about",
     images: [{ url: OG_IMAGE, width: 1200, height: 800 }],
   },
@@ -67,7 +67,7 @@ export default function About() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Who We Are</p>
           <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Our Story</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
-            Sydney&apos;s first automated spray tanning studio — where luxury meets convenience.
+            Sydney&apos;s first automated spray tanning studio where luxury meets convenience.
           </p>
         </div>
       </section>
@@ -84,7 +84,7 @@ export default function About() {
               Tanned Co was founded with one goal: to give everyone access to a premium, private spray tan experience without the awkwardness of traditional salons. We&apos;re proud to be Sydney&apos;s first fully automated spray tanning studio.
             </p>
             <p className="text-[#5a4a3a] text-lg leading-relaxed mb-5">
-              Our state-of-the-art VersaSpa booths deliver flawless, streak-free results every time — guided entirely by voice and visual instructions. No staff, no waiting, no awkward moments.
+              Our state-of-the-art VersaSpa booths deliver flawless, streak-free results every time, guided entirely by voice and visual instructions. No staff, no waiting, no awkward moments.
             </p>
             <p className="text-[#5a4a3a] text-lg leading-relaxed">
               With 5 convenient Sydney locations and doors open 7 days a week, getting your glow has never been easier.
@@ -117,7 +117,7 @@ export default function About() {
               Your Glow, Your Way
             </h2>
             <p className="text-[#5a4a3a] text-lg leading-relaxed">
-              We believe a beautiful tan should be accessible, private, and effortless. No awkward interactions, no waiting around — just you, your booth, and your glow.
+              We believe a beautiful tan should be accessible, private, and effortless. No awkward interactions, no waiting around. Just you, your booth, and your glow.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -145,7 +145,7 @@ export default function About() {
             </div>
             <div>
               <p className="text-[#5a4a3a] text-lg leading-relaxed mb-8">
-                Our VersaSpa Pro booths are the gold standard in automated spray tanning. Every session is guided, heated, and self-cleaning — delivering consistent, beautiful results every single time.
+                Our VersaSpa Pro booths are the gold standard in automated spray tanning. Every session is guided, heated, and self-cleaning, delivering consistent, beautiful results every single time.
               </p>
               <ul className="space-y-4">
                 {boothPoints.map((point) => (

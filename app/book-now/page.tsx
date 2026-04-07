@@ -59,7 +59,7 @@ export default function BookNow() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Book Online</p>
           <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight mb-4 text-center">Choose Your Option</h2>
           <p className="text-[#5a4a3a] text-lg leading-relaxed mb-14 max-w-xl mx-auto text-center">
-            Pick the option that suits you and book directly — no account needed for casual sessions.
+            Pick the option that suits you and book directly no account needed for casual sessions.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
 
@@ -97,7 +97,7 @@ export default function BookNow() {
                 <span className="text-5xl font-black">$160</span>
                 <span className="text-white/60 mb-1.5">/ 5 sessions</span>
               </div>
-              <p className="text-white/60 text-sm mb-6">$32 per tan — save $15</p>
+              <p className="text-white/60 text-sm mb-6">$32 per tan save $15</p>
               <ul className="space-y-3 text-white/80 text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 5x automated spray tan sessions</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 6 months from purchase</li>
@@ -121,7 +121,7 @@ export default function BookNow() {
                 <span className="text-5xl font-black">$300</span>
                 <span className="text-[#5a4a3a] mb-1.5">/ 10 sessions</span>
               </div>
-              <p className="text-[#5a4a3a] text-sm mb-6">$30 per tan — save $50</p>
+              <p className="text-[#5a4a3a] text-sm mb-6">$30 per tan save $50</p>
               <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 10x automated spray tan sessions</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 12 months from purchase</li>

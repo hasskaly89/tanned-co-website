@@ -23,7 +23,7 @@ const _testimonials = [
 const faqs = [
   {
     q: "What is a contactless spray tan booth?",
-    a: "We use state of the art spray tan booths that provide a custom spray tanning experience in your own private room. Once you've stepped into the booth, it will sense your height and guide you into 4 different positions with 3 spray nozzles for full-body coverage. The open booth is comfortably heated — even in winter you'll stay warm. Our booths self-clean between sessions.",
+    a: "We use state of the art spray tan booths that provide a custom spray tanning experience in your own private room. Once you've stepped into the booth, it will sense your height and guide you into 4 different positions with 3 spray nozzles for full-body coverage. The open booth is comfortably heated even in winter you'll stay warm. Our booths self-clean between sessions.",
   },
   {
     q: "How long do I leave my tan on before showering?",
@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: "Is it really completely private?",
-    a: "Yes, 100%. You enter a private room, lock the door, and the entire process is self-guided. No staff, no other clients — just you and the booth.",
+    a: "Yes, 100%. You enter a private room, lock the door, and the entire process is self-guided. No staff, no other clients just you and the booth.",
   },
   {
     q: "What if I've never had a spray tan before?",
@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
 
-      {/* LOCAL BUSINESS SCHEMA — all locations */}
+      {/* LOCAL BUSINESS SCHEMA all locations */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -63,7 +63,7 @@ export default function Home() {
             url: "https://www.tannedco.com.au",
             telephone: "+611300826633",
             description:
-              "Sydney's first automated spray tanning studio — private VersaSpa booths, streak-free results, open 7 days.",
+              "Sydney's first automated spray tanning studio private VersaSpa booths, streak-free results, open 7 days.",
             image:
               "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
             priceRange: "$$",
@@ -83,7 +83,7 @@ export default function Home() {
           }),
         }}
       />
-      {/* ITEM LIST SCHEMA — individual LocalBusiness entries */}
+      {/* ITEM LIST SCHEMA individual LocalBusiness entries */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -154,7 +154,7 @@ export default function Home() {
       {/* ANNOUNCEMENT BANNER */}
       {bannerVisible && (
         <div className="hidden md:flex fixed top-0 left-0 right-0 z-60 bg-[#a46746] text-white text-sm py-2.5 px-4 items-center justify-center gap-3">
-          <span>✨ New location now open in Kings Park, Sydney — <Link href="/contact" className="underline font-semibold hover:text-white/80 transition-colors">find us here</Link></span>
+          <span>✨ New location now open in Kings Park, Sydney <Link href="/contact" className="underline font-semibold hover:text-white/80 transition-colors">find us here</Link></span>
           <button
             onClick={() => setBannerVisible(false)}
             className="absolute right-4 text-white/70 hover:text-white text-lg leading-none transition-colors"
@@ -170,7 +170,7 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative h-[82vh] md:h-screen min-h-[500px] flex items-end">
-        <h1 className="sr-only">Tanned Co. — Sydney&apos;s Automated Spray Tanning Studio</h1>
+        <h1 className="sr-only">Tanned Co. Sydney&apos;s Automated Spray Tanning Studio</h1>
         <Image
           src={IMGS.hero}
           alt="Tanned Co. studio"
@@ -207,7 +207,7 @@ export default function Home() {
         <div className="relative bg-[#fdf0d5] border-b border-[#e8d9c3] py-3.5 px-6 text-center">
           <p className="text-sm text-[#3a2e24]">
             ✨ New to Tanned Co? Get{" "}
-            <strong className="text-[#1a1a1a]">10% off your first tan</strong> — use code{" "}
+            <strong className="text-[#1a1a1a]">10% off your first tan</strong> use code{" "}
             <span className="font-black tracking-widest text-[#a46746]">SAVE10</span>{" "}
             at checkout.
           </p>
@@ -230,7 +230,7 @@ export default function Home() {
               Luxury Tanning, Your Way
             </h2>
             <p className="text-[#5a4a3a] text-lg leading-relaxed mb-8">
-              Tanned Co is Sydney&apos;s first automated spray tanning studio — offering a luxurious, private experience with state-of-the-art VersaSpa booths. Open 7 days a week across 5 Sydney locations.
+              Tanned Co is Sydney&apos;s first automated spray tanning studio offering a luxurious, private experience with state-of-the-art VersaSpa booths. Open 7 days a week across 5 Sydney locations.
             </p>
             <Link
               href="/about"
@@ -243,7 +243,7 @@ export default function Home() {
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#a46746] border border-[#a46746]/40 rounded-full px-3 py-1 bg-[#a46746]/5">
                 VersaSpa Pro
               </span>
-              <span className="text-[10px] text-[#9a8a7a]">— world&apos;s leading automated spray tan system</span>
+              <span className="text-[10px] text-[#9a8a7a]">world&apos;s leading automated spray tan system</span>
             </div>
           </div>
           <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/5]">
@@ -252,7 +252,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PAIN POINT — No More Tanning Horror Stories */}
+      {/* PAIN POINT No More Tanning Horror Stories */}
       <section className="py-16 md:py-20 bg-white border-y border-[#e8d9c3]">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">We Get It</p>
@@ -260,7 +260,7 @@ export default function Home() {
             No More Tanning Horror Stories
           </h2>
           <p className="text-[#5a4a3a] text-lg leading-relaxed mb-8">
-            You&apos;ve probably had at least one bad spray tan experience — streaky legs, orange palms, or standing half-dressed in front of a stranger. At Tanned Co, every session is completely private, automated, and designed for a perfectly even result. No more guesswork.
+            You&apos;ve probably had at least one bad spray tan experience streaky legs, orange palms, or standing half-dressed in front of a stranger. At Tanned Co, every session is completely private, automated, and designed for a perfectly even result. No more guesswork.
           </p>
           <Link
             href="/how-it-works"
@@ -271,7 +271,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* REAL RESULTS — Before/After grid */}
+      {/* REAL RESULTS Before/After grid */}
       <section className="py-12 md:py-28 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Real Results</p>
@@ -281,7 +281,7 @@ export default function Home() {
           </p>
           <div className="grid md:grid-cols-3 gap-8">
 
-            {/* Pair 1 — Rapid Venetian Medium */}
+            {/* Pair 1 Rapid Venetian Medium */}
             <div className="space-y-3">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
                 <Image
@@ -294,7 +294,7 @@ export default function Home() {
               <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Rapid Venetian · Medium</p>
             </div>
 
-            {/* Pair 2 — Malibu Light */}
+            {/* Pair 2 Malibu Light */}
             <div className="space-y-3">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
                 <Image
@@ -307,7 +307,7 @@ export default function Home() {
               <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Malibu · Light</p>
             </div>
 
-            {/* Pair 3 — placeholder */}
+            {/* Pair 3 placeholder */}
             <div className="space-y-3">
               <div className="grid grid-cols-2 gap-2">
                 <div className="relative aspect-[3/4] rounded-2xl bg-[#e8d9c3] flex items-center justify-center">
@@ -346,7 +346,7 @@ export default function Home() {
               { num: "01", title: "Download & Book", desc: "Choose your location, date and time through our easy online booking system or via our app." },
               { num: "02", title: "Check In & Prep", desc: "Use the Bluetooth reader to access the salon and your tan room. Remove jewellery and makeup, then apply your hair net, sticky feet and barrier cream." },
               { num: "03", title: "Select & Spray", desc: "Choose your shade and depth from the in-room tan menu, enter your code, and step into the booth. Voice prompts guide you through every position." },
-              { num: "04", title: "Walk Out Glowing", desc: "Develop for 6–8 hours then shower to reveal your glow — or 2–3 hours with our Rapid Venetian tan." },
+              { num: "04", title: "Walk Out Glowing", desc: "Develop for 6–8 hours then shower to reveal your glow or 2–3 hours with our Rapid Venetian tan." },
             ].map(({ num, title, desc }) => (
               <div key={num} className="border border-[#e8d9c3] rounded-3xl p-8 hover:border-[#a46746] transition-colors">
                 <p className="text-4xl font-black text-[#a46746] mb-4">{num}</p>
