@@ -357,13 +357,15 @@ export default function Home() {
       <section className="py-12 md:py-28 bg-white text-[#1a1a1a]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Process</p>
-          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">4 Simple Steps</h2>
-          <div className="grid md:grid-cols-4 gap-8">
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">How It Works</h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
             {[
-              { num: "01", title: "Download & Book", desc: "Download our app or book online. Choose your location, date, time and preferred tan shade." },
-              { num: "02", title: "Check In & Prep", desc: "Use the Bluetooth reader to access the salon and your tan room. Remove jewellery and makeup, then apply your hair net, sticky feet and barrier cream." },
-              { num: "03", title: "Select & Spray", desc: "Choose your shade and depth from the in-room tan menu, enter your code, and step into the booth. Voice prompts guide you through every position." },
-              { num: "04", title: "Walk Out Glowing", desc: "Develop for 6–8 hours then shower to reveal your glow — or 2–3 hours with our Rapid Venetian tan." },
+              { num: "01", title: "Book Online", desc: "Choose your location, date and time through our easy online booking system or via our app." },
+              { num: "02", title: "Check In & Enter", desc: "Arrive at your selected appointment time. Use the Bluetooth reader to check in to our salon, then again at the door of your tan room — no queues, no waiting." },
+              { num: "03", title: "Prep Like a Pro", desc: "Remove all jewellery and makeup, then apply your hair net, sticky feet and our barrier cream. Everything you need is provided in your private room." },
+              { num: "04", title: "Choose Your Glow", desc: "Select your shade and depth from our tan menu on the wall of the tan room. Enter the corresponding code using the blue keypad and press 'Start'." },
+              { num: "05", title: "Step Into the Booth", desc: "Enter the booth and follow the voice prompts — they'll guide you through each position for full, even coverage." },
+              { num: "06", title: "Walk Out Glowing", desc: "You're done! Get dressed and head out with a beautiful sun-kissed glow developing over the next few hours." },
             ].map(({ num, title, desc }) => (
               <div key={num} className="border border-[#e8d9c3] rounded-3xl p-8 hover:border-[#a46746] transition-colors">
                 <p className="text-4xl font-black text-[#a46746] mb-4">{num}</p>
