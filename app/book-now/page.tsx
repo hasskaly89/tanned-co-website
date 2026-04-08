@@ -24,14 +24,15 @@ export default function BookNow() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Tanned Co.</p>
           <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Book Your Tan</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
-            Private. Automated. Flawless. Choose your location and time below.
+            Private. Automated. Flawless. Book in seconds from your phone or online.
           </p>
         </div>
       </section>
 
-      {/* BOOKING STEPS */}
+      {/* 3-STEP PROCESS */}
       <section className="py-14 bg-white border-b border-[#e8d9c3]">
         <div className="max-w-3xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-5 text-center">It&apos;s This Easy</p>
           <div className="flex items-center justify-center gap-2 md:gap-4 text-xs font-bold uppercase tracking-wider">
             {[
               { n: "1", label: "Choose Location" },
@@ -54,13 +55,56 @@ export default function BookNow() {
         </div>
       </section>
 
-      {/* BOOK ONLINE */}
-      <section className="py-12 md:py-28 bg-[#fdf0d5]">
+      {/* APP DOWNLOAD — PRIMARY CTA */}
+      <section className="py-16 md:py-24 bg-[#1a1a1a]">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Fastest Way to Book</p>
+          <h2 className="text-3xl md:text-5xl font-black uppercase leading-tight text-white mb-5">
+            The Fastest Way to Book
+          </h2>
+          <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+            Download the Tanned Co. app to book sessions, manage your membership, and check your nearest location — all from your phone.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://apps.apple.com/us/app/tannedco/id1659547172"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 bg-white hover:bg-white/90 text-[#1a1a1a] px-8 py-4 rounded-2xl font-semibold transition-colors shadow-lg"
+            >
+              <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+              </svg>
+              <div className="text-left">
+                <p className="text-[10px] text-[#5a4a3a] uppercase tracking-wider leading-none mb-0.5">Download on the</p>
+                <p className="text-base font-black">App Store</p>
+              </div>
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.treshna.memberportal.tannedco"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 bg-white hover:bg-white/90 text-[#1a1a1a] px-8 py-4 rounded-2xl font-semibold transition-colors shadow-lg"
+            >
+              <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3.18 23.76c.3.17.64.22.99.16l12.1-6.98-2.56-2.56-10.53 9.38zm-1.7-20.1C1.18 4 1 4.46 1 5.02v13.96c0 .56.18 1.02.48 1.36l.07.07 7.82-7.82v-.18L1.55 4.59l-.07.07zm17.44 9.5l-2.18-1.26-2.82 2.82 2.82 2.82 2.18-1.26c.62-.36.62-.94.62-.94s0-.58-.62-1.18zM4.17.24L16.27 7.22l-2.56 2.56L3.18.4C3.48.34 3.87.07 4.17.24z"/>
+              </svg>
+              <div className="text-left">
+                <p className="text-[10px] text-[#5a4a3a] uppercase tracking-wider leading-none mb-0.5">Get it on</p>
+                <p className="text-base font-black">Google Play</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ONLINE BOOKING — SECONDARY */}
+      <section className="py-12 md:py-24 bg-[#fdf0d5]">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Book Online</p>
-          <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight mb-4 text-center">Choose Your Option</h2>
-          <p className="text-[#5a4a3a] text-lg leading-relaxed mb-14 max-w-xl mx-auto text-center">
-            Pick the option that suits you and book directly no account needed for casual sessions.
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">No App Needed</p>
+          <h2 className="text-2xl md:text-4xl font-black uppercase leading-tight mb-4 text-center">Prefer to Book Online?</h2>
+          <p className="text-[#5a4a3a] text-base leading-relaxed mb-12 max-w-xl mx-auto text-center">
+            No app needed. Pick an option below and book directly through our secure portal.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
 
@@ -98,7 +142,7 @@ export default function BookNow() {
                 <span className="text-5xl font-black">$160</span>
                 <span className="text-white/60 mb-1.5">/ 5 sessions</span>
               </div>
-              <p className="text-white/60 text-sm mb-6">$32 per tan save $15</p>
+              <p className="text-white/60 text-sm mb-6">$32 per tan · save $15</p>
               <ul className="space-y-3 text-white/80 text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 5x automated spray tan sessions</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 6 months from purchase</li>
@@ -122,7 +166,7 @@ export default function BookNow() {
                 <span className="text-5xl font-black">$300</span>
                 <span className="text-[#5a4a3a] mb-1.5">/ 10 sessions</span>
               </div>
-              <p className="text-[#5a4a3a] text-sm mb-6">$30 per tan save $50</p>
+              <p className="text-[#5a4a3a] text-sm mb-6">$30 per tan · save $50</p>
               <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 10x automated spray tan sessions</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 12 months from purchase</li>
@@ -144,7 +188,7 @@ export default function BookNow() {
         </div>
       </section>
 
-      {/* FIRST TIME? */}
+      {/* WHAT TO EXPECT */}
       <section className="py-14 bg-white border-y border-[#e8d9c3]">
         <div className="max-w-4xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">First Time?</p>
@@ -166,11 +210,11 @@ export default function BookNow() {
         </div>
       </section>
 
-      {/* LOCATIONS STRIP */}
-      <section className="py-14 bg-white border-y border-[#e8d9c3]">
+      {/* LOCATIONS */}
+      <section className="py-10 bg-[#fdf6ec]">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-6 text-center">Our Sydney Locations</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-5 text-center">Our Sydney Locations</p>
+          <div className="flex flex-wrap justify-center gap-3">
             {[
               { name: "Caringbah", slug: "caringbah" },
               { name: "Edensor Park", slug: "edensor-park" },
@@ -178,46 +222,14 @@ export default function BookNow() {
               { name: "Smeaton Grange", slug: "smeaton-grange" },
               { name: "Woollahra", slug: "woollahra" },
             ].map((loc) => (
-              <Link key={loc.slug} href={`/locations/${loc.slug}`} className="bg-[#fdf6ec] rounded-2xl px-4 py-5 text-center border border-[#e8d9c3] hover:border-[#a46746] hover:bg-[#fdf0d5] transition-colors">
-                <p className="text-sm font-bold uppercase tracking-wide text-[#1a1a1a]">{loc.name}</p>
-                <p className="text-[10px] uppercase tracking-widest text-[#a46746] mt-1">Open 7 days</p>
+              <Link
+                key={loc.slug}
+                href={`/locations/${loc.slug}`}
+                className="px-6 py-3 border border-[#e8d9c3] rounded-full text-sm font-semibold text-[#1a1a1a] hover:border-[#a46746] hover:text-[#a46746] transition-colors"
+              >
+                {loc.name}
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DOWNLOAD APP */}
-      <section className="py-12 md:py-28 bg-[#fdf0d5]">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">On Your Phone</p>
-          <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight mb-6">Download the App</h2>
-          <p className="text-[#5a4a3a] text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Booking a casual session or using your membership is easy with the Tanned Co. app. Tap the links below to go straight to the booking page.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://apps.apple.com/us/app/tannedco/id1659547172"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 bg-[#1a1a1a] hover:bg-[#3a2e24] text-white text-sm font-bold uppercase tracking-widest px-10 py-4 rounded-full transition-colors"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-              </svg>
-              Apple App Store
-            </a>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.treshna.memberportal.tannedco"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 bg-[#1a1a1a] hover:bg-[#3a2e24] text-white text-sm font-bold uppercase tracking-widest px-10 py-4 rounded-full transition-colors"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M3.18 23.76c.3.17.64.24.99.2l12.6-12.6-3.54-3.54L3.18 23.76zM20.65 10.24l-2.71-1.56-3.84 3.84 3.84 3.84 2.73-1.58c.78-.45.78-1.54-.02-2zM2.01 1.36c-.06.19-.01.4.13.56l10.59 10.59L9.19 16.05 2.01 1.36zM12.73 12.51l2.54-2.54-10.6-6.12 8.06 8.66z"/>
-              </svg>
-              Google Play Store
-            </a>
           </div>
         </div>
       </section>
