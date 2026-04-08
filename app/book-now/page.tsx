@@ -171,16 +171,16 @@ export default function BookNow() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-6 text-center">Our Sydney Locations</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
             {[
-              "Caringbah",
-              "Edensor Park",
-              "Kings Park",
-              "Smeaton Grange",
-              "Woollahra",
+              { name: "Caringbah", slug: "caringbah" },
+              { name: "Edensor Park", slug: "edensor-park" },
+              { name: "Kings Park", slug: "kings-park" },
+              { name: "Smeaton Grange", slug: "smeaton-grange" },
+              { name: "Woollahra", slug: "woollahra" },
             ].map((loc) => (
-              <div key={loc} className="bg-[#fdf6ec] rounded-2xl px-4 py-5 text-center border border-[#e8d9c3]">
-                <p className="text-sm font-bold uppercase tracking-wide text-[#1a1a1a]">{loc}</p>
+              <Link key={loc.slug} href={`/locations/${loc.slug}`} className="bg-[#fdf6ec] rounded-2xl px-4 py-5 text-center border border-[#e8d9c3] hover:border-[#a46746] hover:bg-[#fdf0d5] transition-colors">
+                <p className="text-sm font-bold uppercase tracking-wide text-[#1a1a1a]">{loc.name}</p>
                 <p className="text-[10px] uppercase tracking-widest text-[#a46746] mt-1">Open 7 days</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
