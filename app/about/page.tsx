@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 const IMGS = {
-  story: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg",
+  story: "/founder.jpg",
   booth: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg",
 };
 
@@ -76,22 +76,22 @@ export default function About() {
       <section className="py-12 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">How It Started</p>
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Meet the Founder</p>
             <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight mb-6">
-              Built for You
+              The Story Behind Tanned Co.
             </h2>
             <p className="text-[#5a4a3a] text-lg leading-relaxed mb-5">
-              Tanned Co was founded with one goal: to give everyone access to a premium, private spray tan experience without the awkwardness of traditional salons. We&apos;re proud to be Sydney&apos;s first fully automated spray tanning studio.
+              Tanned Co. was born from my background as a skin therapist, where I saw firsthand the long-term damage the sun can do to your skin. As a mum of three, I needed a spray tan solution that was quick, easy and safe, something that actually fit into a busy day.
             </p>
             <p className="text-[#5a4a3a] text-lg leading-relaxed mb-5">
-              Our state-of-the-art VersaSpa booths deliver flawless, streak-free results every time, guided entirely by voice and visual instructions. No staff, no waiting, no awkward moments.
+              I wanted to remove the awkwardness of traditional spray tanning salons. That&apos;s why I created Sydney&apos;s first fully automated, completely private spray tan experience. No staff, no waiting, no uncomfortable moments.
             </p>
             <p className="text-[#5a4a3a] text-lg leading-relaxed">
-              With 5 convenient Sydney locations and doors open 7 days a week, getting your glow has never been easier.
+              It&apos;s all about an effortless, natural glow on your schedule.
             </p>
           </div>
-          <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/5]">
-            <Image src={IMGS.story} alt="Tanned Co. result" fill className="object-cover" />
+          <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[3/4]">
+            <Image src={IMGS.story} alt="Tanned Co. Founder" fill className="object-cover object-top" />
           </div>
         </div>
       </section>
