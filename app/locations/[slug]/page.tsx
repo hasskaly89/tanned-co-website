@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import TrustBadges from "@/components/TrustBadges";
+import ClaimForm from "@/components/ClaimForm";
 import { LOCATIONS, DEFAULT_BOOKING_URLS, SITE_URL } from "@/lib/locations";
 import { getGoogleReviews } from "@/lib/google-reviews";
 
@@ -230,6 +231,9 @@ export default async function LocationPage({
 
       {/* TRUST BADGES */}
       <TrustBadges />
+
+      {/* CLAIM FORM */}
+      <ClaimForm location={loc.shortName} />
 
       {/* GOOGLE REVIEWS */}
       {googleReviews && googleReviews.reviews.length > 0 && (
