@@ -86,17 +86,9 @@ export default async function LocationPage({
           <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">
             Spray Tan<br />{loc.shortName}
           </h1>
-          <p className="text-white/80 text-lg md:text-xl max-w-xl mb-8">
+          <p className="text-white/80 text-lg md:text-xl max-w-xl">
             Automated spray tanning in {loc.shortName}. Private booths, flawless results, open 7 days a week.
           </p>
-          <a
-            href={urls.casual}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
-          >
-            Book at {loc.shortName} →
-          </a>
         </div>
       </section>
 
