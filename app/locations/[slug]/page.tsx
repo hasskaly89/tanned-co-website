@@ -83,7 +83,7 @@ export default async function LocationPage({
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">
             Sydney {loc.shortName}
           </p>
-          <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">
+          <h1 className="text-4xl md:text-7xl font-black uppercase leading-none text-white mb-4">
             Spray Tan<br />{loc.shortName}
           </h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
