@@ -175,7 +175,8 @@ export default function Home() {
           src={IMGS.hero}
           alt="Tanned Co. studio"
           fill
-          className="object-cover object-top"
+          className="object-cover"
+          style={{ objectPosition: "50% 0%" }}
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
