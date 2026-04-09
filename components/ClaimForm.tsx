@@ -40,7 +40,7 @@ export default function ClaimForm({ location }: { location: string }) {
   }
 
   return (
-    <section className="py-16 md:py-20 bg-[#1a1a1a]">
+    <section id="claim" className="py-16 md:py-20 bg-[#1a1a1a] scroll-mt-24">
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
 

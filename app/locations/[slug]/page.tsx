@@ -132,9 +132,7 @@ export default async function LocationPage({
       </div>
 
       {/* ── CLAIM FORM ── */}
-      <div id="claim">
-        <ClaimForm location={loc.shortName} />
-      </div>
+      <ClaimForm location={loc.shortName} />
 
       {/* ── REVIEWS ── */}
       {showGoogleReviews && (
