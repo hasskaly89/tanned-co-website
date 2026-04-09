@@ -102,14 +102,6 @@ export default async function LocationPage({
             >
               Claim 10% Off →
             </a>
-            <a
-              href={urls.casual}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white/10 hover:bg-white/20 border border-white/40 text-white font-bold uppercase tracking-widest px-7 py-4 rounded-full transition-colors text-sm backdrop-blur-sm"
-            >
-              Book Now $35
-            </a>
           </div>
         </div>
       </section>
