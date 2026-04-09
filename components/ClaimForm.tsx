@@ -40,8 +40,20 @@ export default function ClaimForm({ location }: { location: string }) {
   }
 
   return (
-    <section id="claim" className="py-16 md:py-20 bg-[#1a1a1a] scroll-mt-16">
-      <div className="max-w-5xl mx-auto px-6">
+    <section id="claim" className="bg-[#1a1a1a] scroll-mt-16">
+      {/* Trust strip */}
+      <div className="border-b border-white/10 py-3 px-6">
+        <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-white/60">
+          <span className="flex items-center gap-1.5"><span className="text-yellow-400">★★★★★</span><span className="text-white font-semibold">5.0</span> Rated 5 stars</span>
+          <span className="hidden md:block text-white/20">|</span>
+          <span>✓ Open 7 days · 6am to midnight</span>
+          <span className="hidden md:block text-white/20">|</span>
+          <span>✓ No staff · Fully automated</span>
+          <span className="hidden md:block text-white/20">|</span>
+          <span>✓ Results in under 5 minutes</span>
+        </div>
+      </div>
+      <div className="py-16 md:py-20 max-w-5xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
 
           {/* Left — copy */}
@@ -115,6 +127,7 @@ export default function ClaimForm({ location }: { location: string }) {
 
         </div>
       </div>
+    </div>
     </section>
   );
 }
