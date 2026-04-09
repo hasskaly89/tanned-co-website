@@ -305,7 +305,7 @@ export default function Home() {
                   className="object-cover object-center"
                 />
               </div>
-              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Malibu · Light</p>
+              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Malibu · Medium</p>
             </div>
 
             {/* Pair 3 Monterey Dark */}
