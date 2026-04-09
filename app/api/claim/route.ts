@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const GHL_WEBHOOK = "https://services.leadconnectorhq.com/hooks/aZwzIqXfd3kp2OCmsGiu/webhook-trigger/7d8a11bd-cdd7-48ad-ab42-30bb182b5aeb";
+const GHL_WEBHOOK = "https://services.leadconnectorhq.com/hooks/aZwzIqXfd3kp2OCmsGiu/webhook-trigger/9d5155c4-b4c6-4e1e-b567-81f55a14e4d6";
 
 export async function POST(req: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY ?? "");
