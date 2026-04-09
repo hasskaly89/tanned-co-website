@@ -121,10 +121,10 @@ export default function HowItWorks() {
       {/* PAGE HERO */}
       <section className="relative h-[70vh] min-h-[520px] flex items-end">
         <Image
-          src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg"
-          alt="Inside a Tanned Co. tanning booth"
+          src="/how-it-works-hero.jpg"
+          alt="Tanned Co. spray tan result"
           fill
-          className="object-cover object-center"
+          className="object-cover object-top"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
