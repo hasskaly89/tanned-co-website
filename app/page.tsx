@@ -11,7 +11,7 @@ import TrustBadges from "@/components/TrustBadges";
 import { LOCATIONS } from "@/lib/locations";
 
 const IMGS = {
-  hero: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
+  hero: "/hero-new.jpg",
   about: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg",
 };
 
