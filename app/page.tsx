@@ -308,18 +308,17 @@ export default function Home() {
               <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Malibu · Light</p>
             </div>
 
-            {/* Pair 3 placeholder */}
+            {/* Pair 3 Monterey Dark */}
             <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-2">
-                <div className="relative aspect-[3/4] rounded-2xl bg-[#e8d9c3] flex items-center justify-center">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#9a8a7a] text-center px-2">Before</span>
-                </div>
-                <div className="relative aspect-[3/4] rounded-2xl bg-[#d4b896] flex items-center justify-center">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-white text-center px-2">After</span>
-                </div>
+              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
+                <Image
+                  src="/before-after-monterey-dark.jpg"
+                  alt="Before and after Monterey Dark spray tan"
+                  fill
+                  className="object-cover object-center"
+                />
               </div>
-              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Monterey · Light</p>
-              <p className="text-center text-[10px] text-[#9a8a7a] italic">Client photos coming soon</p>
+              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Monterey · Dark</p>
             </div>
 
           </div>
