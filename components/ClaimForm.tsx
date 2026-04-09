@@ -127,7 +127,6 @@ export default function ClaimForm({ location }: { location: string }) {
 
         </div>
       </div>
-    </div>
     </section>
   );
 }
