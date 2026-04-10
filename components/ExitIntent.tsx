@@ -10,22 +10,28 @@ export default function ExitIntent() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   useEffect(() => {
-    // Only show once per session
-    if (sessionStorage.getItem(SESSION_KEY)) return;
-
     let triggered = false;
 
+    // Manual trigger via custom event (e.g. from banner click)
+    const handleManualOpen = () => {
+      setStatus("idle");
+      setVisible(true);
+    };
+    window.addEventListener("tannedco:open-offer", handleManualOpen);
+
+    // Exit-intent auto trigger — only once per session
+    if (sessionStorage.getItem(SESSION_KEY)) {
+      return () => window.removeEventListener("tannedco:open-offer", handleManualOpen);
+    }
+
     const handleMouseLeave = (e: MouseEvent) => {
-      // Trigger when mouse exits through the top of the viewport
       if (e.clientY <= 5 && !triggered) {
         triggered = true;
         sessionStorage.setItem(SESSION_KEY, "1");
-        // Small delay so it doesn't flash immediately
         setTimeout(() => setVisible(true), 200);
       }
     };
 
-    // Wait 5 seconds before activating the listener (avoid firing on fast navigation)
     const timer = setTimeout(() => {
       document.addEventListener("mouseleave", handleMouseLeave);
     }, 5000);
@@ -33,6 +39,7 @@ export default function ExitIntent() {
     return () => {
       clearTimeout(timer);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("tannedco:open-offer", handleManualOpen);
     };
   }, []);
 

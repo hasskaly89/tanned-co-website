@@ -203,15 +203,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SAVE10 PROMO */}
+      {/* EXCLUSIVE OFFER BANNER */}
       {promoVisible && (
-        <div className="relative bg-[#fdf0d5] border-b border-[#e8d9c3] py-3.5 px-6 text-center">
-          <p className="text-sm text-[#3a2e24]">
-            ✨ New to Tanned Co? Get{" "}
-            <strong className="text-[#1a1a1a]">10% off your first tan</strong> use code{" "}
-            <span className="font-black tracking-widest text-[#a46746]">SAVE10</span>{" "}
-            at checkout.
-          </p>
+        <div className="relative bg-[#fdf0d5] border-b border-[#e8d9c3] py-3.5 px-12 text-center">
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("tannedco:open-offer"))}
+            className="text-sm text-[#3a2e24] hover:text-[#1a1a1a] transition-colors cursor-pointer"
+          >
+            ✨ First Timer?{" "}
+            <strong className="text-[#a46746] underline underline-offset-2">Unlock Your Exclusive Offer</strong>
+            {" "}— tap to claim
+          </button>
           <button
             onClick={() => setPromoVisible(false)}
             className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9a8a7a] hover:text-[#1a1a1a] transition-colors text-lg leading-none"
