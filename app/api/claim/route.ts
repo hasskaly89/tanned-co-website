@@ -16,7 +16,9 @@ export async function POST(req: Request) {
     const firstName = nameParts[0] ?? name;
     const lastName = nameParts.slice(1).join(" ") || "";
 
-    // Fire both in parallel — GHL webhook + email notification
+    const sheetsWebhook = process.env.GOOGLE_SHEETS_WEBHOOK;
+
+    // Fire all in parallel — GHL webhook + email notification + Google Sheets
     await Promise.all([
       // GHL webhook — creates contact + triggers SMS/email automation
       fetch(GHL_WEBHOOK, {
@@ -32,6 +34,22 @@ export async function POST(req: Request) {
           customField: { location: location ?? "Website" },
         }),
       }),
+
+      // Google Sheets backup log (Apps Script web app)
+      sheetsWebhook
+        ? fetch(sheetsWebhook, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              firstName,
+              lastName,
+              email,
+              phone,
+              location: location ?? "Website",
+              source: "Tanned Co. Website",
+            }),
+          }).catch((err) => console.error("Sheets webhook failed:", err))
+        : Promise.resolve(),
 
       // Email notification to the team
       resend.emails.send({
