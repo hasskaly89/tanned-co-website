@@ -54,14 +54,8 @@ export default function ExitIntent() {
   if (!visible) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center px-4"
-      onClick={() => setVisible(false)}
-    >
-      <div
-        className="relative bg-[#fdf6ec] rounded-3xl max-w-md w-full p-8 md:p-10 shadow-2xl border border-[#e8d9c3] text-center"
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 overflow-y-auto py-8">
+      <div className="relative bg-[#fdf6ec] rounded-3xl max-w-md w-full p-8 md:p-10 shadow-2xl border border-[#e8d9c3] text-center my-auto">
         {/* Close button */}
         <button
           onClick={() => setVisible(false)}
