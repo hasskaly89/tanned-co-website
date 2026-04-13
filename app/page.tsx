@@ -58,12 +58,13 @@ export default function Home() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BeautyBusiness",
+            "@type": "BeautySalon",
             name: "Tanned Co.",
             url: "https://www.tannedco.com.au",
             telephone: "+611300826633",
+            email: "hello@tannedco.com.au",
             description:
-              "Sydney's first automated spray tanning studio private VersaSpa booths, streak-free results, open 7 days.",
+              "Sydney's first automated spray tanning studio — private VersaSpa booths, streak-free results, open 7 days.",
             image:
               "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
             priceRange: "$$",
@@ -72,13 +73,12 @@ export default function Home() {
               ratingValue: "4.9",
               reviewCount: "200",
               bestRating: "5",
+              worstRating: "1",
             },
-            location: [
-              { "@type": "Place", name: "Caringbah", address: "349B Kingsway, Caringbah NSW 2229" },
-              { "@type": "Place", name: "Edensor Park", address: "Shop 6/207 Edensor Rd, Edensor Park NSW 2176" },
-              { "@type": "Place", name: "Kings Park", address: "6/2 Garling Rd, Kings Park NSW 2148" },
-              { "@type": "Place", name: "Smeaton Grange", address: "1/73-77 Anderson Rd, Smeaton Grange NSW 2567" },
-              { "@type": "Place", name: "Woollahra", address: "8 Oxford St, Woollahra NSW 2025" },
+            sameAs: [
+              "https://instagram.com/tannedco_",
+              "https://www.tiktok.com/@tannedco_",
+              "https://www.facebook.com/profile.php?id=100086326464692",
             ],
           }),
         }}
@@ -92,7 +92,7 @@ export default function Home() {
             "@type": "ItemList",
             itemListElement: [
               {
-                "@type": "LocalBusiness",
+                "@type": "BeautySalon",
                 name: "Tanned Co Caringbah",
                 address: { "@type": "PostalAddress", streetAddress: "349B Kingsway", addressLocality: "Caringbah", addressRegion: "NSW", postalCode: "2229", addressCountry: "AU" },
                 geo: { "@type": "GeoCoordinates", latitude: -34.0395, longitude: 151.1220 },
@@ -103,7 +103,7 @@ export default function Home() {
                 aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
               },
               {
-                "@type": "LocalBusiness",
+                "@type": "BeautySalon",
                 name: "Tanned Co Edensor Park",
                 address: { "@type": "PostalAddress", streetAddress: "Shop 6/207 Edensor Rd", addressLocality: "Edensor Park", addressRegion: "NSW", postalCode: "2176", addressCountry: "AU" },
                 geo: { "@type": "GeoCoordinates", latitude: -33.8770, longitude: 150.8840 },
@@ -114,7 +114,7 @@ export default function Home() {
                 aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
               },
               {
-                "@type": "LocalBusiness",
+                "@type": "BeautySalon",
                 name: "Tanned Co Kings Park",
                 address: { "@type": "PostalAddress", streetAddress: "6/2 Garling Rd", addressLocality: "Kings Park", addressRegion: "NSW", postalCode: "2148", addressCountry: "AU" },
                 geo: { "@type": "GeoCoordinates", latitude: -33.7380, longitude: 150.9060 },
@@ -125,7 +125,7 @@ export default function Home() {
                 aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
               },
               {
-                "@type": "LocalBusiness",
+                "@type": "BeautySalon",
                 name: "Tanned Co Smeaton Grange",
                 address: { "@type": "PostalAddress", streetAddress: "1/73-77 Anderson Rd", addressLocality: "Smeaton Grange", addressRegion: "NSW", postalCode: "2567", addressCountry: "AU" },
                 geo: { "@type": "GeoCoordinates", latitude: -34.0500, longitude: 150.7630 },
@@ -136,7 +136,7 @@ export default function Home() {
                 aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
               },
               {
-                "@type": "LocalBusiness",
+                "@type": "BeautySalon",
                 name: "Tanned Co Woollahra",
                 address: { "@type": "PostalAddress", streetAddress: "8 Oxford St", addressLocality: "Woollahra", addressRegion: "NSW", postalCode: "2025", addressCountry: "AU" },
                 geo: { "@type": "GeoCoordinates", latitude: -33.8860, longitude: 151.2400 },

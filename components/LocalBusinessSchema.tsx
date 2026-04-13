@@ -26,7 +26,7 @@ export default function LocalBusinessSchema({ slug }: { slug?: string }) {
 
   const schemas = locs.map((loc) => ({
     "@context": "https://schema.org",
-    "@type": "BeautyBusiness",
+    "@type": "BeautySalon",
     "@id": `${SITE_URL}/locations/${loc.slug}`,
     name: loc.fullName,
     description:
@@ -35,7 +35,6 @@ export default function LocalBusinessSchema({ slug }: { slug?: string }) {
     url: `${SITE_URL}/locations/${loc.slug}`,
     telephone: "+611300826633",
     priceRange: "$$",
-    servesCuisine: undefined,
     address: {
       "@type": "PostalAddress",
       streetAddress: loc.address,
