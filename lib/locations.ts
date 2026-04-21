@@ -59,7 +59,7 @@ export const LOCATIONS: LocationData[] = [
     postcode: "2229",
     fullAddress: "349B Kingsway, Caringbah NSW 2229",
     hours: "Open 7 days · 6am – 12am",
-    mapsUrl: "https://www.google.com/maps/place/Tanned+Co+Caringbah/@-34.0409989,151.1217383,17z",
+    mapsUrl: "https://www.google.com/maps?cid=13479038353772915077",
     lat: -34.0409989,
     lng: 151.1217383,
     heroImage:
@@ -97,7 +97,7 @@ export const LOCATIONS: LocationData[] = [
     postcode: "2176",
     fullAddress: "Shop 6/207 Edensor Rd, Edensor Park NSW 2176",
     hours: "Open 7 days · 6am – 12am",
-    mapsUrl: "https://www.google.com/maps/place/Tanned+Co+Edensor+Park/@-33.8763487,150.877011,17z",
+    mapsUrl: "https://www.google.com/maps?cid=573135464984670807",
     lat: -33.8763487,
     lng: 150.877011,
     heroImage:
@@ -140,7 +140,7 @@ export const LOCATIONS: LocationData[] = [
     postcode: "2148",
     fullAddress: "6/2 Garling Rd, Kings Park NSW 2148",
     hours: "Open 7 days · 6am – 12am",
-    mapsUrl: "https://www.google.com/maps/place/Tanned+Co+Kings+Park/@-33.7453629,150.9154175,17z",
+    mapsUrl: "https://www.google.com/maps?cid=495537712189558719",
     lat: -33.7453629,
     lng: 150.9154175,
     heroImage:
@@ -171,7 +171,7 @@ export const LOCATIONS: LocationData[] = [
     postcode: "2567",
     fullAddress: "1/73-77 Anderson Rd, Smeaton Grange NSW 2567",
     hours: "Open 7 days · 6am – 12am",
-    mapsUrl: "https://www.google.com/maps/place/Tanned+Co+Smeaton+Grange/@-34.0339258,150.7607107,17z",
+    mapsUrl: "https://www.google.com/maps?cid=2632734899103432869",
     lat: -34.0339258,
     lng: 150.7607107,
     heroImage:
@@ -202,7 +202,7 @@ export const LOCATIONS: LocationData[] = [
     postcode: "2025",
     fullAddress: "8 Oxford St, Woollahra NSW 2025",
     hours: "Open 7 days · 6am – 12am",
-    mapsUrl: "https://www.google.com/maps/place/Tanned+Co+Woollahra/@-33.8886925,151.232489,17z",
+    mapsUrl: "https://www.google.com/maps?cid=4396169464198015999",
     lat: -33.8886925,
     lng: 151.232489,
     heroImage:
