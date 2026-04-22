@@ -6,6 +6,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
+import { trackEvent } from "@/lib/analytics";
 
 const enquiryTypes = [
   "General Enquiry",
@@ -79,10 +80,10 @@ export default function ContactClient() {
               <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Contact Info</p>
               <h2 className="text-3xl md:text-4xl font-black uppercase mb-8">Get In Touch</h2>
               <div className="space-y-4">
-                <a href="mailto:hello@tannedco.com.au" className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors text-base">
+                <a href="mailto:hello@tannedco.com.au" onClick={() => trackEvent("email_click", { source: "contact_page" })} className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors text-base">
                   <span className="text-[#a46746]">✉</span> hello@tannedco.com.au
                 </a>
-                <a href="tel:1300826633" className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors text-base">
+                <a href="tel:1300826633" onClick={() => trackEvent("phone_click", { source: "contact_page" })} className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors text-base">
                   <span className="text-[#a46746]">☎</span> 1300 826 633
                 </a>
               </div>

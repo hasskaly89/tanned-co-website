@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
@@ -73,6 +74,7 @@ export default function Pricing() {
                 href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("book_now_click", { source: "pricing_page", plan: "casual" })}
                 className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
               >
                 Book Casual Tan →
@@ -97,6 +99,7 @@ export default function Pricing() {
                 href="https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("book_now_click", { source: "pricing_page", plan: "5_pack" })}
                 className="block text-center bg-[#a46746] text-white py-3 rounded-full font-semibold hover:bg-[#7d4e33] transition-colors text-sm"
               >
                 Buy 5 Pack →
@@ -120,6 +123,7 @@ export default function Pricing() {
                 href="https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("book_now_click", { source: "pricing_page", plan: "10_pack" })}
                 className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
               >
                 Buy 10 Pack →

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { trackEvent } from "@/lib/analytics";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -70,6 +71,7 @@ export default function BookNow() {
               href="https://apps.apple.com/us/app/tannedco/id1659547172"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("app_download_click", { source: "book_now_hero", store: "app_store" })}
               className="inline-flex items-center justify-center gap-3 bg-white hover:bg-white/90 text-[#1a1a1a] px-8 py-4 rounded-2xl font-semibold transition-colors shadow-lg"
             >
               <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
@@ -84,6 +86,7 @@ export default function BookNow() {
               href="https://play.google.com/store/apps/details?id=com.treshna.memberportal.tannedco"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("app_download_click", { source: "book_now_hero", store: "google_play" })}
               className="inline-flex items-center justify-center gap-3 bg-white hover:bg-white/90 text-[#1a1a1a] px-8 py-4 rounded-2xl font-semibold transition-colors shadow-lg"
             >
               <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
@@ -126,6 +129,7 @@ export default function BookNow() {
                 href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("book_now_click", { source: "book_now_page", plan: "casual" })}
                 className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
               >
                 Book Casual Tan →
@@ -153,6 +157,7 @@ export default function BookNow() {
                 href="https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("book_now_click", { source: "book_now_page", plan: "5_pack" })}
                 className="block text-center bg-[#a46746] hover:bg-[#7d4e33] text-white py-3.5 rounded-full font-semibold transition-colors"
               >
                 Buy 5 Pack →
@@ -177,6 +182,7 @@ export default function BookNow() {
                 href="https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("book_now_click", { source: "book_now_page", plan: "10_pack" })}
                 className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
               >
                 Buy 10 Pack →

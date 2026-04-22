@@ -4,6 +4,8 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TrustBadges from "@/components/TrustBadges";
+import LocationCardButtons from "@/components/LocationCardButtons";
+import ExternalBookButton from "@/components/ExternalBookButton";
 import { LOCATIONS, SITE_URL } from "@/lib/locations";
 
 export const metadata: Metadata = {
@@ -71,22 +73,11 @@ export default function LocationsPage() {
                   </div>
                   <p className="text-[#5a4a3a] text-sm mb-1">{loc.fullAddress}</p>
                   <p className="text-xs text-[#a46746] font-semibold uppercase tracking-wider mb-5">Open 7 days a week</p>
-                  <div className="flex gap-2 mt-auto">
-                    <a
-                      href={loc.mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-2.5 rounded-full text-sm font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
-                    >
-                      Directions →
-                    </a>
-                    <Link
-                      href={`/locations/${loc.slug}`}
-                      className="flex-1 inline-flex items-center justify-center border-2 border-[#a46746] text-[#a46746] py-2.5 rounded-full text-sm font-semibold hover:bg-[#a46746] hover:text-white transition-colors"
-                    >
-                      View Studio
-                    </Link>
-                  </div>
+                  <LocationCardButtons
+                    slug={loc.slug}
+                    shortName={loc.shortName}
+                    mapsUrl={loc.mapsUrl}
+                  />
                 </div>
               </div>
             ))}
@@ -103,14 +94,13 @@ export default function LocationsPage() {
           <h2 className="text-2xl md:text-5xl font-black uppercase mb-6 text-[#1a1a1a]">Ready to Glow?</h2>
           <p className="text-[#5a4a3a] text-lg mb-4">Book your session online in seconds. Walk in, walk out glowing.</p>
           <p className="text-[#5a4a3a] text-sm mb-10">New to spray tans? Read our <Link href="/faq" className="underline decoration-[#a46746]/40 hover:decoration-[#a46746] underline-offset-4 text-[#a46746] font-semibold">spray tan prep guide</Link> first.</p>
-          <a
+          <ExternalBookButton
             href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
-            target="_blank"
-            rel="noopener noreferrer"
+            source="locations_page_cta"
             className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-10 py-4 rounded-full font-semibold transition-colors text-base"
           >
             Book Casual Tan $35 →
-          </a>
+          </ExternalBookButton>
         </div>
       </section>
 

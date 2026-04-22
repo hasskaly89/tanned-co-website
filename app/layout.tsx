@@ -5,6 +5,8 @@ import "./globals.css";
 import MobileCTA from "@/components/MobileCTA";
 import ExitIntent from "@/components/ExitIntent";
 import BronzeBot from "@/components/BronzeBot";
+import PageViewTracker from "@/components/PageViewTracker";
+import { GA_ID } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/locations";
 
 const geistSans = Geist({
@@ -65,7 +67,7 @@ export default function RootLayout({
     >
       {/* Google Analytics 4 */}
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-TY1H7HH0NF"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -73,10 +75,11 @@ export default function RootLayout({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-TY1H7HH0NF');
+          gtag('config', '${GA_ID}', { send_page_view: false });
         `}
       </Script>
       <body className="min-h-full flex flex-col pb-16 md:pb-0">
+        <PageViewTracker />
         {children}
         <MobileCTA />
         <ExitIntent />

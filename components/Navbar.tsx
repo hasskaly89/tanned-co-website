@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { trackEvent } from "@/lib/analytics";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -52,6 +53,7 @@ export default function Navbar({ activePath = "/", withBanner = false }: { activ
           </a>
           <Link
             href="/book-now"
+            onClick={() => trackEvent("book_now_click", { source: "navbar_desktop" })}
             className="inline-flex items-center bg-[#1a1a1a] text-white text-sm px-5 py-2.5 rounded-full font-medium hover:bg-[#3a2e24] transition-colors"
           >
             Book Now
@@ -83,7 +85,10 @@ export default function Navbar({ activePath = "/", withBanner = false }: { activ
           ))}
           <Link
             href="/book-now"
-            onClick={() => setMenuOpen(false)}
+            onClick={() => {
+              setMenuOpen(false);
+              trackEvent("book_now_click", { source: "navbar_mobile_menu" });
+            }}
             className="mt-2 text-center bg-[#1a1a1a] text-white text-sm px-5 py-3 rounded-full font-medium"
           >
             Book Now

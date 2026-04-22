@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
@@ -396,6 +397,7 @@ export default function Home() {
                 href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("book_now_click", { source: "home_pricing", plan: "casual" })}
                 className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
               >
                 Book Casual Tan →
@@ -420,6 +422,7 @@ export default function Home() {
                 href="https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("book_now_click", { source: "home_pricing", plan: "5_pack" })}
                 className="block text-center bg-[#a46746] text-white py-3 rounded-full font-semibold hover:bg-[#7d4e33] transition-colors text-sm"
               >
                 Buy 5 Pack →
@@ -443,6 +446,7 @@ export default function Home() {
                 href="https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent("book_now_click", { source: "home_pricing", plan: "10_pack" })}
                 className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
               >
                 Buy 10 Pack →
@@ -517,10 +521,10 @@ export default function Home() {
               <div>
                 <h3 className="text-lg font-bold uppercase tracking-widest mb-4 text-[#a46746]">Get In Touch</h3>
                 <div className="space-y-3">
-                  <a href="mailto:hello@tannedco.com.au" className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors">
+                  <a href="mailto:hello@tannedco.com.au" onClick={() => trackEvent("email_click", { source: "home_contact" })} className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors">
                     <span>✉️</span> hello@tannedco.com.au
                   </a>
-                  <a href="tel:1300826633" className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors">
+                  <a href="tel:1300826633" onClick={() => trackEvent("phone_click", { source: "home_contact" })} className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors">
                     <span>📞</span> 1300 826 633
                   </a>
                 </div>
