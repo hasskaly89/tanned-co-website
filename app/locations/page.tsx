@@ -36,7 +36,7 @@ export default function LocationsPage() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Sydney 5 Studios</p>
           <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Our Locations</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
-            5 convenient Sydney studios open 7 days a week. Find your nearest Tanned Co.
+            5 convenient <Link href="/how-it-works" className="underline decoration-white/40 hover:decoration-white underline-offset-4">Sydney spray tan studios</Link> open 7 days a week. Find your nearest Tanned Co.
           </p>
         </div>
       </section>
@@ -46,7 +46,7 @@ export default function LocationsPage() {
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Find Us</p>
           <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">5 Sydney Studios</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Private booths, flawless results, open 7 days. Sessions from $35.</p>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Private booths, flawless results, open 7 days. <Link href="/pricing" className="underline decoration-[#a46746]/40 hover:decoration-[#a46746] underline-offset-4 text-[#a46746] font-semibold">Sessions from $35</Link>.</p>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {LOCATIONS.map((loc) => (
@@ -101,7 +101,8 @@ export default function LocationsPage() {
       <section className="py-12 md:py-28 bg-white text-center">
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="text-2xl md:text-5xl font-black uppercase mb-6 text-[#1a1a1a]">Ready to Glow?</h2>
-          <p className="text-[#5a4a3a] text-lg mb-10">Book your session online in seconds. Walk in, walk out glowing.</p>
+          <p className="text-[#5a4a3a] text-lg mb-4">Book your session online in seconds. Walk in, walk out glowing.</p>
+          <p className="text-[#5a4a3a] text-sm mb-10">New to spray tans? Read our <Link href="/faq" className="underline decoration-[#a46746]/40 hover:decoration-[#a46746] underline-offset-4 text-[#a46746] font-semibold">spray tan prep guide</Link> first.</p>
           <a
             href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
             target="_blank"
