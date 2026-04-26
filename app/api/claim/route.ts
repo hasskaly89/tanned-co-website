@@ -53,7 +53,7 @@ export async function POST(req: Request) {
 
       // Email notification to the team
       resend.emails.send({
-        from: "Tanned Co. Website <onboarding@resend.dev>",
+        from: "Tanned Co. Website <noreply@tannedco.com.au>",
         to: ["hello@tannedco.com.au", "edensorpark@tannedco.com.au"],
         replyTo: email,
         subject: `New 10% Off Lead — ${location ?? "Website"}`,
