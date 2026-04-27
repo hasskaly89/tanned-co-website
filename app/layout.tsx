@@ -4,7 +4,6 @@ import Script from "next/script";
 import "./globals.css";
 import MobileCTA from "@/components/MobileCTA";
 import ExitIntent from "@/components/ExitIntent";
-import BronzeBot from "@/components/BronzeBot";
 import PageViewTracker from "@/components/PageViewTracker";
 import { GA_ID } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/locations";
@@ -83,7 +82,6 @@ export default function RootLayout({
         {children}
         <MobileCTA />
         <ExitIntent />
-        <BronzeBot />
       </body>
     </html>
   );
