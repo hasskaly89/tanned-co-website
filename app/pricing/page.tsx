@@ -55,7 +55,7 @@ export default function Pricing() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Transparent &amp; Simple</p>
           <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Our Pricing</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">No hidden fees. Just beautiful tans at honest prices.</p>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
 
             {/* Casual */}
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
@@ -78,31 +78,6 @@ export default function Pricing() {
                 className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
               >
                 Book Casual Tan →
-              </a>
-            </div>
-
-            {/* 5 Pack */}
-            <div className="bg-[#1a1a1a] text-white rounded-3xl p-8 shadow-xl flex flex-col relative overflow-hidden">
-              <div className="absolute top-5 right-5 bg-[#a46746] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</div>
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">5 Pack</p>
-              <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">$160</span>
-              </div>
-              <p className="text-white/50 text-sm mb-6">$32 per tan · Save $35</p>
-              <ul className="space-y-3 text-white/70 text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 5x automated spray tan sessions</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 5 months</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Name-specific booking</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Private booth experience</li>
-              </ul>
-              <a
-                href="https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent("book_now_click", { source: "pricing_page", plan: "5_pack" })}
-                className="block text-center bg-[#a46746] text-white py-3 rounded-full font-semibold hover:bg-[#7d4e33] transition-colors text-sm"
-              >
-                Buy 5 Pack →
               </a>
             </div>
 

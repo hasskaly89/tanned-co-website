@@ -316,9 +316,6 @@ export default async function LocationPage({
                 <a href={urls.casual} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#a46746] hover:bg-[#7d4e33] text-white py-4 rounded-full font-bold uppercase tracking-widest transition-colors text-sm">
                   Book Casual Tan — $39
                 </a>
-                <a href={urls.fivePack} target="_blank" rel="noopener noreferrer" className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm">
-                  Buy 5 Pack — $160 <span className="text-[#a46746]">Save $35</span>
-                </a>
                 <a href={urls.tenPack} target="_blank" rel="noopener noreferrer" className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm">
                   Buy 10 Pack — $360 <span className="text-[#a46746]">Save $30</span>
                 </a>

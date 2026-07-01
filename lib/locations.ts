@@ -12,13 +12,11 @@ export interface Review {
 
 export interface BookingUrls {
   casual: string;
-  fivePack: string;
   tenPack: string;
 }
 
 export const DEFAULT_BOOKING_URLS: BookingUrls = {
   casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107",
-  fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf",
   tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d",
 };
 
@@ -71,7 +69,6 @@ export const LOCATIONS: LocationData[] = [
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.8923!2d151.1217383!3d-34.0409989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12c7fedf3f0bcb%3A0xbb0f29f7be802985!2sTanned%20Co%20Caringbah!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=2",
-      fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=2",
       tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=2",
     },
     testimonials: [
@@ -121,7 +118,6 @@ export const LOCATIONS: LocationData[] = [
     ],
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=5",
-      fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=5",
       tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=5",
     },
     reviews: [
@@ -152,7 +148,6 @@ export const LOCATIONS: LocationData[] = [
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.8764!2d150.9154175!3d-33.7453629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129967ff1a664b%3A0x6e080ec7bde4fbf!2sTanned%20Co%20Kings%20Park!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=6",
-      fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=6",
       tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=6",
     },
     reviews: [
@@ -183,12 +178,11 @@ export const LOCATIONS: LocationData[] = [
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.6219!2d150.7607107!3d-34.0339258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12f10a6968beab%3A0x24895a7120d580a5!2sTanned%20Co%20Smeaton%20Grange!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=4",
-      fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=4",
       tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=4",
     },
     reviews: [
       { name: "Renee B.", suburb: "Smeaton Grange", text: "So convenient having this in Smeaton Grange! Love the privacy and the tan lasts over a week.", rating: 5 },
-      { name: "Kelly W.", suburb: "Smeaton Grange", text: "Been using Tanned Co for all my events. The 5 pack is great value and results are always beautiful.", rating: 5 },
+      { name: "Kelly W.", suburb: "Smeaton Grange", text: "Been using Tanned Co for all my events. Results are always beautiful and the booths are spotless.", rating: 5 },
       { name: "Amy P.", suburb: "Smeaton Grange", text: "The booth was warm and cozy, super easy to follow the instructions. My tan turned out perfect!", rating: 5 },
     ],
   },
@@ -214,7 +208,6 @@ export const LOCATIONS: LocationData[] = [
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.7154!2d151.232489!3d-33.8886925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12af0ecc3d173f%3A0x3d0254d5f5f12bff!2sTanned%20Co%20Woollahra!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=3",
-      fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=3",
       tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=3",
     },
     reviews: [
