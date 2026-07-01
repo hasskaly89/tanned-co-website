@@ -54,16 +54,21 @@ export default function Pricing() {
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Transparent &amp; Simple</p>
           <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Our Pricing</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">No hidden fees. Just beautiful tans at honest prices.</p>
-          <div className="grid md:grid-cols-3 gap-6">
+          <p className="text-center text-[#5a4a3a] mb-14 max-w-md mx-auto">Three ways to glow. Pick what suits you.</p>
+          <div className="grid md:grid-cols-3 gap-6 items-stretch pt-4">
 
             {/* Casual */}
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Casual Tan</p>
-              <div className="flex items-end gap-1 mb-6">
-                <span className="text-5xl font-black">$39</span>
-                <span className="text-[#5a4a3a] mb-1.5">/ session</span>
+            <div className="relative bg-white rounded-3xl p-8 border border-[#e8d9c3] shadow-sm flex flex-col hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+              <div className="flex items-center justify-between mb-6">
+                <span className="w-11 h-11 rounded-2xl bg-[#f5ecdd] text-[#a46746] flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M12 3s6 6 6 10a6 6 0 1 1-12 0c0-4 6-10 6-10z" /></svg>
+                </span>
+                <span className="bg-[#f1e7d6] text-[#8a6a4a] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Pay as you go</span>
               </div>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-2">Casual Tan</p>
+              <div className="flex items-end gap-1 mb-1"><span className="text-5xl font-black">$39</span><span className="text-[#5a4a3a] mb-1.5">/ session</span></div>
+              <p className="text-[#8a6a4a] text-sm mb-6">Single visit, no commitment</p>
+              <div className="border-t border-[#e8d9c3] mb-6" />
               <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 1x automated spray tan session</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 2 months</li>
@@ -82,12 +87,17 @@ export default function Pricing() {
             </div>
 
             {/* 10 Pack */}
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">10 Pack</p>
-              <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">$360</span>
+            <div className="relative bg-white rounded-3xl p-8 border-2 border-[#a46746]/35 shadow-md flex flex-col hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
+              <div className="flex items-center justify-between mb-6">
+                <span className="w-11 h-11 rounded-2xl bg-[#a46746]/12 text-[#a46746] flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M12 3l8 4.5-8 4.5-8-4.5L12 3z" /><path d="M4 12l8 4.5 8-4.5" /><path d="M4 16.5l8 4.5 8-4.5" /></svg>
+                </span>
+                <span className="bg-[#a46746]/12 text-[#a46746] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Save $30</span>
               </div>
-              <p className="text-[#5a4a3a] text-sm mb-6">$36 per tan · Save $30</p>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-2">10 Pack</p>
+              <div className="flex items-end gap-1 mb-1"><span className="text-5xl font-black">$360</span></div>
+              <p className="text-[#a46746] font-semibold text-sm mb-6">$36 per tan · save $30</p>
+              <div className="border-t border-[#e8d9c3] mb-6" />
               <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 10x automated spray tan sessions</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 10 months</li>
@@ -99,22 +109,26 @@ export default function Pricing() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("book_now_click", { source: "pricing_page", plan: "10_pack" })}
-                className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
+                className="block text-center border-2 border-[#a46746] text-[#a46746] py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm"
               >
                 Buy 10 Pack →
               </a>
             </div>
 
             {/* Glow Club */}
-            <div className="bg-[#1a1a1a] text-white rounded-3xl p-8 shadow-xl flex flex-col relative overflow-hidden">
-              <div className="absolute top-5 right-5 bg-[#a46746] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Best Value</div>
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Glow Club</p>
-              <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">$89</span>
-                <span className="text-white/50 mb-1.5">/ month</span>
+            <div className="relative bg-[#1a1a1a] text-white rounded-3xl p-8 shadow-2xl ring-1 ring-[#a46746]/40 flex flex-col md:scale-[1.03] md:-my-1">
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#a46746] text-white text-[11px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap">★ Best Value</div>
+              <div className="flex items-center justify-between mb-6 mt-1">
+                <span className="w-11 h-11 rounded-2xl bg-[#a46746] text-white flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17l-5.2 2.6 1-5.8L3.5 9.7l5.9-.9L12 3.5z" /></svg>
+                </span>
+                <span className="bg-white/10 text-[#e0a878] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Membership</span>
               </div>
-              <p className="text-white/50 text-sm mb-3">3 tans a month · under $30 a tan</p>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-2">Glow Club</p>
+              <div className="flex items-end gap-1 mb-1"><span className="text-5xl font-black">$89</span><span className="text-white/50 mb-1.5">/ month</span></div>
+              <p className="text-white/50 text-sm mb-2">3 tans a month · under $30 a tan</p>
               <p className="text-[#e0a878] text-sm font-semibold mb-6">3 casual tans would cost $117. You save $28 a month.</p>
+              <div className="border-t border-white/10 mb-6" />
               <ul className="space-y-3 text-white/70 text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 3-month minimum, then month-to-month</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Glow Key to all 5 locations</li>
