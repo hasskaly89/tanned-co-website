@@ -10,7 +10,6 @@ const navLinks = [
   { label: "About", href: "/about" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Membership", href: "/glow-club" },
   { label: "Locations", href: "/locations" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },

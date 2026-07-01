@@ -55,7 +55,7 @@ export default function Pricing() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Transparent &amp; Simple</p>
           <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Our Pricing</h2>
           <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">No hidden fees. Just beautiful tans at honest prices.</p>
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6">
 
             {/* Casual */}
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
@@ -105,28 +105,35 @@ export default function Pricing() {
               </a>
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* GLOW CLUB CROSS-SELL */}
-      <section className="py-12 md:py-20 bg-[#fdf6ec]">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="bg-[#1a1a1a] text-white rounded-3xl p-8 md:p-12 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
-            <div className="flex-1">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Best Value · Membership</p>
-              <h2 className="text-2xl md:text-4xl font-black uppercase mb-3">Tan often? Join Glow Club</h2>
-              <p className="text-white/70 text-sm md:text-base max-w-xl">
-                3 tans a month for $89, under $30 a tan, plus founding member perks like a Glow Key to all 5 locations and a birthday tan on us.
-              </p>
+            {/* Glow Club */}
+            <div className="bg-[#1a1a1a] text-white rounded-3xl p-8 shadow-xl flex flex-col relative overflow-hidden">
+              <div className="absolute top-5 right-5 bg-[#a46746] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Best Value</div>
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Glow Club</p>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-5xl font-black">$89</span>
+                <span className="text-white/50 mb-1.5">/ month</span>
+              </div>
+              <p className="text-white/50 text-sm mb-3">3 tans a month · under $30 a tan</p>
+              <p className="text-[#e0a878] text-sm font-semibold mb-6">3 casual tans would cost $117. You save $28 a month.</p>
+              <ul className="space-y-3 text-white/70 text-sm flex-1 mb-8">
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 3-month minimum, then month-to-month</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Glow Key to all 5 locations</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Birthday tan on us</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Founding member status</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Mate&apos;s rate</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Priority access</li>
+              </ul>
+              <a
+                href="https://tannedco.gymmasteronline.com/portal/membership/a015bd6ac18c7596fa250eed4e8ab668"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("glow_club_join_click", { source: "pricing_page", plan: "membership" })}
+                className="block text-center bg-[#a46746] text-white py-3 rounded-full font-semibold hover:bg-[#7d4e33] transition-colors text-sm"
+              >
+                Join Glow Club →
+              </a>
             </div>
-            <Link
-              href="/glow-club"
-              onClick={() => trackEvent("glow_club_view", { source: "pricing_cross_sell" })}
-              className="block text-center bg-[#a46746] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#7d4e33] transition-colors text-sm whitespace-nowrap flex-shrink-0"
-            >
-              Explore Glow Club →
-            </Link>
+
           </div>
         </div>
       </section>
