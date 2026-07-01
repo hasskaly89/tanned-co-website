@@ -7,11 +7,11 @@ const OG_IMAGE =
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Simple, transparent spray tan pricing at Tanned Co. Casual sessions from $35. Save more with 5-pack ($160) or 10-pack ($300). No hidden fees, no contracts, no awkward upsells.",
+    "Simple, transparent spray tan pricing at Tanned Co. Casual sessions from $39. Save more with 5-pack ($160) or 10-pack ($360). No hidden fees, no contracts, no awkward upsells.",
   alternates: { canonical: `${SITE_URL}/pricing` },
   openGraph: {
     title: "Pricing | Tanned Co.",
-    description: "Spray tan sessions from $35. 5-pack $160, 10-pack $300. No hidden fees.",
+    description: "Spray tan sessions from $39. 5-pack $160, 10-pack $360. No hidden fees.",
     url: `${SITE_URL}/pricing`,
     images: [{ url: OG_IMAGE, width: 1200, height: 800 }],
   },

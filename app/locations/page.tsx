@@ -10,7 +10,7 @@ import { LOCATIONS, SITE_URL } from "@/lib/locations";
 
 export const metadata: Metadata = {
   title: "Our Locations",
-  description: "5 Tanned Co. spray tan studios across Sydney. Caringbah, Edensor Park, Kings Park, Smeaton Grange and Woollahra. Open 7 days, sessions from $35.",
+  description: "5 Tanned Co. spray tan studios across Sydney. Caringbah, Edensor Park, Kings Park, Smeaton Grange and Woollahra. Open 7 days, sessions from $39.",
   alternates: { canonical: `${SITE_URL}/locations` },
   openGraph: {
     title: "Our Locations | Tanned Co.",
@@ -48,7 +48,7 @@ export default function LocationsPage() {
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Find Us</p>
           <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">5 Sydney Studios</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Private booths, flawless results, open 7 days. <Link href="/pricing" className="underline decoration-[#a46746]/40 hover:decoration-[#a46746] underline-offset-4 text-[#a46746] font-semibold">Sessions from $35</Link>.</p>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Private booths, flawless results, open 7 days. <Link href="/pricing" className="underline decoration-[#a46746]/40 hover:decoration-[#a46746] underline-offset-4 text-[#a46746] font-semibold">Sessions from $39</Link>.</p>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {LOCATIONS.map((loc) => (
@@ -99,7 +99,7 @@ export default function LocationsPage() {
             source="locations_page_cta"
             className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-10 py-4 rounded-full font-semibold transition-colors text-base"
           >
-            Book Casual Tan $35 →
+            Book Casual Tan $39 →
           </ExternalBookButton>
         </div>
       </section>

@@ -22,7 +22,7 @@ export async function generateMetadata({
   if (!loc) return {};
 
   const title = `Spray Tan ${loc.shortName}`;
-  const description = `Automated spray tanning in ${loc.shortName}, Sydney. Private VersaSpa booths, 3 signature shades, open 7 days. Sessions from $35. ${loc.fullAddress}.`;
+  const description = `Automated spray tanning in ${loc.shortName}, Sydney. Private VersaSpa booths, 3 signature shades, open 7 days. Sessions from $39. ${loc.fullAddress}.`;
 
   return {
     title,
@@ -314,13 +314,13 @@ export default async function LocationPage({
               <p className="text-[#5a4a3a] text-sm mb-8">Skip the form and book your session directly below. No account needed for casual visits.</p>
               <div className="space-y-3 mb-8">
                 <a href={urls.casual} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#a46746] hover:bg-[#7d4e33] text-white py-4 rounded-full font-bold uppercase tracking-widest transition-colors text-sm">
-                  Book Casual Tan — $35
+                  Book Casual Tan — $39
                 </a>
                 <a href={urls.fivePack} target="_blank" rel="noopener noreferrer" className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm">
-                  Buy 5 Pack — $160 <span className="text-[#a46746]">Save $15</span>
+                  Buy 5 Pack — $160 <span className="text-[#a46746]">Save $35</span>
                 </a>
                 <a href={urls.tenPack} target="_blank" rel="noopener noreferrer" className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm">
-                  Buy 10 Pack — $300 <span className="text-[#a46746]">Best Value</span>
+                  Buy 10 Pack — $360 <span className="text-[#a46746]">Save $30</span>
                 </a>
               </div>
               {/* Nearby suburbs */}

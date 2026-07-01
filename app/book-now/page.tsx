@@ -115,7 +115,7 @@ export default function BookNow() {
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
               <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Casual Tan</p>
               <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">$35</span>
+                <span className="text-5xl font-black">$39</span>
                 <span className="text-[#5a4a3a] mb-1.5">/ session</span>
               </div>
               <p className="text-[#5a4a3a] text-sm mb-6">Pay as you go</p>
@@ -146,7 +146,7 @@ export default function BookNow() {
                 <span className="text-5xl font-black">$160</span>
                 <span className="text-white/60 mb-1.5">/ 5 sessions</span>
               </div>
-              <p className="text-white/60 text-sm mb-6">$32 per tan · save $15</p>
+              <p className="text-white/60 text-sm mb-6">$32 per tan · save $35</p>
               <ul className="space-y-3 text-white/80 text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 5x automated spray tan sessions</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 6 months from purchase</li>
@@ -168,10 +168,10 @@ export default function BookNow() {
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
               <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">10 Pack</p>
               <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">$300</span>
+                <span className="text-5xl font-black">$360</span>
                 <span className="text-[#5a4a3a] mb-1.5">/ 10 sessions</span>
               </div>
-              <p className="text-[#5a4a3a] text-sm mb-6">$30 per tan · save $50</p>
+              <p className="text-[#5a4a3a] text-sm mb-6">$36 per tan · save $30</p>
               <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 10x automated spray tan sessions</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 12 months from purchase</li>

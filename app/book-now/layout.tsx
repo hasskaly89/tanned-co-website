@@ -7,12 +7,12 @@ const OG_IMAGE =
 export const metadata: Metadata = {
   title: "Book Your Tan",
   description:
-    "Book your automated spray tan at Tanned Co. online in seconds. Choose from 5 Sydney locations Caringbah, Woollahra, Kings Park, Edensor Park or Smeaton Grange. Sessions from $35.",
+    "Book your automated spray tan at Tanned Co. online in seconds. Choose from 5 Sydney locations Caringbah, Woollahra, Kings Park, Edensor Park or Smeaton Grange. Sessions from $39.",
   alternates: { canonical: `${SITE_URL}/book-now` },
   openGraph: {
     title: "Book Your Tan | Tanned Co.",
     description:
-      "Book your spray tan online in seconds. 5 Sydney locations, sessions from $35.",
+      "Book your spray tan online in seconds. 5 Sydney locations, sessions from $39.",
     url: `${SITE_URL}/book-now`,
     images: [{ url: OG_IMAGE, width: 1200, height: 800 }],
   },
