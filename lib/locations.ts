@@ -19,7 +19,7 @@ export interface BookingUrls {
 export const DEFAULT_BOOKING_URLS: BookingUrls = {
   casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107",
   fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf",
-  tenPack: "https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373",
+  tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d",
 };
 
 export interface LocationData {
@@ -72,7 +72,7 @@ export const LOCATIONS: LocationData[] = [
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=2",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=2",
-      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373?companyid=2",
+      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=2",
     },
     testimonials: [
       { name: "Shannon Harley", text: "Easy process. I popped in at 8pm on a Friday night, went home and went to bed - woke up with an even tan and ready for the weekend. Love the flexible hours!" },
@@ -122,7 +122,7 @@ export const LOCATIONS: LocationData[] = [
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=5",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=5",
-      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373?companyid=5",
+      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=5",
     },
     reviews: [
       { name: "Jessica M.", suburb: "Edensor Park", text: "Love this place! Quick, easy and the tan looks so natural. Perfect for busy mums.", rating: 5 },
@@ -153,7 +153,7 @@ export const LOCATIONS: LocationData[] = [
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=6",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=6",
-      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373?companyid=6",
+      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=6",
     },
     reviews: [
       { name: "Sarah K.", suburb: "Kings Park", text: "Amazing new studio! The booth was super easy and my tan came out perfectly even.", rating: 5 },
@@ -184,7 +184,7 @@ export const LOCATIONS: LocationData[] = [
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=4",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=4",
-      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373?companyid=4",
+      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=4",
     },
     reviews: [
       { name: "Renee B.", suburb: "Smeaton Grange", text: "So convenient having this in Smeaton Grange! Love the privacy and the tan lasts over a week.", rating: 5 },
@@ -215,7 +215,7 @@ export const LOCATIONS: LocationData[] = [
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=3",
       fivePack: "https://tannedco.gymmasteronline.com/portal/membership/73be6ac16b4b1f5ed5ebe6d51a172fdf?companyid=3",
-      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373?companyid=3",
+      tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=3",
     },
     reviews: [
       { name: "Sophie G.", suburb: "Woollahra", text: "Absolutely love the Woollahra studio. Quick, private, and my tan always looks so natural.", rating: 5 },

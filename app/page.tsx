@@ -443,7 +443,7 @@ export default function Home() {
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Best for regular tanners</li>
               </ul>
               <a
-                href="https://tannedco.gymmasteronline.com/portal/membership/3c4dc56c883b13f99d2aa42b8d765373"
+                href="https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("book_now_click", { source: "home_pricing", plan: "10_pack" })}
