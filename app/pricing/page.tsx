@@ -131,7 +131,6 @@ export default function Pricing() {
               <div className="border-t border-white/10 mb-6" />
               <ul className="space-y-3 text-white/70 text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 3-month minimum, then month-to-month</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Glow Key to all 5 locations</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Birthday tan on us</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Founding member status</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Mate&apos;s rate</li>
