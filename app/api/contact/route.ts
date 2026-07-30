@@ -4,9 +4,9 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY ?? "");
   try {
-    const { name, email, enquiryType, message } = await req.json();
+    const { name, email, phone, enquiryType, message } = await req.json();
 
-    if (!name || !email || !enquiryType || !message) {
+    if (!name || !email || !phone || !enquiryType || !message) {
       return NextResponse.json({ error: "All fields are required." }, { status: 400 });
     }
 
@@ -31,6 +31,10 @@ export async function POST(req: Request) {
               <tr>
                 <td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Email</td>
                 <td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #a46746;">${email}</a></td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Mobile</td>
+                <td style="padding: 8px 0;"><a href="tel:${phone}" style="color: #a46746;">${phone}</a></td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Enquiry Type</td>
@@ -64,6 +68,7 @@ export async function POST(req: Request) {
           body: JSON.stringify({
             name,
             email,
+            phone,
             enquiryType,
             message,
             source: "Tanned Co. Website — Contact Form",

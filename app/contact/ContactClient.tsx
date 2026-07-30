@@ -21,6 +21,7 @@ export default function ContactClient() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     enquiryType: "",
     message: "",
   });
@@ -37,7 +38,7 @@ export default function ContactClient() {
       });
       if (res.ok) {
         setStatus("success");
-        setFormData({ name: "", email: "", enquiryType: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", enquiryType: "", message: "" });
       } else {
         setStatus("error");
       }
@@ -183,6 +184,20 @@ export default function ContactClient() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="jane@example.com"
+                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
+                    Mobile Number
+                  </label>
+                  <input
+                    id="phone"
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="0400 000 000"
                     className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
                   />
                 </div>
