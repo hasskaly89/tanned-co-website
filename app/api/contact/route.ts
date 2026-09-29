@@ -4,9 +4,9 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY ?? "");
   try {
-    const { name, email, phone, enquiryType, message } = await req.json();
+    const { name, email, phone, enquiryType, location, message } = await req.json();
 
-    if (!name || !email || !phone || !enquiryType || !message) {
+    if (!name || !email || !phone || !enquiryType || !location || !message) {
       return NextResponse.json({ error: "All fields are required." }, { status: 400 });
     }
 
@@ -17,7 +17,7 @@ export async function POST(req: Request) {
         from: "Tanned Co. Website <noreply@tannedco.com.au>",
         to: ["hello@tannedco.com.au", "edensorpark@tannedco.com.au"],
         replyTo: email,
-        subject: `${enquiryType} Tanned Co Website`,
+        subject: `${enquiryType} — ${location} — Tanned Co Website`,
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #fdf6ec; border-radius: 12px;">
             <h2 style="color: #1a1a1a; margin-bottom: 4px;">New Enquiry from Tanned Co. Website</h2>
@@ -39,6 +39,10 @@ export async function POST(req: Request) {
               <tr>
                 <td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Enquiry Type</td>
                 <td style="padding: 8px 0; color: #1a1a1a;">${enquiryType}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;">Location</td>
+                <td style="padding: 8px 0; color: #1a1a1a;">${location}</td>
               </tr>
             </table>
             <hr style="border: none; border-top: 1px solid #e8d9c3; margin: 20px 0;" />
@@ -70,6 +74,7 @@ export async function POST(req: Request) {
             email,
             phone,
             enquiryType,
+            location,
             message,
             source: "Tanned Co. Website — Contact Form",
             submittedAt: new Date().toISOString(),

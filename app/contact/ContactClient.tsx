@@ -17,12 +17,22 @@ const enquiryTypes = [
   "Other",
 ];
 
+const locations = [
+  "Caringbah",
+  "Edensor Park",
+  "Kings Park",
+  "Smeaton Grange",
+  "Woollahra",
+  "Not location specific / General",
+];
+
 export default function ContactClient() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     enquiryType: "",
+    location: "",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -38,7 +48,7 @@ export default function ContactClient() {
       });
       if (res.ok) {
         setStatus("success");
-        setFormData({ name: "", email: "", phone: "", enquiryType: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", enquiryType: "", location: "", message: "" });
       } else {
         setStatus("error");
       }
@@ -215,6 +225,23 @@ export default function ContactClient() {
                     <option value="" disabled>Select an option...</option>
                     {enquiryTypes.map((type) => (
                       <option key={type} value={type}>{type}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="location" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
+                    Location
+                  </label>
+                  <select
+                    id="location"
+                    required
+                    value={formData.location}
+                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] focus:outline-none focus:border-[#a46746] transition-colors appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>Select a location...</option>
+                    {locations.map((loc) => (
+                      <option key={loc} value={loc}>{loc}</option>
                     ))}
                   </select>
                 </div>
