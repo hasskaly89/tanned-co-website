@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { LOCATIONS } from "@/lib/locations";
 import type { GoogleReview } from "@/lib/google-reviews";
+import RepuReviews from "@/components/RepuReviews";
 
 type Summary = {
   available: boolean;
@@ -24,7 +25,7 @@ function Stars({ count }: { count: number }) {
   );
 }
 
-/** Homepage reviews: live Google rating and reviews across all 5 studios. */
+/** Homepage reviews: Repu reviews widget, plus the live Google rating and review count across all 5 studios when the Places API key is set. */
 export default function GoogleReviews() {
   const [data, setData] = useState<Summary | null>(null);
 
@@ -65,20 +66,7 @@ export default function GoogleReviews() {
           )}
         </div>
 
-        {live && live.reviews && live.reviews.length > 0 && (
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {live.reviews.map((r, i) => (
-              <figure key={`${r.author}-${i}`} className="bg-[#fdf6ec] rounded-2xl p-6 border border-[#e8d9c3] flex flex-col gap-3">
-                <Stars count={r.rating} />
-                <blockquote className="text-[#3a2e24] text-sm leading-relaxed flex-1">&ldquo;{r.text.length > 280 ? `${r.text.slice(0, 277).trimEnd()}…` : r.text}&rdquo;</blockquote>
-                <figcaption className="border-t border-[#e8d9c3] pt-3">
-                  <p className="font-bold text-[#1a1a1a] text-sm">{r.author}</p>
-                  <p className="text-[#a46746] text-xs tracking-wider">{r.studio} · {r.relativeTime} on Google</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        )}
+        <RepuReviews />
 
         <div className="text-center mt-10">
           <p className="text-sm font-semibold tracking-wider uppercase text-[#a46746] mb-3">Read our reviews on Google</p>
