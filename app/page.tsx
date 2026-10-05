@@ -29,7 +29,7 @@ const ORG_SCHEMA = {
   telephone: "+611300826633",
   email: "hello@tannedco.com.au",
   description:
-    "Sydney's first automated spray tanning studio — private VersaSpa booths, streak-free results, open 7 days.",
+    "Sydney's first automated spray tanning studio. Private VersaSpa booths, streak-free results, open 7 days.",
   image: IMGS.hero,
   priceRange: "$$",
   openingHoursSpecification: SCHEMA_OPENING_HOURS,
@@ -170,7 +170,7 @@ export default function Home() {
           >
             ✨ First Timer?{" "}
             <strong className="text-[#a46746] underline underline-offset-2">Get 10% off your first tan</strong>
-            {" "}— tap to claim
+            {" "}· tap to claim
           </button>
           <button
             onClick={() => setPromoVisible(false)}

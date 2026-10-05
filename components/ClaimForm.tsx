@@ -71,7 +71,7 @@ export default function ClaimForm({ location }: { location: string }) {
             </p>
             <ul className="space-y-3">
               {[
-                "Private, locked booth — just you",
+                "Private, locked booth, just you",
                 "4 minutes in the booth",
                 "Open 7 days, 6am to midnight",
                 "Natural-looking colour, no orange",

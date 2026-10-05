@@ -38,7 +38,7 @@ export async function POST(req: Request) {
         from: "Tanned Co. Website <noreply@tannedco.com.au>",
         to: ["hello@tannedco.com.au", "edensorpark@tannedco.com.au"],
         replyTo: email,
-        subject: `${enquiryType} — ${location} — Tanned Co Website`.replace(/[\r\n]+/g, " "),
+        subject: `${enquiryType} | ${location} | Tanned Co Website`.replace(/[\r\n]+/g, " "),
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #fdf6ec; border-radius: 12px;">
             <h2 style="color: #1a1a1a; margin-bottom: 4px;">New Enquiry from Tanned Co. Website</h2>
@@ -97,7 +97,7 @@ export async function POST(req: Request) {
             enquiryType,
             location,
             message,
-            source: "Tanned Co. Website — Contact Form",
+            source: "Tanned Co. Website: Contact Form",
             submittedAt: new Date().toISOString(),
           }),
         })

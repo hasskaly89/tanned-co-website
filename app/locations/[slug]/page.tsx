@@ -40,7 +40,7 @@ export async function generateMetadata({
 }
 
 const steps = [
-  { num: "01", title: "Book Online or via App", text: "Pick your time in seconds. Open 7 days, 6am to midnight — fit it around your day." },
+  { num: "01", title: "Book Online or via App", text: "Pick your time in seconds. Open 7 days, 6am to midnight, to fit around your day." },
   { num: "02", title: "Check In with the App", text: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, check in again to open your private room." },
   { num: "03", title: "Leave Glowing", text: "Rinse your hands after 30 mins. Rinse off after 6 to 8 hours (2 to 3 for Rapid Venetian). Full colour develops over 24 hours." },
 ];
@@ -49,7 +49,7 @@ const studioFeatures = [
   { icon: "🔒", title: "Completely Private", text: "Your own locked booth. No staff, no awkward moments. Just you and your perfect tan." },
   { icon: "☀️", title: "3 Signature Shades", text: "Malibu, Monterey or Rapid Venetian. Three depth levels each so you always get exactly the right glow." },
   { icon: "✨", title: "Rapid Results", text: "4 minutes in the booth. See colour in 2 to 3 hours and full colour within 24 hours. Lasts up to 7 days with proper care." },
-  { icon: "📱", title: "Book in Seconds", text: "Download the Tanned Co. app or book online. No phone calls, no waiting — sorted in under a minute." },
+  { icon: "📱", title: "Book in Seconds", text: "Download the Tanned Co. app or book online. No phone calls, no waiting. Sorted in under a minute." },
 ];
 
 export default async function LocationPage({
@@ -104,7 +104,7 @@ export default async function LocationPage({
               extraParams={{ plan: "casual", location_slug: loc.slug }}
               className="bg-[#a46746] hover:bg-[#7d4e33] text-white font-bold uppercase tracking-widest px-7 py-4 rounded-full transition-colors text-sm"
             >
-              Book a Tan — {formatAud(CASUAL.price)} →
+              Book a Tan · {formatAud(CASUAL.price)} →
             </ExternalBookButton>
             <a
               href="#claim"
@@ -324,10 +324,10 @@ export default async function LocationPage({
               <p className="text-[#5a4a3a] text-sm mb-8">Skip the form and book your session directly below. No account needed for casual visits.</p>
               <div className="space-y-3 mb-8">
                 <a href={urls.casual} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#a46746] hover:bg-[#7d4e33] text-white py-4 rounded-full font-bold uppercase tracking-widest transition-colors text-sm">
-                  Book Casual Tan — {formatAud(CASUAL.price)}
+                  Book Casual Tan · {formatAud(CASUAL.price)}
                 </a>
                 <a href={urls.tenPack} target="_blank" rel="noopener noreferrer" className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm">
-                  Buy 10 Pack — {formatAud(TEN_PACK.price)} <span className="text-[#a46746]">Save {formatAud(TEN_PACK.saving)}</span>
+                  Buy 10 Pack · {formatAud(TEN_PACK.price)} <span className="text-[#a46746]">Save {formatAud(TEN_PACK.saving)}</span>
                 </a>
               </div>
               {/* Nearby suburbs */}

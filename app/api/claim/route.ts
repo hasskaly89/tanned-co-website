@@ -88,7 +88,7 @@ export async function POST(req: Request) {
     consentVersion: consentVersion || "unknown",
     consentText: marketingConsent ? MARKETING_CONSENT_TEXT : "",
     consentAt: marketingConsent ? submittedAt : "",
-    consentSource: `Tanned Co. Website — ${location}`,
+    consentSource: `Tanned Co. Website: ${location}`,
   };
 
   const sheetsWebhook = process.env.GOOGLE_SHEETS_WEBHOOK;
@@ -131,10 +131,10 @@ export async function POST(req: Request) {
       from: "Tanned Co. Website <noreply@tannedco.com.au>",
       to: ["hello@tannedco.com.au", "edensorpark@tannedco.com.au"],
       replyTo: email,
-      subject: `${crm.ok ? "" : "[ACTION NEEDED: CRM FAILED] "}New 10% Off Lead — ${location}`.replace(/[\r\n]+/g, " "),
+      subject: `${crm.ok ? "" : "[ACTION NEEDED: CRM FAILED] "}New 10% Off Lead: ${location}`.replace(/[\r\n]+/g, " "),
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #fdf6ec; border-radius: 12px;">
-          <h2 style="color: #1a1a1a; margin-bottom: 4px;">New Lead — 10% Off Claim</h2>
+          <h2 style="color: #1a1a1a; margin-bottom: 4px;">New Lead: 10% Off Claim</h2>
           <p style="color: #a46746; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0;">${escapeHtml(location)}</p>
           ${crm.ok ? "" : `<p style="background:#f8e6e3;color:#a1352a;padding:12px;border-radius:8px;"><strong>The CRM did not accept this lead, so no SMS was sent.</strong> Please send the 10% off code manually and add the contact to the CRM.</p>`}
           <table style="width: 100%; border-collapse: collapse;">
@@ -142,7 +142,7 @@ export async function POST(req: Request) {
             <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #a46746;">${escapeHtml(email)}</a></td></tr>
             <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Mobile</td><td style="padding: 8px 0; color: #1a1a1a;">${escapeHtml(phone)}</td></tr>
             <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Location</td><td style="padding: 8px 0; color: #1a1a1a;">${escapeHtml(location)}</td></tr>
-            <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Marketing consent</td><td style="padding: 8px 0; color: #1a1a1a;">${marketingConsent ? `Yes (${escapeHtml(consent.consentVersion)}, ${escapeHtml(submittedAt)})` : "No — offer only"}</td></tr>
+            <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Marketing consent</td><td style="padding: 8px 0; color: #1a1a1a;">${marketingConsent ? `Yes (${escapeHtml(consent.consentVersion)}, ${escapeHtml(submittedAt)})` : "No (offer only)"}</td></tr>
             <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Source</td><td style="padding: 8px 0; color: #1a1a1a;">${escapeHtml(attribution.utm_source ?? attribution.referrer ?? "Direct / unknown")}</td></tr>
           </table>
           <p style="color: #9a8a7a; font-size: 12px;">CRM: ${crm.ok ? "accepted" : "FAILED"} · Sheet: ${sheet.ok ? "logged" : "not logged"}</p>

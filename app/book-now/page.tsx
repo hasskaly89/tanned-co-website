@@ -128,7 +128,7 @@ export default function BookNow() {
             Book &amp; Manage in the App
           </h2>
           <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Download the Tanned Co. app to book sessions, manage your membership, and check your nearest location — all from your phone.
+            Download the Tanned Co. app to book sessions, manage your membership, and check your nearest location, all from your phone.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
