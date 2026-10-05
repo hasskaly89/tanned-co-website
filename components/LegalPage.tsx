@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 
 // While true, legal pages show a review notice. Set to false once the owner
 // (and ideally a lawyer) has approved the wording.
-export const LEGAL_DRAFT = true;
+export const LEGAL_DRAFT = false;
 
 export default function LegalPage({
   title,
