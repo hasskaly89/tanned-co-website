@@ -50,6 +50,7 @@ export default function FAQClient() {
                     <div key={key} className="bg-white rounded-2xl overflow-hidden border border-[#e8d9c3]">
                       <button
                         onClick={() => toggle(key)}
+                        aria-expanded={openItem === key}
                         className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-[#1a1a1a] hover:bg-[#fdf6ec] transition-colors"
                       >
                         <span className="pr-4">{faq.q}</span>

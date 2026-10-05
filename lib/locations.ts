@@ -99,23 +99,11 @@ export const LOCATIONS: LocationData[] = [
     lng: 150.877011,
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg",
-    phone: "0434 287 198",
+    phone: "1300 826 633",
     nearbySuburbs: ["Wetherill Park", "Bossley Park", "Prairiewood", "Greenfield Park", "St Johns Park"],
     parkingNote: "Free parking available in the shopping complex car park.",
     placeId: "ChIJEYBmsIqXEmtX8pY2qy_0Bw",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.5167046702772!2d150.87214544797754!3d-33.876344150603344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12978ab0668011%3A0x7f42fab3696f257!2sTanned%20Co%20Edensor%20Park!5e0!3m2!1sen!2sus!4v1775535255079!5m2!1sen!2sus",
-    testimonials: [
-      { name: "Shannon Harley", text: "Easy process. I popped in at 8pm on a Friday night, went home and went to bed - woke up with an even tan and ready for the weekend. Love the flexible hours!" },
-      { name: "Angela Maclean", text: "The booking process was seamless and super easy, and I loved how simple the tanning booth was to use. The studio was spotless, and the location is so convenient. Definitely my go-to for a great tan!" },
-      { name: "Natalie Brame", text: "Love love love! So helpful when I reached out over the phone. Tan were quick, simple & no awkwardness. Thank you!" },
-      { name: "Bridget Halliday", text: "Two words ... GAME CHANGER 🙌 I've tried many tans on the market, but always was left unhappy. Finding Tanned Co has not only saved me time and money, but it has helped me find the perfect bronzed look! The 4-minute experience is quick, efficient and perfect for my schedule." },
-      { name: "Olivia Whyte", text: "Tried the 2 hour rapid tan over the weekend, highly recommend. Love how it went on clear so I could continue on to do the grocery shopping without getting any awkward looks. Will definitely use the 2 hour again." },
-      { name: "Amy Garrill", text: "Love coming to Tanned Co! Such an easy and convenient way to get tanned and ready for the weekend. Tan is always even and perfect colour. Takes the anxiety out of going to a beautician!" },
-      { name: "Debbie Smith", text: "Great little space to get your tan on. Super easy, super quick and super impressed with the results." },
-      { name: "Britt Vibes", text: "I was sceptical because I've had auto tans before and it wasn't great but this is a game changer. The tan was super quick and came out really even, and I didn't have to get naked in front of a stranger. Amazing." },
-      { name: "April Sargeson", text: "Such an amazing experience! It's hard finding time for a tan being a Mum so I love that there are so many late appointments available once bub is in bed. Beautiful, even tan every time!" },
-      { name: "Bek Davis", text: "The most even and beautiful spray tan I have ever had! Obsessed after the first use and have been back multiple times since! Highly recommend this stunning boutique tanning studio!! Love it 10/10!!" },
-    ],
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=5",
       tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=5",
@@ -217,3 +205,34 @@ export const LOCATIONS: LocationData[] = [
     ],
   },
 ];
+
+/** "1300 826 633" -> "+611300826633", "0434 287 198" -> "+61434287198" */
+export function phoneToE164(phone: string): string {
+  const digits = phone.replace(/\D/g, "");
+  return digits.startsWith("0") ? `+61${digits.slice(1)}` : `+61${digits}`;
+}
+
+/** Structured-data opening hours. Studios are open 6am to midnight, 7 days. */
+export const SCHEMA_OPENING_HOURS = [
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ],
+    opens: "06:00",
+    closes: "23:59",
+  },
+];
+
+export type BookingPlan = keyof BookingUrls;
+
+/** GymMaster URL for a studio, falling back to the generic portal link. */
+export function bookingUrlFor(loc: LocationData, plan: BookingPlan): string {
+  return { ...DEFAULT_BOOKING_URLS, ...loc.bookingUrls }[plan];
+}

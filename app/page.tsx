@@ -9,17 +9,64 @@ import Footer from "@/components/Footer";
 import InstagramFeed from "@/components/InstagramFeed";
 import GoogleReviews from "@/components/GoogleReviews";
 import TrustBadges from "@/components/TrustBadges";
-import { LOCATIONS } from "@/lib/locations";
+import StudioBookButton from "@/components/StudioBookButton";
+import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud } from "@/lib/pricing";
+import { LOCATIONS, SCHEMA_OPENING_HOURS, SITE_URL, phoneToE164 } from "@/lib/locations";
 
 const IMGS = {
   hero: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
   about: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg",
 };
 
-// Testimonials array kept for potential future use
-const _testimonials = [
-  { name: "", location: "", text: "", stars: 5 },
-];
+// Structured data is generated from lib/locations.ts so hours, phones and
+// coordinates cannot drift. No aggregateRating: Google requires review markup
+// to match reviews visible on the page.
+const ORG_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  name: "Tanned Co.",
+  url: SITE_URL,
+  telephone: "+611300826633",
+  email: "hello@tannedco.com.au",
+  description:
+    "Sydney's first automated spray tanning studio — private VersaSpa booths, streak-free results, open 7 days.",
+  image: IMGS.hero,
+  priceRange: "$$",
+  openingHoursSpecification: SCHEMA_OPENING_HOURS,
+  sameAs: [
+    "https://instagram.com/tannedco_",
+    "https://www.tiktok.com/@tannedco_",
+    "https://www.facebook.com/profile.php?id=100086326464692",
+  ],
+};
+
+const LOCATION_LIST_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: LOCATIONS.map((loc, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "BeautySalon",
+      "@id": `${SITE_URL}/locations/${loc.slug}`,
+      name: loc.fullName,
+      url: `${SITE_URL}/locations/${loc.slug}`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: loc.address,
+        addressLocality: loc.suburb,
+        addressRegion: loc.state,
+        postalCode: loc.postcode,
+        addressCountry: "AU",
+      },
+      geo: { "@type": "GeoCoordinates", latitude: loc.lat, longitude: loc.lng },
+      telephone: phoneToE164(loc.phone),
+      email: "hello@tannedco.com.au",
+      priceRange: "$$",
+      openingHoursSpecification: SCHEMA_OPENING_HOURS,
+    },
+  })),
+};
 
 const faqs = [
   {
@@ -32,7 +79,7 @@ const faqs = [
   },
   {
     q: "How long does a spray tan last?",
-    a: "Most clients find their tan lasts 5–7 days with proper aftercare. Moisturising daily and avoiding long hot showers will help extend your glow.",
+    a: "A spray tan lasts up to 7 days with proper aftercare. Moisturising daily and avoiding long hot showers will help extend your glow.",
   },
   {
     q: "Is it really completely private?",
@@ -53,109 +100,19 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
 
-      {/* LOCAL BUSINESS SCHEMA all locations */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BeautySalon",
-            name: "Tanned Co.",
-            url: "https://www.tannedco.com.au",
-            telephone: "+611300826633",
-            email: "hello@tannedco.com.au",
-            description:
-              "Sydney's first automated spray tanning studio — private VersaSpa booths, streak-free results, open 7 days.",
-            image:
-              "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
-            priceRange: "$$",
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: "4.9",
-              reviewCount: "200",
-              bestRating: "5",
-              worstRating: "1",
-            },
-            sameAs: [
-              "https://instagram.com/tannedco_",
-              "https://www.tiktok.com/@tannedco_",
-              "https://www.facebook.com/profile.php?id=100086326464692",
-            ],
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
       />
-      {/* ITEM LIST SCHEMA individual LocalBusiness entries */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            itemListElement: [
-              {
-                "@type": "BeautySalon",
-                name: "Tanned Co Caringbah",
-                address: { "@type": "PostalAddress", streetAddress: "349B Kingsway", addressLocality: "Caringbah", addressRegion: "NSW", postalCode: "2229", addressCountry: "AU" },
-                geo: { "@type": "GeoCoordinates", latitude: -34.0395, longitude: 151.1220 },
-                telephone: "+611300826633",
-                email: "hello@tannedco.com.au",
-                openingHours: "Mo-Su 08:00-20:00",
-                priceRange: "$$",
-                aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
-              },
-              {
-                "@type": "BeautySalon",
-                name: "Tanned Co Edensor Park",
-                address: { "@type": "PostalAddress", streetAddress: "Shop 6/207 Edensor Rd", addressLocality: "Edensor Park", addressRegion: "NSW", postalCode: "2176", addressCountry: "AU" },
-                geo: { "@type": "GeoCoordinates", latitude: -33.8770, longitude: 150.8840 },
-                telephone: "+611300826633",
-                email: "hello@tannedco.com.au",
-                openingHours: "Mo-Su 08:00-20:00",
-                priceRange: "$$",
-                aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
-              },
-              {
-                "@type": "BeautySalon",
-                name: "Tanned Co Kings Park",
-                address: { "@type": "PostalAddress", streetAddress: "6/2 Garling Rd", addressLocality: "Kings Park", addressRegion: "NSW", postalCode: "2148", addressCountry: "AU" },
-                geo: { "@type": "GeoCoordinates", latitude: -33.7380, longitude: 150.9060 },
-                telephone: "+611300826633",
-                email: "hello@tannedco.com.au",
-                openingHours: "Mo-Su 08:00-20:00",
-                priceRange: "$$",
-                aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
-              },
-              {
-                "@type": "BeautySalon",
-                name: "Tanned Co Smeaton Grange",
-                address: { "@type": "PostalAddress", streetAddress: "1/73-77 Anderson Rd", addressLocality: "Smeaton Grange", addressRegion: "NSW", postalCode: "2567", addressCountry: "AU" },
-                geo: { "@type": "GeoCoordinates", latitude: -34.0500, longitude: 150.7630 },
-                telephone: "+611300826633",
-                email: "hello@tannedco.com.au",
-                openingHours: "Mo-Su 08:00-20:00",
-                priceRange: "$$",
-                aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
-              },
-              {
-                "@type": "BeautySalon",
-                name: "Tanned Co Woollahra",
-                address: { "@type": "PostalAddress", streetAddress: "8 Oxford St", addressLocality: "Woollahra", addressRegion: "NSW", postalCode: "2025", addressCountry: "AU" },
-                geo: { "@type": "GeoCoordinates", latitude: -33.8860, longitude: 151.2400 },
-                telephone: "+611300826633",
-                email: "hello@tannedco.com.au",
-                openingHours: "Mo-Su 08:00-20:00",
-                priceRange: "$$",
-                aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "200" },
-              },
-            ],
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCATION_LIST_SCHEMA) }}
       />
 
       {/* ANNOUNCEMENT BANNER */}
       {bannerVisible && (
         <div className="hidden md:flex fixed top-0 left-0 right-0 z-60 bg-[#a46746] text-white text-sm py-2.5 px-4 items-center justify-center gap-3">
-          <span>✨ New location now open in Kings Park, Sydney <Link href="/contact" className="underline font-semibold hover:text-white/80 transition-colors">find us here</Link></span>
+          <span>✨ New location now open in Kings Park, Sydney <Link href="/locations/kings-park" className="underline font-semibold hover:text-white/80 transition-colors">find us here</Link></span>
           <button
             onClick={() => setBannerVisible(false)}
             className="absolute right-4 text-white/70 hover:text-white text-lg leading-none transition-colors"
@@ -212,7 +169,7 @@ export default function Home() {
             className="text-sm text-[#3a2e24] hover:text-[#1a1a1a] transition-colors cursor-pointer"
           >
             ✨ First Timer?{" "}
-            <strong className="text-[#a46746] underline underline-offset-2">Unlock Your Exclusive Offer</strong>
+            <strong className="text-[#a46746] underline underline-offset-2">Get 10% off your first tan</strong>
             {" "}— tap to claim
           </button>
           <button
@@ -298,12 +255,12 @@ export default function Home() {
               <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Rapid Venetian · Medium</p>
             </div>
 
-            {/* Pair 2 Malibu Light */}
+            {/* Pair 2 Malibu Medium */}
             <div className="space-y-3">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
                 <Image
                   src="/before-after-tan.jpg"
-                  alt="Before and after Malibu Light spray tan"
+                  alt="Before and after Malibu Medium spray tan"
                   fill
                   className="object-cover object-center"
                 />
@@ -347,9 +304,9 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { num: "01", title: "Download & Book", desc: "Choose your location, date and time through our easy online booking system or via our app." },
-              { num: "02", title: "Check In & Prep", desc: "Use the Bluetooth reader to access the salon and your tan room. Remove jewellery and makeup, then apply your hair net, sticky feet and barrier cream." },
+              { num: "02", title: "Check In & Prep", desc: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, check in again to open your room. Remove jewellery and makeup, then apply your hair net, sticky feet and barrier cream." },
               { num: "03", title: "Select & Spray", desc: "Choose your shade and depth from the in-room tan menu, enter your code, and step into the booth. Voice prompts guide you through every position." },
-              { num: "04", title: "Walk Out Glowing", desc: "Develop for 6–8 hours then shower to reveal your glow or 2–3 hours with our Rapid Venetian tan." },
+              { num: "04", title: "Walk Out Glowing", desc: "Rinse after 6–8 hours for Malibu and Monterey, or 2–3 hours for Rapid Venetian. Your full colour develops over 24 hours." },
             ].map(({ num, title, desc }) => (
               <div key={num} className="border border-[#e8d9c3] rounded-3xl p-8 hover:border-[#a46746] transition-colors">
                 <p className="text-4xl font-black text-[#a46746] mb-4">{num}</p>
@@ -377,55 +334,72 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Transparent &amp; Simple</p>
           <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Our Pricing</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">No hidden fees. Just beautiful tans at honest prices.</p>
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">Simple, upfront prices. Full terms are on our <Link href="/pricing" className="underline">pricing page</Link>.</p>
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
 
             {/* Casual */}
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
               <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Casual Tan</p>
-              <div className="flex items-end gap-1 mb-6">
-                <span className="text-5xl font-black">$39</span>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-5xl font-black">{formatAud(CASUAL.price)}</span>
                 <span className="text-[#5a4a3a] mb-1.5">/ session</span>
               </div>
+              <p className="text-[#5a4a3a] text-sm mb-6">Pay as you go, no commitment</p>
               <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 1x automated spray tan session</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 2 months</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Pay when you book your time</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Private booth experience</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your shade &amp; depth</li>
               </ul>
-              <a
-                href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent("book_now_click", { source: "home_pricing", plan: "casual" })}
-                className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
-              >
-                Book Casual Tan →
-              </a>
+              <StudioBookButton
+                plan="casual"
+                source="home_pricing"
+                label="Book Casual Tan →"
+                buttonClassName="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
+              />
             </div>
 
             {/* 10 Pack */}
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
               <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">10 Pack</p>
               <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">$360</span>
+                <span className="text-5xl font-black">{formatAud(TEN_PACK.price)}</span>
               </div>
-              <p className="text-[#5a4a3a] text-sm mb-6">$36 per tan · Save $30</p>
+              <p className="text-[#5a4a3a] text-sm mb-6">{formatAud(TEN_PACK.perTan)} per tan · Save {formatAud(TEN_PACK.saving)}</p>
               <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 10x automated spray tan sessions</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 10 months</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {TEN_PACK.sessions}x automated spray tan sessions</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for {TEN_PACK.validity}</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Name-specific booking</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Best for regular tanners</li>
               </ul>
-              <a
-                href="https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent("book_now_click", { source: "home_pricing", plan: "10_pack" })}
-                className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
+              <StudioBookButton
+                plan="tenPack"
+                source="home_pricing"
+                label="Buy 10 Pack →"
+                buttonClassName="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
+              />
+            </div>
+
+            {/* Glow Club */}
+            <div className="bg-[#1a1a1a] text-white rounded-3xl p-8 shadow-sm flex flex-col">
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#e0a878] mb-3">Glow Club Membership</p>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-5xl font-black">{formatAud(GLOW_CLUB.monthly)}</span>
+                <span className="text-white/60 mb-1.5">/ month</span>
+              </div>
+              <p className="text-white/60 text-sm mb-6">{GLOW_CLUB.tansPerMonth} tans a month · under $30 a tan</p>
+              <ul className="space-y-3 text-white/80 text-sm flex-1 mb-8">
+                <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_CLUB.tansPerMonth} automated spray tans every month</li>
+                <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> Best value for regular tanners</li>
+                <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_CLUB.minimumMonths}-month minimum ({formatAud(GLOW_CLUB.minimumTotal)} in total), then month to month</li>
+              </ul>
+              <Link
+                href="/glow-club"
+                onClick={() => trackEvent("glow_club_click", { source: "home_pricing" })}
+                className="block text-center bg-white text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#f5e6cc] transition-colors text-sm"
               >
-                Buy 10 Pack →
-              </a>
+                See Glow Club →
+              </Link>
             </div>
 
           </div>
@@ -445,6 +419,7 @@ export default function Home() {
               <div key={i} className="bg-white rounded-2xl overflow-hidden border border-[#e8d9c3]">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
                   className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-[#1a1a1a] hover:bg-[#fdf6ec] transition-colors"
                 >
                   <span className="pr-4">{faq.q}</span>

@@ -10,6 +10,7 @@ const navLinks = [
   { label: "About", href: "/about" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
+  { label: "Glow Club", href: "/glow-club" },
   { label: "Locations", href: "/locations" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
@@ -25,7 +26,7 @@ export default function Navbar({ activePath = "/", withBanner = false }: { activ
           <Image src="/logo.png" alt="Tanned Co." width={300} height={112} className="h-16 md:h-20 w-auto object-contain" />
         </Link>
 
-        <div className="hidden lg:flex items-center gap-5 text-sm font-medium tracking-wide uppercase">
+        <div className="hidden lg:flex items-center gap-4 xl:gap-5 text-[13px] xl:text-sm font-medium tracking-wide uppercase">
           {navLinks.map((l) => (
             <Link
               key={l.href}
@@ -66,6 +67,8 @@ export default function Navbar({ activePath = "/", withBanner = false }: { activ
           onClick={() => setMenuOpen(!menuOpen)}
           className="lg:hidden flex flex-col gap-1.5 p-2"
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span className={`block w-6 h-0.5 bg-[#1a1a1a] transition-transform duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
           <span className={`block w-6 h-0.5 bg-[#1a1a1a] transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
@@ -74,7 +77,7 @@ export default function Navbar({ activePath = "/", withBanner = false }: { activ
       </div>
 
       {menuOpen && (
-        <div className="lg:hidden bg-[#fdf6ec] border-t border-[#e8d9c3] px-6 py-6 flex flex-col gap-5">
+        <div id="mobile-menu" className="lg:hidden bg-[#fdf6ec] border-t border-[#e8d9c3] px-6 py-6 flex flex-col gap-5">
           {navLinks.map((l) => (
             <Link
               key={l.href}

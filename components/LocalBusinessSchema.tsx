@@ -1,24 +1,7 @@
-import { LOCATIONS, SITE_URL } from "@/lib/locations";
+import { LOCATIONS, SCHEMA_OPENING_HOURS, SITE_URL, phoneToE164 } from "@/lib/locations";
 
 const OG_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg";
-
-const OPENING_HOURS = [
-  {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ],
-    opens: "08:00",
-    closes: "20:00",
-  },
-];
 
 /** Renders one JSON-LD <script> per location (or just for a single location when slug provided). */
 export default function LocalBusinessSchema({ slug }: { slug?: string }) {
@@ -33,7 +16,7 @@ export default function LocalBusinessSchema({ slug }: { slug?: string }) {
       "Sydney's automated spray tanning studio private VersaSpa booths, streak-free results, open 7 days.",
     image: OG_IMAGE,
     url: `${SITE_URL}/locations/${loc.slug}`,
-    telephone: "+611300826633",
+    telephone: phoneToE164(loc.phone),
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
@@ -49,15 +32,9 @@ export default function LocalBusinessSchema({ slug }: { slug?: string }) {
       longitude: loc.lng,
     },
     hasMap: loc.mapsUrl,
-    openingHoursSpecification: OPENING_HOURS,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "200",
-      bestRating: "5",
-    },
+    openingHoursSpecification: SCHEMA_OPENING_HOURS,
     sameAs: [
-      "http://instagram.com/tannedco_",
+      "https://instagram.com/tannedco_",
       "https://www.tiktok.com/@tannedco_",
       "https://www.facebook.com/profile.php?id=100086326464692",
     ],
