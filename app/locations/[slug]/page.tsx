@@ -9,6 +9,7 @@ import ExternalBookButton from "@/components/ExternalBookButton";
 import { LOCATIONS, SITE_URL, bookingUrlFor } from "@/lib/locations";
 import { getPlaceReviews } from "@/lib/google-reviews";
 import GoogleReviewCards from "@/components/GoogleReviewCards";
+import RepuReviews from "@/components/RepuReviews";
 import { CASUAL, TEN_PACK, formatAud } from "@/lib/pricing";
 
 export function generateStaticParams() {
@@ -67,7 +68,8 @@ export default async function LocationPage({
   // the page shows no rating or review count rather than made-up numbers.
   const google = await getPlaceReviews(loc);
   const googleUrl = google?.mapsUrl ?? loc.mapsUrl;
-  const showTestimonials = !google?.reviews.length && !!loc.testimonials?.length;
+  // Reviews: the studio's Repu widget when it has one, otherwise live Google reviews.
+  const showGoogleCards = !loc.repuWidgetKey && !!google?.reviews.length;
 
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
@@ -138,7 +140,22 @@ export default async function LocationPage({
       <ClaimForm location={loc.shortName} />
 
       {/* ── REVIEWS ── */}
-      {google && google.reviews.length > 0 && (
+      {loc.repuWidgetKey && (
+        <section className="py-14 md:py-20 bg-[#fdf6ec]">
+          <div className="max-w-6xl mx-auto px-6">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">Google Reviews</p>
+            <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-10">What {loc.shortName} Clients Say</h2>
+            <RepuReviews widgetKey={loc.repuWidgetKey} />
+            <div className="text-center mt-8">
+              <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1a1a1a] hover:text-white transition-colors">
+                Read all {loc.shortName} reviews on Google →
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {showGoogleCards && google && (
         <section className="py-14 md:py-20 bg-[#fdf6ec]">
           <div className="max-w-6xl mx-auto px-6">
             <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">Google Reviews</p>
@@ -163,24 +180,7 @@ export default async function LocationPage({
         </section>
       )}
 
-      {showTestimonials && (
-        <section className="py-14 md:py-20 bg-[#fdf6ec]">
-          <div className="max-w-6xl mx-auto px-6">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">{loc.shortName} Clients</p>
-            <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-10">What Our Clients Say</h2>
-            <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
-              {loc.testimonials!.map(({ name, text }) => (
-                <figure key={name} className="break-inside-avoid bg-white rounded-2xl p-6 border border-[#e8d9c3]">
-                  <blockquote className="text-[#3a2e24] text-sm leading-relaxed mb-4">&ldquo;{text}&rdquo;</blockquote>
-                  <figcaption className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{name}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {!google?.reviews.length && (
+      {!loc.repuWidgetKey && !showGoogleCards && (
         <div className="pb-4 bg-[#fdf6ec] text-center">
           <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-10 border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1a1a1a] hover:text-white transition-colors">
             Read our {loc.shortName} reviews on Google →
