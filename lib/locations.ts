@@ -30,6 +30,8 @@ export interface LocationData {
   bookingUrls?: BookingUrls;
   /** Repu.ai reviews widget key for this studio (from the Repu dashboard). */
   repuWidgetKey?: string;
+  /** Show reviews from all studios instead of this studio's own widget (e.g. while it has few reviews). */
+  showAllStudioReviews?: boolean;
 }
 
 export const SITE_URL = "https://www.tannedco.com.au";
@@ -90,6 +92,7 @@ export const LOCATIONS: LocationData[] = [
   {
     slug: "kings-park",
     repuWidgetKey: "64c6b00452e132ad",
+    showAllStudioReviews: true,
     shortName: "Kings Park",
     fullName: "Tanned Co. Kings Park",
     address: "6/2 Garling Rd",
@@ -116,6 +119,7 @@ export const LOCATIONS: LocationData[] = [
   {
     slug: "smeaton-grange",
     repuWidgetKey: "36f5928bed8c2ed6",
+    showAllStudioReviews: true,
     shortName: "Smeaton Grange",
     fullName: "Tanned Co. Smeaton Grange",
     address: "1/73-77 Anderson Rd",
