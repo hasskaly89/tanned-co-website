@@ -3,7 +3,7 @@ import FAQClient from "./FAQClient";
 import { categories } from "./faq-data";
 
 export const metadata: Metadata = {
-  title: "Spray Tan FAQ | Common Questions Answered | Tanned Co Sydney",
+  title: { absolute: "Spray Tan FAQ | Tanned Co. Sydney" },
   description:
     "Got questions about automated spray tanning? Find answers about our booths, tan colours, aftercare, pricing, and what to expect at Tanned Co Sydney.",
   alternates: { canonical: "https://www.tannedco.com.au/faq" },

@@ -34,6 +34,7 @@ export default function ContactClient() {
     enquiryType: "",
     location: "",
     message: "",
+    website: "", // honeypot, left empty by real visitors
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -48,7 +49,7 @@ export default function ContactClient() {
       });
       if (res.ok) {
         setStatus("success");
-        setFormData({ name: "", email: "", phone: "", enquiryType: "", location: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", enquiryType: "", location: "", message: "", website: "" });
       } else {
         setStatus("error");
       }
@@ -104,7 +105,7 @@ export default function ContactClient() {
               <h3 className="text-sm font-bold uppercase tracking-widest mb-4 text-[#a46746]">Follow Us</h3>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="http://instagram.com/tannedco_"
+                  href="https://www.instagram.com/tannedco_"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors font-medium text-sm uppercase tracking-wider border border-[#e8d9c3] rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
@@ -169,6 +170,16 @@ export default function ContactClient() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  value={formData.website}
+                  onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                  className="hidden"
+                />
                 <div>
                   <label htmlFor="name" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
                     Your Name
@@ -269,6 +280,9 @@ export default function ContactClient() {
                 >
                   {status === "loading" ? "Sending..." : "Send Message"}
                 </button>
+                <p className="text-xs text-[#5a4a3a] text-center">
+                  We use your details only to reply to your enquiry. See our <Link href="/privacy-policy" className="underline">privacy policy</Link>.
+                </p>
               </form>
             )}
           </div>

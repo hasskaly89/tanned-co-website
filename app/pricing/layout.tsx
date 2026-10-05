@@ -7,11 +7,11 @@ const OG_IMAGE =
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Simple, transparent spray tan pricing at Tanned Co. Casual sessions from $39, or save with our 10-pack ($360). No hidden fees, no contracts, no awkward upsells.",
+    "Simple, transparent spray tan pricing at Tanned Co. Casual sessions from $39 with no commitment, a 10-pack for $360, or Glow Club membership at $89 a month.",
   alternates: { canonical: `${SITE_URL}/pricing` },
   openGraph: {
     title: "Pricing | Tanned Co.",
-    description: "Spray tan sessions from $39. 10-pack $360. No hidden fees.",
+    description: "Spray tan sessions from $39. 10-pack $360. Glow Club $89 a month.",
     url: `${SITE_URL}/pricing`,
     images: [{ url: OG_IMAGE, width: 1200, height: 800 }],
   },

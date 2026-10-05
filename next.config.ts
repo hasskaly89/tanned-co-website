@@ -40,6 +40,12 @@ const nextConfig: NextConfig = {
         hostname: "*.fbcdn.net",
         pathname: "/**",
       },
+      // Google review author photos
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        pathname: "/**",
+      },
     ],
   },
 };

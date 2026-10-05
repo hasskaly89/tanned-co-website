@@ -5,8 +5,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import ClaimForm from "@/components/ClaimForm";
-import { LOCATIONS, DEFAULT_BOOKING_URLS, SITE_URL } from "@/lib/locations";
-import { getGoogleReviews } from "@/lib/google-reviews";
+import ExternalBookButton from "@/components/ExternalBookButton";
+import { LOCATIONS, SITE_URL, bookingUrlFor } from "@/lib/locations";
+import { getPlaceReviews } from "@/lib/google-reviews";
+import GoogleReviewCards from "@/components/GoogleReviewCards";
+import RepuReviews, { REPU_HOME_WIDGET_KEY } from "@/components/RepuReviews";
+import { CASUAL, TEN_PACK, formatAud } from "@/lib/pricing";
 
 export function generateStaticParams() {
   return LOCATIONS.map((loc) => ({ slug: loc.slug }));
@@ -21,8 +25,8 @@ export async function generateMetadata({
   const loc = LOCATIONS.find((l) => l.slug === slug);
   if (!loc) return {};
 
-  const title = `Spray Tan ${loc.shortName}`;
-  const description = `Automated spray tanning in ${loc.shortName}, Sydney. Private VersaSpa booths, 3 signature shades, open 7 days. Sessions from $39. ${loc.fullAddress}.`;
+  const title = `Spray Tan ${loc.shortName}, Sydney`;
+  const description = `Automated spray tanning in ${loc.shortName}, Sydney. Private VersaSpa booths, 3 signature shades, open 7 days. Sessions from ${formatAud(CASUAL.price)}. ${loc.fullAddress}.`;
 
   return {
     title,
@@ -38,16 +42,16 @@ export async function generateMetadata({
 }
 
 const steps = [
-  { num: "01", title: "Book Online or via App", text: "Pick your time in seconds. Open 7 days, 6am to midnight — fit it around your day." },
-  { num: "02", title: "Walk In and Step In", text: "No staff, no waiting. Your private booth guides you through every step automatically." },
-  { num: "03", title: "Leave Glowing", text: "Rinse your hands after 30 mins. Full colour develops in 6 to 8 hours. No streaks, no orange, no regrets." },
+  { num: "01", title: "Book Online or via App", text: "Pick your time in seconds. Open 7 days, 6am to midnight, to fit around your day." },
+  { num: "02", title: "Check In with the App", text: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, check in again to open your private room." },
+  { num: "03", title: "Leave Glowing", text: "Rinse your hands after 30 mins. Rinse off after 6 to 8 hours (2 to 3 for Rapid Venetian). Full colour develops over 24 hours." },
 ];
 
 const studioFeatures = [
   { icon: "🔒", title: "Completely Private", text: "Your own locked booth. No staff, no awkward moments. Just you and your perfect tan." },
   { icon: "☀️", title: "3 Signature Shades", text: "Malibu, Monterey or Rapid Venetian. Three depth levels each so you always get exactly the right glow." },
-  { icon: "✨", title: "Rapid Results", text: "See colour in 2 to 3 hours. Peak gorgeousness within 24 hours. Lasts 7 to 10 days with proper care." },
-  { icon: "📱", title: "Book in Seconds", text: "Download the Tanned Co. app or book online. No phone calls, no waiting — sorted in under a minute." },
+  { icon: "✨", title: "Rapid Results", text: "4 minutes in the booth. See colour in 2 to 3 hours and full colour within 24 hours. Lasts up to 7 days with proper care." },
+  { icon: "📱", title: "Book in Seconds", text: "Download the Tanned Co. app or book online. No phone calls, no waiting. Sorted in under a minute." },
 ];
 
 export default async function LocationPage({
@@ -59,16 +63,13 @@ export default async function LocationPage({
   const loc = LOCATIONS.find((l) => l.slug === slug);
   if (!loc) notFound();
 
-  const urls = { ...DEFAULT_BOOKING_URLS, ...loc.bookingUrls };
-  const googleReviews = loc.placeId ? await getGoogleReviews(loc.placeId) : null;
-
-  // Pick reviews to show — prefer Google, fall back to loc.reviews, then loc.testimonials
-  const showGoogleReviews = googleReviews && googleReviews.reviews.length > 0;
-  const showLocReviews = !showGoogleReviews && loc.reviews && loc.reviews.length > 0;
-  const showTestimonials = !showGoogleReviews && !showLocReviews && loc.testimonials && loc.testimonials.length > 0;
-
-  const ratingValue = showGoogleReviews ? googleReviews.rating : 5;
-  const reviewCount = showGoogleReviews ? googleReviews.user_ratings_total : (loc.reviews?.length ?? 0);
+  const urls = { casual: bookingUrlFor(loc, "casual"), tenPack: bookingUrlFor(loc, "tenPack") };
+  // Live Google rating and latest reviews (refreshed daily). Without a Google API key
+  // the page shows no rating or review count rather than made-up numbers.
+  const google = await getPlaceReviews(loc);
+  const googleUrl = google?.mapsUrl ?? loc.mapsUrl;
+  // Reviews: the studio's Repu widget when it has one, otherwise live Google reviews.
+  const showGoogleCards = !loc.repuWidgetKey && !!google?.reviews.length;
 
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
@@ -96,11 +97,19 @@ export default async function LocationPage({
             Automated spray tanning in {loc.shortName}. Private booths, flawless results, open 7 days.
           </p>
           <div className="flex flex-wrap gap-3">
-            <a
-              href="#claim"
+            <ExternalBookButton
+              href={urls.casual}
+              source={`location_hero_${loc.slug}`}
+              extraParams={{ plan: "casual", location_slug: loc.slug }}
               className="bg-[#a46746] hover:bg-[#7d4e33] text-white font-bold uppercase tracking-widest px-7 py-4 rounded-full transition-colors text-sm"
             >
-              Claim 10% Off →
+              Book a Tan · {formatAud(CASUAL.price)} →
+            </ExternalBookButton>
+            <a
+              href="#claim"
+              className="border-2 border-white/70 hover:bg-white hover:text-[#1a1a1a] text-white font-bold uppercase tracking-widest px-7 py-4 rounded-full transition-colors text-sm"
+            >
+              First Timer? Get 10% Off
             </a>
           </div>
         </div>
@@ -109,17 +118,21 @@ export default async function LocationPage({
       {/* ── SOCIAL PROOF BAR ── */}
       <div className="bg-[#1a1a1a] py-4 px-6">
         <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-white/80">
-          <span className="flex items-center gap-1.5">
-            <span className="text-[#a46746]">★★★★★</span>
-            <span className="font-semibold text-white">{ratingValue > 0 ? ratingValue.toFixed(1) : "5.0"}</span>
-            <span>{reviewCount > 0 ? `(${reviewCount} reviews)` : "(Rated 5 stars)"}</span>
-          </span>
-          <span className="hidden sm:block text-white/30">|</span>
+          {google && (
+            <>
+              <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white">
+                <span className="text-[#e0a878]" aria-hidden="true">★</span>
+                <span className="font-semibold text-white">{google.rating.toFixed(1)}</span>
+                <span>({google.total} Google reviews)</span>
+              </a>
+              <span className="hidden sm:block text-white/30">|</span>
+            </>
+          )}
           <span>✓ Open 7 days · 6am to midnight</span>
           <span className="hidden sm:block text-white/30">|</span>
           <span>✓ No staff · Fully automated</span>
           <span className="hidden sm:block text-white/30">|</span>
-          <span>✓ Results in under 5 minutes</span>
+          <span>✓ 4 minutes in the booth</span>
         </div>
       </div>
 
@@ -127,92 +140,71 @@ export default async function LocationPage({
       <ClaimForm location={loc.shortName} />
 
       {/* ── REVIEWS ── */}
-      {showGoogleReviews && (
+      {loc.repuWidgetKey && (
         <section className="py-14 md:py-20 bg-[#fdf6ec]">
           <div className="max-w-6xl mx-auto px-6">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">Google Reviews</p>
-            <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-3">Real Results, Real People</h2>
-            <div className="flex items-center justify-center gap-2 mb-10">
-              <span className="text-[#a46746] text-lg">{"★".repeat(5)}</span>
-              <span className="font-black text-lg">{googleReviews.rating.toFixed(1)}</span>
-              <span className="text-sm text-[#5a4a3a]">({googleReviews.user_ratings_total} on Google)</span>
-            </div>
-            <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
-              {googleReviews.reviews.map((review) => (
-                <div key={review.author_name} className="break-inside-avoid bg-white rounded-2xl p-6 border border-[#e8d9c3]">
-                  <div className="flex items-center gap-3 mb-3">
-                    {review.profile_photo_url && (
-                      <Image src={review.profile_photo_url} alt={review.author_name} width={36} height={36} className="rounded-full" />
-                    )}
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{review.author_name}</p>
-                      <p className="text-xs text-[#5a4a3a]">{review.relative_time_description}</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-0.5 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i} className={`text-sm ${i < review.rating ? "text-[#a46746]" : "text-gray-300"}`}>★</span>
-                    ))}
-                  </div>
-                  <p className="text-[#3a2e24] text-sm leading-relaxed">&ldquo;{review.text}&rdquo;</p>
-                </div>
-              ))}
-            </div>
+            {loc.showAllStudioReviews ? (
+              <RepuReviews
+                widgetKey={REPU_HOME_WIDGET_KEY}
+                heading={
+                  <>
+                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">Google Reviews</p>
+                    <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-3">What Our Clients Say</h2>
+                    <p className="text-center text-sm text-[#5a4a3a] mb-10">Reviews from across all Tanned Co. studios in Sydney.</p>
+                  </>
+                }
+              />
+            ) : (
+              <RepuReviews
+                widgetKey={loc.repuWidgetKey}
+                heading={
+                  <>
+                    <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">Google Reviews</p>
+                    <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-10">What {loc.shortName} Clients Say</h2>
+                  </>
+                }
+              />
+            )}
             <div className="text-center mt-8">
-              <a
-                href={`https://search.google.com/local/reviews?placeid=${loc.placeId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1a1a1a] hover:text-white transition-colors"
-              >
-                See All Reviews on Google →
+              <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1a1a1a] hover:text-white transition-colors">
+                Read all {loc.shortName} reviews on Google →
               </a>
             </div>
           </div>
         </section>
       )}
 
-      {showLocReviews && (
+      {showGoogleCards && google && (
         <section className="py-14 md:py-20 bg-[#fdf6ec]">
           <div className="max-w-6xl mx-auto px-6">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">{loc.shortName} Clients</p>
-            <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-10">Real Results, Real People</h2>
-            <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
-              {loc.reviews!.map(({ name, suburb, text, rating }) => (
-                <div key={name} className="break-inside-avoid bg-white rounded-2xl p-6 border border-[#e8d9c3]">
-                  <div className="flex gap-0.5 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i} className={`text-sm ${i < rating ? "text-[#a46746]" : "text-gray-300"}`}>★</span>
-                    ))}
-                  </div>
-                  <p className="text-[#3a2e24] text-sm leading-relaxed mb-4">&ldquo;{text}&rdquo;</p>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{name}</p>
-                  <p className="text-xs text-[#5a4a3a]">{suburb}</p>
-                </div>
-              ))}
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">Google Reviews</p>
+            <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-3">Real Results, Real People</h2>
+            <p className="flex items-center justify-center gap-2 mb-10">
+              <span className="text-[#a46746] text-lg" aria-hidden="true">★</span>
+              <span className="font-black text-lg">{google.rating.toFixed(1)}</span>
+              <span className="text-sm text-[#5a4a3a]">from {google.total} Google reviews for Tanned Co. {loc.shortName}</span>
+            </p>
+            <GoogleReviewCards reviews={google.reviews} />
+            <div className="text-center mt-8">
+              <a
+                href={googleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1a1a1a] hover:text-white transition-colors"
+              >
+                Read all {google.total} reviews on Google →
+              </a>
             </div>
           </div>
         </section>
       )}
 
-      {showTestimonials && (
-        <section className="py-14 md:py-20 bg-[#fdf6ec]">
-          <div className="max-w-6xl mx-auto px-6">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">{loc.shortName} Clients</p>
-            <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-10">Real Results, Real People</h2>
-            <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
-              {loc.testimonials!.map(({ name, text }) => (
-                <div key={name} className="break-inside-avoid bg-white rounded-2xl p-6 border border-[#e8d9c3]">
-                  <div className="flex gap-0.5 mb-3">
-                    {[...Array(5)].map((_, i) => <span key={i} className="text-[#a46746] text-sm">★</span>)}
-                  </div>
-                  <p className="text-[#3a2e24] text-sm leading-relaxed mb-4">&ldquo;{text}&rdquo;</p>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+      {!loc.repuWidgetKey && !showGoogleCards && (
+        <div className="pb-4 bg-[#fdf6ec] text-center">
+          <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-10 border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1a1a1a] hover:text-white transition-colors">
+            Read our {loc.shortName} reviews on Google →
+          </a>
+        </div>
       )}
 
       {/* ── HOW IT WORKS ── */}
@@ -314,10 +306,10 @@ export default async function LocationPage({
               <p className="text-[#5a4a3a] text-sm mb-8">Skip the form and book your session directly below. No account needed for casual visits.</p>
               <div className="space-y-3 mb-8">
                 <a href={urls.casual} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#a46746] hover:bg-[#7d4e33] text-white py-4 rounded-full font-bold uppercase tracking-widest transition-colors text-sm">
-                  Book Casual Tan — $39
+                  Book Casual Tan · {formatAud(CASUAL.price)}
                 </a>
                 <a href={urls.tenPack} target="_blank" rel="noopener noreferrer" className="block w-full text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-4 rounded-full font-bold uppercase tracking-widest hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm">
-                  Buy 10 Pack — $360 <span className="text-[#a46746]">Save $30</span>
+                  Buy 10 Pack · {formatAud(TEN_PACK.price)} <span className="text-[#a46746]">Save {formatAud(TEN_PACK.saving)}</span>
                 </a>
               </div>
               {/* Nearby suburbs */}

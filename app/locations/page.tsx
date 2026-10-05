@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TrustBadges from "@/components/TrustBadges";
 import LocationCardButtons from "@/components/LocationCardButtons";
-import ExternalBookButton from "@/components/ExternalBookButton";
+import StudioBookButton from "@/components/StudioBookButton";
 import { LOCATIONS, SITE_URL } from "@/lib/locations";
 
 export const metadata: Metadata = {
@@ -92,15 +92,16 @@ export default function LocationsPage() {
       <section className="py-12 md:py-28 bg-white text-center">
         <div className="max-w-2xl mx-auto px-6">
           <h2 className="text-2xl md:text-5xl font-black uppercase mb-6 text-[#1a1a1a]">Ready to Glow?</h2>
-          <p className="text-[#5a4a3a] text-lg mb-4">Book your session online in seconds. Walk in, walk out glowing.</p>
+          <p className="text-[#5a4a3a] text-lg mb-4">Book your session online in seconds. Check in with the app, walk out glowing.</p>
           <p className="text-[#5a4a3a] text-sm mb-10">New to spray tans? Read our <Link href="/faq" className="underline decoration-[#a46746]/40 hover:decoration-[#a46746] underline-offset-4 text-[#a46746] font-semibold">spray tan prep guide</Link> first.</p>
-          <ExternalBookButton
-            href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
-            source="locations_page_cta"
-            className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-10 py-4 rounded-full font-semibold transition-colors text-base"
-          >
-            Book Casual Tan $39 →
-          </ExternalBookButton>
+          <div className="max-w-sm mx-auto">
+            <StudioBookButton
+              plan="casual"
+              source="locations_page_cta"
+              label="Book Casual Tan $39 →"
+              buttonClassName="block text-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-10 py-4 rounded-full font-semibold transition-colors text-base"
+            />
+          </div>
         </div>
       </section>
 
