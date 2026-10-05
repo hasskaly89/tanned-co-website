@@ -129,7 +129,8 @@ export async function POST(req: Request) {
     const resend = new Resend(process.env.RESEND_API_KEY ?? "");
     const res = await resend.emails.send({
       from: "Tanned Co. Website <noreply@tannedco.com.au>",
-      to: ["hello@tannedco.com.au", "edensorpark@tannedco.com.au"],
+      to: ["edensorpark@tannedco.com.au"],
+      cc: ["hello@tannedco.com.au"],
       replyTo: email,
       subject: `${crm.ok ? "" : "[ACTION NEEDED: CRM FAILED] "}New 10% Off Lead: ${location}`.replace(/[\r\n]+/g, " "),
       html: `

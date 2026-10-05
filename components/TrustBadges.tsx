@@ -1,7 +1,7 @@
 const badges = [
   { icon: "🔒", label: "100% Private Rooms" },
   { icon: "🌿", label: "Vegan & Cruelty-Free" },
-  { icon: "⭐", label: "4.9★ Google Rating" },
+  { icon: "⭐", label: "Real Google Reviews" },
   { icon: "💳", label: "Secure Online Booking" },
   { icon: "✨", label: "Self-Cleaning Booths" },
   { icon: "📍", label: "5 Sydney Studios" },

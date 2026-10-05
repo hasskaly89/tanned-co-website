@@ -3,13 +3,6 @@ export interface Testimonial {
   text: string;
 }
 
-export interface Review {
-  name: string;
-  suburb: string;
-  text: string;
-  rating: number;
-}
-
 export interface BookingUrls {
   casual: string;
   tenPack: string;
@@ -41,7 +34,6 @@ export interface LocationData {
   mapEmbed?: string;
   bookingUrls?: BookingUrls;
   testimonials?: Testimonial[];
-  reviews?: Review[];
 }
 
 export const SITE_URL = "https://www.tannedco.com.au";
@@ -108,11 +100,6 @@ export const LOCATIONS: LocationData[] = [
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=5",
       tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=5",
     },
-    reviews: [
-      { name: "Jessica M.", suburb: "Edensor Park", text: "Love this place! Quick, easy and the tan looks so natural. Perfect for busy mums.", rating: 5 },
-      { name: "Tara S.", suburb: "Edensor Park", text: "Obsessed with my tan from Tanned Co Edensor Park. The booth is so easy to use and the result is flawless every time.", rating: 5 },
-      { name: "Brooke L.", suburb: "Edensor Park", text: "I've been coming here for months and the results are always consistent. Great value with the 10 pack!", rating: 5 },
-    ],
   },
   {
     slug: "kings-park",
@@ -138,11 +125,6 @@ export const LOCATIONS: LocationData[] = [
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=6",
       tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=6",
     },
-    reviews: [
-      { name: "Sarah K.", suburb: "Kings Park", text: "Amazing new studio! The booth was super easy and my tan came out perfectly even.", rating: 5 },
-      { name: "Mel R.", suburb: "Kings Park", text: "Love having Tanned Co so close to home. Quick, affordable and the colour is gorgeous.", rating: 5 },
-      { name: "Alicia T.", suburb: "Kings Park", text: "Best spray tan I've ever had. No streaks, no smell, just a beautiful even glow.", rating: 5 },
-    ],
   },
   {
     slug: "smeaton-grange",
@@ -168,11 +150,6 @@ export const LOCATIONS: LocationData[] = [
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=4",
       tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=4",
     },
-    reviews: [
-      { name: "Renee B.", suburb: "Smeaton Grange", text: "So convenient having this in Smeaton Grange! Love the privacy and the tan lasts over a week.", rating: 5 },
-      { name: "Kelly W.", suburb: "Smeaton Grange", text: "Been using Tanned Co for all my events. Results are always beautiful and the booths are spotless.", rating: 5 },
-      { name: "Amy P.", suburb: "Smeaton Grange", text: "The booth was warm and cozy, super easy to follow the instructions. My tan turned out perfect!", rating: 5 },
-    ],
   },
   {
     slug: "woollahra",
@@ -198,11 +175,6 @@ export const LOCATIONS: LocationData[] = [
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=3",
       tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d?companyid=3",
     },
-    reviews: [
-      { name: "Sophie G.", suburb: "Woollahra", text: "Absolutely love the Woollahra studio. Quick, private, and my tan always looks so natural.", rating: 5 },
-      { name: "Olivia H.", suburb: "Woollahra", text: "The best spray tan in the Eastern Suburbs. VersaSpa booths are amazing always streak-free.", rating: 5 },
-      { name: "Natasha R.", suburb: "Woollahra", text: "I've tried so many tanning places and nothing compares. Tanned Co is simply the best.", rating: 5 },
-    ],
   },
 ];
 

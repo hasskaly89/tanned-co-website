@@ -7,7 +7,8 @@ import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import ClaimForm from "@/components/ClaimForm";
 import ExternalBookButton from "@/components/ExternalBookButton";
 import { LOCATIONS, SITE_URL, bookingUrlFor } from "@/lib/locations";
-import { getGoogleReviews } from "@/lib/google-reviews";
+import { getPlaceReviews } from "@/lib/google-reviews";
+import GoogleReviewCards from "@/components/GoogleReviewCards";
 import { CASUAL, TEN_PACK, formatAud } from "@/lib/pricing";
 
 export function generateStaticParams() {
@@ -62,15 +63,11 @@ export default async function LocationPage({
   if (!loc) notFound();
 
   const urls = { casual: bookingUrlFor(loc, "casual"), tenPack: bookingUrlFor(loc, "tenPack") };
-  const googleReviews = loc.placeId ? await getGoogleReviews(loc.placeId) : null;
-
-  // Pick reviews to show — prefer Google, fall back to loc.reviews, then loc.testimonials
-  const showGoogleReviews = googleReviews && googleReviews.reviews.length > 0;
-  const showLocReviews = !showGoogleReviews && loc.reviews && loc.reviews.length > 0;
-  const showTestimonials = !showGoogleReviews && !showLocReviews && loc.testimonials && loc.testimonials.length > 0;
-
-  const ratingValue = showGoogleReviews ? googleReviews.rating : 5;
-  const reviewCount = showGoogleReviews ? googleReviews.user_ratings_total : (loc.reviews?.length ?? 0);
+  // Live Google rating and latest reviews (refreshed daily). Without a Google API key
+  // the page shows no rating or review count rather than made-up numbers.
+  const google = await getPlaceReviews(loc);
+  const googleUrl = google?.mapsUrl ?? loc.mapsUrl;
+  const showTestimonials = !google?.reviews.length && !!loc.testimonials?.length;
 
   return (
     <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
@@ -119,12 +116,16 @@ export default async function LocationPage({
       {/* ── SOCIAL PROOF BAR ── */}
       <div className="bg-[#1a1a1a] py-4 px-6">
         <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-white/80">
-          <span className="flex items-center gap-1.5">
-            <span className="text-[#a46746]">★★★★★</span>
-            <span className="font-semibold text-white">{ratingValue > 0 ? ratingValue.toFixed(1) : "5.0"}</span>
-            <span>{reviewCount > 0 ? `(${reviewCount} reviews)` : "(Rated 5 stars)"}</span>
-          </span>
-          <span className="hidden sm:block text-white/30">|</span>
+          {google && (
+            <>
+              <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white">
+                <span className="text-[#e0a878]" aria-hidden="true">★</span>
+                <span className="font-semibold text-white">{google.rating.toFixed(1)}</span>
+                <span>({google.total} Google reviews)</span>
+              </a>
+              <span className="hidden sm:block text-white/30">|</span>
+            </>
+          )}
           <span>✓ Open 7 days · 6am to midnight</span>
           <span className="hidden sm:block text-white/30">|</span>
           <span>✓ No staff · Fully automated</span>
@@ -137,69 +138,26 @@ export default async function LocationPage({
       <ClaimForm location={loc.shortName} />
 
       {/* ── REVIEWS ── */}
-      {showGoogleReviews && (
+      {google && google.reviews.length > 0 && (
         <section className="py-14 md:py-20 bg-[#fdf6ec]">
           <div className="max-w-6xl mx-auto px-6">
             <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">Google Reviews</p>
             <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-3">Real Results, Real People</h2>
-            <div className="flex items-center justify-center gap-2 mb-10">
-              <span className="text-[#a46746] text-lg">{"★".repeat(5)}</span>
-              <span className="font-black text-lg">{googleReviews.rating.toFixed(1)}</span>
-              <span className="text-sm text-[#5a4a3a]">({googleReviews.user_ratings_total} on Google)</span>
-            </div>
-            <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
-              {googleReviews.reviews.map((review) => (
-                <div key={review.author_name} className="break-inside-avoid bg-white rounded-2xl p-6 border border-[#e8d9c3]">
-                  <div className="flex items-center gap-3 mb-3">
-                    {review.profile_photo_url && (
-                      <Image src={review.profile_photo_url} alt={review.author_name} width={36} height={36} className="rounded-full" />
-                    )}
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{review.author_name}</p>
-                      <p className="text-xs text-[#5a4a3a]">{review.relative_time_description}</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-0.5 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i} className={`text-sm ${i < review.rating ? "text-[#a46746]" : "text-gray-300"}`}>★</span>
-                    ))}
-                  </div>
-                  <p className="text-[#3a2e24] text-sm leading-relaxed">&ldquo;{review.text}&rdquo;</p>
-                </div>
-              ))}
-            </div>
+            <p className="flex items-center justify-center gap-2 mb-10">
+              <span className="text-[#a46746] text-lg" aria-hidden="true">★</span>
+              <span className="font-black text-lg">{google.rating.toFixed(1)}</span>
+              <span className="text-sm text-[#5a4a3a]">from {google.total} Google reviews for Tanned Co. {loc.shortName}</span>
+            </p>
+            <GoogleReviewCards reviews={google.reviews} />
             <div className="text-center mt-8">
               <a
-                href={`https://search.google.com/local/reviews?placeid=${loc.placeId}`}
+                href={googleUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1a1a1a] hover:text-white transition-colors"
               >
-                See All Reviews on Google →
+                Read all {google.total} reviews on Google →
               </a>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {showLocReviews && (
-        <section className="py-14 md:py-20 bg-[#fdf6ec]">
-          <div className="max-w-6xl mx-auto px-6">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">{loc.shortName} Clients</p>
-            <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-10">Real Results, Real People</h2>
-            <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
-              {loc.reviews!.map(({ name, suburb, text, rating }) => (
-                <div key={name} className="break-inside-avoid bg-white rounded-2xl p-6 border border-[#e8d9c3]">
-                  <div className="flex gap-0.5 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i} className={`text-sm ${i < rating ? "text-[#a46746]" : "text-gray-300"}`}>★</span>
-                    ))}
-                  </div>
-                  <p className="text-[#3a2e24] text-sm leading-relaxed mb-4">&ldquo;{text}&rdquo;</p>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{name}</p>
-                  <p className="text-xs text-[#5a4a3a]">{suburb}</p>
-                </div>
-              ))}
             </div>
           </div>
         </section>
@@ -209,20 +167,25 @@ export default async function LocationPage({
         <section className="py-14 md:py-20 bg-[#fdf6ec]">
           <div className="max-w-6xl mx-auto px-6">
             <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">{loc.shortName} Clients</p>
-            <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-10">Real Results, Real People</h2>
+            <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-10">What Our Clients Say</h2>
             <div className="columns-1 sm:columns-2 md:columns-3 gap-5 space-y-5">
               {loc.testimonials!.map(({ name, text }) => (
-                <div key={name} className="break-inside-avoid bg-white rounded-2xl p-6 border border-[#e8d9c3]">
-                  <div className="flex gap-0.5 mb-3">
-                    {[...Array(5)].map((_, i) => <span key={i} className="text-[#a46746] text-sm">★</span>)}
-                  </div>
-                  <p className="text-[#3a2e24] text-sm leading-relaxed mb-4">&ldquo;{text}&rdquo;</p>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{name}</p>
-                </div>
+                <figure key={name} className="break-inside-avoid bg-white rounded-2xl p-6 border border-[#e8d9c3]">
+                  <blockquote className="text-[#3a2e24] text-sm leading-relaxed mb-4">&ldquo;{text}&rdquo;</blockquote>
+                  <figcaption className="text-xs font-bold uppercase tracking-wider text-[#1a1a1a]">{name}</figcaption>
+                </figure>
               ))}
             </div>
           </div>
         </section>
+      )}
+
+      {!google?.reviews.length && (
+        <div className="pb-4 bg-[#fdf6ec] text-center">
+          <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-10 border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1a1a1a] hover:text-white transition-colors">
+            Read our {loc.shortName} reviews on Google →
+          </a>
+        </div>
       )}
 
       {/* ── HOW IT WORKS ── */}

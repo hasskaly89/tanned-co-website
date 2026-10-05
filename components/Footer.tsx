@@ -111,6 +111,9 @@ export default function Footer() {
           <Link href="/terms" className="text-white/60 text-xs hover:text-white/80 transition-colors">
             Purchase Terms
           </Link>
+          <Link href="/franchise" className="text-white/60 text-xs hover:text-white/80 transition-colors">
+            Franchising
+          </Link>
         </div>
       </div>
     </footer>

@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/book-now` },
     { url: `${SITE_URL}/privacy-policy` },
     { url: `${SITE_URL}/terms` },
+    { url: `${SITE_URL}/franchise` },
   ];
 
   const locationPages: MetadataRoute.Sitemap = LOCATIONS.map((loc) => ({

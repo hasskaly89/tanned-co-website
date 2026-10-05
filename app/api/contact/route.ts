@@ -36,7 +36,8 @@ export async function POST(req: Request) {
     const emailSend = resend.emails
       .send({
         from: "Tanned Co. Website <noreply@tannedco.com.au>",
-        to: ["hello@tannedco.com.au", "edensorpark@tannedco.com.au"],
+        to: ["edensorpark@tannedco.com.au"],
+        cc: ["hello@tannedco.com.au"],
         replyTo: email,
         subject: `${enquiryType} | ${location} | Tanned Co Website`.replace(/[\r\n]+/g, " "),
         html: `
