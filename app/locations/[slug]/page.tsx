@@ -143,9 +143,15 @@ export default async function LocationPage({
       {loc.repuWidgetKey && (
         <section className="py-14 md:py-20 bg-[#fdf6ec]">
           <div className="max-w-6xl mx-auto px-6">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">Google Reviews</p>
-            <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-10">What {loc.shortName} Clients Say</h2>
-            <RepuReviews widgetKey={loc.repuWidgetKey} />
+            <RepuReviews
+              widgetKey={loc.repuWidgetKey}
+              heading={
+                <>
+                  <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3 text-center">Google Reviews</p>
+                  <h2 className="text-2xl md:text-4xl font-black uppercase text-center mb-10">What {loc.shortName} Clients Say</h2>
+                </>
+              }
+            />
             <div className="text-center mt-8">
               <a href={googleUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-bold uppercase tracking-widest text-sm hover:bg-[#1a1a1a] hover:text-white transition-colors">
                 Read all {loc.shortName} reviews on Google →

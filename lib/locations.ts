@@ -37,6 +37,7 @@ export const SITE_URL = "https://www.tannedco.com.au";
 export const LOCATIONS: LocationData[] = [
   {
     slug: "caringbah",
+    repuWidgetKey: "2c6f69fd1e6bd399",
     shortName: "Caringbah",
     fullName: "Tanned Co. Caringbah",
     address: "349B Kingsway",
@@ -62,6 +63,7 @@ export const LOCATIONS: LocationData[] = [
   },
   {
     slug: "edensor-park",
+    repuWidgetKey: "e9a608f7a9ff35f1",
     shortName: "Edensor Park",
     fullName: "Tanned Co. Edensor Park",
     address: "Shop 6/207 Edensor Rd",
@@ -79,7 +81,6 @@ export const LOCATIONS: LocationData[] = [
     nearbySuburbs: ["Wetherill Park", "Bossley Park", "Prairiewood", "Greenfield Park", "St Johns Park"],
     parkingNote: "Free parking available in the shopping complex car park.",
     placeId: "ChIJEYBmsIqXEmtX8pY2qy_0Bw",
-    repuWidgetKey: "b785fab69bb92c58",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.5167046702772!2d150.87214544797754!3d-33.876344150603344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12978ab0668011%3A0x7f42fab3696f257!2sTanned%20Co%20Edensor%20Park!5e0!3m2!1sen!2sus!4v1775535255079!5m2!1sen!2sus",
     bookingUrls: {
       casual: "https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107&companyid=5",
@@ -88,6 +89,7 @@ export const LOCATIONS: LocationData[] = [
   },
   {
     slug: "kings-park",
+    repuWidgetKey: "64c6b00452e132ad",
     shortName: "Kings Park",
     fullName: "Tanned Co. Kings Park",
     address: "6/2 Garling Rd",
@@ -113,6 +115,7 @@ export const LOCATIONS: LocationData[] = [
   },
   {
     slug: "smeaton-grange",
+    repuWidgetKey: "36f5928bed8c2ed6",
     shortName: "Smeaton Grange",
     fullName: "Tanned Co. Smeaton Grange",
     address: "1/73-77 Anderson Rd",
@@ -138,6 +141,7 @@ export const LOCATIONS: LocationData[] = [
   },
   {
     slug: "woollahra",
+    repuWidgetKey: "7e04584e017cf11c",
     shortName: "Woollahra",
     fullName: "Tanned Co. Woollahra",
     address: "8 Oxford St",
