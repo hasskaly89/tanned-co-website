@@ -3,6 +3,7 @@
 import { useEffect, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { trackPageView } from "@/lib/analytics";
+import { captureAttribution } from "@/lib/attribution";
 
 function Tracker() {
   const pathname = usePathname();
@@ -10,6 +11,7 @@ function Tracker() {
 
   useEffect(() => {
     if (!pathname) return;
+    captureAttribution();
     const qs = searchParams?.toString();
     const url = `${window.location.origin}${pathname}${qs ? `?${qs}` : ""}`;
     trackPageView(url);
