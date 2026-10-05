@@ -1,101 +1,60 @@
 "use client";
 
-import { useId, useRef, useState, useSyncExternalStore } from "react";
+import { useId, useState } from "react";
 import { LOCATIONS, bookingUrlFor, type BookingPlan } from "@/lib/locations";
 import { trackEvent } from "@/lib/analytics";
 
-const STORAGE_KEY = "tannedco_studio";
-const CHANGE_EVENT = "tannedco:studio";
-
-// In-memory copy so the picker still works when sessionStorage is blocked.
-let memoryStudio = "";
-
-function readStoredStudio(): string {
-  try {
-    return sessionStorage.getItem(STORAGE_KEY) ?? memoryStudio;
-  } catch {
-    return memoryStudio;
-  }
-}
-
-function subscribe(onChange: () => void) {
-  window.addEventListener(CHANGE_EVENT, onChange);
-  return () => window.removeEventListener(CHANGE_EVENT, onChange);
-}
-
 /**
- * Studio picker + booking button. Used wherever the visitor's studio is not
- * already known, so GymMaster always opens on the right studio. The choice is
- * shared across pickers on the page and remembered for the session.
+ * Booking button for places where the visitor's studio is not known yet.
+ * It looks like a normal button; tapping it reveals the 5 studios, and each
+ * studio opens GymMaster already set to that studio.
  */
 export default function StudioBookButton({
   plan,
   source,
   label,
   buttonClassName,
-  selectClassName = "w-full bg-white border border-[#e8d9c3] text-[#1a1a1a] rounded-full px-5 py-3 text-sm font-medium focus:outline-none focus:border-[#a46746]",
 }: {
   plan: BookingPlan;
   source: string;
   label: string;
   buttonClassName: string;
-  selectClassName?: string;
 }) {
   const id = useId();
-  const selectRef = useRef<HTMLSelectElement>(null);
-  const slug = useSyncExternalStore(subscribe, readStoredStudio, () => "");
-  const [needsStudio, setNeedsStudio] = useState(false);
-
-  const loc = LOCATIONS.find((l) => l.slug === slug);
-  const href = loc ? bookingUrlFor(loc, plan) : undefined;
-
-  function choose(next: string) {
-    setNeedsStudio(false);
-    memoryStudio = next;
-    try {
-      sessionStorage.setItem(STORAGE_KEY, next);
-    } catch {}
-    window.dispatchEvent(new Event(CHANGE_EVENT));
-  }
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="sr-only">Choose your studio</label>
-      <select
-        id={id}
-        ref={selectRef}
-        value={slug}
-        onChange={(e) => choose(e.target.value)}
-        aria-invalid={needsStudio}
-        aria-describedby={needsStudio ? `${id}-hint` : undefined}
-        className={selectClassName}
-      >
-        <option value="">Choose your studio</option>
-        {LOCATIONS.map((l) => (
-          <option key={l.slug} value={l.slug}>{l.shortName}</option>
-        ))}
-      </select>
-      <a
-        href={href ?? "#"}
-        target={href ? "_blank" : undefined}
-        rel="noopener noreferrer"
-        onClick={(e) => {
-          if (!loc) {
-            e.preventDefault();
-            setNeedsStudio(true);
-            selectRef.current?.focus();
-            return;
-          }
-          trackEvent("book_now_click", { source, plan, location_slug: loc.slug, destination: href });
-        }}
-        className={buttonClassName}
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={id}
+        onClick={() => setOpen((o) => !o)}
+        className={`${buttonClassName} w-full cursor-pointer`}
       >
         {label}
-      </a>
-      {needsStudio && (
-        <p id={`${id}-hint`} role="alert" className="text-xs text-[#a46746] text-center">
-          Choose your studio first so we open the right booking page.
-        </p>
+      </button>
+      {open && (
+        <div id={id} className="flex flex-col gap-2 pt-1">
+          <p className="text-xs text-center opacity-80">Choose your studio</p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {LOCATIONS.map((loc) => {
+              const href = bookingUrlFor(loc, plan);
+              return (
+                <a
+                  key={loc.slug}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent("book_now_click", { source, plan, location_slug: loc.slug, destination: href })}
+                  className="text-center text-sm font-semibold rounded-full border border-current/30 px-4 py-2.5 hover:bg-[#a46746] hover:text-white hover:border-[#a46746] transition-colors"
+                >
+                  {loc.shortName}
+                </a>
+              );
+            })}
+          </div>
+        </div>
       )}
     </div>
   );
