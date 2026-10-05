@@ -1,3 +1,4 @@
+// Safety and suitability answers are pending supplier-backed wording and owner approval.
 export const categories = [
   {
     title: "About the Tan",
@@ -16,7 +17,7 @@ export const categories = [
       },
       {
         q: "How do spray tans work?",
-        a: "When your sunless tan is applied, Dihydroxyacetone (DHA) reacts with proteins in the skin to form a golden-brown colour. After 2–3 hours your skin darkens and reaches peak colour within 24 hours. Your tan will gradually fade due to natural exfoliation over 5–7 days.",
+        a: "When your sunless tan is applied, Dihydroxyacetone (DHA) reacts with proteins in the skin to form a golden-brown colour. After 2–3 hours your skin darkens and reaches peak colour within 24 hours. Your tan lasts up to 7 days and fades gradually as your skin naturally exfoliates.",
       },
       {
         q: "How long does a spray tan last?",
@@ -33,7 +34,7 @@ export const categories = [
       },
       {
         q: "Is the tanning solution safe?",
-        a: "Yes, our solutions are completely safe. They are non-toxic, paraben-free, cruelty-free, and 100% vegan. The active ingredient is DHA (Dihydroxyacetone), a naturally derived compound that is well-established and widely used in cosmetics. It does not penetrate the skin barrier and contains no harmful chemicals.",
+        a: "Our solutions are vegan, cruelty-free and paraben-free. The active ingredient is DHA (dihydroxyacetone), which is widely used in sunless tanning products and works by reacting with the outermost layer of skin. Keep your eyes and mouth closed while the booth sprays, and use the barrier cream provided. If you have a skin condition, allergies or health concerns, check with your doctor before tanning.",
       },
       {
         q: "What should I wear?",
@@ -58,19 +59,19 @@ export const categories = [
       },
       {
         q: "What if I don't like the colour?",
-        a: "We offer 3 signature colours (Rapid Venetian, Malibu, and Monterey) each available in 3 depths that's 9 shade combinations. If you're new, we recommend starting with a light or medium depth. Your tan fades naturally over 7–10 days, so there's no long-term commitment. Check our shade guide on the How It Works page to find your perfect match.",
+        a: "We offer 3 signature colours (Rapid Venetian, Malibu, and Monterey) each available in 3 depths that's 9 shade combinations. Each colour comes in Natural, Medium or Dark. If you're new, we recommend starting with Natural or Medium. Your tan lasts up to 7 days and fades naturally, so there's no long-term commitment. Check our shade guide on the How It Works page to find your perfect match.",
       },
       {
         q: "Is it safe for sensitive skin?",
-        a: "Our tanning solutions are vegan, paraben-free, cruelty-free, and non-toxic. They're suitable for most skin types. If you have very sensitive skin or known allergies, we recommend doing a small patch test on your inner arm first. The DHA (active tanning ingredient) in our solutions is the same FDA-approved ingredient used across the professional spray tan industry.",
+        a: "Our tanning solutions are vegan, paraben-free and cruelty-free, and most skin types tan well with them. If you have very sensitive skin or known allergies, do a small patch test on your inner arm first and check with your doctor if you are unsure. DHA is for use on the skin only, so avoid getting the mist in your eyes, nose or mouth.",
       },
       {
         q: "Can I get a spray tan while pregnant?",
-        a: "Many of our clients tan throughout pregnancy. Our solutions are non-toxic, vegan, and applied without any UV exposure. However, we always recommend checking with your doctor or midwife first, especially during the first trimester.",
+        a: "Spray tanning involves no UV exposure, but please check with your doctor or midwife before tanning while pregnant, especially in the first trimester.",
       },
       {
         q: "How does this compare to a sunbed?",
-        a: "Unlike sunbeds, spray tanning involves zero UV exposure meaning no risk of sunburn, premature ageing, or skin damage. Dermatologists widely recommend spray tans as the safe alternative to UV tanning. You get the same golden glow without any of the health risks.",
+        a: "Unlike sunbeds, spray tanning involves no UV exposure, so it does not cause sunburn or the UV damage linked to sunbeds. A spray tan does not protect you from the sun, so keep wearing sunscreen.",
       },
       {
         q: "Do you offer any guarantee?",

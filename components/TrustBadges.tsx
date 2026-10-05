@@ -4,7 +4,7 @@ const badges = [
   { icon: "⭐", label: "4.9★ Google Rating" },
   { icon: "💳", label: "Secure Online Booking" },
   { icon: "✨", label: "Self-Cleaning Booths" },
-  { icon: "🏆", label: "Sydney's #1 Tan Studio" },
+  { icon: "📍", label: "5 Sydney Studios" },
 ];
 
 export default function TrustBadges() {

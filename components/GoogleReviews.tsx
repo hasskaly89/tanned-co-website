@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LOCATIONS } from "@/lib/locations";
 
 const GOOGLE_REVIEWS_URL =
   "https://www.google.com/search?q=tanned+co+sydney+reviews";
@@ -9,49 +9,36 @@ const reviews = [
     location: "Caringbah",
     rating: 5,
     text: "Obsessed with Tanned Co! The booth is so easy to use and the result is always flawless no streaks, no orange, just a gorgeous glow.",
-    date: "2 weeks ago",
-  },
-  {
-    name: "Sophie L.",
-    location: "Woollahra",
-    rating: 5,
-    text: "Love how quick and private the whole experience is. Book on the app, walk in, walk out glowing. The 5-pack is incredible value!",
-    date: "1 month ago",
   },
   {
     name: "Sarah L.",
     location: "Woollahra",
     rating: 5,
     text: "I was so nervous for my first spray tan but Tanned Co made it so easy. The booth guides you through everything and my tan lasted over a week!",
-    date: "2 months ago",
   },
   {
     name: "Emma K.",
     location: "Smeaton Grange",
     rating: 5,
     text: "Best spray tan I've ever had. No streaks, no weird smell, and I was in and out in under 10 minutes. Already booked my next one.",
-    date: "3 weeks ago",
   },
   {
     name: "Tara B.",
     location: "Kings Park",
     rating: 5,
     text: "I was nervous trying an automated booth for the first time but the in-room instructions are so clear. My tan lasted over a week. Absolutely recommend.",
-    date: "3 weeks ago",
   },
   {
     name: "Mia R.",
     location: "Edensor Park",
     rating: 5,
     text: "I've tried every tanning place in Sydney and Tanned Co is hands down the best. The private booth is a complete game changer.",
-    date: "1 month ago",
   },
   {
     name: "Rachel K.",
     location: "Edensor Park",
     rating: 5,
     text: "The rapid clear solution is a game changer had a wedding the next day and it was perfect. Will never go back to a regular spray tan salon.",
-    date: "2 months ago",
   },
 ];
 
@@ -118,10 +105,7 @@ export default function GoogleReviews() {
               key={r.name}
               className="bg-[#fdf6ec] rounded-2xl p-6 border border-[#e8d9c3] flex flex-col gap-3"
             >
-              <div className="flex items-center justify-between">
-                <StarRating count={r.rating} />
-                <span className="text-[10px] text-[#9a8a7a]">{r.date}</span>
-              </div>
+              <StarRating count={r.rating} />
               <p className="text-[#3a2e24] text-sm leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
               <div className="border-t border-[#e8d9c3] pt-3">
                 <p className="font-bold text-[#1a1a1a] text-sm">{r.name}</p>
@@ -132,14 +116,20 @@ export default function GoogleReviews() {
         </div>
 
         <div className="text-center mt-10">
-          <a
-            href={GOOGLE_REVIEWS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold tracking-wider uppercase text-[#a46746] border-b-2 border-[#a46746] pb-0.5 hover:text-[#7d4e33] hover:border-[#7d4e33] transition-colors"
-          >
-            Read All Reviews on Google →
-          </a>
+          <p className="text-sm font-semibold tracking-wider uppercase text-[#a46746] mb-3">Read our reviews on Google</p>
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+            {LOCATIONS.map((loc) => (
+              <a
+                key={loc.slug}
+                href={loc.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-[#3a2e24] underline decoration-[#a46746]/40 underline-offset-4 hover:decoration-[#a46746]"
+              >
+                {loc.shortName}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

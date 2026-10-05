@@ -8,7 +8,7 @@ const OG_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg";
 
 export const metadata: Metadata = {
-  title: "About Tanned Co | Sydney's First Automated Spray Tan Studio",
+  title: { absolute: "About Tanned Co. | Sydney's First Automated Spray Tan Studio" },
   description:
     "Learn about Tanned Co Sydney's first fully automated spray tanning studio. Private VersaSpa booths across 5 locations. Vegan, cruelty-free, open 7 days a week.",
   alternates: { canonical: "https://www.tannedco.com.au/about" },
@@ -76,7 +76,7 @@ export default function About() {
       <section className="py-12 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Meet the Founder</p>
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Meet Paige Cook, Founder</p>
             <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight mb-6">
               The Story Behind Tanned Co.
             </h2>
@@ -91,7 +91,7 @@ export default function About() {
             </p>
           </div>
           <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[3/4]">
-            <Image src={IMGS.story} alt="Tanned Co. Founder" fill className="object-cover object-top" />
+            <Image src={IMGS.story} alt="Paige Cook, founder of Tanned Co." fill className="object-cover object-top" />
           </div>
         </div>
       </section>

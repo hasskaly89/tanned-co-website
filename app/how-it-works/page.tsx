@@ -8,7 +8,7 @@ const OG_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg";
 
 export const metadata: Metadata = {
-  title: "How Automated Spray Tanning Works | Step-by-Step Guide | Tanned Co",
+  title: { absolute: "How Automated Spray Tanning Works | Tanned Co." },
   description:
     "See how a Tanned Co automated spray tan works. Book online, walk into your private booth, and walk out glowing in minutes. No staff, no waiting. Full guide with photos.",
   alternates: { canonical: "https://www.tannedco.com.au/how-it-works" },
@@ -29,7 +29,7 @@ const steps = [
   {
     num: "02",
     title: "Check In & Enter",
-    desc: "Arrive at your selected appointment time. Use the Bluetooth reader to check in to our salon, then again at the door of your tan room. No queues, no waiting.",
+    desc: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, tap Check In again at the reader on your tan room door. No queues, no waiting.",
   },
   {
     num: "03",
@@ -174,7 +174,7 @@ export default function HowItWorks() {
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Book in Seconds</p>
           <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Book Via the App</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Download the Tanned Co. app, choose your location and time, and walk straight in. No check-in, no waiting.</p>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Download the Tanned Co. app, choose your location and time, then check in with the app when you arrive. No staff, no waiting.</p>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6933d56e-70e2-44c5-8fbe-dde2aac05421/1.png", label: "Step 1" },

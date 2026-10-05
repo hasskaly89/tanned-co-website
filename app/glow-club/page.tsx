@@ -6,6 +6,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TrustBadges from "@/components/TrustBadges";
+import { GLOW_CLUB, formatAud } from "@/lib/pricing";
 
 const GLOW_CLUB_SIGNUP_URL = "https://tannedco.gymmasteronline.com/portal/membership/a015bd6ac18c7596fa250eed4e8ab668";
 
@@ -47,7 +48,11 @@ const glowClubFaqs = [
   },
   {
     q: "Is there a minimum commitment?",
-    a: "Yes, Glow Club has a 3-month minimum commitment. After that it continues month to month and you can cancel any time.",
+    a: `Yes. Glow Club has a ${GLOW_CLUB.minimumMonths}-month minimum, which is ${formatAud(GLOW_CLUB.minimumTotal)} in base membership payments (${GLOW_CLUB.minimumMonths} x ${formatAud(GLOW_CLUB.monthly)}). To leave before then, you pay out the rest of the minimum term. After that it continues month to month, and you can cancel by emailing ${GLOW_CLUB.cancelEmail}.`,
+  },
+  {
+    q: "Do unused tans roll over?",
+    a: `No. Your ${GLOW_CLUB.tansPerMonth} tans need to be used within each month.`,
   },
   {
     q: "What if I want a 4th tan in a month?",
@@ -90,7 +95,7 @@ export default function GlowClub() {
         <div className="max-w-5xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Membership</p>
           <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Glow Club Membership</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">One simple membership: 3 tans a month plus founding member perks. No lock-in beyond the 3-month minimum.</p>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">One simple membership: 3 tans a month plus founding member perks. 3-month minimum ($267 in base payments), then month to month.</p>
           <div className="max-w-md mx-auto">
 
             {/* Glow Club Membership - featured */}
@@ -105,7 +110,7 @@ export default function GlowClub() {
               <ul className="space-y-3 text-white/70 text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 3 automated spray tan sessions / month</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Glow Key to all 5 locations</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 3-month minimum, then month-to-month</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {GLOW_CLUB.minimumMonths}-month minimum ({formatAud(GLOW_CLUB.minimumTotal)} in base payments), then month-to-month</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Book via the app · 7 days, 6am-midnight</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> All founding member perks below</li>
               </ul>
@@ -168,6 +173,7 @@ export default function GlowClub() {
               <div key={i} className="bg-white rounded-2xl overflow-hidden border border-[#e8d9c3]">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
                   className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-[#1a1a1a] hover:bg-[#fdf6ec] transition-colors"
                 >
                   <span className="pr-4">{faq.q}</span>

@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
+import { LOCATIONS } from "@/lib/locations";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import StudioBookButton from "@/components/StudioBookButton";
+import { CASUAL, TEN_PACK, formatAud } from "@/lib/pricing";
 
 export default function BookNow() {
   return (
@@ -56,19 +59,80 @@ export default function BookNow() {
         </div>
       </section>
 
-      {/* APP DOWNLOAD — PRIMARY CTA */}
-      <section className="py-16 md:py-24 bg-[#1a1a1a]">
+      {/* ONLINE BOOKING — PRIMARY */}
+      <section className="py-12 md:py-24 bg-[#fdf0d5]">
+        <div className="max-w-6xl mx-auto px-6">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Book Online</p>
+          <h2 className="text-2xl md:text-4xl font-black uppercase leading-tight mb-4 text-center">Choose Your Studio &amp; Book</h2>
+          <p className="text-[#5a4a3a] text-base leading-relaxed mb-12 max-w-xl mx-auto text-center">
+            No app needed. Pick your studio and we&apos;ll open its booking page in our secure portal.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+
+            {/* Casual */}
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Casual Tan</p>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-5xl font-black">{formatAud(CASUAL.price)}</span>
+                <span className="text-[#5a4a3a] mb-1.5">/ session</span>
+              </div>
+              <p className="text-[#5a4a3a] text-sm mb-6">Pay as you go, no commitment</p>
+              <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 1x automated spray tan session</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Pay when you book your time</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your colour &amp; depth</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> All 5 Sydney locations</li>
+              </ul>
+              <StudioBookButton
+                plan="casual"
+                source="book_now_page"
+                label="Book Casual Tan →"
+                buttonClassName="block text-center bg-[#1a1a1a] text-white py-3.5 rounded-full font-semibold hover:bg-[#3a2e24] transition-colors"
+              />
+            </div>
+
+            {/* 10 Pack */}
+            <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
+              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">10 Pack</p>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-5xl font-black">{formatAud(TEN_PACK.price)}</span>
+                <span className="text-[#5a4a3a] mb-1.5">/ {TEN_PACK.sessions} sessions</span>
+              </div>
+              <p className="text-[#5a4a3a] text-sm mb-6">{formatAud(TEN_PACK.perTan)} per tan · save {formatAud(TEN_PACK.saving)}</p>
+              <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {TEN_PACK.sessions}x automated spray tan sessions</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for {TEN_PACK.validity} from purchase</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your colour &amp; depth</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> All 5 Sydney locations</li>
+              </ul>
+              <StudioBookButton
+                plan="tenPack"
+                source="book_now_page"
+                label="Buy 10 Pack →"
+                buttonClassName="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
+              />
+            </div>
+
+          </div>
+          <p className="text-xs text-[#5a4a3a] mt-8 text-center">
+            Opens our secure booking portal in a new tab. See <Link href="/pricing" className="underline">pricing</Link> for Glow Club membership.
+          </p>
+        </div>
+      </section>
+
+      {/* APP DOWNLOAD — SECONDARY */}
+      <section className="py-14 md:py-20 bg-[#1a1a1a]">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Fastest Way to Book</p>
-          <h2 className="text-3xl md:text-5xl font-black uppercase leading-tight text-white mb-5">
-            The Fastest Way to Book
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Prefer the App?</p>
+          <h2 className="text-2xl md:text-4xl font-black uppercase leading-tight text-white mb-5">
+            Book &amp; Manage in the App
           </h2>
           <p className="text-white/70 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
             Download the Tanned Co. app to book sessions, manage your membership, and check your nearest location — all from your phone.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://apps.apple.com/us/app/tannedco/id1659547172"
+              href="https://apps.apple.com/au/app/tannedco/id1659547172"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent("app_download_click", { source: "book_now_hero", store: "app_store" })}
@@ -101,71 +165,6 @@ export default function BookNow() {
         </div>
       </section>
 
-      {/* ONLINE BOOKING — SECONDARY */}
-      <section className="py-12 md:py-24 bg-[#fdf0d5]">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">No App Needed</p>
-          <h2 className="text-2xl md:text-4xl font-black uppercase leading-tight mb-4 text-center">Prefer to Book Online?</h2>
-          <p className="text-[#5a4a3a] text-base leading-relaxed mb-12 max-w-xl mx-auto text-center">
-            No app needed. Pick an option below and book directly through our secure portal.
-          </p>
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-
-            {/* Casual */}
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Casual Tan</p>
-              <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">$39</span>
-                <span className="text-[#5a4a3a] mb-1.5">/ session</span>
-              </div>
-              <p className="text-[#5a4a3a] text-sm mb-6">Pay as you go</p>
-              <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 1x automated spray tan session</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 2 months from purchase</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your colour &amp; depth</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> All 5 Sydney locations</li>
-              </ul>
-              <a
-                href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent("book_now_click", { source: "book_now_page", plan: "casual" })}
-                className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
-              >
-                Book Casual Tan →
-              </a>
-            </div>
-
-            {/* 10 Pack */}
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">10 Pack</p>
-              <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">$360</span>
-                <span className="text-[#5a4a3a] mb-1.5">/ 10 sessions</span>
-              </div>
-              <p className="text-[#5a4a3a] text-sm mb-6">$36 per tan · save $30</p>
-              <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 10x automated spray tan sessions</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 12 months from purchase</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your colour &amp; depth</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> All 5 Sydney locations</li>
-              </ul>
-              <a
-                href="https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent("book_now_click", { source: "book_now_page", plan: "10_pack" })}
-                className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3.5 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors"
-              >
-                Buy 10 Pack →
-              </a>
-            </div>
-
-          </div>
-          <p className="text-xs text-[#9a8a7a] mt-8 text-center">Each option opens our secure booking portal in a new tab</p>
-        </div>
-      </section>
-
       {/* WHAT TO EXPECT */}
       <section className="py-14 bg-white border-y border-[#e8d9c3]">
         <div className="max-w-4xl mx-auto px-6">
@@ -176,7 +175,7 @@ export default function BookNow() {
               { icon: "👗", title: "Wear Dark Clothes", desc: "Loose, dark clothing to avoid bronzer transfer after your session." },
               { icon: "🚿", title: "Exfoliate First", desc: "Shower and exfoliate the day before for the most even tan." },
               { icon: "🚫", title: "No Deodorant", desc: "Arrive without deodorant, perfume or moisturiser on your skin." },
-              { icon: "⏱", title: "Leave it On", desc: "Wait 6–8 hours before showering. For rapid, rinse after 2–3 hrs." },
+              { icon: "⏱", title: "Leave it On", desc: "Rinse after 6–8 hours, or 2–3 hours for Rapid Venetian. Full colour develops over 24 hours." },
             ].map((t) => (
               <div key={t.title} className="bg-[#fdf6ec] rounded-2xl p-5 border border-[#e8d9c3] text-center">
                 <div className="text-3xl mb-3">{t.icon}</div>
@@ -193,13 +192,7 @@ export default function BookNow() {
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-5 text-center">Our Sydney Locations</p>
           <div className="flex flex-wrap justify-center gap-3">
-            {[
-              { name: "Caringbah", slug: "caringbah" },
-              { name: "Edensor Park", slug: "edensor-park" },
-              { name: "Kings Park", slug: "kings-park" },
-              { name: "Smeaton Grange", slug: "smeaton-grange" },
-              { name: "Woollahra", slug: "woollahra" },
-            ].map((loc) => (
+            {LOCATIONS.map((l) => ({ name: l.shortName, slug: l.slug })).map((loc) => (
               <Link
                 key={loc.slug}
                 href={`/locations/${loc.slug}`}

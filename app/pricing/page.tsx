@@ -7,6 +7,8 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TrustBadges from "@/components/TrustBadges";
+import StudioBookButton from "@/components/StudioBookButton";
+import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud } from "@/lib/pricing";
 
 const pricingFaqs = [
   {
@@ -20,6 +22,14 @@ const pricingFaqs = [
   {
     q: "Can I get a refund on unused sessions?",
     a: "Sessions are non-refundable but can be transferred to another booking date within the validity period.",
+  },
+  {
+    q: "Is there a minimum commitment?",
+    a: `Casual tans and the 10 pack have no commitment. Glow Club has a ${GLOW_CLUB.minimumMonths}-month minimum, which is ${formatAud(GLOW_CLUB.minimumTotal)} in base membership payments (${GLOW_CLUB.minimumMonths} x ${formatAud(GLOW_CLUB.monthly)}). To leave before then, you pay out the rest of the minimum term. After that it continues month to month, and you can cancel by emailing ${GLOW_CLUB.cancelEmail}.`,
+  },
+  {
+    q: "Do unused Glow Club tans roll over?",
+    a: `No. Your ${GLOW_CLUB.tansPerMonth} tans need to be used within each month.`,
   },
 ];
 
@@ -44,7 +54,7 @@ export default function Pricing() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Transparent &amp; Simple</p>
           <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Simple, Honest Pricing</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
-            No hidden fees. No awkward upsells. Just beautiful tans.
+            Upfront prices. No awkward upsells. Just beautiful tans.
           </p>
         </div>
       </section>
@@ -66,24 +76,21 @@ export default function Pricing() {
                 <span className="bg-[#f1e7d6] text-[#8a6a4a] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Pay as you go</span>
               </div>
               <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-2">Casual Tan</p>
-              <div className="flex items-end gap-1 mb-1"><span className="text-5xl font-black">$39</span><span className="text-[#5a4a3a] mb-1.5">/ session</span></div>
+              <div className="flex items-end gap-1 mb-1"><span className="text-5xl font-black">{formatAud(CASUAL.price)}</span><span className="text-[#5a4a3a] mb-1.5">/ session</span></div>
               <p className="text-[#8a6a4a] text-sm mb-6">Single visit, no commitment</p>
               <div className="border-t border-[#e8d9c3] mb-6" />
               <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 1x automated spray tan session</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 2 months</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Pay when you book your time</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Private booth experience</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your shade &amp; depth</li>
               </ul>
-              <a
-                href="https://tannedco.gymmasteronline.com/portal/book/service?serviceid=211107"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent("book_now_click", { source: "pricing_page", plan: "casual" })}
-                className="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
-              >
-                Book Casual Tan →
-              </a>
+              <StudioBookButton
+                plan="casual"
+                source="pricing_page"
+                label="Book Casual Tan →"
+                buttonClassName="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
+              />
             </div>
 
             {/* 10 Pack */}
@@ -92,27 +99,24 @@ export default function Pricing() {
                 <span className="w-11 h-11 rounded-2xl bg-[#a46746]/12 text-[#a46746] flex items-center justify-center">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M12 3l8 4.5-8 4.5-8-4.5L12 3z" /><path d="M4 12l8 4.5 8-4.5" /><path d="M4 16.5l8 4.5 8-4.5" /></svg>
                 </span>
-                <span className="bg-[#a46746]/12 text-[#a46746] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Save $30</span>
+                <span className="bg-[#a46746]/12 text-[#a46746] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Save {formatAud(TEN_PACK.saving)}</span>
               </div>
               <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-2">10 Pack</p>
-              <div className="flex items-end gap-1 mb-1"><span className="text-5xl font-black">$360</span></div>
-              <p className="text-[#a46746] font-semibold text-sm mb-6">$36 per tan · save $30</p>
+              <div className="flex items-end gap-1 mb-1"><span className="text-5xl font-black">{formatAud(TEN_PACK.price)}</span></div>
+              <p className="text-[#a46746] font-semibold text-sm mb-6">{formatAud(TEN_PACK.perTan)} per tan · save {formatAud(TEN_PACK.saving)}</p>
               <div className="border-t border-[#e8d9c3] mb-6" />
               <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 10x automated spray tan sessions</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for 10 months</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for {TEN_PACK.validity}</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Name-specific booking</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Best for regular tanners</li>
               </ul>
-              <a
-                href="https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent("book_now_click", { source: "pricing_page", plan: "10_pack" })}
-                className="block text-center border-2 border-[#a46746] text-[#a46746] py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm"
-              >
-                Buy 10 Pack →
-              </a>
+              <StudioBookButton
+                plan="tenPack"
+                source="pricing_page"
+                label="Buy 10 Pack →"
+                buttonClassName="block text-center border-2 border-[#a46746] text-[#a46746] py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm"
+              />
             </div>
 
             {/* Glow Club */}
@@ -125,12 +129,12 @@ export default function Pricing() {
                 <span className="bg-white/10 text-[#e0a878] text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Membership</span>
               </div>
               <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-2">Glow Club</p>
-              <div className="flex items-end gap-1 mb-1"><span className="text-5xl font-black">$89</span><span className="text-white/50 mb-1.5">/ month</span></div>
+              <div className="flex items-end gap-1 mb-1"><span className="text-5xl font-black">{formatAud(GLOW_CLUB.monthly)}</span><span className="text-white/50 mb-1.5">/ month</span></div>
               <p className="text-white/50 text-sm mb-2">3 tans a month · under $30 a tan</p>
-              <p className="text-[#e0a878] text-sm font-semibold mb-6">3 casual tans would cost $117. You save $28 a month.</p>
+              <p className="text-[#e0a878] text-sm font-semibold mb-6">{GLOW_CLUB.tansPerMonth} casual tans would cost {formatAud(GLOW_CLUB.casualEquivalent)}. You save {formatAud(GLOW_CLUB.monthlySaving)} a month.</p>
               <div className="border-t border-white/10 mb-6" />
               <ul className="space-y-3 text-white/70 text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 3-month minimum, then month-to-month</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {GLOW_CLUB.minimumMonths}-month minimum ({formatAud(GLOW_CLUB.minimumTotal)} in base payments), then month-to-month</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Birthday tan on us</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Founding member status</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Mate&apos;s rate</li>
@@ -161,7 +165,7 @@ export default function Pricing() {
           <span className="hidden sm:block text-white/30">|</span>
           <span className="flex items-center gap-2"><span className="text-[#a46746]">✓</span> Book online in under 60 seconds</span>
           <span className="hidden sm:block text-white/30">|</span>
-          <span className="flex items-center gap-2"><span className="text-[#a46746]">✓</span> No lock-in contracts</span>
+          <span className="flex items-center gap-2"><span className="text-[#a46746]">✓</span> Casual tans: no commitment</span>
         </div>
       </div>
 
@@ -175,6 +179,7 @@ export default function Pricing() {
               <div key={i} className="bg-white rounded-2xl overflow-hidden border border-[#e8d9c3]">
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
                   className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-[#1a1a1a] hover:bg-[#fdf6ec] transition-colors"
                 >
                   <span className="pr-4">{faq.q}</span>
