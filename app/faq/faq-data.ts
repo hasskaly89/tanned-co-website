@@ -13,11 +13,11 @@ export const categories = [
       },
       {
         q: "How long do I leave my tan on before showering?",
-        a: "We recommend leaving your tan on for 6–8 hours. For a darker result you can sleep in it just wash your hands and face with a gentle cleanser 30 minutes after your session. We also offer a 2-hour rapid clear solution that develops into a deep sunkissed glow and needs to be washed off after 2–3 hours max.",
+        a: "We recommend leaving your tan on for 6 to 8 hours. For a darker result you can sleep in it just wash your hands and face with a gentle cleanser 30 minutes after your session. We also offer a 2-hour rapid clear solution that develops into a deep sunkissed glow and needs to be washed off after 2 to 3 hours max.",
       },
       {
         q: "How do spray tans work?",
-        a: "When your sunless tan is applied, Dihydroxyacetone (DHA) reacts with proteins in the skin to form a golden-brown colour. After 2–3 hours your skin darkens and reaches peak colour within 24 hours. Your tan lasts up to 7 days and fades gradually as your skin naturally exfoliates.",
+        a: "When your sunless tan is applied, Dihydroxyacetone (DHA) reacts with proteins in the skin to form a golden-brown colour. After 2 to 3 hours your skin darkens and reaches peak colour within 24 hours. Your tan lasts up to 7 days and fades gradually as your skin naturally exfoliates.",
       },
       {
         q: "How long does a spray tan last?",
@@ -55,7 +55,7 @@ export const categories = [
     faqs: [
       {
         q: "Is it worth it compared to a manual spray tan?",
-        a: "A manual spray tan at a salon typically costs $50–80 and involves another person applying the tan by hand. At Tanned Co, you get consistent, streak-free results from our VersaSpa Pro booths for as little as $39 per session in complete privacy, with no awkward interactions. The automated booth ensures even, full-body coverage every single time.",
+        a: "A manual spray tan at a salon typically costs $50 to 80 and involves another person applying the tan by hand. At Tanned Co, you get consistent, streak-free results from our VersaSpa Pro booths for as little as $39 per session in complete privacy, with no awkward interactions. The automated booth ensures even, full-body coverage every single time.",
       },
       {
         q: "What if I don't like the colour?",

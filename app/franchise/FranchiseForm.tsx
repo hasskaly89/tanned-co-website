@@ -5,9 +5,7 @@ import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
 
 const EMPTY = { name: "", email: "", phone: "", area: "", timeframe: "", message: "", website: "" };
-const input =
-  "w-full bg-white border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] focus:outline-none focus:border-[#a46746] transition-colors";
-const label = "block text-xs font-bold uppercase tracking-widest text-[#5a4a3a] mb-2";
+const label = "block text-sm font-medium text-ink mb-1.5";
 
 export default function FranchiseForm() {
   const [form, setForm] = useState(EMPTY);
@@ -35,9 +33,10 @@ export default function FranchiseForm() {
 
   if (status === "success") {
     return (
-      <div className="bg-white rounded-3xl border border-[#e8d9c3] p-8 text-center" aria-live="polite">
-        <h3 className="text-2xl font-black uppercase mb-3">Thanks, {form.name.split(" ")[0]}</h3>
-        <p className="text-[#5a4a3a]">We&apos;ve received your enquiry and our franchise team will be in touch.</p>
+      <div className="bg-white rounded-[28px] border border-line p-8 md:p-10 text-center" aria-live="polite">
+        <p className="eyebrow mb-3">Thanks, {form.name.split(" ")[0]}</p>
+        <h3 className="display-md mb-3">We&apos;ve got your enquiry.</h3>
+        <p className="text-body">Our franchise team will be in touch.</p>
       </div>
     );
   }
@@ -46,52 +45,47 @@ export default function FranchiseForm() {
     setForm({ ...form, [k]: e.target.value });
 
   return (
-    <form onSubmit={onSubmit} className="bg-white rounded-3xl border border-[#e8d9c3] p-6 md:p-8 space-y-5">
+    <form onSubmit={onSubmit} className="bg-white rounded-[28px] border border-line p-7 md:p-10 space-y-5">
+      <h2 className="display-md mb-2">Send a franchise enquiry.</h2>
       <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={form.website} onChange={set("website")} className="hidden" />
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="fr-name" className={label}>Full name</label>
-          <input id="fr-name" required maxLength={100} autoComplete="name" value={form.name} onChange={set("name")} className={input} />
+          <input id="fr-name" required maxLength={100} autoComplete="name" value={form.name} onChange={set("name")} className="field !bg-cream" />
         </div>
         <div>
           <label htmlFor="fr-phone" className={label}>Mobile number</label>
-          <input id="fr-phone" type="tel" required maxLength={30} autoComplete="tel" inputMode="tel" value={form.phone} onChange={set("phone")} className={input} />
+          <input id="fr-phone" type="tel" required maxLength={30} autoComplete="tel" inputMode="tel" value={form.phone} onChange={set("phone")} className="field !bg-cream" />
         </div>
       </div>
       <div>
         <label htmlFor="fr-email" className={label}>Email</label>
-        <input id="fr-email" type="email" required maxLength={254} autoComplete="email" value={form.email} onChange={set("email")} className={input} />
+        <input id="fr-email" type="email" required maxLength={254} autoComplete="email" value={form.email} onChange={set("email")} className="field !bg-cream" />
       </div>
-      <div className="grid gap-5">
-        <div>
-          <label htmlFor="fr-area" className={label}>Area you&apos;re interested in</label>
-          <input id="fr-area" required maxLength={120} placeholder="e.g. Penrith, Newcastle" value={form.area} onChange={set("area")} className={input} />
-        </div>
-        <div>
-          <label htmlFor="fr-time" className={label}>When would you like to open?</label>
-          <select id="fr-time" value={form.timeframe} onChange={set("timeframe")} className={input}>
-            <option value="">Choose one (optional)</option>
-            <option>Within 6 months</option>
-            <option>6 to 12 months</option>
-            <option>More than 12 months</option>
-            <option>Just exploring</option>
-          </select>
-        </div>
+      <div>
+        <label htmlFor="fr-area" className={label}>Area you&apos;re interested in</label>
+        <input id="fr-area" required maxLength={120} placeholder="e.g. Penrith, Newcastle" value={form.area} onChange={set("area")} className="field !bg-cream" />
+      </div>
+      <div>
+        <label htmlFor="fr-time" className={label}>When would you like to open?</label>
+        <select id="fr-time" value={form.timeframe} onChange={set("timeframe")} className="field !bg-cream cursor-pointer">
+          <option value="">Choose one (optional)</option>
+          <option>Within 6 months</option>
+          <option>6 to 12 months</option>
+          <option>More than 12 months</option>
+          <option>Just exploring</option>
+        </select>
       </div>
       <div>
         <label htmlFor="fr-msg" className={label}>Anything else we should know? (optional)</label>
-        <textarea id="fr-msg" rows={4} maxLength={3000} value={form.message} onChange={set("message")} className={`${input} resize-none`} />
+        <textarea id="fr-msg" rows={4} maxLength={3000} value={form.message} onChange={set("message")} className="field !bg-cream resize-none" />
       </div>
-      <button
-        type="submit"
-        disabled={status === "loading"}
-        className="w-full bg-[#a46746] hover:bg-[#7d4e33] disabled:opacity-60 text-white py-4 rounded-full font-semibold uppercase tracking-widest transition-colors"
-      >
-        {status === "loading" ? "Sending..." : "Send Franchise Enquiry"}
+      <button type="submit" disabled={status === "loading"} className="btn btn-dark w-full !py-4">
+        {status === "loading" ? "Sending..." : "Send franchise enquiry"}
       </button>
-      {status === "error" && <p role="alert" className="text-[#b3261e] text-sm text-center">{error}</p>}
-      <p className="text-xs text-[#5a4a3a] text-center">
-        Your enquiry goes to our franchise team. See our <Link href="/privacy-policy" className="underline">privacy policy</Link>.
+      {status === "error" && <p role="alert" className="text-red-700 text-sm text-center">{error}</p>}
+      <p className="text-xs text-muted text-center">
+        Your enquiry goes to our franchise team. See our <Link href="/privacy-policy" className="text-link">privacy policy</Link>.
       </p>
     </form>
   );

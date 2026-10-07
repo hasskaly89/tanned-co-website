@@ -6,35 +6,48 @@ import Image from "next/image";
 import { trackEvent } from "@/lib/analytics";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "How It Works", href: "/how-it-works" },
+  { label: "How it works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
   { label: "Glow Club", href: "/glow-club" },
   { label: "Locations", href: "/locations" },
+  { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 
-export default function Navbar({ activePath = "/", withBanner = false }: { activePath?: string; withBanner?: boolean }) {
+export default function Navbar({ activePath = "/" }: { activePath?: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const isActive = (href: string) =>
+    href === activePath || (href === "/locations" && activePath.startsWith("/locations"));
+
   return (
-    <nav className={`fixed ${withBanner ? "top-0 md:top-10" : "top-0"} left-0 right-0 z-50 bg-[#fdf6ec]/90 backdrop-blur-sm border-b border-[#e8d9c3] transition-all duration-300`}>
-      <div className="max-w-6xl mx-auto px-6 p-0 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <Image src="/logo.png" alt="Tanned Co." width={300} height={112} className="h-16 md:h-20 w-auto object-contain" />
+    <nav
+      aria-label="Main"
+      className="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-line"
+    >
+      <div className="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between gap-6">
+        <Link href="/" aria-label="Tanned Co. home" className="flex items-center shrink-0">
+          <Image
+            src="/logo_transparent.png"
+            alt="Tanned Co."
+            width={1438}
+            height={200}
+            priority
+            className="h-[18px] md:h-5 w-auto"
+          />
         </Link>
 
-        <div className="hidden lg:flex items-center gap-4 xl:gap-5 text-[13px] xl:text-sm font-medium tracking-wide uppercase">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-7 text-sm font-medium">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={`transition-colors ${
-                l.href === activePath || (l.href === "/locations" && activePath.startsWith("/locations"))
-                  ? "text-[#1a1a1a] border-b-2 border-[#a46746] pb-0.5"
-                  : "text-[#5a4a3a] hover:text-[#1a1a1a]"
+              aria-current={isActive(l.href) ? "page" : undefined}
+              className={`py-1 border-b-[1.5px] transition-colors whitespace-nowrap ${
+                isActive(l.href)
+                  ? "text-ink border-bronze"
+                  : "text-body border-transparent hover:text-ink"
               }`}
             >
               {l.label}
@@ -42,48 +55,38 @@ export default function Navbar({ activePath = "/", withBanner = false }: { activ
           ))}
         </div>
 
-        <div className="hidden lg:flex items-center gap-3">
-          <div className="hidden xl:flex items-center gap-3">
-          <a href="https://www.instagram.com/tannedco_" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a href="https://www.tiktok.com/@tannedco_" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.78a4.85 4.85 0 01-1.01-.09z"/></svg>
-          </a>
-          <a href="https://www.facebook.com/profile.php?id=100086326464692" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </a>
-          </div>
+        <div className="hidden lg:flex items-center">
           <Link
             href="/book-now"
             onClick={() => trackEvent("book_now_click", { source: "navbar_desktop" })}
-            className="inline-flex items-center bg-[#1a1a1a] text-white text-sm px-5 py-2.5 rounded-full font-medium hover:bg-[#3a2e24] transition-colors"
+            className="btn btn-dark !px-6 !py-3 !text-sm"
           >
-            Book Now
+            Book now
           </Link>
         </div>
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden flex flex-col gap-1.5 p-2"
-          aria-label="Toggle menu"
+          className="lg:hidden flex flex-col gap-1.5 p-3 -mr-3"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
         >
-          <span className={`block w-6 h-0.5 bg-[#1a1a1a] transition-transform duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-[#1a1a1a] transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-[#1a1a1a] transition-transform duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-ink transition-transform duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-ink transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-6 h-0.5 bg-ink transition-transform duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </div>
 
       {menuOpen && (
-        <div id="mobile-menu" className="lg:hidden bg-[#fdf6ec] border-t border-[#e8d9c3] px-6 py-6 flex flex-col gap-5">
+        <div id="mobile-menu" className="lg:hidden bg-cream border-t border-line px-6 py-6 flex flex-col">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setMenuOpen(false)}
-              className="text-base font-medium tracking-wider uppercase text-[#5a4a3a]"
+              aria-current={isActive(l.href) ? "page" : undefined}
+              className={`font-display text-2xl py-2.5 border-b border-line ${isActive(l.href) ? "text-bronze-text" : "text-ink"}`}
             >
               {l.label}
             </Link>
@@ -94,9 +97,9 @@ export default function Navbar({ activePath = "/", withBanner = false }: { activ
               setMenuOpen(false);
               trackEvent("book_now_click", { source: "navbar_mobile_menu" });
             }}
-            className="mt-2 text-center bg-[#1a1a1a] text-white text-sm px-5 py-3 rounded-full font-medium"
+            className="btn btn-dark mt-6"
           >
-            Book Now
+            Book now
           </Link>
         </div>
       )}

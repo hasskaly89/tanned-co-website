@@ -54,22 +54,22 @@ export default function InstagramFeed() {
   }, []);
 
   return (
-    <section className="py-6">
+    <section className="py-3 bg-cream" aria-label="Tanned Co. on Instagram">
       {loading ? (
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2 px-2">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="aspect-square rounded-lg bg-[#e8d9c3] animate-pulse" />
+            <div key={i} className="aspect-square rounded-xl bg-line animate-pulse" />
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-2 px-2">
+        <div className={`grid gap-2 px-2 ${posts.length <= 4 ? "grid-cols-2 md:grid-cols-4" : "grid-cols-3 md:grid-cols-6"}`}>
           {posts.map((post) => (
             <a
               key={post.id}
               href={post.permalink}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative aspect-square overflow-hidden rounded-lg group"
+              className="relative aspect-square overflow-hidden rounded-xl group"
             >
               <Image
                 src={post.display_url}

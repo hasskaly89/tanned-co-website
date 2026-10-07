@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
+import PageHero from "@/components/PageHero";
+import { MailIcon, PhoneIcon, InstagramIcon, TikTokIcon, FacebookIcon } from "@/components/Icons";
 import { trackEvent } from "@/lib/analytics";
 
 const enquiryTypes = [
@@ -25,6 +26,14 @@ const locations = [
   "Woollahra",
   "Not location specific / General",
 ];
+
+const socials = [
+  { label: "Instagram", href: "https://instagram.com/tannedco_", icon: <InstagramIcon className="w-4 h-4" /> },
+  { label: "TikTok", href: "https://www.tiktok.com/@tannedco_", icon: <TikTokIcon className="w-4 h-4" /> },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=100086326464692", icon: <FacebookIcon className="w-4 h-4" /> },
+];
+
+const labelClass = "block text-sm font-medium text-ink mb-2";
 
 export default function ContactClient() {
   const [formData, setFormData] = useState({
@@ -59,207 +68,161 @@ export default function ContactClient() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
+    <div className="min-h-screen bg-cream text-ink font-sans">
       <LocalBusinessSchema />
       <Navbar activePath="/contact" />
 
-      {/* HERO */}
-      <section className="relative h-[70vh] min-h-[520px] flex items-end">
-        <Image
-          src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg"
-          alt="Tanned Co. studio"
-          fill
-          className="object-cover object-center"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 md:pb-20">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">We&apos;d Love to Hear From You</p>
-          <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Contact Us</h1>
-          <p className="text-white/80 text-lg md:text-xl max-w-xl">
-            Got a question, franchise enquiry, or just want to say hi? Drop us a message.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="We'd love to hear from you"
+        title="Contact us."
+        intro="Got a question, franchise enquiry, or just want to say hi? Drop us a message."
+        image="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg"
+        imageAlt="Tanned Co. studio"
+      />
 
-      {/* CONTACT SECTION */}
-      <section className="py-12 md:py-28 bg-white text-[#1a1a1a]">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14">
+      <section className="py-20 md:py-28">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1fr_1.15fr] gap-14 md:gap-20">
+          {/* Contact info */}
+          <div>
+            <p className="eyebrow mb-4">Contact info</p>
+            <h2 className="display-lg mb-8">Get in touch.</h2>
+            <div className="space-y-4 mb-10">
+              <a
+                href="mailto:hello@tannedco.com.au"
+                onClick={() => trackEvent("email_click", { source: "contact_page" })}
+                className="flex items-center gap-3 text-lg text-ink hover:text-bronze-text transition-colors"
+              >
+                <MailIcon className="w-5 h-5 text-bronze" /> hello@tannedco.com.au
+              </a>
+              <a
+                href="tel:1300826633"
+                onClick={() => trackEvent("phone_click", { source: "contact_page" })}
+                className="flex items-center gap-3 text-lg text-ink hover:text-bronze-text transition-colors"
+              >
+                <PhoneIcon className="w-5 h-5 text-bronze" /> 1300 826 633
+              </a>
+            </div>
 
-          {/* Left: contact info */}
-          <div className="space-y-8">
-            <div>
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Contact Info</p>
-              <h2 className="text-3xl md:text-4xl font-black uppercase mb-8">Get In Touch</h2>
-              <div className="space-y-4">
-                <a href="mailto:hello@tannedco.com.au" onClick={() => trackEvent("email_click", { source: "contact_page" })} className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors text-base">
-                  <span className="text-[#a46746]">✉</span> hello@tannedco.com.au
-                </a>
-                <a href="tel:1300826633" onClick={() => trackEvent("phone_click", { source: "contact_page" })} className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors text-base">
-                  <span className="text-[#a46746]">☎</span> 1300 826 633
-                </a>
+            <div className="border-t border-line py-7">
+              <h3 className="eyebrow mb-4">Follow us</h3>
+              <div className="flex flex-wrap gap-2.5">
+                {socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-body bg-white border border-line rounded-full px-4 py-2.5 hover:border-bronze hover:text-bronze-text transition-colors"
+                  >
+                    {s.icon} {s.label}
+                  </a>
+                ))}
               </div>
             </div>
 
-            <div>
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-4 text-[#a46746]">Follow Us</h3>
+            <div className="border-t border-line py-7">
+              <h3 className="eyebrow mb-4">Quick links</h3>
               <div className="flex flex-wrap gap-3">
-                <a
-                  href="https://www.instagram.com/tannedco_"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors font-medium text-sm uppercase tracking-wider border border-[#e8d9c3] rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
-                >
-                  Instagram
-                </a>
-                <a
-                  href="https://www.tiktok.com/@tannedco_"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors font-medium text-sm uppercase tracking-wider border border-[#e8d9c3] rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
-                >
-                  TikTok
-                </a>
-                <a
-                  href="https://www.facebook.com/profile.php?id=100086326464692"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors font-medium text-sm uppercase tracking-wider border border-[#e8d9c3] rounded-full px-4 py-2 hover:border-[#a46746] hover:text-[#a46746]"
-                >
-                  Facebook
-                </a>
+                <Link href="/book-now" className="btn btn-dark">Book your tan</Link>
+                <Link href="/locations" className="btn btn-outline">View all studios</Link>
               </div>
             </div>
 
-            <div>
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-4 text-[#a46746]">Book Now</h3>
-              <Link
-                href="/book-now"
-                className="inline-flex items-center bg-[#a46746] hover:bg-[#7d4e33] text-white px-7 py-3 rounded-full font-semibold transition-colors text-sm"
-              >
-                Book Your Tan →
-              </Link>
-            </div>
-
-            <div>
-              <h3 className="text-sm font-bold uppercase tracking-widest mb-4 text-[#a46746]">Our Locations</h3>
-              <Link
-                href="/locations"
-                className="inline-flex items-center border-2 border-[#1a1a1a] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white px-7 py-3 rounded-full font-semibold transition-colors text-sm"
-              >
-                View All Studios →
-              </Link>
-            </div>
+            <p className="text-body text-sm border-t border-line pt-7">
+              Looking for a quick answer? <Link href="/faq" className="text-link">Check the FAQ</Link>
+            </p>
           </div>
 
-          {/* Right: contact form */}
-          <div>
-            <h3 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#a46746]">Send Us a Message</h3>
+          {/* Contact form */}
+          <div className="bg-white rounded-[28px] border border-line p-7 md:p-10">
+            <h3 className="display-md mb-7">Send us a message.</h3>
 
             {status === "success" ? (
-              <div className="bg-[#fdf0d5] border border-[#e8d9c3] rounded-2xl p-8 text-center">
-                <div className="text-4xl mb-4">✨</div>
-                <h4 className="text-xl font-black uppercase text-[#1a1a1a] mb-2">Message Sent!</h4>
-                <p className="text-[#5a4a3a] mb-6">Thanks for reaching out. We&apos;ll get back to you shortly.</p>
-                <button
-                  onClick={() => setStatus("idle")}
-                  className="text-sm font-semibold text-[#a46746] hover:text-[#7d4e33] underline transition-colors"
-                >
+              <div role="status" className="bg-sand border border-line rounded-3xl p-8 text-center">
+                <h4 className="font-display font-medium text-3xl mb-2">Message sent.</h4>
+                <p className="text-body mb-6">Thanks for reaching out. We&apos;ll get back to you shortly.</p>
+                <button onClick={() => setStatus("idle")} className="text-link cursor-pointer">
                   Send another message
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                <input
-                  type="text"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  value={formData.website}
-                  onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-                  className="hidden"
-                />
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={formData.website} onChange={(e) => setFormData({ ...formData, website: e.target.value })} className="hidden" />
                 <div>
-                  <label htmlFor="name" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
-                    Your Name
-                  </label>
+                  <label htmlFor="name" className={labelClass}>Your name</label>
                   <input
                     id="name"
                     type="text"
                     required
+                    autoComplete="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Jane Smith"
-                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
+                    className="field !bg-cream"
                   />
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="jane@example.com"
-                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
-                  />
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="email" className={labelClass}>Email address</label>
+                    <input
+                      id="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="jane@example.com"
+                      className="field !bg-cream"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className={labelClass}>Mobile number</label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      required
+                      autoComplete="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="0400 000 000"
+                      className="field !bg-cream"
+                    />
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="enquiryType" className={labelClass}>Enquiry type</label>
+                    <select
+                      id="enquiryType"
+                      required
+                      value={formData.enquiryType}
+                      onChange={(e) => setFormData({ ...formData, enquiryType: e.target.value })}
+                      className="field !bg-cream cursor-pointer"
+                    >
+                      <option value="" disabled>Select an option...</option>
+                      {enquiryTypes.map((type) => (
+                        <option key={type} value={type}>{type}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="location" className={labelClass}>Location</label>
+                    <select
+                      id="location"
+                      required
+                      value={formData.location}
+                      onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                      className="field !bg-cream cursor-pointer"
+                    >
+                      <option value="" disabled>Select a location...</option>
+                      {locations.map((loc) => (
+                        <option key={loc} value={loc}>{loc}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
-                    Mobile Number
-                  </label>
-                  <input
-                    id="phone"
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="0400 000 000"
-                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="enquiryType" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
-                    Enquiry Type
-                  </label>
-                  <select
-                    id="enquiryType"
-                    required
-                    value={formData.enquiryType}
-                    onChange={(e) => setFormData({ ...formData, enquiryType: e.target.value })}
-                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] focus:outline-none focus:border-[#a46746] transition-colors appearance-none cursor-pointer"
-                  >
-                    <option value="" disabled>Select an option...</option>
-                    {enquiryTypes.map((type) => (
-                      <option key={type} value={type}>{type}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="location" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
-                    Location
-                  </label>
-                  <select
-                    id="location"
-                    required
-                    value={formData.location}
-                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] focus:outline-none focus:border-[#a46746] transition-colors appearance-none cursor-pointer"
-                  >
-                    <option value="" disabled>Select a location...</option>
-                    {locations.map((loc) => (
-                      <option key={loc} value={loc}>{loc}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest text-[#7a6a5a] mb-2">
-                    Message
-                  </label>
+                  <label htmlFor="message" className={labelClass}>Message</label>
                   <textarea
                     id="message"
                     required
@@ -267,26 +230,23 @@ export default function ContactClient() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="How can we help you?"
-                    className="w-full bg-[#fdf6ec] border border-[#e8d9c3] rounded-xl px-4 py-3 text-[#1a1a1a] placeholder-[#9a8a7a] focus:outline-none focus:border-[#a46746] transition-colors resize-none"
+                    className="field !bg-cream resize-none"
                   />
                 </div>
                 {status === "error" && (
-                  <p className="text-sm text-red-600">Something went wrong. Please try again or email us directly at hello@tannedco.com.au</p>
+                  <p role="alert" className="text-sm text-red-700">
+                    Something went wrong. Please try again or email us directly at hello@tannedco.com.au
+                  </p>
                 )}
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="w-full bg-[#a46746] hover:bg-[#7d4e33] disabled:opacity-60 disabled:cursor-not-allowed text-white py-4 rounded-full font-semibold uppercase tracking-widest transition-colors"
-                >
-                  {status === "loading" ? "Sending..." : "Send Message"}
+                <button type="submit" disabled={status === "loading"} className="btn btn-dark w-full !py-4">
+                  {status === "loading" ? "Sending..." : "Send message"}
                 </button>
-                <p className="text-xs text-[#5a4a3a] text-center">
-                  We use your details only to reply to your enquiry. See our <Link href="/privacy-policy" className="underline">privacy policy</Link>.
+                <p className="text-xs text-muted text-center">
+                  We use your details only to reply to your enquiry. See our <Link href="/privacy-policy" className="text-link">privacy policy</Link>.
                 </p>
               </form>
             )}
           </div>
-
         </div>
       </section>
 
