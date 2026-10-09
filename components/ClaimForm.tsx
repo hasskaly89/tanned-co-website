@@ -5,6 +5,7 @@ import LeadFormFields, { EMPTY_LEAD_FORM, type LeadFormState } from "@/component
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
 import { newSubmissionId, submitClaim } from "@/lib/submit-lead";
 import { CheckIcon } from "@/components/Icons";
+import { IS_PREVIEW, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
 
 const points = [
   "Private, locked booth. Just you.",
@@ -88,9 +89,10 @@ export default function ClaimForm({ location }: { location: string }) {
             </p>
             <form onSubmit={handleSubmit} className="space-y-3.5">
               <LeadFormFields idPrefix={`claim-${location.replace(/\W+/g, "-").toLowerCase()}`} form={form} setForm={setForm} tone="dark" />
-              <button type="submit" disabled={status === "loading"} className="btn btn-light w-full !py-4">
+              <button type="submit" disabled={status === "loading" || IS_PREVIEW} className="btn btn-light w-full !py-4">
                 {status === "loading" ? "Sending..." : "Text me my 10% off code"}
               </button>
+              {IS_PREVIEW && <p className="text-on-dark-muted text-xs text-center">{PREVIEW_FORM_MESSAGE}</p>}
               {status === "error" && (
                 <p role="alert" className="text-red-300 text-sm text-center">{error}</p>
               )}

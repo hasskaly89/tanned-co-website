@@ -1,9 +1,13 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import { isPreviewRequest, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
 import { escapeHtml, field, isValidEmail, isValidPhone } from "@/lib/form-utils";
 import { clientIp, rateLimited } from "@/lib/rate-limit";
 
 export async function POST(req: Request) {
+  if (isPreviewRequest()) {
+    return NextResponse.json({ error: PREVIEW_FORM_MESSAGE }, { status: 403 });
+  }
   if (rateLimited(`contact:${clientIp(req)}`, 5, 10 * 60 * 1000)) {
     return NextResponse.json({ error: "Too many messages. Please wait a few minutes and try again." }, { status: 429 });
   }

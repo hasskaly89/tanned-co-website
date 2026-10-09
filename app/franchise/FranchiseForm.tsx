@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
+import { IS_PREVIEW, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
 
 const EMPTY = { name: "", email: "", phone: "", area: "", timeframe: "", message: "", website: "" };
 const label = "block text-sm font-medium text-ink mb-1.5";
@@ -80,9 +81,10 @@ export default function FranchiseForm() {
         <label htmlFor="fr-msg" className={label}>Anything else we should know? (optional)</label>
         <textarea id="fr-msg" rows={4} maxLength={3000} value={form.message} onChange={set("message")} className="field !bg-cream resize-none" />
       </div>
-      <button type="submit" disabled={status === "loading"} className="btn btn-dark w-full !py-4">
+      <button type="submit" disabled={status === "loading" || IS_PREVIEW} className="btn btn-dark w-full !py-4">
         {status === "loading" ? "Sending..." : "Send franchise enquiry"}
       </button>
+      {IS_PREVIEW && <p className="text-muted text-xs text-center">{PREVIEW_FORM_MESSAGE}</p>}
       {status === "error" && <p role="alert" className="text-red-700 text-sm text-center">{error}</p>}
       <p className="text-xs text-muted text-center">
         Your enquiry goes to our franchise team. See our <Link href="/privacy-policy" className="text-link">privacy policy</Link>.

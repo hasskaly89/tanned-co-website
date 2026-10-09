@@ -8,6 +8,7 @@ import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import PageHero from "@/components/PageHero";
 import { MailIcon, PhoneIcon, InstagramIcon, TikTokIcon, FacebookIcon } from "@/components/Icons";
 import { trackEvent } from "@/lib/analytics";
+import { IS_PREVIEW, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
 
 const enquiryTypes = [
   "General Enquiry",
@@ -238,9 +239,10 @@ export default function ContactClient() {
                     Something went wrong. Please try again or email us directly at hello@tannedco.com.au
                   </p>
                 )}
-                <button type="submit" disabled={status === "loading"} className="btn btn-dark w-full !py-4">
+                <button type="submit" disabled={status === "loading" || IS_PREVIEW} className="btn btn-dark w-full !py-4">
                   {status === "loading" ? "Sending..." : "Send message"}
                 </button>
+                {IS_PREVIEW && <p className="text-muted text-xs text-center">{PREVIEW_FORM_MESSAGE}</p>}
                 <p className="text-xs text-muted text-center">
                   We use your details only to reply to your enquiry. See our <Link href="/privacy-policy" className="text-link">privacy policy</Link>.
                 </p>

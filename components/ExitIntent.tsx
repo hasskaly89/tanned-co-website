@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import LeadFormFields, { EMPTY_LEAD_FORM, type LeadFormState } from "@/components/LeadFormFields";
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
 import { newSubmissionId, submitClaim } from "@/lib/submit-lead";
+import { IS_PREVIEW, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
 
 const SESSION_KEY = "tannedco_exit_shown";
 
@@ -163,9 +164,10 @@ export default function ExitIntent() {
 
             <form onSubmit={handleSubmit} className="space-y-3.5">
               <LeadFormFields idPrefix="offer-popup" form={form} setForm={setForm} tone="light" />
-              <button type="submit" disabled={status === "loading"} className="btn btn-dark w-full !py-4">
+              <button type="submit" disabled={status === "loading" || IS_PREVIEW} className="btn btn-dark w-full !py-4">
                 {status === "loading" ? "Sending..." : "Text me my code"}
               </button>
+              {IS_PREVIEW && <p className="text-muted text-xs text-center">{PREVIEW_FORM_MESSAGE}</p>}
               {status === "error" && (
                 <p role="alert" className="text-red-700 text-sm text-center">{error}</p>
               )}

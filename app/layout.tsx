@@ -6,6 +6,7 @@ import MobileCTA from "@/components/MobileCTA";
 import ExitIntent from "@/components/ExitIntent";
 import BronzeBot from "@/components/BronzeBot";
 import PageViewTracker from "@/components/PageViewTracker";
+import PreviewRibbon from "@/components/PreviewRibbon";
 import { GA_ID } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/locations";
 
@@ -93,6 +94,7 @@ export default function RootLayout({
         <MobileCTA />
         <ExitIntent />
         <BronzeBot />
+        <PreviewRibbon />
       </body>
     </html>
   );
