@@ -10,6 +10,11 @@ import OfferButton from "@/components/OfferButton";
 import { ArrowIcon, CheckIcon } from "@/components/Icons";
 import { LOCATIONS } from "@/lib/locations";
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
+import { CASUAL, formatAud } from "@/lib/pricing";
+import StudioStrip from "@/components/StudioStrip";
+import BoothVideo from "@/components/BoothVideo";
+import SupportBlock from "@/components/SupportBlock";
+import LatestGoogleReview from "@/components/LatestGoogleReview";
 
 const IMGS = {
   hero: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
@@ -17,15 +22,16 @@ const IMGS = {
 };
 
 const whyPoints = [
-  "Completely private: lock the door, it's just you",
+  "Private room: lock the door, it's just you",
   "Heated, self-cleaning booths",
   "Choose your shade and depth in the room",
 ];
 
+// Each photo is a side-by-side pair: before on the left, after on the right.
 const results = [
-  { src: "/before-after-venetian.jpg", alt: "Before and after a Rapid Venetian Medium spray tan", label: "Rapid Venetian · Medium" },
-  { src: "/before-after-tan.jpg", alt: "Before and after a Malibu Medium spray tan", label: "Malibu · Medium" },
-  { src: "/before-after-monterey-dark.jpg", alt: "Before and after a Monterey Dark spray tan", label: "Monterey · Dark" },
+  { src: "/before-after-venetian.jpg", alt: "Before (left) and after (right) a Rapid Venetian Medium spray tan", shade: "Rapid Venetian", depth: "Medium" },
+  { src: "/before-after-tan.jpg", alt: "Before (left) and after (right) a Malibu Medium spray tan", shade: "Malibu", depth: "Medium" },
+  { src: "/before-after-monterey-dark.jpg", alt: "Before (left) and after (right) a Monterey Dark spray tan", shade: "Monterey", depth: "Dark" },
 ];
 
 const steps = [
@@ -57,23 +63,37 @@ export default function Home() {
         {/* pb-28 on mobile keeps the trust row clear of the sticky Book bar */}
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-28 md:pb-20">
           <p className="eyebrow-light mb-5">Sydney&apos;s first automated spray tan studio</p>
-          <h1 className="display-xl text-white max-w-4xl">Your private glow, perfected.</h1>
-          <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-lg mt-6">
-            Step into your own heated booth. No staff, no streaks, no awkwardness. Just an even, natural tan in minutes.
+          <h1 className="display-xl text-white max-w-4xl">Private, automated spray tanning.</h1>
+          <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-xl mt-6">
+            Your own heated booth, your choice of shade and about 4 minutes in the booth. Book online, let yourself in
+            and tan in private.
           </p>
-          <div className="flex flex-wrap items-center gap-3 mt-8">
+          <div className="inline-flex items-center gap-5 md:gap-7 mt-7 rounded-2xl border border-white/35 bg-white/10 backdrop-blur-sm px-5 py-3.5 md:px-6">
+            <p className="leading-tight">
+              <span className="block eyebrow-light">Casual tans</span>
+              <span className="block text-on-dark text-xs mt-1">Per session, no commitment</span>
+            </p>
+            <p className="font-display font-medium text-4xl md:text-5xl leading-none text-white">{formatAud(CASUAL.price)}</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-3 mt-7">
             <Link href="/book-now" className="btn btn-light">Book your tan</Link>
             <OfferButton source="home_hero" className="btn btn-outline-light">
               First visit? Get {FIRST_TIMER_OFFER.headline}
             </OfferButton>
           </div>
-          <ul className="flex flex-wrap items-center gap-x-7 gap-y-2 mt-9 text-sm font-medium text-on-dark">
+          <ul className="flex flex-wrap items-center gap-x-7 gap-y-2 mt-8 text-sm font-medium text-on-dark">
             <li>5 Sydney studios</li>
             <li>Open 7 days, 6am to midnight</li>
             <li>4 minutes in the booth</li>
           </ul>
         </div>
       </section>
+
+      {/* STUDIOS, straight under the hero */}
+      <StudioStrip />
+
+      {/* BOOTH WALKTHROUGH VIDEO: hidden until a video file is set in lib/site.ts */}
+      <BoothVideo />
 
       {/* WHY TANNED CO */}
       <section className="py-20 md:py-28">
@@ -82,8 +102,8 @@ export default function Home() {
             <p className="eyebrow mb-4">Why Tanned Co.</p>
             <h2 className="display-lg mb-6">A calm, private tan in minutes.</h2>
             <p className="text-body text-lg leading-relaxed mb-8">
-              No one else in the room and nothing to rush. Our VersaSpa Pro booths sense your height and guide
-              you through four positions with voice prompts, for an even, natural-looking result.
+              Book a time, let yourself in and tan in your own heated VersaSpa Pro booth. The booth senses your
+              height and voice prompts guide you through four positions for an even, natural-looking result.
             </p>
             <ul className="space-y-3.5 mb-9">
               {whyPoints.map((p) => (
@@ -116,15 +136,20 @@ export default function Home() {
           <SectionHeading
             eyebrow="Real results"
             title="The transformation."
-            intro="What a single Tanned Co. session looks like on real skin tones."
+            intro="What a single Tanned Co. session looks like on real skin. Results vary with skin tone, prep and aftercare."
           />
           <div className="grid sm:grid-cols-3 gap-5 md:gap-7">
             {results.map((r) => (
               <figure key={r.src}>
                 <div className="relative aspect-[3/4] rounded-3xl overflow-hidden">
                   <Image src={r.src} alt={r.alt} fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover" />
+                  <span aria-hidden="true" className="absolute top-3 left-3 rounded-full bg-espresso/80 text-white text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5">Before</span>
+                  <span aria-hidden="true" className="absolute top-3 right-3 rounded-full bg-espresso/80 text-white text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5">After</span>
                 </div>
-                <figcaption className="eyebrow text-center mt-4">{r.label}</figcaption>
+                <figcaption className="text-center mt-4">
+                  <span className="eyebrow block">Shade: {r.shade} <span className="ml-2">Depth: {r.depth}</span></span>
+                  <span className="block text-xs text-muted mt-1.5">One session, before and after</span>
+                </figcaption>
               </figure>
             ))}
           </div>
@@ -138,7 +163,9 @@ export default function Home() {
       <section className="py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading eyebrow="The process" title="Four simple steps." />
-          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+          <div className="grid lg:grid-cols-[1fr_340px] gap-12 lg:gap-14 items-start">
+          <div>
+          <ol className="grid sm:grid-cols-2 gap-x-8 gap-y-10">
             {steps.map(({ num, title, desc }) => (
               <li key={num} className="border-t border-line pt-7">
                 <p className="font-display font-normal text-5xl text-bronze leading-none mb-5">{num}</p>
@@ -147,15 +174,22 @@ export default function Home() {
               </li>
             ))}
           </ol>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 mt-14">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 mt-12">
             <Link href="/how-it-works" className="btn btn-outline">Read the full guide</Link>
             <Link href="/faq" className="text-link">First time? Read the FAQ</Link>
+          </div>
+          </div>
+          {/* Genuine review from the live Google feed; renders nothing if the feed is unavailable */}
+          <LatestGoogleReview />
           </div>
         </div>
       </section>
 
+      {/* SUPPORT */}
+      <SupportBlock />
+
       {/* PRICING */}
-      <section className="py-20 md:py-28 bg-sand">
+      <section className="py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Simple pricing"
@@ -172,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* REVIEWS */}
-      <GoogleReviews />
+      <GoogleReviews className="bg-sand" />
 
       {/* STUDIOS + CLOSING CTA */}
       <section className="bg-espresso text-white py-20 md:py-28">
