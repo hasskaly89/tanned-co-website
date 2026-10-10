@@ -180,7 +180,7 @@ export default function Home() {
           </div>
           </div>
           {/* Genuine review from the live Google feed; renders nothing if the feed is unavailable */}
-          <LatestGoogleReview />
+          <LatestGoogleReview repuFallbackKey={LOCATIONS[0].repuWidgetKey} />
           </div>
         </div>
       </section>
