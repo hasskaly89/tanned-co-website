@@ -56,7 +56,7 @@ export default function LocationsPage() {
             title="5 Sydney studios."
             intro={
               <>
-                Private booths, flawless results, open 7 days.{" "}
+                Private booths, even results, open 7 days.{" "}
                 <Link href="/pricing" className="text-link">Sessions from {formatAud(CASUAL.price)}</Link>.
               </>
             }

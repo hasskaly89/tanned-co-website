@@ -15,7 +15,7 @@ export const categories = [
       },
       {
         q: "How long do I leave my tan on before showering?",
-        a: "We recommend leaving your tan on for 6 to 8 hours. For a darker result you can sleep in it just wash your hands and face with a gentle cleanser 30 minutes after your session. We also offer a 2-hour rapid clear solution that develops into a deep sunkissed glow and needs to be washed off after 2 to 3 hours max.",
+        a: "We recommend leaving your tan on for 6 to 8 hours. For a darker result, you can sleep in it. Just wash your hands and face with a gentle cleanser 30 minutes after your session. We also offer a 2-hour rapid clear solution that develops into a deep sunkissed glow and needs to be washed off after 2 to 3 hours max.",
       },
       {
         q: "How do spray tans work?",
@@ -57,11 +57,11 @@ export const categories = [
     faqs: [
       {
         q: "Is it worth it compared to a manual spray tan?",
-        a: `A manual spray tan at a salon typically costs $50 to 80 and involves another person applying the tan by hand. At Tanned Co, you get consistent, streak-free results from our VersaSpa Pro booths for as little as ${formatAud(CASUAL.price)} per session in complete privacy, with no awkward interactions. The automated booth ensures even, full-body coverage every single time.`,
+        a: `A manual spray tan at a salon typically costs $50 to 80 and involves another person applying the tan by hand. At Tanned Co, you get consistent, even results from our VersaSpa Pro booths for as little as ${formatAud(CASUAL.price)} per session in complete privacy, with no awkward interactions. The automated booth is designed for even, full-body coverage.`,
       },
       {
         q: "What if I don't like the colour?",
-        a: "We offer 3 signature colours (Rapid Venetian, Malibu, and Monterey) each available in 3 depths that's 9 shade combinations. Each colour comes in Natural, Medium or Dark. If you're new, we recommend starting with Natural or Medium. Your tan lasts up to 7 days and fades naturally, so there's no long-term commitment. Check our shade guide on the How It Works page to find your perfect match.",
+        a: "We offer 3 signature colours (Rapid Venetian, Malibu, and Monterey) each available in 3 depths that's 9 shade combinations. Each colour comes in Natural, Medium or Dark. If you're new, we recommend starting with Natural or Medium. Your tan lasts up to 7 days and fades naturally, so there's no long-term commitment. Check our shade guide on the How It Works page to find your match.",
       },
       {
         q: "Is it safe for sensitive skin?",
@@ -76,8 +76,8 @@ export const categories = [
         a: "Unlike sunbeds, spray tanning involves no UV exposure, so it does not cause sunburn or the UV damage linked to sunbeds. A spray tan does not protect you from the sun, so keep wearing sunscreen.",
       },
       {
-        q: "Do you offer any guarantee?",
-        a: "We want you to love your tan. If you're not happy with your result, contact us at hello@tannedco.com.au within 24 hours and we'll work with you to make it right. Our VersaSpa Pro booths deliver consistent results, and our in-room shade guide helps you pick the perfect colour before you step in.",
+        q: "What if I'm not happy with my result?",
+        a: "We want you to love your tan. If you're not happy with your result, contact us at hello@tannedco.com.au within 24 hours and we'll work with you to make it right. Our VersaSpa Pro booths are designed for consistent results, and the in-room shade guide helps you choose a colour before you step in.",
       },
     ],
   },

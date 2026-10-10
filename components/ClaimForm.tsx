@@ -69,7 +69,7 @@ export default function ClaimForm({ location }: { location: string }) {
             <p className="eyebrow-light mb-4">Exclusive first-timer offer</p>
             <h2 className="display-lg mb-5">{FIRST_TIMER_OFFER.headline}.</h2>
             <p className="text-on-dark text-lg leading-relaxed mb-8">
-              Five automated spray tan studios across Sydney. An even, streak-free glow from a 4-minute session,
+              Five automated spray tan studios across Sydney. An even glow from a 4-minute session,
               completely private, no staff involved.
             </p>
             <ul className="space-y-3">

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://www.tannedco.com.au/how-it-works" },
   openGraph: {
     title: "How It Works | Tanned Co.",
-    description: "Your step-by-step guide to a perfect automated spray tan.",
+    description: "Your step-by-step guide to an automated spray tan.",
     url: "https://www.tannedco.com.au/how-it-works",
     images: [{ url: OG_IMAGE, width: 1200, height: 800 }],
   },
@@ -132,7 +132,7 @@ export default function HowItWorks() {
       <PageHero
         eyebrow="Step by step"
         title="How it works."
-        intro="Your step-by-step guide to a perfect automated spray tan."
+        intro="Your step-by-step guide to an automated spray tan."
         image="/how-it-works-hero.jpg"
         imageAlt="A Tanned Co. spray tan result"
         imagePosition="50% 0%"
@@ -164,7 +164,7 @@ export default function HowItWorks() {
           className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-[#1a120c]/45 flex items-center justify-center px-6">
-          <p className="display-lg text-white text-center">Private. Automated. Flawless.</p>
+          <p className="display-lg text-white text-center">Private. Automated. Yours.</p>
         </div>
       </div>
 
@@ -174,7 +174,7 @@ export default function HowItWorks() {
           <SectionHeading
             eyebrow="Tan colours"
             title="Choose your shade."
-            intro="3 signature colours, each available in 3 depths. That's 9 shades in total, so you can find your perfect glow."
+            intro="3 signature colours, each available in 3 depths. That's 9 shades in total, so you can find the glow that suits you."
           />
           <div className="grid md:grid-cols-3 gap-6">
             {shades.map(({ name, tag, desc, rinse, swatches }) => (

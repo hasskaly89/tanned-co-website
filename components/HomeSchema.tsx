@@ -14,7 +14,7 @@ const ORG_SCHEMA = {
   telephone: "+611300826633",
   email: "hello@tannedco.com.au",
   description:
-    "Sydney's first automated spray tanning studio. Private VersaSpa booths, streak-free results, open 7 days.",
+    "Sydney's first automated spray tanning studio. Private VersaSpa booths, even results, open 7 days.",
   image: HERO_IMAGE,
   priceRange: "$$",
   openingHoursSpecification: SCHEMA_OPENING_HOURS,

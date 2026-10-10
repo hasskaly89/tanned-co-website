@@ -80,11 +80,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div>
             <p className="eyebrow mb-4">Why Tanned Co.</p>
-            <h2 className="display-lg mb-6">No more tanning horror stories.</h2>
+            <h2 className="display-lg mb-6">A calm, private tan in minutes.</h2>
             <p className="text-body text-lg leading-relaxed mb-8">
-              Streaky legs, orange palms, standing half-dressed in front of a stranger? We&apos;ve all been there.
-              Our VersaSpa Pro booths sense your height and guide you through four positions for a flawless,
-              even result, every time.
+              No one else in the room and nothing to rush. Our VersaSpa Pro booths sense your height and guide
+              you through four positions with voice prompts, for an even, natural-looking result.
             </p>
             <ul className="space-y-3.5 mb-9">
               {whyPoints.map((p) => (

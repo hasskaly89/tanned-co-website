@@ -146,10 +146,10 @@ export default function About() {
           </div>
           <div>
             <p className="eyebrow mb-4">The technology</p>
-            <h2 className="display-lg mb-6">State of the art tanning booths.</h2>
+            <h2 className="display-lg mb-6">Purpose-built tanning booths.</h2>
             <p className="text-body text-lg leading-relaxed mb-8">
-              Our VersaSpa Pro booths are the gold standard in automated spray tanning. Every session is guided,
-              heated and self-cleaning, delivering consistent, beautiful results every single time.
+              Our VersaSpa Pro booths are made for automated spray tanning. Every session is guided, heated and
+              self-cleaning, and designed to give a consistent, even result.
             </p>
             <ul className="space-y-3.5 mb-9">
               {boothPoints.map((point) => (

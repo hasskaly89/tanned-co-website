@@ -52,8 +52,8 @@ const steps = [
 ];
 
 const studioFeatures = [
-  { icon: <LockIcon className="w-6 h-6" />, title: "Completely private", text: "Your own locked booth. No staff, no awkward moments. Just you and your perfect tan." },
-  { icon: <SunIcon className="w-6 h-6" />, title: "3 signature shades", text: "Malibu, Monterey or Rapid Venetian. Three depth levels each so you always get exactly the right glow." },
+  { icon: <LockIcon className="w-6 h-6" />, title: "Completely private", text: "Your own locked booth. No staff, no awkward moments. Just you and your tan." },
+  { icon: <SunIcon className="w-6 h-6" />, title: "3 signature shades", text: "Malibu, Monterey or Rapid Venetian. Three depth levels each, so you can choose the glow that suits you." },
   { icon: <SparkleIcon className="w-6 h-6" />, title: "Rapid results", text: "4 minutes in the booth. See colour in 2 to 3 hours and full colour within 24 hours. Lasts up to 7 days with proper care." },
   { icon: <PhoneIcon className="w-6 h-6" />, title: "Book in seconds", text: "Download the Tanned Co. app or book online. No phone calls, no waiting. Sorted in under a minute." },
 ];
@@ -86,7 +86,7 @@ export default async function LocationPage({
         tall
         eyebrow={`Sydney. ${loc.shortName}.`}
         title={<>Spray tan<br />{loc.shortName}.</>}
-        intro={`Automated spray tanning in ${loc.shortName}. Private booths, flawless results, open 7 days.`}
+        intro={`Automated spray tanning in ${loc.shortName}. Private booths, even results, open 7 days.`}
         image={loc.heroImage}
         imageAlt={`Spray tan studio ${loc.shortName} Sydney`}
       >

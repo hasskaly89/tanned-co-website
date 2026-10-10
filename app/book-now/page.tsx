@@ -27,7 +27,7 @@ export default function BookNow() {
       <PageHero
         eyebrow="Book in under a minute"
         title="Book your tan."
-        intro="Private. Automated. Flawless. Book in seconds from your phone or online."
+        intro="Private, automated spray tanning. Book in seconds from your phone or online."
         image="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg"
         imageAlt="Book your tan at Tanned Co."
       />
