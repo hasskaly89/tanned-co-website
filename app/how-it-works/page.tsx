@@ -6,6 +6,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import CtaBand from "@/components/CtaBand";
 import { CheckIcon, ClockIcon } from "@/components/Icons";
+import { APP_ACCESS_TEXT, APP_UNLOCK_TEXT } from "@/lib/site";
 
 const OG_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg";
@@ -27,7 +28,7 @@ const steps = [
   {
     num: "01",
     title: "Book online",
-    desc: "Choose your location, date and time through our easy online booking system or via our app.",
+    desc: `Choose your location, date and time online or in the app. ${APP_UNLOCK_TEXT}`,
   },
   {
     num: "02",
@@ -227,8 +228,8 @@ export default function HowItWorks() {
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Book in seconds"
-            title="Book via the app."
-            intro="Download the Tanned Co. app, choose your location and time, then check in with the app when you arrive. No staff, no waiting."
+            title="Book online, unlock with the app."
+            intro={`${APP_ACCESS_TEXT} You can also book and manage sessions in the app, then check in with it when you arrive.`}
           />
           <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {appScreens.map(({ img, label }) => (

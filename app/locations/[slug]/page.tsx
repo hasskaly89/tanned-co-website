@@ -15,6 +15,8 @@ import { LOCATIONS, SITE_URL, bookingUrlFor } from "@/lib/locations";
 import { getPlaceReviews } from "@/lib/google-reviews";
 import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud } from "@/lib/pricing";
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
+import { APP_UNLOCK_TEXT } from "@/lib/site";
+import SupportBlock from "@/components/SupportBlock";
 
 export function generateStaticParams() {
   return LOCATIONS.map((loc) => ({ slug: loc.slug }));
@@ -46,7 +48,7 @@ export async function generateMetadata({
 }
 
 const steps = [
-  { num: "01", title: "Book online or via the app", text: "Pick your time in seconds. Open 7 days, 6am to midnight, to fit around your day." },
+  { num: "01", title: "Book online", text: `Pick your time in seconds, online or in the app. ${APP_UNLOCK_TEXT}` },
   { num: "02", title: "Check in with the app", text: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, check in again to open your private room." },
   { num: "03", title: "Leave glowing", text: "Rinse your hands after 30 minutes. Rinse off after 6 to 8 hours (2 to 3 for Rapid Venetian). Full colour develops over 24 hours." },
 ];
@@ -156,7 +158,7 @@ export default async function LocationPage({
                   <ClockIcon className="w-5 h-5 mt-0.5 text-bronze shrink-0" />
                   <div>
                     <dt className="eyebrow mb-1">Hours</dt>
-                    <dd className="text-body">Monday to Sunday, 6:00am to 12:00am</dd>
+                    <dd className="text-body">{loc.hours}</dd>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -183,7 +185,7 @@ export default async function LocationPage({
             <div>
               <h3 className="display-md mb-3">Ready to book?</h3>
               <p className="text-body leading-relaxed mb-8">
-                Book your session at {loc.shortName} directly below. No account needed for casual visits.
+                Book your session at {loc.shortName} directly below. {APP_UNLOCK_TEXT}
               </p>
               <div className="space-y-3 mb-8">
                 <ExternalBookButton href={urls.casual} source={`location_booking_${slug}`} extraParams={{ plan: "casual", location_slug: slug }} className="btn btn-dark w-full !py-4">
@@ -294,6 +296,9 @@ export default async function LocationPage({
           </div>
         </div>
       </section>
+
+      {/* SUPPORT */}
+      <SupportBlock className="bg-cream" />
 
       <Footer />
     </div>

@@ -9,8 +9,8 @@ export const CONTACT = {
 } as const;
 
 /** Confirmed wording: booking needs no app, the app unlocks the studio and your room. */
-export const APP_ACCESS_TEXT =
-  "Book online. Download the app before your visit to unlock the studio and your room.";
+export const APP_UNLOCK_TEXT = "Download the app before your visit to unlock the studio and your room.";
+export const APP_ACCESS_TEXT = `Book online. ${APP_UNLOCK_TEXT}`;
 
 /** Phone help line, used on the home and studio pages. */
 export const SUPPORT_CALL_TEXT = `Need a hand? Call ${CONTACT.phone}, ${CONTACT.supportHours}, and choose your studio to be connected.`;

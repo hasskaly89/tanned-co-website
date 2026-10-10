@@ -26,7 +26,7 @@ const included = [
   `${GLOW_CLUB.tansPerMonth} automated spray tan sessions a month`,
   "Glow Key to all 5 locations",
   `${GLOW_CLUB.minimumMonths} month minimum (${formatAud(GLOW_CLUB.minimumTotal)} in base payments), then month to month`,
-  "Book via the app, 7 days, 6am to midnight",
+  "Book online or in the app, 7 days, 6am to midnight",
   "All founding member perks",
 ];
 
@@ -49,7 +49,7 @@ const glowClubFaqs = [
   },
   {
     q: "Where can I use my membership?",
-    a: "Your Glow Key works at all 5 of our Sydney locations, 7 days a week, 6am to midnight. Book through the app.",
+    a: "Your Glow Key works at all 5 of our Sydney locations, 7 days a week, 6am to midnight. Book online or in the app.",
   },
 ];
 
