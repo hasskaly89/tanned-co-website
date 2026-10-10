@@ -7,6 +7,7 @@ import ExitIntent from "@/components/ExitIntent";
 import BronzeBot from "@/components/BronzeBot";
 import PageViewTracker from "@/components/PageViewTracker";
 import PreviewRibbon from "@/components/PreviewRibbon";
+import { IS_PREVIEW, isPreviewRequest } from "@/lib/preview";
 import { GA_ID } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/locations";
 
@@ -25,8 +26,10 @@ const displayFont = Jost({
 const OG_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg";
 
-// Analytics only load on the deployed site, so local previews don't pollute GA.
-const ANALYTICS_ENABLED = process.env.NODE_ENV === "production";
+// Analytics only load on production builds that are not Vercel preview deployments,
+// so local runs and partner previews don't pollute GA. Same VERCEL_ENV=preview check
+// as lib/preview.ts (build-time NEXT_PUBLIC_VERCEL_ENV, plus server VERCEL_ENV).
+const ANALYTICS_ENABLED = process.env.NODE_ENV === "production" && !IS_PREVIEW && !isPreviewRequest();
 
 export const metadata: Metadata = {
   title: {
@@ -69,6 +72,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      // Lets Next.js switch smooth scrolling off during page changes, so new pages open at the top
+      // while in-page anchor links still scroll smoothly (globals.css sets scroll-behavior: smooth).
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${displayFont.variable} h-full antialiased`}
     >
       {ANALYTICS_ENABLED && (

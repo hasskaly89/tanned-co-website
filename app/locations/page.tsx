@@ -79,11 +79,6 @@ export default function LocationsPage() {
                 <div className="p-7 flex flex-col flex-1">
                   <h3 className="font-display font-medium text-[1.9rem] leading-tight mb-3">
                     {loc.shortName}
-                    {loc.slug === "kings-park" && (
-                      <span className="align-middle ml-3 font-sans text-[11px] font-semibold uppercase tracking-wider bg-bronze text-white rounded-full px-2.5 py-1">
-                        New
-                      </span>
-                    )}
                   </h3>
                   <p className="flex items-start gap-2.5 text-body text-[15px] mb-2">
                     <PinIcon className="w-4 h-4 mt-1 text-bronze shrink-0" /> {loc.fullAddress}
