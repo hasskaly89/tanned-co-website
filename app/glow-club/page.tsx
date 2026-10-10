@@ -8,15 +8,15 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import FaqAccordion from "@/components/FaqAccordion";
 import CtaBand from "@/components/CtaBand";
-import { GLOW_CLUB_SIGNUP_URL } from "@/components/PricingPlans";
+import { GLOW_CLUB_SIGNUP_URL } from "@/lib/locations";
 import { CheckIcon } from "@/components/Icons";
-import { CASUAL, GLOW_CLUB, formatAud } from "@/lib/pricing";
+import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, formatAud } from "@/lib/pricing";
 
 const perks = [
   { title: "Birthday tan on us", body: "A free tan during your birthday month, our treat." },
   { title: "Glow Key", body: "Your personal access key to any of our 5 locations." },
   { title: "First access to product drops", body: "Be first to future tan care products and merch at member pricing." },
-  { title: "Mate's rate", body: "Share a code with one friend per month for $10 off their casual tan." },
+  { title: "Mate's rate", body: `Share a code with one friend per month for ${formatAud(GLOW_CLUB.mateRateDiscount)} off their casual tan.` },
   { title: "Exclusive member offers", body: "Member-only promotions and seasonal offers throughout the year." },
   { title: "Priority access", body: "First in line for new locations and new services as we grow." },
   { title: "Founding member status", body: "Lock in founding perks. Limited spots available at launch." },
@@ -33,7 +33,7 @@ const included = [
 const glowClubFaqs = [
   {
     q: "How many tans do I get each month?",
-    a: `${GLOW_CLUB.tansPerMonth} automated spray tan sessions every month, which works out to under $30 per tan. Most clients tan every 10 to 14 days, so ${GLOW_CLUB.tansPerMonth} a month comfortably keeps you glowing.`,
+    a: `${GLOW_CLUB.tansPerMonth} automated spray tan sessions every month, which works out to under ${formatAud(GLOW_CLUB_PER_TAN_UNDER)} per tan. Most clients tan every 10 to 14 days, so ${GLOW_CLUB.tansPerMonth} a month comfortably keeps you glowing.`,
   },
   {
     q: "Is there a minimum commitment?",
@@ -75,7 +75,7 @@ export default function GlowClub() {
       <PageHero
         eyebrow="Founding memberships now open"
         title="Glow Club."
-        intro={`${GLOW_CLUB.tansPerMonth} tans a month. ${formatAud(GLOW_CLUB.monthly)}. Under $30 a tan, with founding member perks you won't find anywhere else.`}
+        intro={`${GLOW_CLUB.tansPerMonth} tans a month. ${formatAud(GLOW_CLUB.monthly)}. Under ${formatAud(GLOW_CLUB_PER_TAN_UNDER)} a tan, with founding member perks.`}
         image="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg"
         imageAlt="A Tanned Co. Glow Club member"
       >
@@ -96,7 +96,7 @@ export default function GlowClub() {
               {formatAud(GLOW_CLUB.monthly)}
               <span className="font-sans text-base font-normal text-on-dark-muted"> / month</span>
             </p>
-            <p className="text-on-dark mt-3">{GLOW_CLUB.tansPerMonth} tans a month. Under $30 a tan.</p>
+            <p className="text-on-dark mt-3">{GLOW_CLUB.tansPerMonth} tans a month. Under {formatAud(GLOW_CLUB_PER_TAN_UNDER)} a tan.</p>
             <div className="border-t border-white/15 my-7" />
             <ul className="space-y-3 text-on-dark text-[15px] mb-8">
               {included.map((item) => (

@@ -8,6 +8,10 @@ export const DEFAULT_BOOKING_URLS: BookingUrls = {
   tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d",
 };
 
+/** Glow Club sign-up in GymMaster. One membership for all 5 studios (Glow Key), so no studio is set. */
+export const GLOW_CLUB_SIGNUP_URL =
+  "https://tannedco.gymmasteronline.com/portal/membership/a015bd6ac18c7596fa250eed4e8ab668";
+
 export interface LocationData {
   slug: string;
   shortName: string;

@@ -2,12 +2,10 @@
 
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
-import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud } from "@/lib/pricing";
+import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, TEN_PACK, formatAud } from "@/lib/pricing";
+import { GLOW_CLUB_SIGNUP_URL } from "@/lib/locations";
 import StudioBookButton from "@/components/StudioBookButton";
 import { CheckIcon } from "@/components/Icons";
-
-export const GLOW_CLUB_SIGNUP_URL =
-  "https://tannedco.gymmasteronline.com/portal/membership/a015bd6ac18c7596fa250eed4e8ab668";
 
 function Feature({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
@@ -84,7 +82,7 @@ export default function PricingPlans({
           {formatAud(GLOW_CLUB.monthly)}
           <span className="font-sans text-base font-normal text-on-dark-muted"> / month</span>
         </p>
-        <p className="text-on-dark text-sm mt-3">{GLOW_CLUB.tansPerMonth} tans a month. Under $30 a tan.</p>
+        <p className="text-on-dark text-sm mt-3">{GLOW_CLUB.tansPerMonth} tans a month. Under {formatAud(GLOW_CLUB_PER_TAN_UNDER)} a tan.</p>
         <p className="text-bronze-light text-sm font-medium mt-1.5">
           {GLOW_CLUB.tansPerMonth} casual tans would cost {formatAud(GLOW_CLUB.casualEquivalent)}. You save{" "}
           {formatAud(GLOW_CLUB.monthlySaving)} a month.

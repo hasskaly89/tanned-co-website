@@ -20,8 +20,19 @@ export const GLOW_CLUB = {
   minimumTotal: 267, // 3 x $89 base membership payments
   casualEquivalent: 117, // 3 casual tans
   monthlySaving: 28,
+  mateRateDiscount: 10, // $ off a friend's casual tan, once a month
   cancelEmail: "hello@tannedco.com.au",
 } as const;
 
 export const formatAud = (n: number) =>
   Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`;
+
+/** Glow Club cost per tan rounded up to the next dollar, for "Under $30 a tan" copy. */
+export const GLOW_CLUB_PER_TAN_UNDER = Math.ceil(GLOW_CLUB.monthly / GLOW_CLUB.tansPerMonth);
+
+/** Ready-made phrases so pages never retype a price. */
+export const PRICE_TEXT = {
+  casualFrom: `from ${formatAud(CASUAL.price)}`,
+  glowClubPerTan: `under ${formatAud(GLOW_CLUB_PER_TAN_UNDER)} a tan`,
+  mateRate: `${formatAud(GLOW_CLUB.mateRateDiscount)} off`,
+} as const;

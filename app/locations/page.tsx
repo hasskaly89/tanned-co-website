@@ -12,14 +12,19 @@ import CtaBand from "@/components/CtaBand";
 import { PinIcon, ClockIcon } from "@/components/Icons";
 import { LOCATIONS, SITE_URL } from "@/lib/locations";
 
+// Existing studio photography (same hero image the site already uses), so the page has its own share image.
+const LOCATIONS_OG_IMAGE =
+  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg";
+
 export const metadata: Metadata = {
   title: "Our Locations",
-  description: "5 Tanned Co. spray tan studios across Sydney. Caringbah, Edensor Park, Kings Park, Smeaton Grange and Woollahra. Open 7 days, sessions from $39.",
+  description: `5 Tanned Co. spray tan studios across Sydney. Caringbah, Edensor Park, Kings Park, Smeaton Grange and Woollahra. Open 7 days, sessions from ${formatAud(CASUAL.price)}.`,
   alternates: { canonical: `${SITE_URL}/locations` },
   openGraph: {
     title: "Our Locations | Tanned Co.",
     description: "5 Sydney spray tan studios open 7 days a week. Find your nearest Tanned Co. studio.",
     url: `${SITE_URL}/locations`,
+    images: [{ url: LOCATIONS_OG_IMAGE, width: 1200, height: 800, alt: "Tanned Co. spray tan studios across Sydney" }],
   },
 };
 
@@ -52,7 +57,7 @@ export default function LocationsPage() {
             intro={
               <>
                 Private booths, flawless results, open 7 days.{" "}
-                <Link href="/pricing" className="text-link">Sessions from $39</Link>.
+                <Link href="/pricing" className="text-link">Sessions from {formatAud(CASUAL.price)}</Link>.
               </>
             }
           />

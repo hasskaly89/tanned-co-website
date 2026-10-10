@@ -1,3 +1,5 @@
+import { CASUAL, formatAud } from "@/lib/pricing";
+
 // Safety and suitability answers are pending supplier-backed wording and owner approval.
 export const categories = [
   {
@@ -55,7 +57,7 @@ export const categories = [
     faqs: [
       {
         q: "Is it worth it compared to a manual spray tan?",
-        a: "A manual spray tan at a salon typically costs $50 to 80 and involves another person applying the tan by hand. At Tanned Co, you get consistent, streak-free results from our VersaSpa Pro booths for as little as $39 per session in complete privacy, with no awkward interactions. The automated booth ensures even, full-body coverage every single time.",
+        a: `A manual spray tan at a salon typically costs $50 to 80 and involves another person applying the tan by hand. At Tanned Co, you get consistent, streak-free results from our VersaSpa Pro booths for as little as ${formatAud(CASUAL.price)} per session in complete privacy, with no awkward interactions. The automated booth ensures even, full-body coverage every single time.`,
       },
       {
         q: "What if I don't like the colour?",
