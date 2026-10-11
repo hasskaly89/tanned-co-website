@@ -92,6 +92,7 @@ const prepTips = [
   },
 ];
 
+// Colour swatch chips removed (Hass, 11 Oct 2026): names, depths and rinse times only.
 // Shade descriptions follow the manufacturer fact sheets (Innové / VersaSpa PRO, Norvell).
 const shades = [
   {
@@ -99,21 +100,18 @@ const shades = [
     tag: "Quick rinse",
     desc: "A cool violet-brown for a classic European-style tan, and the quickest to rinse if you're short on time.",
     rinse: `Rinse after ${RINSE.rapid}`,
-    swatches: ["#c4956a", "#a06b42", "#6b3f22"],
   },
   {
     name: "Malibu",
     tag: "Warm brown, cool violet",
     desc: "A warm brown with cool violet undertones.",
     rinse: `Rinse after ${RINSE.standard}`,
-    swatches: ["#c49a6c", "#9e6e42", "#6b4020"],
   },
   {
     name: "Monterey",
     tag: "Warm brown",
     desc: "Warm brown undertones for a classic beach tan.",
     rinse: `Rinse after ${RINSE.standard}`,
-    swatches: ["#d4a96a", "#b8823a", "#8a5c20"],
   },
 ];
 
@@ -182,19 +180,12 @@ export default function HowItWorks() {
             intro="3 signature colours, each available in 3 depths. That's 9 shades in total, so you can find the glow that suits you."
           />
           <div className="grid md:grid-cols-3 gap-6">
-            {shades.map(({ name, tag, desc, rinse, swatches }) => (
+            {shades.map(({ name, tag, desc, rinse }) => (
               <div key={name} className="bg-white rounded-[28px] border border-line p-8 flex flex-col">
-                <div className="flex gap-2 mb-7" role="img" aria-label={`${name} in light, medium and dark depths`}>
-                  {swatches.map((c, i) => (
-                    <div key={c} className="flex-1">
-                      <div className="h-16 rounded-xl" style={{ backgroundColor: c }} />
-                      <p className="text-xs text-muted text-center mt-2">{depthNames[i]}</p>
-                    </div>
-                  ))}
-                </div>
                 <p className="eyebrow mb-2">{tag}</p>
                 <h3 className="font-display font-medium text-[2rem] leading-tight mb-3">{name}</h3>
-                <p className="text-body leading-relaxed flex-1 mb-6">{desc}</p>
+                <p className="text-body leading-relaxed mb-3">{desc}</p>
+                <p className="text-sm text-body flex-1 mb-6">Depths: {depthNames.join(", ")}</p>
                 <p className="flex items-center gap-2 text-sm font-medium text-bronze-text">
                   <ClockIcon className="w-4 h-4" /> {rinse}
                 </p>
