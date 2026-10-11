@@ -1,4 +1,4 @@
-import { RINSE_LINE, DEVELOP_LINE, GLOW_CLUB_ENTRY_FAQ } from "@/lib/site";
+import { RINSE_LINE, DEVELOP_LINE, GLOW_CLUB_ENTRY_FAQ, BOOKING_RULE_FAQS } from "@/lib/site";
 import { CASUAL, PRICE_TEXT, formatAud } from "@/lib/pricing";
 
 // Safety and suitability answers are pending supplier-backed wording and owner approval.
@@ -53,6 +53,10 @@ export const categories = [
         a: "Yes. Tanned Co. is for everyone, whatever your gender or body type. You tan alone in your own private room, so there's no one to feel awkward in front of.",
       },
     ],
+  },
+  {
+    title: "Bookings",
+    faqs: BOOKING_RULE_FAQS,
   },
   {
     title: "Before You Book",

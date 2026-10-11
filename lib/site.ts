@@ -122,11 +122,36 @@ export const LEGAL_ENTITY: { name: string; abn: string } | null = {
  * used as payment when booking.
  * Pending Hass confirmation. No voucher amounts on the site.
  */
+const GIFT_VOUCHER_VALIDITY = "3 years";
 export const GIFT_CARDS = {
   shopUrl: "https://tannedco.gymmasteronline.com/portal/shop",
   steps: "Choose New Member, add your details and studio, then pick the gift voucher.",
-  terms: "Valid for 3 years from purchase. Enter your code when you book online.",
+  validity: GIFT_VOUCHER_VALIDITY,
+  terms: `Valid for ${GIFT_VOUCHER_VALIDITY} from purchase. Enter your code when you book online.`,
 } as const;
+
+/**
+ * Booking rules (Hass, 11 Oct 2026). Used on /terms and in the FAQ (and its JSON-LD).
+ * Don't mention no-shows anywhere.
+ */
+export const BOOKING_RULES = {
+  cancelCutoff: "30 minutes",
+  pauseMinimum: "2 weeks",
+} as const;
+export const BOOKING_RULE_LINES = {
+  cancel: `You can cancel or move a booking in the app up to ${BOOKING_RULES.cancelCutoff} before your start time, with no fee. The session goes back on your account.`,
+  late: `Your ${BOOKING_SLOT} slot can't be extended. If you arrive late, you may not be able to get in.`,
+  under18: "Under 18s need a parent or guardian's consent.",
+  pause: `Glow Club members can pause their membership for free, for a minimum of ${BOOKING_RULES.pauseMinimum}. Contact your studio to arrange it.`,
+  giftVoucher: `Gift vouchers are valid for ${GIFT_VOUCHER_VALIDITY} from purchase.`,
+} as const;
+export const BOOKING_RULE_FAQS = [
+  { q: "Can I cancel or move my booking?", a: BOOKING_RULE_LINES.cancel },
+  { q: "What if I'm running late?", a: BOOKING_RULE_LINES.late },
+  { q: "Can under 18s get a spray tan?", a: `Yes. ${BOOKING_RULE_LINES.under18}` },
+  { q: "Can I pause my Glow Club membership?", a: `Yes. ${BOOKING_RULE_LINES.pause}` },
+  { q: "How long are gift vouchers valid?", a: `${BOOKING_RULE_LINES.giftVoucher} You can use them as payment when you book online.` },
+];
 
 export const APP_LINKS = {
   appStore: "https://apps.apple.com/au/app/tannedco/id1659547172",

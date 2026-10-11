@@ -1,5 +1,5 @@
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
-import { BOOKING_SLOT_LINE, CHECK_IN_TEXT, GLOW_KEY, LEGAL_ENTITY } from "@/lib/site";
+import { BOOKING_RULE_LINES, BOOKING_SLOT_LINE, CHECK_IN_TEXT, GLOW_KEY, LEGAL_ENTITY } from "@/lib/site";
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 import { SITE_URL } from "@/lib/locations";
@@ -47,7 +47,7 @@ export default function TermsPage() {
           <li>{formatAud(TEN_PACK.price)} for {TEN_PACK.sessions} sessions ({formatAud(TEN_PACK.perTan)} per tan).</li>
           <li>Valid for {TEN_PACK.validity} from purchase. Sessions not used in that time expire.</li>
           <li>Packs are in your name and cannot be shared or transferred.</li>
-          <li>Sessions are not refundable, except where required by the Australian Consumer Law, but you can move a booking to another date within the validity period.</li>
+          <li>Sessions are not refundable, except where required by the Australian Consumer Law, but you can move a booking to another date within the validity period (see Bookings below).</li>
         </ul>
       </section>
 
@@ -62,6 +62,23 @@ export default function TermsPage() {
           </li>
           <li>After the minimum term, the membership continues month to month. Cancel by emailing {GLOW_CLUB.cancelEmail}.</li>
           <li>{GLOW_KEY} Your Glow Key works at all 5 studios.</li>
+          <li>{BOOKING_RULE_LINES.pause}</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Bookings</h2>
+        <ul>
+          <li>{BOOKING_RULE_LINES.cancel}</li>
+          <li>{BOOKING_RULE_LINES.late}</li>
+          <li>{BOOKING_RULE_LINES.under18}</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Gift vouchers</h2>
+        <ul>
+          <li>{BOOKING_RULE_LINES.giftVoucher} You can use them as payment when you book online.</li>
         </ul>
       </section>
 
