@@ -9,7 +9,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Gift Cards",
-  description: "Give someone a spray tan. Buy a Tanned Co. gift card online, valid for 12 months and redeemable when booking at any of our 5 Sydney studios.",
+  description: "Give someone a spray tan. Buy a Tanned Co. gift card online, valid for 3 years and redeemable when booking at any of our 5 Sydney studios.",
   alternates: { canonical: `${SITE_URL}/gift-cards` },
 };
 

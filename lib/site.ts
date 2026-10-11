@@ -106,14 +106,15 @@ export const LEGAL_ENTITY: { name: string; abn: string } | null = {
 
 /**
  * Gift vouchers are bought in the GymMaster Club Shop (online voucher purchase and
- * non-member shopping are on). Terms per GymMaster admin (checked by Chief of Staff,
- * 11 Oct 2026): vouchers expire after 1 year and can be used as payment when booking.
+ * non-member shopping are on; checked by Chief of Staff, 11 Oct 2026). Expiry is 3 years
+ * per the GymMaster admin setting (changed by Paige Cook, 31 Jul 2026); vouchers can be
+ * used as payment when booking.
  * Pending Hass confirmation. No voucher amounts on the site.
  */
 export const GIFT_CARDS = {
   shopUrl: "https://tannedco.gymmasteronline.com/portal/shop",
   steps: "Choose New Member, add your details and studio, then pick the gift voucher.",
-  terms: "Valid for 12 months from purchase. Enter your code when you book online.",
+  terms: "Valid for 3 years from purchase. Enter your code when you book online.",
 } as const;
 
 export const APP_LINKS = {
