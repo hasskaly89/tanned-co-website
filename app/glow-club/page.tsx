@@ -15,12 +15,12 @@ import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, PRICE_TEXT, formatAud } fro
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 
-// Perks: GymMaster's Glow Club page lists birthday tan, member-only perks and limited
-// founding spots. Website-only perks (product drops, mate's rate, member offers,
-// priority access) are kept as Hass says the perks are real; final list pending Hass.
+// Perks confirmed by Hass (11 Oct 2026): the GymMaster list (Glow Key, birthday tan,
+// member-only perks, founding spots) plus mate's rate, product drops, member offers
+// and priority access.
 const perks = [
-  { title: "Birthday tan on us", body: "A free tan during your birthday month, our treat." },
   { title: GLOW_KEY_TITLE, body: GLOW_KEY },
+  { title: "Birthday tan on us", body: "A free tan during your birthday month, our treat." },
   { title: "First access to product drops", body: "Be first to future tan care products and merch at member pricing." },
   { title: "Mate's rate", body: `Share a code with one friend per month for ${formatAud(GLOW_CLUB.mateRateDiscount)} off their casual tan.` },
   { title: "Exclusive member offers", body: "Member-only promotions and seasonal offers throughout the year." },
