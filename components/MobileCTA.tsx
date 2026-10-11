@@ -1,5 +1,6 @@
 "use client";
 
+import { PRICE_TEXT } from "@/lib/pricing";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
@@ -30,7 +31,7 @@ export default function MobileCTA() {
           onClick={() => trackEvent("book_now_click", { source: "mobile_sticky_cta" })}
           className="btn btn-dark w-full !py-4"
         >
-          Book your tan
+          {PRICE_TEXT.bookTan}
         </Link>
       )}
     </div>

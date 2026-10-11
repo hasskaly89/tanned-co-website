@@ -10,11 +10,11 @@ const OG_IMAGE =
 export const metadata: Metadata = {
   title: "Glow Club Membership",
   description:
-    `Join Glow Club: ${PER_MONTH}. Founding members get a Glow Key to all 5 Sydney locations, a birthday tan on us and more. Limited founding spots.`,
+    `Join Glow Club: ${PER_MONTH}. Founding members get a Glow Key to all 5 Sydney locations, a birthday tan on us and more.`,
   alternates: { canonical: `${SITE_URL}/glow-club` },
   openGraph: {
     title: "Glow Club Membership | Tanned Co.",
-    description: `${PER_MONTH}. Founding member perks. Limited spots.`,
+    description: `${PER_MONTH}. Founding member perks.`,
     url: `${SITE_URL}/glow-club`,
     images: [{ url: OG_IMAGE, width: 1200, height: 800 }],
   },

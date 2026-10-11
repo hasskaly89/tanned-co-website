@@ -1,3 +1,5 @@
+import { FIRST_TIMER_OFFER } from "@/lib/consent";
+import { PRICE_TEXT } from "@/lib/pricing";
 import Link from "next/link";
 import OfferButton from "@/components/OfferButton";
 
@@ -5,7 +7,7 @@ import OfferButton from "@/components/OfferButton";
 export default function CtaBand({
   eyebrow = "Five studios. Open 7 days.",
   title = "Ready when you are.",
-  text = "Book in under a minute. First visit? Unlock your first-timer offer.",
+  text = `Book in under a minute. First visit? Get ${FIRST_TIMER_OFFER.headline}.`,
   source,
   children,
 }: {
@@ -24,9 +26,9 @@ export default function CtaBand({
         <div className="flex flex-wrap items-center justify-center gap-3 mt-9">
           {children ?? (
             <>
-              <Link href="/book-now" className="btn btn-light">Book your tan</Link>
+              <Link href="/book-now" className="btn btn-light">{PRICE_TEXT.bookTan}</Link>
               <OfferButton source={source} className="btn btn-outline-light">
-                Claim first-visit offer
+                Get my 10% code
               </OfferButton>
             </>
           )}

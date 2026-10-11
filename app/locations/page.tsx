@@ -5,12 +5,14 @@ import Footer from "@/components/Footer";
 import TrustBadges from "@/components/TrustBadges";
 import LocationCardButtons from "@/components/LocationCardButtons";
 import StudioBookButton from "@/components/StudioBookButton";
-import { CASUAL, formatAud } from "@/lib/pricing";
+import { CASUAL, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import CtaBand from "@/components/CtaBand";
 import { PinIcon, ClockIcon } from "@/components/Icons";
 import { LOCATIONS, SITE_URL } from "@/lib/locations";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, studioListSchema } from "@/lib/schema";
 
 // Existing studio photography (same hero image the site already uses), so the page has its own share image.
 const LOCATIONS_OG_IMAGE =
@@ -18,7 +20,7 @@ const LOCATIONS_OG_IMAGE =
 
 export const metadata: Metadata = {
   title: "Our Locations",
-  description: `5 Tanned Co. spray tan studios across Sydney. Caringbah, Edensor Park, Kings Park, Smeaton Grange and Woollahra. Open 7 days, sessions from ${formatAud(CASUAL.price)}.`,
+  description: `5 Tanned Co. spray tan studios across Sydney. Caringbah, Edensor Park, Kings Park, Smeaton Grange and Woollahra. Open 7 days. Casual tans ${formatAud(CASUAL.price)}.`,
   alternates: { canonical: `${SITE_URL}/locations` },
   openGraph: {
     title: "Our Locations | Tanned Co.",
@@ -31,6 +33,7 @@ export const metadata: Metadata = {
 export default function LocationsPage() {
   return (
     <div className="min-h-screen bg-cream text-ink font-sans">
+      <JsonLd data={[breadcrumbSchema([{ name: "Locations", path: "/locations" }]), studioListSchema()]} />
       <Navbar activePath="/locations" />
 
       <PageHero
@@ -57,7 +60,7 @@ export default function LocationsPage() {
             intro={
               <>
                 Private booths, even results, open 7 days.{" "}
-                <Link href="/pricing" className="text-link">Sessions from {formatAud(CASUAL.price)}</Link>.
+                <Link href="/pricing" className="text-link">Casual tans {formatAud(CASUAL.price)}</Link>.
               </>
             }
           />
@@ -99,12 +102,12 @@ export default function LocationsPage() {
       <CtaBand
         source="locations_cta"
         title="Ready to glow?"
-        text="Book your session online in seconds. Check in with the app, walk out glowing."
+        text="Book online in under a minute. Your colour keeps developing over the next 24 hours."
       >
         <StudioBookButton
           plan="casual"
           source="locations_page_cta"
-          label={`Book a casual tan, ${formatAud(CASUAL.price)}`}
+          label={PRICE_TEXT.bookTan}
           buttonClassName="btn btn-light"
           tone="dark"
         />

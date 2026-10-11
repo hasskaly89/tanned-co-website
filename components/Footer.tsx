@@ -1,12 +1,13 @@
+import { CONTACT, SOCIAL_LINKS, SUPPORT_HOURS_LINE } from "@/lib/site";
 import Link from "next/link";
 import Image from "next/image";
 import { LOCATIONS } from "@/lib/locations";
 import { InstagramIcon, TikTokIcon, FacebookIcon, AppleIcon, PlayStoreIcon } from "@/components/Icons";
 
 const socials = [
-  { label: "Instagram", href: "https://www.instagram.com/tannedco_", icon: <InstagramIcon /> },
-  { label: "TikTok", href: "https://www.tiktok.com/@tannedco_", icon: <TikTokIcon /> },
-  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=100086326464692", icon: <FacebookIcon /> },
+  { label: "Instagram", href: SOCIAL_LINKS.instagram, icon: <InstagramIcon /> },
+  { label: "TikTok", href: SOCIAL_LINKS.tiktok, icon: <TikTokIcon /> },
+  { label: "Facebook", href: SOCIAL_LINKS.facebook, icon: <FacebookIcon /> },
 ];
 
 const explore = [
@@ -85,8 +86,9 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <p className={colHeading}>Get in touch</p>
             <ul className="space-y-2.5 mb-6">
-              <li><a href="mailto:hello@tannedco.com.au" className={colLink}>hello@tannedco.com.au</a></li>
-              <li><a href="tel:1300826633" className={colLink}>1300 826 633</a></li>
+              <li><a href={`mailto:${CONTACT.email}`} className={colLink}>{CONTACT.email}</a></li>
+              <li><a href={CONTACT.phoneHref} className={colLink}>{CONTACT.phone}</a></li>
+              <li className="text-sm text-muted">{SUPPORT_HOURS_LINE}</li>
             </ul>
             <div className="flex flex-wrap gap-2.5">
               <a

@@ -7,6 +7,8 @@ import SectionHeading from "@/components/SectionHeading";
 import CtaBand from "@/components/CtaBand";
 import { CheckIcon, ClockIcon } from "@/components/Icons";
 import { APP_ACCESS_TEXT, APP_UNLOCK_TEXT } from "@/lib/site";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 
 const OG_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg";
@@ -14,7 +16,7 @@ const OG_IMAGE =
 export const metadata: Metadata = {
   title: { absolute: "How Automated Spray Tanning Works | Tanned Co." },
   description:
-    "See how a Tanned Co automated spray tan works. Book online, walk into your private booth, and walk out glowing in minutes. No staff, no waiting. Full guide with photos.",
+    "How a Tanned Co. automated spray tan works. Book online, let yourself in with the app and tan in your own private room. No staff in the room.",
   alternates: { canonical: "https://www.tannedco.com.au/how-it-works" },
   openGraph: {
     title: "How It Works | Tanned Co.",
@@ -37,7 +39,7 @@ const steps = [
   },
   {
     num: "03",
-    title: "Prep like a pro",
+    title: "Prep in the room",
     desc: "Remove all jewellery and makeup, then apply your hair net, sticky feet and our barrier cream. Everything you need is provided in your private room.",
   },
   {
@@ -52,8 +54,8 @@ const steps = [
   },
   {
     num: "06",
-    title: "Walk out glowing",
-    desc: "You're done! Get dressed and head out with a beautiful sun-kissed glow developing over the next few hours.",
+    title: "Get dressed and go",
+    desc: "Get dressed and go. Your colour keeps developing over the next 24 hours.",
   },
 ];
 
@@ -72,14 +74,14 @@ const prepTips = [
   },
   {
     step: "02",
-    title: "Put on a hair cap",
-    desc: "Put on a hair cap and leave your hairline and ears exposed for even coverage.",
+    title: "Put on a hair net",
+    desc: "Put on a hair net and leave your hairline and ears exposed for even coverage.",
     img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/96d6e447-3940-40dd-9241-c884ba173900/DSCF2437.jpg",
   },
   {
     step: "03",
-    title: "Apply blending cream",
-    desc: "Apply blending cream to your palms, back of hands and feet including nails to prevent over-absorption.",
+    title: "Apply barrier cream",
+    desc: "Apply barrier cream to your palms, back of hands and feet including nails to prevent over-absorption.",
     img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/90818258-d4ad-4495-8609-69069d53a69c/DSCF2505.jpg",
   },
   {
@@ -128,6 +130,7 @@ const aftercare = [
 export default function HowItWorks() {
   return (
     <div className="min-h-screen bg-cream text-ink font-sans">
+      <JsonLd data={breadcrumbSchema([{ name: "How it works", path: "/how-it-works" }])} />
       <Navbar activePath="/how-it-works" />
 
       <PageHero
@@ -142,7 +145,7 @@ export default function HowItWorks() {
       {/* THE PROCESS */}
       <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <SectionHeading eyebrow="The process" title="Six steps to your glow." />
+          <SectionHeading eyebrow="The process" title="How it works, step by step." />
           <ol className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
             {steps.map(({ num, title, desc }) => (
               <li key={num} className="border-t border-line pt-7">
@@ -227,7 +230,7 @@ export default function HowItWorks() {
       <section className="py-14 md:py-28 bg-sand">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
-            eyebrow="Book in seconds"
+            eyebrow="Book in under a minute"
             title="Book online, unlock with the app."
             intro={`${APP_ACCESS_TEXT} You can also book and manage sessions in the app, then check in with it when you arrive.`}
           />
@@ -256,7 +259,7 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      <CtaBand source="how_it_works_cta" title="Ready to book?" text="Book your session in seconds. Walk in, walk out glowing." />
+      <CtaBand source="how_it_works_cta" title="Ready to book?" text="Book online in under a minute. Your colour keeps developing over the next 24 hours." />
 
       <Footer />
     </div>

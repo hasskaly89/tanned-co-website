@@ -4,7 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import LocalBusinessSchema from "@/components/LocalBusinessSchema";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, serviceSchema, studioSchema } from "@/lib/schema";
 import ClaimForm from "@/components/ClaimForm";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
@@ -14,9 +15,9 @@ import RepuReviews, { REPU_HOME_WIDGET_KEY } from "@/components/RepuReviews";
 import { Stars, PinIcon, ClockIcon, CarIcon, PhoneIcon, LockIcon, SunIcon, SparkleIcon, CheckIcon } from "@/components/Icons";
 import { LOCATIONS, SITE_URL, bookingUrlFor } from "@/lib/locations";
 import { getPlaceReviews } from "@/lib/google-reviews";
-import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud } from "@/lib/pricing";
+import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
-import { APP_UNLOCK_TEXT } from "@/lib/site";
+import { APP_UNLOCK_TEXT, BOOTH_TIME } from "@/lib/site";
 import SupportBlock from "@/components/SupportBlock";
 
 export function generateStaticParams() {
@@ -33,7 +34,7 @@ export async function generateMetadata({
   if (!loc) return {};
 
   const title = `Spray Tan ${loc.shortName}, Sydney`;
-  const description = `Automated spray tanning in ${loc.shortName}, Sydney. Private VersaSpa booths, 3 signature shades, open 7 days. Sessions from ${formatAud(CASUAL.price)}. ${loc.fullAddress}.`;
+  const description = `Automated spray tan studio in ${loc.suburb}, ${loc.address}. Private rooms, open 7 days, 6am to midnight. Casual tans ${formatAud(CASUAL.price)}.`;
 
   return {
     title,
@@ -49,16 +50,16 @@ export async function generateMetadata({
 }
 
 const steps = [
-  { num: "01", title: "Book online", text: `Pick your time in seconds, online or in the app. ${APP_UNLOCK_TEXT}` },
+  { num: "01", title: "Book online", text: `Book online in under a minute. ${APP_UNLOCK_TEXT}` },
   { num: "02", title: "Check in with the app", text: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, check in again to open your private room." },
   { num: "03", title: "Leave glowing", text: "Rinse your hands after 30 minutes. Rinse off after 6 to 8 hours (2 to 3 for Rapid Venetian). Full colour develops over 24 hours." },
 ];
 
 const studioFeatures = [
-  { icon: <LockIcon className="w-6 h-6" />, title: "Completely private", text: "Your own locked booth. No staff, no awkward moments. Just you and your tan." },
+  { icon: <LockIcon className="w-6 h-6" />, title: "Private", text: "Your own private room. No staff, no awkward moments. Just you and your tan." },
   { icon: <SunIcon className="w-6 h-6" />, title: "3 signature shades", text: "Malibu, Monterey or Rapid Venetian. Three depth levels each, so you can choose the glow that suits you." },
-  { icon: <SparkleIcon className="w-6 h-6" />, title: "Rapid results", text: "4 minutes in the booth. See colour in 2 to 3 hours and full colour within 24 hours. Lasts up to 7 days with proper care." },
-  { icon: <PhoneIcon className="w-6 h-6" />, title: "Book in seconds", text: `Book online or in the app in under a minute. ${APP_UNLOCK_TEXT}` },
+  { icon: <SparkleIcon className="w-6 h-6" />, title: "Quick in, quick out", text: `${BOOTH_TIME[0].toUpperCase()}${BOOTH_TIME.slice(1)} in the booth. See colour in 2 to 3 hours and full colour within 24 hours. Lasts up to 7 days with good aftercare.` },
+  { icon: <PhoneIcon className="w-6 h-6" />, title: "Book in under a minute", text: `Book online or in the app. ${APP_UNLOCK_TEXT}` },
 ];
 
 const reviewsButton = "btn btn-outline";
@@ -87,7 +88,7 @@ export default async function LocationPage({
 
   return (
     <div className="min-h-screen bg-cream text-ink font-sans">
-      <LocalBusinessSchema slug={slug} />
+      <JsonLd data={[studioSchema(loc), breadcrumbSchema([{ name: "Locations", path: "/locations" }, { name: loc.shortName, path: `/locations/${loc.slug}` }]), serviceSchema(["casual", "tenPack", "glowClub"], loc)]} />
       <Navbar activePath={`/locations/${slug}`} />
 
       <PageHero
@@ -121,7 +122,7 @@ export default async function LocationPage({
               </a>
             </li>
           )}
-          {["Open 7 days, 6am to midnight", "No staff, fully automated", "4 minutes in the booth"].map((t) => (
+          {["Open 7 days, 6am to midnight", "No one in the room. Help is a call away.", `${BOOTH_TIME[0].toUpperCase()}${BOOTH_TIME.slice(1)} in the booth`].map((t) => (
             <li key={t} className="flex items-center gap-2">
               <CheckIcon className="w-4 h-4 text-bronze-light" /> {t}
             </li>
@@ -157,10 +158,10 @@ export default async function LocationPage({
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-              <dl className="p-8 space-y-6">
+              <div className="p-8 space-y-6">
                 <div className="flex items-start gap-4">
                   <PinIcon className="w-5 h-5 mt-0.5 text-bronze shrink-0" />
-                  <div>
+                  <dl>
                     <dt className="eyebrow mb-1">Address</dt>
                     <dd className="text-body">
                       {loc.fullAddress}
@@ -169,34 +170,34 @@ export default async function LocationPage({
                         Get directions
                       </a>
                     </dd>
-                  </div>
+                  </dl>
                 </div>
                 <div className="flex items-start gap-4">
                   <ClockIcon className="w-5 h-5 mt-0.5 text-bronze shrink-0" />
-                  <div>
+                  <dl>
                     <dt className="eyebrow mb-1">Hours</dt>
                     <dd className="text-body">{loc.hours}</dd>
-                  </div>
+                  </dl>
                 </div>
                 <div className="flex items-start gap-4">
                   <CarIcon className="w-5 h-5 mt-0.5 text-bronze shrink-0" />
-                  <div>
+                  <dl>
                     <dt className="eyebrow mb-1">Parking</dt>
                     <dd className="text-body">{loc.parkingNote}</dd>
-                  </div>
+                  </dl>
                 </div>
                 <div className="flex items-start gap-4">
                   <PhoneIcon className="w-5 h-5 mt-0.5 text-bronze shrink-0" />
-                  <div>
+                  <dl>
                     <dt className="eyebrow mb-1">Phone</dt>
                     <dd>
                       <a href={`tel:${loc.phone.replace(/\s/g, "")}`} className="text-body hover:text-ink transition-colors">
                         {loc.phone}
                       </a>
                     </dd>
-                  </div>
+                  </dl>
                 </div>
-              </dl>
+              </div>
             </div>
 
             <div>
@@ -206,10 +207,10 @@ export default async function LocationPage({
               </p>
               <div className="space-y-3 mb-8">
                 <ExternalBookButton href={urls.casual} source={`location_booking_${slug}`} extraParams={{ plan: "casual", location_slug: slug }} className="btn btn-dark w-full !py-4">
-                  Book a casual tan, {formatAud(CASUAL.price)}
+                  {PRICE_TEXT.bookTan}
                 </ExternalBookButton>
                 <ExternalBookButton href={urls.tenPack} source={`location_booking_${slug}`} extraParams={{ plan: "10_pack", location_slug: slug }} className="btn btn-outline w-full !py-4">
-                  Buy a 10 pack, {formatAud(TEN_PACK.price)} (save {formatAud(TEN_PACK.saving)})
+                  Buy a 10 pack, {formatAud(TEN_PACK.price)} (save {formatAud(TEN_PACK.saving)}, valid {TEN_PACK.validity})
                 </ExternalBookButton>
                 <Link href="/glow-club" className="btn btn-outline w-full !py-4">
                   Glow Club, {formatAud(GLOW_CLUB.monthly)} a month
@@ -239,7 +240,8 @@ export default async function LocationPage({
               heading={
                 <SectionHeading
                   eyebrow="Google reviews"
-                  title={loc.showAllStudioReviews ? "What our clients say." : `What ${loc.shortName} clients say.`}
+                  // Studio heading dropped: some Repu widgets show other studios' reviews (Repu dashboard issue, see report).
+                  title="What our clients say."
                   intro={loc.showAllStudioReviews ? "Reviews from across all Tanned Co. studios in Sydney." : undefined}
                 />
               }

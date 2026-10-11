@@ -11,11 +11,32 @@ const nextConfig: NextConfig = {
       "kings-park",
       "smeaton-grange",
     ];
-    return locationSlugs.map((slug) => ({
-      source: `/${slug}`,
-      destination: `/locations/${slug}`,
-      permanent: true, // 301 — tells Google to transfer ranking to new URL
-    }));
+    // Old Squarespace URLs and common variants. statusCode 301 (permanent).
+    // Only /privacy and the studio slugs are known old URLs; the rest are safe catch-alls.
+    // Check Google Search Console (Pages > Not found) after launch and add any others here.
+    const legacy: [string, string][] = [
+      ["/privacy", "/privacy-policy"],
+      ["/privacy-1", "/privacy-policy"],
+      ["/terms-and-conditions", "/terms"],
+      ["/terms-of-service", "/terms"],
+      ["/book", "/book-now"],
+      ["/book-online", "/book-now"],
+      ["/booking", "/book-now"],
+      ["/faqs", "/faq"],
+      ["/contact-us", "/contact"],
+      ["/about-us", "/about"],
+      ["/our-story", "/about"],
+      ["/membership", "/glow-club"],
+      ["/memberships", "/glow-club"],
+      ["/glowclub", "/glow-club"],
+      ["/franchising", "/franchise"],
+      ["/locations-1", "/locations"],
+      ["/home", "/"],
+    ];
+    return [
+      ...locationSlugs.map((slug) => ({ source: `/${slug}`, destination: `/locations/${slug}`, statusCode: 301 as const })),
+      ...legacy.map(([source, destination]) => ({ source, destination, statusCode: 301 as const })),
+    ];
   },
   images: {
     remotePatterns: [

@@ -13,6 +13,8 @@ import { ANNOUNCEMENT, ANNOUNCEMENT_STORAGE_KEY } from "@/lib/site";
 import { IS_PREVIEW, isPreviewRequest } from "@/lib/preview";
 import { GA_ID } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/locations";
+import JsonLd from "@/components/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,8 +42,14 @@ export const metadata: Metadata = {
     template: "%s | Tanned Co.",
   },
   description:
-    "Sydney's first automated spray tanning studio. Private booths, even results, 5 locations open 7 days a week: Caringbah, Woollahra, Kings Park, Edensor Park & Smeaton Grange.",
+    "Sydney's first automated spray tan studio. Your own private room, open 7 days, 6am to midnight, at 5 studios across Sydney.",
   metadataBase: new URL(SITE_URL),
+  // Preview deployments only (VERCEL_ENV=preview, same check as lib/preview.ts): keep them out of
+  // search results. Production and local builds stay indexable. Vercel also sends
+  // "x-robots-tag: noindex" on preview URLs by itself.
+  ...(process.env.VERCEL_ENV === "preview" || process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"
+    ? { robots: { index: false, follow: false } }
+    : {}),
   alternates: { canonical: SITE_URL },
   openGraph: {
     siteName: "Tanned Co.",
@@ -109,6 +117,7 @@ export default function RootLayout({
       )}
       <body className="min-h-full flex flex-col pt-[var(--top-h)] pb-[calc(var(--cta-h)+env(safe-area-inset-bottom,0px))] md:pb-0">
         <AnnouncementBar />
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <PageViewTracker />
         {children}
         <ScrollReveal />

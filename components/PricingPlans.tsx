@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
-import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, TEN_PACK, formatAud } from "@/lib/pricing";
+import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, TEN_PACK, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import { GLOW_CLUB_SIGNUP_URL } from "@/lib/locations";
 import StudioBookButton from "@/components/StudioBookButton";
 import { CheckIcon } from "@/components/Icons";
@@ -51,10 +51,10 @@ export default function PricingPlans({
         <ul className="space-y-3 text-body text-[15px] flex-1 mb-8">
           <Feature>1 automated spray tan session</Feature>
           <Feature>Pay when you book your time</Feature>
-          <Feature>Private booth experience</Feature>
+          <Feature>Private room, just you</Feature>
           <Feature>Choose your shade and depth</Feature>
         </ul>
-        <StudioBookButton plan="casual" source={source} label="Book a casual tan" buttonClassName="btn btn-outline" />
+        <StudioBookButton plan="casual" source={source} label="Book a tan" buttonClassName="btn btn-outline" />
       </div>
 
       {/* 10 Pack */}
@@ -98,7 +98,7 @@ export default function PricingPlans({
         <ul className="space-y-3 text-on-dark text-[15px] flex-1 mb-8">
           <Feature dark>{GLOW_CLUB.tansPerMonth} automated spray tans every month</Feature>
           <Feature dark>
-            {GLOW_CLUB.minimumMonths} month minimum ({formatAud(GLOW_CLUB.minimumTotal)} in base payments), then month to month
+            {GLOW_CLUB.minimumMonths} month minimum ({PRICE_TEXT.glowClubMinimum}), then month to month
           </Feature>
           <Feature dark>Birthday tan on us</Feature>
           <Feature dark>Founding member perks</Feature>

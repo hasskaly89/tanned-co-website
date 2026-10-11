@@ -10,22 +10,24 @@ import FaqAccordion from "@/components/FaqAccordion";
 import CtaBand from "@/components/CtaBand";
 import { GLOW_CLUB_SIGNUP_URL } from "@/lib/locations";
 import { CheckIcon } from "@/components/Icons";
-import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, formatAud } from "@/lib/pricing";
+import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, PRICE_TEXT, formatAud } from "@/lib/pricing";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 
 const perks = [
   { title: "Birthday tan on us", body: "A free tan during your birthday month, our treat." },
-  { title: "Glow Key", body: "Your personal access key to any of our 5 locations." },
+  { title: "Glow Key", body: "Access to all 5 studios through the app." /* Glow Key physical vs app: pending Hass */ },
   { title: "First access to product drops", body: "Be first to future tan care products and merch at member pricing." },
   { title: "Mate's rate", body: `Share a code with one friend per month for ${formatAud(GLOW_CLUB.mateRateDiscount)} off their casual tan.` },
   { title: "Exclusive member offers", body: "Member-only promotions and seasonal offers throughout the year." },
   { title: "Priority access", body: "First in line for new locations and new services as we grow." },
-  { title: "Founding member status", body: "Lock in founding perks. Limited spots available at launch." },
+  { title: "Founding member status", body: "Founding member perks for members who join at launch." /* "Limited spots": pending Hass verification */ },
 ];
 
 const included = [
   `${GLOW_CLUB.tansPerMonth} automated spray tan sessions a month`,
   "Glow Key to all 5 locations",
-  `${GLOW_CLUB.minimumMonths} month minimum (${formatAud(GLOW_CLUB.minimumTotal)} in base payments), then month to month`,
+  `${GLOW_CLUB.minimumMonths} month minimum (${PRICE_TEXT.glowClubMinimum}), then month to month`,
   "Book online or in the app, 7 days, 6am to midnight",
   "All founding member perks",
 ];
@@ -33,7 +35,7 @@ const included = [
 const glowClubFaqs = [
   {
     q: "How many tans do I get each month?",
-    a: `${GLOW_CLUB.tansPerMonth} automated spray tan sessions every month, which works out to under ${formatAud(GLOW_CLUB_PER_TAN_UNDER)} per tan. Most clients tan every 10 to 14 days, so ${GLOW_CLUB.tansPerMonth} a month comfortably keeps you glowing.`,
+    a: `${GLOW_CLUB.tansPerMonth} automated spray tan sessions every month, which works out to under ${formatAud(GLOW_CLUB_PER_TAN_UNDER)} per tan. ${GLOW_CLUB.tansPerMonth} tans a month covers a tan every 10 days or so.`,
   },
   {
     q: "Is there a minimum commitment?",
@@ -49,7 +51,7 @@ const glowClubFaqs = [
   },
   {
     q: "Where can I use my membership?",
-    a: "Your Glow Key works at all 5 of our Sydney locations, 7 days a week, 6am to midnight. Book online or in the app.",
+    a: "Your membership works at all 5 of our Sydney studios, 7 days a week, 6am to midnight. Book online or in the app.",
   },
 ];
 
@@ -70,6 +72,7 @@ function JoinButton({ source, className }: { source: string; className: string }
 export default function GlowClub() {
   return (
     <div className="min-h-screen bg-cream text-ink font-sans">
+      <JsonLd data={[breadcrumbSchema([{ name: "Glow Club", path: "/glow-club" }]), serviceSchema(["glowClub"]), faqSchema(glowClubFaqs)]} />
       <Navbar activePath="/glow-club" />
 
       <PageHero
@@ -116,7 +119,7 @@ export default function GlowClub() {
             <p className="eyebrow mb-4">The good stuff</p>
             <h2 className="display-lg mb-5">Founding member perks.</h2>
             <p className="text-body text-lg leading-relaxed mb-10 max-w-xl">
-              Early Glow Club members lock in founding status, and these perks come with it.
+              Early Glow Club members get founding status, and these perks come with it.
             </p>
             <dl className="grid sm:grid-cols-2 gap-x-10">
               {perks.map((perk, i) => (

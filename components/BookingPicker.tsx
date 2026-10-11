@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { LOCATIONS, bookingUrlFor, type LocationData } from "@/lib/locations";
-import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, TEN_PACK, formatAud } from "@/lib/pricing";
+import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, TEN_PACK, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import { trackEvent } from "@/lib/analytics";
 import { CheckIcon } from "@/components/Icons";
 
@@ -76,7 +76,7 @@ export default function BookingPicker() {
 
       {/* STEP 2: CASUAL TAN */}
       <div className="mt-12">
-        <StepHeading n={2}>Book a casual tan.</StepHeading>
+        <StepHeading n={2}>Book a tan.</StepHeading>
         <div className="bg-white rounded-[28px] border-[1.5px] border-bronze/40 p-7 md:p-9 grid gap-7 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -106,7 +106,7 @@ export default function BookingPicker() {
                   onClick={() => book("casual")}
                   className="btn btn-dark w-full !py-4"
                 >
-                  Book a casual tan at {studio.shortName}, {formatAud(CASUAL.price)}
+                  Book a tan at {studio.shortName}, {formatAud(CASUAL.price)}
                 </a>
                 <p className="text-xs text-muted text-center mt-3">
                   Opens {studio.shortName}&apos;s booking page in our secure portal.
@@ -115,7 +115,7 @@ export default function BookingPicker() {
             ) : (
               <>
                 <button type="button" disabled className="btn btn-dark w-full !py-4">
-                  Book a casual tan, {formatAud(CASUAL.price)}
+                  {PRICE_TEXT.bookTan}
                 </button>
                 <p className="text-xs text-muted text-center mt-3">Choose your studio above to book.</p>
               </>

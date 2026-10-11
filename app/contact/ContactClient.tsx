@@ -1,10 +1,10 @@
 "use client";
 
+import { CONTACT, SOCIAL_LINKS, SUPPORT_HOURS_LINE } from "@/lib/site";
 import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import PageHero from "@/components/PageHero";
 import { MailIcon, PhoneIcon, InstagramIcon, TikTokIcon, FacebookIcon } from "@/components/Icons";
 import { trackEvent } from "@/lib/analytics";
@@ -29,9 +29,9 @@ const locations = [
 ];
 
 const socials = [
-  { label: "Instagram", href: "https://instagram.com/tannedco_", icon: <InstagramIcon className="w-4 h-4" /> },
-  { label: "TikTok", href: "https://www.tiktok.com/@tannedco_", icon: <TikTokIcon className="w-4 h-4" /> },
-  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=100086326464692", icon: <FacebookIcon className="w-4 h-4" /> },
+  { label: "Instagram", href: SOCIAL_LINKS.instagram, icon: <InstagramIcon className="w-4 h-4" /> },
+  { label: "TikTok", href: SOCIAL_LINKS.tiktok, icon: <TikTokIcon className="w-4 h-4" /> },
+  { label: "Facebook", href: SOCIAL_LINKS.facebook, icon: <FacebookIcon className="w-4 h-4" /> },
 ];
 
 const labelClass = "block text-sm font-medium text-ink mb-2";
@@ -70,11 +70,10 @@ export default function ContactClient() {
 
   return (
     <div className="min-h-screen bg-cream text-ink font-sans">
-      <LocalBusinessSchema />
       <Navbar activePath="/contact" />
 
       <PageHero
-        eyebrow="We'd love to hear from you"
+        eyebrow="Questions? Ask away."
         title="Contact us."
         intro="Got a question, franchise enquiry, or just want to say hi? Drop us a message."
         image="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg"
@@ -96,12 +95,13 @@ export default function ContactClient() {
                 <MailIcon className="w-5 h-5 text-bronze" /> hello@tannedco.com.au
               </a>
               <a
-                href="tel:1300826633"
+                href={CONTACT.phoneHref}
                 onClick={() => trackEvent("phone_click", { source: "contact_page" })}
                 className="flex items-center gap-3 text-lg text-ink hover:text-bronze-text transition-colors"
               >
-                <PhoneIcon className="w-5 h-5 text-bronze" /> 1300 826 633
+                <PhoneIcon className="w-5 h-5 text-bronze" /> {CONTACT.phone}
               </a>
+              <p className="text-sm text-body pl-8">{SUPPORT_HOURS_LINE}</p>
             </div>
 
             <div className="border-t border-line py-7">

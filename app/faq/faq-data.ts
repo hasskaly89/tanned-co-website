@@ -1,4 +1,4 @@
-import { CASUAL, formatAud } from "@/lib/pricing";
+import { CASUAL, PRICE_TEXT, formatAud } from "@/lib/pricing";
 
 // Safety and suitability answers are pending supplier-backed wording and owner approval.
 export const categories = [
@@ -7,15 +7,15 @@ export const categories = [
     faqs: [
       {
         q: "What is a contactless spray tan booth?",
-        a: "We use state of the art VersaSpa spray tan booths that provide a custom spray tanning experience in your own private room. Once you've stepped into the booth, it will sense your height and guide you into 4 different positions with 3 spray nozzles for full-body coverage. The open booth is comfortably heated even in winter you'll stay warm. Our booths self-clean between every session so you always step into a fresh, clean environment.",
+        a: "We use VersaSpa Pro spray tan booths in your own private room. Once you step into the booth, it senses your height and guides you through 4 positions, with 3 spray nozzles for full-body coverage. The open booth is comfortably heated, so you'll stay warm even in winter. The booths self-clean between every session, so you always step into a clean booth.",
       },
       {
         q: "How do I select my tan?",
-        a: "Our booths have 3 colour options with 3 colour depths. In our tanning rooms you'll find a tan menu so you can customise your experience to suit your skin tone and desired result. If you're unsure which colour is right for you, feel free to contact us and we'll help recommend an option!",
+        a: "Our booths have 3 colour options with 3 colour depths. In our tanning rooms you'll find a tan menu so you can choose the shade and depth that suit your skin tone and the result you want. If you're unsure which colour is right for you, contact us and we'll help you choose.",
       },
       {
         q: "How long do I leave my tan on before showering?",
-        a: "We recommend leaving your tan on for 6 to 8 hours. For a darker result, you can sleep in it. Just wash your hands and face with a gentle cleanser 30 minutes after your session. We also offer a 2-hour rapid clear solution that develops into a deep sunkissed glow and needs to be washed off after 2 to 3 hours max.",
+        a: "We recommend leaving your tan on for 6 to 8 hours. For a darker result, you can sleep in it. Just wash your hands and face with a gentle cleanser 30 minutes after your session. Rapid Venetian can be rinsed after 2 to 3 hours.",
       },
       {
         q: "How do spray tans work?",
@@ -23,16 +23,16 @@ export const categories = [
       },
       {
         q: "How long does a spray tan last?",
-        a: "With proper preparation and aftercare, your tan can last up to 7 days. To extend the life of your tan, moisturise daily, avoid long baths and chlorine, and use a tan-safe body wash. Exfoliating before your next session ensures an even fade and better base for your next tan.",
+        a: "With proper preparation and aftercare, your tan can last up to 7 days. To extend the life of your tan, moisturise daily, avoid long baths and chlorine, and use a tan-safe body wash. Exfoliating before your next session helps your tan fade evenly and gives a better base for the next one.",
       },
     ],
   },
   {
-    title: "About the Experience",
+    title: "Your Visit",
     faqs: [
       {
         q: "Is it private?",
-        a: "Absolutely. You have your own private tanning room with no staff involvement whatsoever. The booth guides you through your entire session with voice and visual instructions. The booth self-cleans between every session, so you always walk into a fresh, private space.",
+        a: "Yes. You have your own private tan room, with no staff in the room. The booth guides you through your entire session with voice and visual instructions. The booth self-cleans between every session, so you always walk into a fresh, private space.",
       },
       {
         q: "Is the tanning solution safe?",
@@ -40,15 +40,15 @@ export const categories = [
       },
       {
         q: "What should I wear?",
-        a: "Wear dark, loose-fitting clothing to your appointment to avoid any potential transfer from the bronzer in the solution. On the day of your tan, please arrive without deodorant, perfume, makeup or moisturiser these can create a barrier that affects how evenly your tan develops.",
+        a: "Wear dark, loose-fitting clothing to your appointment to avoid any potential transfer from the bronzer in the solution. On the day of your tan, please arrive without deodorant, perfume, makeup or moisturiser, as these can create a barrier that affects how evenly your tan develops.",
       },
       {
         q: "Do I need to book in advance?",
-        a: "Yes, all sessions at Tanned Co are pre-booked. You can book via our app or online through our website. This ensures your private room is ready for you when you arrive no waiting, no queues.",
+        a: "Yes, all sessions at Tanned Co. are pre-booked. You can book via our app or online through our website. That way your private room is ready for you when you arrive. No waiting, no queues.",
       },
       {
         q: "Can men get a spray tan?",
-        a: "Yes! Tanned Co welcomes all genders and body types. Our automated booths are completely private and designed to make everyone feel comfortable and confident. Spray tanning is for everyone.",
+        a: "Yes. Tanned Co. is for everyone, whatever your gender or body type. You tan alone in your own private room, so there's no one to feel awkward in front of.",
       },
     ],
   },
@@ -57,11 +57,11 @@ export const categories = [
     faqs: [
       {
         q: "Is it worth it compared to a manual spray tan?",
-        a: `A manual spray tan at a salon typically costs $50 to 80 and involves another person applying the tan by hand. At Tanned Co, you get consistent, even results from our VersaSpa Pro booths for as little as ${formatAud(CASUAL.price)} per session in complete privacy, with no awkward interactions. The automated booth is designed for even, full-body coverage.`,
+        a: `A manual spray tan at a salon is applied by hand by another person. At Tanned Co., you tan alone in your own private room and the VersaSpa Pro booth is designed for even, full-body coverage. Casual tans are ${formatAud(CASUAL.price)}, or ${PRICE_TEXT.glowClubPerTan} with Glow Club.`,
       },
       {
         q: "What if I don't like the colour?",
-        a: "We offer 3 signature colours (Rapid Venetian, Malibu, and Monterey) each available in 3 depths that's 9 shade combinations. Each colour comes in Natural, Medium or Dark. If you're new, we recommend starting with Natural or Medium. Your tan lasts up to 7 days and fades naturally, so there's no long-term commitment. Check our shade guide on the How It Works page to find your match.",
+        a: "We offer 3 signature colours (Rapid Venetian, Malibu and Monterey), each in 3 depths (Natural, Medium and Dark), so 9 options in total. If you're new, we recommend starting with Natural or Medium. Your tan lasts up to 7 days and fades naturally, so there's no long-term commitment. Check our shade guide on the How It Works page to find your match.",
       },
       {
         q: "Is it safe for sensitive skin?",

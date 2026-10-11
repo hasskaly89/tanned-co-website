@@ -10,7 +10,7 @@ import OfferButton from "@/components/OfferButton";
 import { ArrowIcon, CheckIcon } from "@/components/Icons";
 import { LOCATIONS } from "@/lib/locations";
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
-import { CASUAL, formatAud } from "@/lib/pricing";
+import { CASUAL, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import StudioStrip from "@/components/StudioStrip";
 import BoothVideo from "@/components/BoothVideo";
 import HeroBackdrop from "@/components/HeroBackdrop";
@@ -123,7 +123,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Real results"
-            title="The transformation."
+            title="One tan, before and after."
             intro="What a single Tanned Co. session looks like on real skin. Results vary with skin tone, prep and aftercare."
           />
           <div className="grid md:grid-cols-3 gap-5 md:gap-7 swipe-row" style={{ ["--swipe-w" as string]: "78%" }}>
@@ -143,7 +143,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-12">
             <p className="text-xs text-muted md:hidden">Swipe for more results</p>
-            <Link href="/book-now" className="btn btn-dark max-md:hidden">Get your glow</Link>
+            <Link href="/book-now" className="btn btn-dark max-md:hidden">{PRICE_TEXT.bookTan}</Link>
           </div>
         </div>
       </section>
@@ -198,11 +198,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Simple pricing"
-            title="Choose your glow."
+            title="Pick how you pay."
             intro={
               <>
-                Upfront prices. Every session includes a private booth and your choice of shade. Full terms are on the{" "}
-                <Link href="/pricing" className="text-link">pricing page</Link>.
+                Upfront prices. Every session includes your own private room and your choice of shade. Spray tanning is for everyone. Read the{" "}
+                <Link href="/terms" className="text-link">purchase terms</Link>.
               </>
             }
           />
@@ -229,9 +229,9 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-3 mt-9">
               {/* Phones already have the sticky Book bar */}
-              <Link href="/book-now" className="btn btn-light max-md:hidden">Book your tan</Link>
+              <Link href="/book-now" className="btn btn-light max-md:hidden">{PRICE_TEXT.bookTan}</Link>
               <OfferButton source="home_closing" className="btn btn-outline-light">
-                Claim first-visit offer
+                Get my 10% code
               </OfferButton>
             </div>
             <p className="text-on-dark-muted text-sm mt-10">

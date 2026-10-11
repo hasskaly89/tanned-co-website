@@ -1,6 +1,6 @@
 import Image from "next/image";
 import SectionHeading from "@/components/SectionHeading";
-import { BOOTH_VIDEO } from "@/lib/site";
+import { BOOTH_VIDEO, BOOTH_VIDEO_SECTION } from "@/lib/site";
 
 /**
  * Booth walkthrough near the top of the homepage. Plays the video once
@@ -9,6 +9,7 @@ import { BOOTH_VIDEO } from "@/lib/site";
  * with a "coming soon" label. No stock or generated imagery.
  */
 export default function BoothVideo() {
+  if (!BOOTH_VIDEO_SECTION) return null;
   const hasVideo = !!BOOTH_VIDEO.src;
   return (
     <section className="py-14 md:py-28 bg-sand" aria-labelledby="booth-walkthrough-title">

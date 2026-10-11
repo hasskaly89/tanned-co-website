@@ -8,12 +8,12 @@ const OG_IMAGE =
 export const metadata: Metadata = {
   title: "Book Your Tan",
   description:
-    `Book your automated spray tan at Tanned Co. online in seconds. Choose from 5 Sydney locations Caringbah, Woollahra, Kings Park, Edensor Park or Smeaton Grange. Sessions from ${formatAud(CASUAL.price)}.`,
+    `Book an automated spray tan online at one of 5 Tanned Co. studios across Sydney. Casual tans ${formatAud(CASUAL.price)}. Open 7 days, 6am to midnight.`,
   alternates: { canonical: `${SITE_URL}/book-now` },
   openGraph: {
     title: "Book Your Tan | Tanned Co.",
     description:
-      `Book your spray tan online in seconds. 5 Sydney locations, sessions from ${formatAud(CASUAL.price)}.`,
+      `Book a spray tan online in under a minute. 5 Sydney studios. Casual tans ${formatAud(CASUAL.price)}.`,
     url: `${SITE_URL}/book-now`,
     images: [{ url: OG_IMAGE, width: 1200, height: 800 }],
   },

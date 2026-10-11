@@ -1,10 +1,11 @@
-import { LockIcon, LeafIcon, StarIcon, CardIcon, SparkleIcon, PinIcon } from "@/components/Icons";
+import { LockIcon, LeafIcon, ClockIcon, PhoneIcon, SparkleIcon, PinIcon } from "@/components/Icons";
+import { CONTACT } from "@/lib/site";
 
 const badges = [
-  { icon: <LockIcon />, label: "100% private rooms" },
+  { icon: <LockIcon />, label: "Private rooms" },
   { icon: <LeafIcon />, label: "Vegan and cruelty-free" },
-  { icon: <StarIcon className="w-5 h-5" />, label: "Real Google reviews" },
-  { icon: <CardIcon />, label: "Secure online booking" },
+  { icon: <ClockIcon />, label: "Open 6am to midnight" },
+  { icon: <PhoneIcon />, label: `Help on ${CONTACT.phone}` },
   { icon: <SparkleIcon />, label: "Self-cleaning booths" },
   { icon: <PinIcon />, label: "5 Sydney studios" },
 ];

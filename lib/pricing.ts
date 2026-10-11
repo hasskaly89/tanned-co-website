@@ -24,6 +24,9 @@ export const GLOW_CLUB = {
   cancelEmail: "hello@tannedco.com.au",
 } as const;
 
+/** Fee for a dishonoured payment, as shown in GymMaster checkout (Finance, Oct 2026). */
+export const DISHONOUR_FEE = 4.4;
+
 export const formatAud = (n: number) =>
   Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`;
 
@@ -35,4 +38,9 @@ export const PRICE_TEXT = {
   casualFrom: `from ${formatAud(CASUAL.price)}`,
   glowClubPerTan: `under ${formatAud(GLOW_CLUB_PER_TAN_UNDER)} a tan`,
   mateRate: `${formatAud(GLOW_CLUB.mateRateDiscount)} off`,
+  /** "$267 total (3 x $89)" */
+  glowClubMinimum: `${formatAud(GLOW_CLUB.minimumTotal)} total (${GLOW_CLUB.minimumMonths} x ${formatAud(GLOW_CLUB.monthly)})`,
+  casualHeadline: `Casual tans ${formatAud(CASUAL.price)}`,
+  /** Main booking button label, used sitewide. */
+  bookTan: `Book a tan, ${formatAud(CASUAL.price)}`,
 } as const;

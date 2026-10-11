@@ -7,7 +7,10 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import CtaBand from "@/components/CtaBand";
 import InstagramFeed from "@/components/InstagramFeed";
+import { SHOW_TANS_DELIVERED_STAT } from "@/lib/site";
 import { CheckIcon, SunIcon, LockIcon, LeafIcon, ClockIcon } from "@/components/Icons";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 
 const OG_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg";
@@ -15,11 +18,11 @@ const OG_IMAGE =
 export const metadata: Metadata = {
   title: { absolute: "About Tanned Co. | Sydney's First Automated Spray Tan Studio" },
   description:
-    "Learn about Tanned Co Sydney's first fully automated spray tanning studio. Private VersaSpa booths across 5 locations. Vegan, cruelty-free, open 7 days a week.",
+    "Meet Tanned Co., Sydney's first automated spray tan studio. Private VersaSpa Pro booths across 5 Sydney studios. Vegan and cruelty-free, open 7 days.",
   alternates: { canonical: "https://www.tannedco.com.au/about" },
   openGraph: {
     title: "About Us | Tanned Co.",
-    description: "Sydney's first automated spray tan studio where luxury meets convenience.",
+    description: "Sydney's first automated spray tan studio. Your own private room, open 7 days.",
     url: "https://www.tannedco.com.au/about",
     images: [{ url: OG_IMAGE, width: 1200, height: 800 }],
   },
@@ -34,20 +37,21 @@ const stats = [
   { value: "5", label: "Sydney studios" },
   { value: "7", label: "Days a week" },
   { value: "3", label: "Signature shades" },
-  { value: "5,000+", label: "Spray tans delivered" },
+  // Unsourced: shown only when SHOW_TANS_DELIVERED_STAT is true in lib/site.ts (pending Hass).
+  SHOW_TANS_DELIVERED_STAT ? { value: "5,000+", label: "Spray tans delivered" } : { value: "9", label: "Shade and depth options" },
 ];
 
 const features = [
-  { icon: <SunIcon className="w-6 h-6" />, title: "Automated booths", desc: "State of the art VersaSpa booths that guide you through every step." },
-  { icon: <LockIcon className="w-6 h-6" />, title: "100% private", desc: "Your own private tanning room, with no staff involvement." },
-  { icon: <LeafIcon className="w-6 h-6" />, title: "Vegan and natural", desc: "Non-toxic, cruelty-free, paraben-free tanning solutions." },
-  { icon: <ClockIcon className="w-6 h-6" />, title: "Open 7 days", desc: "Book any time that suits you, 7 days a week." },
+  { icon: <SunIcon className="w-6 h-6" />, title: "Automated booths", desc: "VersaSpa Pro booths that talk you through every step." },
+  { icon: <LockIcon className="w-6 h-6" />, title: "Private", desc: "Your own private tan room, with no staff in the room." },
+  { icon: <LeafIcon className="w-6 h-6" />, title: "Vegan and cruelty-free", desc: "Vegan, cruelty-free and paraben-free tanning solutions." },
+  { icon: <ClockIcon className="w-6 h-6" />, title: "Open 7 days", desc: "Open 7 days, 6am to midnight." },
 ];
 
 const boothPoints = [
   "Open-air design for comfort",
   "Voice and visual guided instructions",
-  "Heated spa-like environment",
+  "Heated booth, even in winter",
   "Height sensors for even coverage",
   "Self-cleaning between every session",
   "3 spray nozzles for full body coverage",
@@ -56,12 +60,13 @@ const boothPoints = [
 export default function About() {
   return (
     <div className="min-h-screen bg-cream text-ink font-sans">
+      <JsonLd data={breadcrumbSchema([{ name: "About", path: "/about" }])} />
       <Navbar activePath="/about" />
 
       <PageHero
         eyebrow="Who we are"
         title="Our story."
-        intro="Sydney's first automated spray tanning studio, where luxury meets convenience."
+        intro="Private, automated spray tanning. No awkward small talk, no paper undies."
         image="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg"
         imageAlt="Tanned Co. studio"
       />
@@ -76,15 +81,15 @@ export default function About() {
               <p>
                 Tanned Co. was born from my background as a skin therapist, where I saw firsthand the long-term
                 damage the sun can do to your skin. As a mum of three, I needed a spray tan solution that was
-                quick, easy and safe, something that actually fit into a busy day.
+                quick, easy and private, and fitted into a busy day.
               </p>
               <p>
                 I wanted to remove the awkwardness of traditional spray tanning salons. That&apos;s why I created
-                Sydney&apos;s first fully automated, completely private spray tan experience. No staff, no waiting,
-                no uncomfortable moments.
+                Sydney&apos;s first automated spray tan studio, where you tan alone in your own room. No one in the room, no waiting,
+                no awkward moments.
               </p>
               <p className="font-display font-normal text-2xl text-ink leading-snug">
-                It&apos;s all about an effortless, natural glow on your schedule.
+                A good tan, on your schedule.
               </p>
             </div>
           </div>
@@ -117,8 +122,8 @@ export default function About() {
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Our mission"
-            title="Your glow, your way."
-            intro="We believe a beautiful tan should be accessible, private and effortless. No awkward interactions, no waiting around. Just you, your booth and your glow."
+            title="Just you and the booth."
+            intro="A good tan should be private, easy and open when you are. No awkward small talk, no waiting around."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
             {features.map((f) => (
@@ -180,7 +185,7 @@ export default function About() {
         <InstagramFeed />
       </section>
 
-      <CtaBand source="about_cta" title="Ready to get your glow?" text="Book your session online in seconds. Walk in, walk out glowing." />
+      <CtaBand source="about_cta" title="Ready when you are." text="Book online in under a minute. Your colour keeps developing over the next 24 hours." />
 
       <Footer />
     </div>

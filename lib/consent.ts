@@ -7,6 +7,7 @@ export const MARKETING_CONSENT_TEXT =
   "Also send me Tanned Co. news and offers by SMS and email. I can unsubscribe at any time.";
 
 export const FIRST_TIMER_OFFER = {
-  headline: "10% off your first tan",
-  terms: "New customers only. One per person.",
+  headline: "10% off your first casual tan",
+  // Expiry, single use and stacking with other offers: pending Hass, do not add yet.
+  terms: "New customers only. One per person. Casual tans only.",
 } as const;

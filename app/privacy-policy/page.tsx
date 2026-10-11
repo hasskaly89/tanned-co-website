@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 import { SITE_URL } from "@/lib/locations";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 
 // DRAFT for owner review. Not legal advice; have it checked before relying on it.
 // TODO(next push): add the legal entity name(s) and ABN(s) for each studio.
@@ -14,6 +16,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <LegalPage title="Privacy Policy" updated="October 2026" activePath="/privacy-policy">
+      <JsonLd data={breadcrumbSchema([{ name: "Privacy policy", path: "/privacy-policy" }])} />
       <section>
         <p>
           Tanned Co. (&quot;we&quot;, &quot;us&quot;) operates automated spray tan studios in Caringbah, Edensor Park, Kings Park,

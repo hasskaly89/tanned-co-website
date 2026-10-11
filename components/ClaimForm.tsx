@@ -5,13 +5,14 @@ import LeadFormFields, { EMPTY_LEAD_FORM, type LeadFormState } from "@/component
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
 import { newSubmissionId, submitClaim } from "@/lib/submit-lead";
 import { CheckIcon } from "@/components/Icons";
+import { BOOTH_TIME } from "@/lib/site";
 import { IS_PREVIEW, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
 
 const points = [
-  "Private, locked booth. Just you.",
-  "4 minutes in the booth",
+  "Your own private room. Just you.",
+  `${BOOTH_TIME[0].toUpperCase()}${BOOTH_TIME.slice(1)} in the booth`,
   "Open 7 days, 6am to midnight",
-  "Natural-looking colour, no orange",
+  "Choose from 9 shade and depth options",
 ];
 
 export default function ClaimForm({ location }: { location: string }) {
@@ -66,11 +67,10 @@ export default function ClaimForm({ location }: { location: string }) {
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div>
-            <p className="eyebrow-light mb-4">Exclusive first-timer offer</p>
+            <p className="eyebrow-light mb-4">First time? This one&apos;s on us (well, 10% of it).</p>
             <h2 className="display-lg mb-5">{FIRST_TIMER_OFFER.headline}.</h2>
             <p className="text-on-dark text-lg leading-relaxed mb-8">
-              Five automated spray tan studios across Sydney. An even glow from a 4-minute session,
-              completely private, no staff involved.
+              Private, automated spray tanning in {BOOTH_TIME}. Just you in the room.
             </p>
             <ul className="space-y-3">
               {points.map((point) => (
