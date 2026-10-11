@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { GLOW_CLUB_PRICE_LINE, GLOW_CLUB_TANS_LINE } from "@/lib/glow-club";
 import { trackEvent } from "@/lib/analytics";
 import { LOCATIONS } from "@/lib/locations";
 import Image from "next/image";
@@ -115,7 +116,7 @@ export default function BookNow() {
 
           </div>
           <p className="text-xs text-[#5a4a3a] mt-8 text-center">
-            Opens our secure booking portal in a new tab. See <Link href="/pricing" className="underline">pricing</Link> for Glow Club membership.
+            Opens our secure booking portal in a new tab. Glow Club members get {GLOW_CLUB_TANS_LINE} for {GLOW_CLUB_PRICE_LINE}: see <Link href="/glow-club" className="underline">Glow Club</Link>.
           </p>
         </div>
       </section>

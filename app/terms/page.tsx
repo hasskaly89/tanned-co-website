@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 import { SITE_URL } from "@/lib/locations";
 import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud } from "@/lib/pricing";
+import { GLOW_KEY_LINE } from "@/lib/glow-club";
 
 // DRAFT for owner review, built from the terms confirmed in October 2026.
 // TODO(next push): add the legal entity name(s) and ABN(s), and the failed-payment fee once confirmed.
@@ -47,11 +48,11 @@ export default function TermsPage() {
           <li>{formatAud(GLOW_CLUB.monthly)} per month, paid by direct debit, for {GLOW_CLUB.tansPerMonth} tans a month.</li>
           <li>Unused tans do not roll over. Your {GLOW_CLUB.tansPerMonth} tans need to be used within each month.</li>
           <li>
-            There is a {GLOW_CLUB.minimumMonths}-month minimum term ({formatAud(GLOW_CLUB.minimumTotal)} in base payments).
+            There is a {GLOW_CLUB.minimumMonths} month minimum term ({formatAud(GLOW_CLUB.minimumTotal)} total, {GLOW_CLUB.minimumMonths} x {formatAud(GLOW_CLUB.monthly)}).
             To cancel before the minimum term ends, you pay the remaining months of the minimum term.
           </li>
           <li>After the minimum term, the membership continues month to month. Cancel by emailing {GLOW_CLUB.cancelEmail}.</li>
-          <li>Members receive a Glow Key for access to all 5 Sydney studios.</li>
+          <li>{GLOW_KEY_LINE} Your Glow Key works at all 5 Sydney studios.</li>
         </ul>
       </section>
 

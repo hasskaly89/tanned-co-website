@@ -11,6 +11,7 @@ import GoogleReviews from "@/components/GoogleReviews";
 import TrustBadges from "@/components/TrustBadges";
 import StudioBookButton from "@/components/StudioBookButton";
 import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud } from "@/lib/pricing";
+import { GLOW_CLUB_MINIMUM_LINE, GLOW_CLUB_PER_TAN_LINE, GLOW_CLUB_TANS_LINE, GLOW_KEY_TITLE } from "@/lib/glow-club";
 import { LOCATIONS, SCHEMA_OPENING_HOURS, SITE_URL, phoneToE164 } from "@/lib/locations";
 
 const IMGS = {
@@ -387,11 +388,12 @@ export default function Home() {
                 <span className="text-5xl font-black">{formatAud(GLOW_CLUB.monthly)}</span>
                 <span className="text-white/60 mb-1.5">/ month</span>
               </div>
-              <p className="text-white/60 text-sm mb-6">{GLOW_CLUB.tansPerMonth} tans a month · under $30 a tan</p>
+              <p className="text-white/60 text-sm mb-6">{GLOW_CLUB_TANS_LINE} · {GLOW_CLUB_PER_TAN_LINE.toLowerCase()}</p>
               <ul className="space-y-3 text-white/80 text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_CLUB.tansPerMonth} automated spray tans every month</li>
                 <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> Best value for regular tanners</li>
-                <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_CLUB.minimumMonths}-month minimum ({formatAud(GLOW_CLUB.minimumTotal)} in total), then month to month</li>
+                <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_KEY_TITLE}, posted to you</li>
+                <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_CLUB_MINIMUM_LINE}</li>
               </ul>
               <Link
                 href="/glow-club"

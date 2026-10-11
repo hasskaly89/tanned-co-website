@@ -1,3 +1,5 @@
+import { GLOW_CLUB_ENTRY_FAQ } from "@/lib/glow-club";
+
 // Safety and suitability answers are pending supplier-backed wording and owner approval.
 export const categories = [
   {
@@ -44,6 +46,7 @@ export const categories = [
         q: "Do I need to book in advance?",
         a: "Yes, all sessions at Tanned Co are pre-booked. You can book via our app or online through our website. This ensures your private room is ready for you when you arrive no waiting, no queues.",
       },
+      GLOW_CLUB_ENTRY_FAQ,
       {
         q: "Can men get a spray tan?",
         a: "Yes! Tanned Co welcomes all genders and body types. Our automated booths are completely private and designed to make everyone feel comfortable and confident. Spray tanning is for everyone.",

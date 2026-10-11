@@ -7,48 +7,47 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TrustBadges from "@/components/TrustBadges";
 import { GLOW_CLUB, formatAud } from "@/lib/pricing";
+import {
+  GLOW_CLUB_ENTRY_FAQ,
+  GLOW_CLUB_EXTRA_TAN_LINE,
+  GLOW_CLUB_MINIMUM_LINE,
+  GLOW_CLUB_PER_TAN_LINE,
+  GLOW_CLUB_TANS_LINE,
+  GLOW_KEY_LINE,
+  GLOW_KEY_TITLE,
+} from "@/lib/glow-club";
 
 const GLOW_CLUB_SIGNUP_URL = "https://tannedco.gymmasteronline.com/portal/membership/a015bd6ac18c7596fa250eed4e8ab668";
 
+// Perks match the GymMaster Glow Club page only. Website-only perks (product drops,
+// mate's rate, seasonal offers, priority access) removed until Hass confirms them.
 const perks = [
+  {
+    title: GLOW_KEY_TITLE,
+    body: GLOW_KEY_LINE,
+  },
   {
     title: "Birthday tan on us",
     body: "A free tan during your birthday month, our treat.",
   },
   {
-    title: "Glow Key",
-    body: "Your personal access key to any of our 5 locations.",
-  },
-  {
-    title: "First access to product drops",
-    body: "Be first to future tan care products & merch at member pricing.",
-  },
-  {
-    title: "Mate's rate",
-    body: "Share a code with one friend per month for $10 off their casual tan.",
-  },
-  {
-    title: "Exclusive member offers",
-    body: "Member-only promotions and seasonal offers throughout the year.",
-  },
-  {
-    title: "Priority access",
-    body: "First in line for new locations and new services as we grow.",
+    title: "Member-only perks",
+    body: "Extra perks just for Glow Club members.",
   },
   {
     title: "Founding member status",
-    body: "Lock in founding perks. Limited spots available at launch.",
+    body: "Limited founding member spots available. Once they're gone, they're gone.",
   },
 ];
 
 const glowClubFaqs = [
   {
     q: "How many tans do I get each month?",
-    a: "3 automated spray tan sessions every month, which works out to under $30 per tan. Most clients tan every 10-14 days, so 3 a month comfortably keeps you glowing.",
+    a: `${GLOW_CLUB.tansPerMonth} automated spray tan sessions every month. ${GLOW_CLUB_PER_TAN_LINE}.`,
   },
   {
     q: "Is there a minimum commitment?",
-    a: `Yes. Glow Club has a ${GLOW_CLUB.minimumMonths}-month minimum, which is ${formatAud(GLOW_CLUB.minimumTotal)} in base membership payments (${GLOW_CLUB.minimumMonths} x ${formatAud(GLOW_CLUB.monthly)}). To leave before then, you pay out the rest of the minimum term. After that it continues month to month, and you can cancel by emailing ${GLOW_CLUB.cancelEmail}.`,
+    a: `Yes. Glow Club has a ${GLOW_CLUB.minimumMonths} month minimum, which is ${formatAud(GLOW_CLUB.minimumTotal)} total (${GLOW_CLUB.minimumMonths} x ${formatAud(GLOW_CLUB.monthly)}). To leave before then, you pay out the rest of the minimum term. After that it continues month to month, and you can cancel by emailing ${GLOW_CLUB.cancelEmail}.`,
   },
   {
     q: "Do unused tans roll over?",
@@ -56,12 +55,13 @@ const glowClubFaqs = [
   },
   {
     q: "What if I want a 4th tan in a month?",
-    a: "Easy: just book an extra session at the casual rate ($39) on top of your membership whenever you need it.",
+    a: GLOW_CLUB_EXTRA_TAN_LINE,
   },
   {
     q: "Where can I use my membership?",
-    a: "Your Glow Key works at all 5 of our Sydney locations, 7 days a week, 6am-midnight. Book through the app.",
+    a: "Your Glow Key works at all 5 of our Sydney locations, 7 days a week, 6am to midnight. Book through the app.",
   },
+  GLOW_CLUB_ENTRY_FAQ,
 ];
 
 export default function GlowClub() {
@@ -85,7 +85,7 @@ export default function GlowClub() {
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-white mb-3">Founding Members Now Open</p>
           <h1 className="text-4xl md:text-7xl font-black uppercase leading-tight text-white mb-4">Glow Club</h1>
           <p className="text-white/80 text-lg md:text-xl max-w-xl">
-            3 tans a month. $89. Under $30 a tan, with founding member perks you won&apos;t find anywhere else.
+            {GLOW_CLUB_TANS_LINE}. {formatAud(GLOW_CLUB.monthly)} a month. {GLOW_CLUB_PER_TAN_LINE}, plus member-only perks.
           </p>
         </div>
       </section>
@@ -95,7 +95,7 @@ export default function GlowClub() {
         <div className="max-w-5xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Membership</p>
           <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Glow Club Membership</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">One simple membership: 3 tans a month plus founding member perks. 3-month minimum ($267 in base payments), then month to month.</p>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">One simple membership: {GLOW_CLUB_TANS_LINE} plus member-only perks. {GLOW_CLUB_MINIMUM_LINE}</p>
           <div className="max-w-md mx-auto">
 
             {/* Glow Club Membership - featured */}
@@ -103,16 +103,16 @@ export default function GlowClub() {
               <div className="absolute top-5 right-5 bg-[#a46746] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Founding Member</div>
               <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Glow Club</p>
               <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">$89</span>
+                <span className="text-5xl font-black">{formatAud(GLOW_CLUB.monthly)}</span>
                 <span className="text-white/50 mb-1.5">/ month</span>
               </div>
-              <p className="text-white/50 text-sm mb-6">Under $30 per tan · 3 tans a month</p>
+              <p className="text-white/50 text-sm mb-6">{GLOW_CLUB_PER_TAN_LINE} · {GLOW_CLUB_TANS_LINE}</p>
               <ul className="space-y-3 text-white/70 text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 3 automated spray tan sessions / month</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Glow Key to all 5 locations</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {GLOW_CLUB.minimumMonths}-month minimum ({formatAud(GLOW_CLUB.minimumTotal)} in base payments), then month-to-month</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Book via the app · 7 days, 6am-midnight</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> All founding member perks below</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {GLOW_CLUB_TANS_LINE}</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {GLOW_KEY_TITLE}: {GLOW_KEY_LINE}</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {GLOW_CLUB_MINIMUM_LINE}</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Book via the app · 7 days, 6am to midnight</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Birthday tan on us and member-only perks</li>
               </ul>
               <a
                 href={GLOW_CLUB_SIGNUP_URL}
@@ -129,12 +129,12 @@ export default function GlowClub() {
         </div>
       </section>
 
-      {/* FOUNDING MEMBER PERKS */}
+      {/* MEMBER PERKS */}
       <section className="py-12 md:py-28 bg-[#fdf6ec]">
         <div className="max-w-6xl mx-auto px-6">
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Good Stuff</p>
-          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Founding Member Perks</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">Early Glow Club members lock in founding status, and these perks come with it.</p>
+          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Member Perks</h2>
+          <p className="text-center text-[#5a4a3a] mb-16 max-w-lg mx-auto">What comes with your Glow Club membership.</p>
           <div className="flex flex-wrap justify-center gap-5">
             {perks.map((perk) => (
               <div key={perk.title} className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)] bg-white rounded-3xl p-7 shadow-sm border border-[#e8d9c3] flex flex-col items-center text-center hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
@@ -155,9 +155,9 @@ export default function GlowClub() {
       {/* URGENCY STRIP */}
       <div className="bg-[#1a1a1a] text-white py-4 px-6">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-6 text-sm">
-          <span className="flex items-center gap-2"><span className="text-[#a46746]">✓</span> Glow Key to all 5 Sydney locations</span>
+          <span className="flex items-center gap-2"><span className="text-[#a46746]">✓</span> {GLOW_KEY_TITLE}</span>
           <span className="hidden sm:block text-white/30">|</span>
-          <span className="flex items-center gap-2"><span className="text-[#a46746]">✓</span> Under $30 a tan</span>
+          <span className="flex items-center gap-2"><span className="text-[#a46746]">✓</span> {GLOW_CLUB_PER_TAN_LINE}</span>
           <span className="hidden sm:block text-white/30">|</span>
           <span className="flex items-center gap-2"><span className="text-[#a46746]">✓</span> Limited founding member spots</span>
         </div>

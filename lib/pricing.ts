@@ -25,3 +25,6 @@ export const GLOW_CLUB = {
 
 export const formatAud = (n: number) =>
   Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`;
+
+/** "Under $30 a tan": monthly price divided by tans a month, rounded up. */
+export const GLOW_CLUB_PER_TAN_UNDER = Math.ceil(GLOW_CLUB.monthly / GLOW_CLUB.tansPerMonth);
