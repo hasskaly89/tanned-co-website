@@ -93,28 +93,28 @@ const prepTips = [
 const shades = [
   {
     name: "Rapid Venetian",
-    tag: "Most popular",
-    desc: "Rich chocolate brown with subtle violet undertones. The ideal choice for a timeless European tan. Works for all skin tones and busy tanners.",
+    tag: "Quick rinse",
+    desc: "Rich chocolate brown with subtle violet undertones. A timeless European-style tan, and the quickest to rinse if you're short on time.",
     rinse: "Rinse after 2 to 3 hours",
     swatches: ["#c4956a", "#a06b42", "#6b3f22"],
   },
   {
     name: "Malibu",
     tag: "Deep olive bronze",
-    desc: "Caramel and violet undertones. Our highly sought-after neutral base solution delivers a stunning deep olive bronze tan. Best for olive undertones.",
+    desc: "Caramel and violet undertones. A neutral base that develops into a deep olive bronze tan. A good match for olive undertones.",
     rinse: "Rinse after 6 to 8 hours or sleep in",
     swatches: ["#c49a6c", "#9e6e42", "#6b4020"],
   },
   {
     name: "Monterey",
     tag: "Golden beach tan",
-    desc: "A unique blend of golden and coffee brown undertones. The ideal choice for that iconic beach tan. Great for fair undertones or those who burn easily.",
+    desc: "A unique blend of golden and coffee brown undertones. For that classic beach tan. A good match for fair undertones.",
     rinse: "Rinse after 6 to 8 hours or sleep in",
     swatches: ["#d4a96a", "#b8823a", "#8a5c20"],
   },
 ];
 
-const depthNames = ["Light", "Medium", "Dark"];
+const depthNames = ["Natural", "Medium", "Dark"];
 
 const aftercare = [
   "Wait 6 to 8 hours before showering with Monterey or Malibu; 2 to 3 hours for Rapid Venetian",
