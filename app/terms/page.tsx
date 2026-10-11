@@ -48,7 +48,7 @@ export default function TermsPage() {
           <li>{formatAud(GLOW_CLUB.monthly)} per month, paid by direct debit, for {GLOW_CLUB.tansPerMonth} tans a month.</li>
           <li>Unused tans do not roll over. Your {GLOW_CLUB.tansPerMonth} tans need to be used within each month.</li>
           <li>
-            There is a {GLOW_CLUB.minimumMonths} month minimum term ({formatAud(GLOW_CLUB.minimumTotal)} total, {GLOW_CLUB.minimumMonths} x {formatAud(GLOW_CLUB.monthly)}).
+            There is a {GLOW_CLUB.minimumMonths}-month minimum term ({formatAud(GLOW_CLUB.minimumTotal)} total, {GLOW_CLUB.minimumMonths} x {formatAud(GLOW_CLUB.monthly)}).
             To cancel before the minimum term ends, you pay the remaining months of the minimum term.
           </li>
           <li>After the minimum term, the membership continues month to month. Cancel by emailing {GLOW_CLUB.cancelEmail}.</li>

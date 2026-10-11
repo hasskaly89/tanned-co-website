@@ -47,7 +47,7 @@ const glowClubFaqs = [
   },
   {
     q: "Is there a minimum commitment?",
-    a: `Yes. Glow Club has a ${GLOW_CLUB.minimumMonths} month minimum, which is ${formatAud(GLOW_CLUB.minimumTotal)} total (${GLOW_CLUB.minimumMonths} x ${formatAud(GLOW_CLUB.monthly)}). To leave before then, you pay out the rest of the minimum term. After that it continues month to month, and you can cancel by emailing ${GLOW_CLUB.cancelEmail}.`,
+    a: `Yes. Glow Club has a ${GLOW_CLUB.minimumMonths}-month minimum, which is ${formatAud(GLOW_CLUB.minimumTotal)} total (${GLOW_CLUB.minimumMonths} x ${formatAud(GLOW_CLUB.monthly)}). To leave before then, you pay out the rest of the minimum term. After that it continues month to month, and you can cancel by emailing ${GLOW_CLUB.cancelEmail}.`,
   },
   {
     q: "Do unused tans roll over?",
