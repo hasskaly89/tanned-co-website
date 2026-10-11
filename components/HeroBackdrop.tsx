@@ -23,8 +23,8 @@ const OPTION_B = {
 /**
  * Hero photo and gradient. Phones: the photo fills the whole hero (faces and
  * shoulders in the top third) with headline and subline over a dark gradient on
- * its lower part. Desktop: the photo fills the top and fades into solid
- * espresso, so the headline and button never sit across bodies.
+ * its lower part. Desktop: the photo stays fully visible with a soft dark
+ * gradient on the text side only.
  * Production always renders option A; ?hero=b only works on Vercel previews.
  */
 const noop = () => () => {};
@@ -39,8 +39,8 @@ export default function HeroBackdrop() {
 
   return (
     <>
-      {/* Phones: full-height photo with the text over its lower part. Desktop: photo in the top of the hero. */}
-      <div className="absolute inset-0 md:bottom-auto md:h-[68%]">
+      {/* Full-height photo on phones and desktop */}
+      <div className="absolute inset-0">
         <Image
           key={img.src}
           src={img.src}
@@ -54,8 +54,9 @@ export default function HeroBackdrop() {
       </div>
       {/* Phones: gradient from the bottom so headline and subline read on the photo */}
       <div className="md:hidden absolute inset-0 bg-gradient-to-t from-espresso via-espresso/75 via-30% to-transparent to-60%" />
-      {/* Desktop: photo fades into solid espresso, so the text never sits across bodies */}
-      <div className="hidden md:block absolute inset-x-0 top-[36%] h-[33%] bg-gradient-to-b from-transparent to-espresso" />
+      {/* Desktop: photo fully visible, with a soft dark gradient on the text side only (bottom left,
+          45% at most, no solid colour). The text also has a subtle shadow; see the hero in app/page.tsx. */}
+      <div className="hidden md:block absolute inset-0 bg-[linear-gradient(to_top_right,rgba(26,18,12,0.45)_0%,rgba(26,18,12,0.32)_32%,rgba(26,18,12,0)_62%)]" />
     </>
   );
 }
