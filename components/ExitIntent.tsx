@@ -4,9 +4,12 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import LeadFormFields, { EMPTY_LEAD_FORM, type LeadFormState } from "@/components/LeadFormFields";
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
 import { newSubmissionId, submitClaim } from "@/lib/submit-lead";
+import { IS_PREVIEW, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
 
-const SESSION_KEY = "tannedco_exit_shown";
-
+/**
+ * First-visit offer dialog, rendered once in the root layout.
+ * Fields: first name + mobile + optional marketing consent (pending Hass confirmation).
+ */
 export default function ExitIntent() {
   const [visible, setVisible] = useState(false);
   const [form, setForm] = useState<LeadFormState>(EMPTY_LEAD_FORM);
@@ -27,44 +30,16 @@ export default function ExitIntent() {
     returnFocus.current?.focus?.();
   }, []);
 
+  // Opens only when a visitor clicks an offer button (OfferButton dispatches
+  // "tannedco:open-offer"). The desktop exit-intent auto-open was removed:
+  // PENDING HASS CONFIRMATION (click-only vs auto-open once per visit).
   useEffect(() => {
-    let triggered = false;
-
-    // Manual trigger via custom event (e.g. from the homepage offer banner)
     const handleManualOpen = () => {
       setStatus((s) => (s === "success" ? s : "idle"));
       open();
     };
     window.addEventListener("tannedco:open-offer", handleManualOpen);
-
-    // Desktop exit-intent auto trigger, once per session
-    let alreadyShown = false;
-    try {
-      alreadyShown = !!sessionStorage.getItem(SESSION_KEY);
-    } catch {}
-    if (alreadyShown) {
-      return () => window.removeEventListener("tannedco:open-offer", handleManualOpen);
-    }
-
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 5 && !triggered) {
-        triggered = true;
-        try {
-          sessionStorage.setItem(SESSION_KEY, "1");
-        } catch {}
-        setTimeout(open, 200);
-      }
-    };
-
-    const timer = setTimeout(() => {
-      document.addEventListener("mouseleave", handleMouseLeave);
-    }, 5000);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      window.removeEventListener("tannedco:open-offer", handleManualOpen);
-    };
+    return () => window.removeEventListener("tannedco:open-offer", handleManualOpen);
   }, [open]);
 
   // Dialog behaviour: focus the first field, Escape closes, Tab stays inside.
@@ -117,7 +92,7 @@ export default function ExitIntent() {
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center px-4 overflow-y-auto py-8"
+      className="fixed inset-0 z-[100] bg-espresso-deep/70 backdrop-blur-sm flex items-center justify-center px-4 overflow-y-auto py-8"
       onClick={(e) => {
         if (e.target === e.currentTarget) close();
       }}
@@ -127,70 +102,55 @@ export default function ExitIntent() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="offer-title"
-        className="relative bg-[#fdf6ec] rounded-3xl max-w-md w-full p-8 md:p-10 shadow-2xl border border-[#e8d9c3] text-center my-auto"
+        className="relative bg-cream rounded-[28px] max-w-md w-full p-8 md:p-10 shadow-2xl border border-line my-auto"
       >
         <button
           type="button"
           onClick={close}
-          className="absolute top-4 right-4 text-[#7a6a5a] hover:text-[#1a1a1a] transition-colors text-xl leading-none p-1"
+          className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center text-muted hover:text-ink hover:bg-white transition-colors text-xl leading-none cursor-pointer"
           aria-label="Close"
         >
           ✕
         </button>
 
         {status === "success" ? (
-          <div aria-live="polite">
-            <div className="text-5xl mb-4" aria-hidden="true">☀️</div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">You&apos;re In!</p>
-            <h2 id="offer-title" className="text-3xl font-black uppercase leading-tight text-[#1a1a1a] mb-3">
-              Check Your Phone
-            </h2>
-            <p className="text-[#5a4a3a] text-base leading-relaxed mb-6">
+          <div className="text-center" aria-live="polite">
+            <p className="eyebrow mb-3">You&apos;re in</p>
+            <h2 id="offer-title" className="display-md mb-4">Check your phone.</h2>
+            <p className="text-body leading-relaxed mb-8">
               {crmOk ? (
-                <>Your 10% off code is on its way to <span className="font-semibold">{form.phone}</span> by SMS. Enter it at checkout in the Tanned Co. app.</>
+                <>Your 10% off code is on its way to <span className="font-semibold text-ink">{form.phone}</span> by SMS. Enter it at checkout in the Tanned Co. app.</>
               ) : (
-                <>We&apos;ve got your details. Our team will SMS your 10% off code to <span className="font-semibold">{form.phone}</span> shortly.</>
+                <>We&apos;ve got your details. Our team will SMS your 10% off code to <span className="font-semibold text-ink">{form.phone}</span> shortly.</>
               )}
             </p>
-            <button
-              type="button"
-              onClick={close}
-              className="w-full bg-[#a46746] hover:bg-[#7d4e33] text-white text-sm font-bold uppercase tracking-widest py-4 rounded-full transition-colors"
-            >
-              Got It
+            <button type="button" onClick={close} className="btn btn-dark w-full">
+              Got it
             </button>
           </div>
         ) : (
           <>
-            <div className="text-5xl mb-4" aria-hidden="true">✨</div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">
-              First Time at Tanned Co.?
-            </p>
-            <h2 id="offer-title" className="text-3xl font-black uppercase leading-tight text-[#1a1a1a] mb-3">
-              Get {FIRST_TIMER_OFFER.headline}
-            </h2>
-            <p className="text-[#5a4a3a] text-sm leading-relaxed mb-6">
-              Enter your details and we&apos;ll text you a code to use at checkout. {FIRST_TIMER_OFFER.terms}
+            <p className="eyebrow mb-3">First time at Tanned Co.?</p>
+            <h2 id="offer-title" className="display-md mb-3">Get {FIRST_TIMER_OFFER.headline}.</h2>
+            <p className="text-body leading-relaxed mb-6">
+              Enter your first name and mobile and we&apos;ll text you a code to use at checkout. {FIRST_TIMER_OFFER.terms}
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-3 text-left">
-              <LeadFormFields idPrefix="offer-popup" form={form} setForm={setForm} tone="light" />
-              <button
-                type="submit"
-                disabled={status === "loading"}
-                className="w-full flex items-center justify-center gap-2 bg-[#a46746] hover:bg-[#7d4e33] disabled:opacity-60 text-white text-sm font-bold uppercase tracking-widest py-4 rounded-full transition-colors"
-              >
-                {status === "loading" ? "Sending..." : "Text Me My Code"}
+            <form onSubmit={handleSubmit} className="space-y-3.5">
+              <LeadFormFields idPrefix="offer-popup" form={form} setForm={setForm} tone="light" variant="short" />
+              <button type="submit" disabled={status === "loading" || IS_PREVIEW} className="btn btn-dark w-full !py-4">
+                {status === "loading" ? "Sending..." : "Text me my code"}
               </button>
+              {IS_PREVIEW && <p className="text-muted text-xs text-center">{PREVIEW_FORM_MESSAGE}</p>}
               {status === "error" && (
-                <p role="alert" className="text-[#b3261e] text-xs text-center">{error}</p>
+                <p role="alert" className="text-red-700 text-sm text-center">{error}</p>
               )}
             </form>
 
             <button
               type="button"
               onClick={close}
-              className="mt-4 text-xs text-[#5a4a3a] hover:text-[#1a1a1a] transition-colors underline"
+              className="block mx-auto mt-4 text-sm text-muted hover:text-ink transition-colors underline cursor-pointer"
             >
               No thanks
             </button>

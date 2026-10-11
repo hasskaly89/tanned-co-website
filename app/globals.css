@@ -1,26 +1,169 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Design tokens. Change a value here and it updates across the whole site. */
+@theme {
+  --color-cream: #fdf6ec;
+  --color-sand: #fdf0d5;
+  --color-line: #e8d9c3;
+  --color-ink: #1a1a1a;
+  --color-body: #5a4a3a;
+  --color-muted: #6f6152;
+  /* Bronze is for fills and large display type. Small text uses bronze-text (passes WCAG AA on cream, sand and white). */
+  --color-bronze: #a46746;
+  --color-bronze-text: #8a5234;
+  --color-bronze-light: #e0a878;
+  --color-espresso: #2a211b;
+  --color-espresso-deep: #1f1914;
+  --color-on-dark: #e6d6c3;
+  --color-on-dark-muted: #bfae9b;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  /* Heading typeface (matches the logo). Swap --font-display-face in app/layout.tsx to change every heading at once. */
+  --font-display: var(--font-display-face), "Futura", "Century Gothic", ui-sans-serif, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-medium leading-none transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+  .btn-dark {
+    @apply bg-ink text-white hover:bg-espresso;
+  }
+  .btn-light {
+    @apply bg-cream text-ink hover:bg-white;
+  }
+  .btn-bronze {
+    @apply bg-bronze-text text-white hover:bg-bronze;
+  }
+  .btn-outline {
+    @apply border-[1.5px] border-ink text-ink hover:bg-ink hover:text-white;
+  }
+  .btn-outline-light {
+    @apply border-[1.5px] border-white/80 text-white hover:bg-white hover:text-ink;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-bronze-text;
+  }
+  .eyebrow-light {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-bronze-light;
+  }
+
+  /* Headings echo the logo: capitals, medium weight, wide letter-spacing. */
+  .display-xl {
+    @apply font-display font-medium uppercase text-[2.05rem] leading-[1.12] tracking-[0.07em] md:text-5xl md:leading-[1.1] lg:text-6xl;
+  }
+  .display-lg {
+    @apply font-display font-medium uppercase text-[1.65rem] leading-[1.2] tracking-[0.07em] md:text-[2.5rem] md:leading-[1.15];
+  }
+  .display-md {
+    @apply font-display font-medium uppercase text-[1.35rem] leading-[1.25] tracking-[0.07em] md:text-[1.75rem];
+  }
+
+  .text-link {
+    @apply font-medium text-bronze-text underline decoration-bronze/40 underline-offset-4 hover:decoration-bronze;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-3.5 text-[15px] text-ink placeholder-muted transition-colors focus:border-bronze focus:outline-none;
+  }
+  .field-dark {
+    @apply w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 text-[15px] text-white placeholder-on-dark-muted transition-colors focus:border-bronze-light focus:outline-none;
+  }
+}
+
+/*
+ * Mobile swipe rows: on phones a grid becomes one horizontal row you swipe
+ * through (scroll-snap, no JS). From md up the element's own grid classes apply,
+ * so desktop is unchanged. Set --swipe-w on the row to change card width.
+ */
+@media (max-width: 767px) {
+  .swipe-row {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: -1.5rem;
+    padding-inline: 1.5rem;
+    scroll-padding-inline: 1.5rem;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .swipe-row::-webkit-scrollbar {
+    display: none;
+  }
+  .swipe-row > * {
+    flex: 0 0 var(--swipe-w, 82%);
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+}
+
+/*
+ * Scroll reveal (components/ScrollReveal.tsx). Only JS adds .reveal-pending, and
+ * only to sections that start below the fold, so nothing is hidden without JS
+ * and nothing above the fold flashes. Opacity and transform only (no layout
+ * shift). Desktop only, and off for anyone who prefers reduced motion.
+ */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .reveal-pending {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  .reveal-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 450ms ease-out, transform 450ms ease-out;
+  }
+}
+
+/* Mobile accordions: hide the default disclosure marker (we draw a +). */
+.mobile-acc summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Announcement strip height (components/AnnouncementBar.tsx). 0 once dismissed. */
+:root {
+  --banner-h: 36px;
+  /* Preview strip (phones, previews only) and mobile sticky Book bar heights. */
+  --ribbon-h: 0px;
+  --cta-h: 0px;
+  --top-h: calc(var(--ribbon-h) + var(--banner-h));
+}
+@media (max-width: 767px) {
+  :root {
+    --cta-h: 76px;
+  }
+  html.is-preview {
+    --ribbon-h: 18px;
+  }
+}
+html.announce-off {
+  --banner-h: 0px;
+}
+html.announce-off .announce-bar {
+  display: none;
+}
+html {
+  scroll-padding-top: var(--top-h);
+}
+
+/* Home hero fills the screen between the top strips and (phones) the sticky Book bar. */
+.hero-fill {
+  height: calc(100vh - var(--top-h) - var(--cta-h));
+  height: calc(100dvh - var(--top-h) - var(--cta-h) - env(safe-area-inset-bottom, 0px));
+  height: calc(100svh - var(--top-h) - var(--cta-h) - env(safe-area-inset-bottom, 0px));
 }

@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/privacy-policy` },
     { url: `${SITE_URL}/terms` },
     { url: `${SITE_URL}/franchise` },
+    { url: `${SITE_URL}/gift-cards` },
   ];
 
   const locationPages: MetadataRoute.Sitemap = LOCATIONS.map((loc) => ({

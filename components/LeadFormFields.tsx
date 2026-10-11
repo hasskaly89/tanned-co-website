@@ -25,32 +25,36 @@ export default function LeadFormFields({
   form,
   setForm,
   tone,
+  variant = "full",
 }: {
   idPrefix: string;
   form: LeadFormState;
   setForm: (f: LeadFormState) => void;
   tone: "dark" | "light";
+  /** "short" = first name + mobile only (offer popup, pending Hass confirmation). */
+  variant?: "full" | "short";
 }) {
-  const input =
-    tone === "dark"
-      ? "w-full bg-white/10 border border-white/20 text-white placeholder-white/50 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[#e0a878] transition-colors"
-      : "w-full bg-white border border-[#e8d9c3] text-[#1a1a1a] placeholder-[#7a6a5a] rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-[#a46746] transition-colors";
-  const label = tone === "dark" ? "block text-xs font-semibold text-white/80 mb-1.5" : "block text-xs font-semibold text-[#3a2e24] mb-1.5";
-  const small = tone === "dark" ? "text-white/70" : "text-[#5a4a3a]";
-  const link = tone === "dark" ? "underline text-white" : "underline text-[#1a1a1a]";
+  const short = variant === "short";
+  const dark = tone === "dark";
+  const input = dark ? "field-dark" : "field";
+  const label = `block text-sm font-medium mb-1.5 ${dark ? "text-white" : "text-ink"}`;
+  const small = dark ? "text-on-dark-muted" : "text-muted";
+  const link = dark ? "underline text-white" : "underline text-ink";
 
   return (
     <>
       <div>
-        <label htmlFor={`${idPrefix}-name`} className={label}>Full name</label>
-        <input id={`${idPrefix}-name`} type="text" autoComplete="name" required maxLength={100}
+        <label htmlFor={`${idPrefix}-name`} className={label}>{short ? "First name" : "Full name"}</label>
+        <input id={`${idPrefix}-name`} type="text" autoComplete={short ? "given-name" : "name"} required maxLength={100}
           value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className={input} />
       </div>
-      <div>
-        <label htmlFor={`${idPrefix}-email`} className={label}>Email</label>
-        <input id={`${idPrefix}-email`} type="email" autoComplete="email" required maxLength={254}
-          value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={input} />
-      </div>
+      {!short && (
+        <div>
+          <label htmlFor={`${idPrefix}-email`} className={label}>Email</label>
+          <input id={`${idPrefix}-email`} type="email" autoComplete="email" required maxLength={254}
+            value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={input} />
+        </div>
+      )}
       <div>
         <label htmlFor={`${idPrefix}-phone`} className={label}>Mobile number</label>
         <input id={`${idPrefix}-phone`} type="tel" autoComplete="tel" inputMode="tel" required maxLength={30}
@@ -64,7 +68,7 @@ export default function LeadFormFields({
       <label htmlFor={`${idPrefix}-consent`} className={`flex items-start gap-2.5 cursor-pointer ${small}`}>
         <input id={`${idPrefix}-consent`} type="checkbox" checked={form.marketingConsent}
           onChange={(e) => setForm({ ...form, marketingConsent: e.target.checked })}
-          className="mt-0.5 h-4 w-4 flex-shrink-0 accent-[#a46746]" />
+          className="mt-0.5 h-4 w-4 shrink-0 accent-[#a46746]" />
         <span className="text-xs leading-relaxed">{MARKETING_CONSENT_TEXT} (Optional)</span>
       </label>
 

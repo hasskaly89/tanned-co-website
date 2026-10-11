@@ -1,9 +1,13 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import { isPreviewRequest, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
 import { escapeHtml, field, isValidEmail, isValidPhone } from "@/lib/form-utils";
 import { clientIp, rateLimited } from "@/lib/rate-limit";
 
 export async function POST(req: Request) {
+  if (isPreviewRequest()) {
+    return NextResponse.json({ error: PREVIEW_FORM_MESSAGE }, { status: 403 });
+  }
   if (rateLimited(`contact:${clientIp(req)}`, 5, 10 * 60 * 1000)) {
     return NextResponse.json({ error: "Too many messages. Please wait a few minutes and try again." }, { status: 429 });
   }
@@ -38,7 +42,7 @@ export async function POST(req: Request) {
         from: "Tanned Co. Website <noreply@tannedco.com.au>",
         to: ["hello@tannedco.com.au", "edensorpark@tannedco.com.au"],
         replyTo: email,
-        subject: `${enquiryType} | ${location} | Tanned Co Website`.replace(/[\r\n]+/g, " "),
+        subject: `${enquiryType} | ${location} | Tanned Co. Website`.replace(/[\r\n]+/g, " "),
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #fdf6ec; border-radius: 12px;">
             <h2 style="color: #1a1a1a; margin-bottom: 4px;">New Enquiry from Tanned Co. Website</h2>

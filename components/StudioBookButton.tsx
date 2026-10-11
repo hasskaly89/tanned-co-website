@@ -14,14 +14,21 @@ export default function StudioBookButton({
   source,
   label,
   buttonClassName,
+  tone = "light",
 }: {
   plan: BookingPlan;
   source: string;
   label: string;
   buttonClassName: string;
+  /** Background the studio chips sit on. */
+  tone?: "light" | "dark";
 }) {
   const id = useId();
   const [open, setOpen] = useState(false);
+  const chip =
+    tone === "dark"
+      ? "border-white/30 text-white hover:bg-white hover:text-ink hover:border-white"
+      : "border-line bg-white text-ink hover:border-bronze hover:text-bronze-text";
 
   return (
     <div className="flex flex-col gap-2">
@@ -30,13 +37,15 @@ export default function StudioBookButton({
         aria-expanded={open}
         aria-controls={id}
         onClick={() => setOpen((o) => !o)}
-        className={`${buttonClassName} w-full cursor-pointer`}
+        className={`${buttonClassName} w-full`}
       >
         {label}
       </button>
       {open && (
-        <div id={id} className="flex flex-col gap-2 pt-1">
-          <p className="text-xs text-center opacity-80">Choose your studio</p>
+        <div id={id} className="flex flex-col gap-2.5 pt-2">
+          <p className={`text-xs font-medium text-center ${tone === "dark" ? "text-on-dark-muted" : "text-muted"}`}>
+            Choose your studio
+          </p>
           <div className="flex flex-wrap justify-center gap-2">
             {LOCATIONS.map((loc) => {
               const href = bookingUrlFor(loc, plan);
@@ -47,7 +56,7 @@ export default function StudioBookButton({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackEvent("book_now_click", { source, plan, location_slug: loc.slug, destination: href })}
-                  className="text-center text-sm font-semibold rounded-full border border-current/30 px-4 py-2.5 hover:bg-[#a46746] hover:text-white hover:border-[#a46746] transition-colors"
+                  className={`text-center text-sm font-medium rounded-full border px-4 py-2.5 transition-colors ${chip}`}
                 >
                   {loc.shortName}
                 </a>

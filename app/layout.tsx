@@ -1,26 +1,40 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Jost } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import MobileCTA from "@/components/MobileCTA";
 import ExitIntent from "@/components/ExitIntent";
 import BronzeBot from "@/components/BronzeBot";
 import PageViewTracker from "@/components/PageViewTracker";
+import PreviewRibbon from "@/components/PreviewRibbon";
+import ScrollReveal from "@/components/ScrollReveal";
+import AnnouncementBar from "@/components/AnnouncementBar";
+import { ANNOUNCEMENT, ANNOUNCEMENT_STORAGE_KEY } from "@/lib/site";
+import { IS_PREVIEW, isPreviewRequest } from "@/lib/preview";
 import { GA_ID } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/locations";
+import JsonLd from "@/components/JsonLd";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Heading typeface, chosen to match the Tanned Co. logo lettering.
+const displayFont = Jost({
+  variable: "--font-display-face",
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 const OG_IMAGE =
   "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg";
+
+// Analytics only load on production builds that are not Vercel preview deployments,
+// so local runs and partner previews don't pollute GA. Same VERCEL_ENV=preview check
+// as lib/preview.ts (build-time NEXT_PUBLIC_VERCEL_ENV, plus server VERCEL_ENV).
+const ANALYTICS_ENABLED = process.env.NODE_ENV === "production" && !IS_PREVIEW && !isPreviewRequest();
 
 export const metadata: Metadata = {
   title: {
@@ -28,8 +42,14 @@ export const metadata: Metadata = {
     template: "%s | Tanned Co.",
   },
   description:
-    "Sydney's first automated spray tanning studio. Private booths, flawless results, 5 locations open 7 days a week Caringbah, Woollahra, Kings Park, Edensor Park & Smeaton Grange.",
+    "Sydney's first automated spray tan studio. Your own private room, open 7 days, 6am to midnight, at 5 studios across Sydney.",
   metadataBase: new URL(SITE_URL),
+  // Preview deployments only (VERCEL_ENV=preview, same check as lib/preview.ts): keep them out of
+  // search results. Production and local builds stay indexable. Vercel also sends
+  // "x-robots-tag: noindex" on preview URLs by itself.
+  ...(process.env.VERCEL_ENV === "preview" || process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"
+    ? { robots: { index: false, follow: false } }
+    : {}),
   alternates: { canonical: SITE_URL },
   openGraph: {
     siteName: "Tanned Co.",
@@ -49,10 +69,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: [OG_IMAGE],
   },
-    icons: {
-          icon: "/logo.png",
-          apple: "/logo.png",
-    },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -63,27 +83,48 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      // Lets Next.js switch smooth scrolling off during page changes, so new pages open at the top
+      // while in-page anchor links still scroll smoothly (globals.css sets scroll-behavior: smooth).
+      data-scroll-behavior="smooth"
+      className={`${geistSans.variable} ${displayFont.variable} h-full antialiased${ANNOUNCEMENT.enabled ? "" : " announce-off"}${IS_PREVIEW ? " is-preview" : ""}`}
+      // The inline script below may add "announce-off" before React hydrates.
+      suppressHydrationWarning
     >
-      {/* Google Analytics 4 */}
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${GA_ID}', { send_page_view: false });
-        `}
-      </Script>
-      <body className="min-h-full flex flex-col pb-16 md:pb-0">
+      <head>
+        {/* Hide a dismissed announcement before first paint (no flash, no layout shift). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem(${JSON.stringify(ANNOUNCEMENT_STORAGE_KEY)})===${JSON.stringify(ANNOUNCEMENT.id)})document.documentElement.classList.add("announce-off")}catch(e){}`,
+          }}
+        />
+      </head>
+      {ANALYTICS_ENABLED && (
+        <>
+          {/* Google Analytics 4 */}
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_ID}', { send_page_view: false });
+            `}
+          </Script>
+        </>
+      )}
+      <body className="min-h-full flex flex-col pt-[var(--top-h)] pb-[calc(var(--cta-h)+env(safe-area-inset-bottom,0px))] md:pb-0">
+        <AnnouncementBar />
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <PageViewTracker />
         {children}
+        <ScrollReveal />
         <MobileCTA />
         <ExitIntent />
         <BronzeBot />
+        <PreviewRibbon />
       </body>
     </html>
   );

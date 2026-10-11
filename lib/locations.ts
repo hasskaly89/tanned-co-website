@@ -8,6 +8,10 @@ export const DEFAULT_BOOKING_URLS: BookingUrls = {
   tenPack: "https://tannedco.gymmasteronline.com/portal/membership/b159a15f9927d73202b657211134059d",
 };
 
+/** Glow Club sign-up in GymMaster. One membership for all 5 studios, so no studio is set. */
+export const GLOW_CLUB_SIGNUP_URL =
+  "https://tannedco.gymmasteronline.com/portal/membership/a015bd6ac18c7596fa250eed4e8ab668";
+
 export interface LocationData {
   slug: string;
   shortName: string;
@@ -22,6 +26,8 @@ export interface LocationData {
   lat: number;
   lng: number;
   heroImage: string;
+  /** Real photo of this studio's own shopfront, when one exists (shown on its studio page). */
+  storefrontImage?: string;
   phone: string;
   nearbySuburbs: string[];
   parkingNote: string;
@@ -47,12 +53,15 @@ export const LOCATIONS: LocationData[] = [
     state: "NSW",
     postcode: "2229",
     fullAddress: "349B Kingsway, Caringbah NSW 2229",
-    hours: "Open 7 days · 6am – 12am",
+    hours: "Open 7 days, 6am to midnight",
     mapsUrl: "https://www.google.com/maps?cid=13479038353772915077",
     lat: -34.0409989,
     lng: 151.1217383,
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
+    // Existing site photo of the 349b Kingsway shopfront.
+    storefrontImage:
+      "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg",
     phone: "1300 826 633",
     nearbySuburbs: ["Cronulla", "Miranda", "Gymea", "Sutherland", "Taren Point", "Woolooware"],
     parkingNote: "Street parking available on Kingsway. Easy access from Caringbah train station.",
@@ -73,7 +82,7 @@ export const LOCATIONS: LocationData[] = [
     state: "NSW",
     postcode: "2176",
     fullAddress: "Shop 6/207 Edensor Rd, Edensor Park NSW 2176",
-    hours: "Open 7 days · 6am – 12am",
+    hours: "Open 7 days, 6am to midnight",
     mapsUrl: "https://www.google.com/maps?cid=573135464984670807",
     lat: -33.8763487,
     lng: 150.877011,
@@ -100,7 +109,7 @@ export const LOCATIONS: LocationData[] = [
     state: "NSW",
     postcode: "2148",
     fullAddress: "6/2 Garling Rd, Kings Park NSW 2148",
-    hours: "Open 7 days · 6am – 12am",
+    hours: "Open 7 days, 6am to midnight",
     mapsUrl: "https://www.google.com/maps?cid=495537712189558719",
     lat: -33.7453629,
     lng: 150.9154175,
@@ -127,7 +136,7 @@ export const LOCATIONS: LocationData[] = [
     state: "NSW",
     postcode: "2567",
     fullAddress: "1/73-77 Anderson Rd, Smeaton Grange NSW 2567",
-    hours: "Open 7 days · 6am – 12am",
+    hours: "Open 7 days, 6am to midnight",
     mapsUrl: "https://www.google.com/maps?cid=2632734899103432869",
     lat: -34.0339258,
     lng: 150.7607107,
@@ -153,7 +162,7 @@ export const LOCATIONS: LocationData[] = [
     state: "NSW",
     postcode: "2025",
     fullAddress: "8 Oxford St, Woollahra NSW 2025",
-    hours: "Open 7 days · 6am – 12am",
+    hours: "Open 7 days, 6am to midnight",
     mapsUrl: "https://www.google.com/maps?cid=4396169464198015999",
     lat: -33.8886925,
     lng: 151.232489,

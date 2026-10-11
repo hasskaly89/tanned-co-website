@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 import { SITE_URL } from "@/lib/locations";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
+import { LEGAL_ENTITY } from "@/lib/site";
 
 // DRAFT for owner review. Not legal advice; have it checked before relying on it.
-// TODO(next push): add the legal entity name(s) and ABN(s) for each studio.
+// Legal entity and ABN come from LEGAL_ENTITY in lib/site.ts (confirmed by Hass 11 Oct 2026).
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -14,6 +17,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <LegalPage title="Privacy Policy" updated="October 2026" activePath="/privacy-policy">
+      <JsonLd data={breadcrumbSchema([{ name: "Privacy policy", path: "/privacy-policy" }])} />
       <section>
         <p>
           Tanned Co. (&quot;we&quot;, &quot;us&quot;) operates automated spray tan studios in Caringbah, Edensor Park, Kings Park,
@@ -21,6 +25,11 @@ export default function PrivacyPolicyPage() {
           personal information, in line with the Australian Privacy Principles.
         </p>
       </section>
+      {LEGAL_ENTITY && (
+        <section>
+          <p>{`Tanned Co. is operated by ${LEGAL_ENTITY.name} (ABN ${LEGAL_ENTITY.abn}).`}</p>
+        </section>
+      )}
 
       <section>
         <h2>What we collect</h2>

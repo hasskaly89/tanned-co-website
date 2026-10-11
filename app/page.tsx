@@ -1,506 +1,267 @@
-"use client";
-
-import { useState } from "react";
-import { trackEvent } from "@/lib/analytics";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import InstagramFeed from "@/components/InstagramFeed";
 import GoogleReviews from "@/components/GoogleReviews";
-import TrustBadges from "@/components/TrustBadges";
-import StudioBookButton from "@/components/StudioBookButton";
-import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud } from "@/lib/pricing";
-import { LOCATIONS, SCHEMA_OPENING_HOURS, SITE_URL, phoneToE164 } from "@/lib/locations";
+import HomeSchema from "@/components/HomeSchema";
+import PricingPlans from "@/components/PricingPlans";
+import SectionHeading from "@/components/SectionHeading";
+import OfferButton from "@/components/OfferButton";
+import { ArrowIcon, CheckIcon } from "@/components/Icons";
+import { LOCATIONS } from "@/lib/locations";
+import { FIRST_TIMER_OFFER } from "@/lib/consent";
+import { CASUAL, formatAud, PRICE_TEXT } from "@/lib/pricing";
+import StudioStrip from "@/components/StudioStrip";
+import BoothVideo from "@/components/BoothVideo";
+import HeroBackdrop from "@/components/HeroBackdrop";
+import { HERO_OFFER_LINK, RINSE_LINE, DEVELOP_LINE, CHECK_IN_TEXT } from "@/lib/site";
+import SupportBlock from "@/components/SupportBlock";
+import LatestGoogleReview from "@/components/LatestGoogleReview";
 
 const IMGS = {
-  hero: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
   about: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg",
 };
 
-// Structured data is generated from lib/locations.ts so hours, phones and
-// coordinates cannot drift. No aggregateRating: Google requires review markup
-// to match reviews visible on the page.
-const ORG_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "BeautySalon",
-  name: "Tanned Co.",
-  url: SITE_URL,
-  telephone: "+611300826633",
-  email: "hello@tannedco.com.au",
-  description:
-    "Sydney's first automated spray tanning studio. Private VersaSpa booths, streak-free results, open 7 days.",
-  image: IMGS.hero,
-  priceRange: "$$",
-  openingHoursSpecification: SCHEMA_OPENING_HOURS,
-  sameAs: [
-    "https://instagram.com/tannedco_",
-    "https://www.tiktok.com/@tannedco_",
-    "https://www.facebook.com/profile.php?id=100086326464692",
-  ],
-};
-
-const LOCATION_LIST_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  itemListElement: LOCATIONS.map((loc, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    item: {
-      "@type": "BeautySalon",
-      "@id": `${SITE_URL}/locations/${loc.slug}`,
-      name: loc.fullName,
-      url: `${SITE_URL}/locations/${loc.slug}`,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: loc.address,
-        addressLocality: loc.suburb,
-        addressRegion: loc.state,
-        postalCode: loc.postcode,
-        addressCountry: "AU",
-      },
-      geo: { "@type": "GeoCoordinates", latitude: loc.lat, longitude: loc.lng },
-      telephone: phoneToE164(loc.phone),
-      email: "hello@tannedco.com.au",
-      priceRange: "$$",
-      openingHoursSpecification: SCHEMA_OPENING_HOURS,
-    },
-  })),
-};
-
-const faqs = [
-  {
-    q: "What is a contactless spray tan booth?",
-    a: "We use state of the art spray tan booths that provide a custom spray tanning experience in your own private room. Once you've stepped into the booth, it will sense your height and guide you into 4 different positions with 3 spray nozzles for full-body coverage. The open booth is comfortably heated even in winter you'll stay warm. Our booths self-clean between sessions.",
-  },
-  {
-    q: "How long do I leave my tan on before showering?",
-    a: "We recommend leaving your tan on for 6–8 hours. For a darker result you can sleep in it. We also offer a 2-hour rapid clear solution that develops into a deep sunkissed glow and needs to be washed off after 2–3 hours max.",
-  },
-  {
-    q: "How long does a spray tan last?",
-    a: "A spray tan lasts up to 7 days with proper aftercare. Moisturising daily and avoiding long hot showers will help extend your glow.",
-  },
-  {
-    q: "Is it really completely private?",
-    a: "Yes, 100%. You enter a private room, lock the door, and the entire process is self-guided. No staff, no other clients just you and the booth.",
-  },
-  {
-    q: "What if I've never had a spray tan before?",
-    a: "That's exactly what we're designed for. The booth gives you clear voice and screen prompts at every step. Most first-timers say it was way easier than they expected.",
-  },
+const whyPoints = [
+  "Private room: lock the door, it's just you",
+  "Heated, self-cleaning booths",
+  "Choose your shade and depth in the room",
 ];
 
+// Each photo is a side-by-side pair: before on the left, after on the right.
+const results = [
+  { src: "/before-after-venetian.jpg", alt: "Before (left) and after (right) a Rapid Venetian Medium spray tan", shade: "Rapid Venetian", depth: "Medium" },
+  { src: "/before-after-tan.jpg", alt: "Before (left) and after (right) a Malibu Medium spray tan", shade: "Malibu", depth: "Medium" },
+  { src: "/before-after-monterey-dark.jpg", alt: "Before (left) and after (right) a Monterey Dark spray tan", shade: "Monterey", depth: "Dark" },
+];
+
+const steps = [
+  { num: "01", title: "Book", desc: "Choose your studio, date and time online or in the app." },
+  { num: "02", title: "Check in", desc: CHECK_IN_TEXT },
+  { num: "03", title: "Prep and spray", desc: "Pop on the hair net, sticky feet and barrier cream, pick your shade on the in-room menu, and step in. Voice prompts guide every position." },
+  { num: "04", title: "Glow", desc: `${RINSE_LINE} ${DEVELOP_LINE}` },
+];
 
 export default function Home() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [bannerVisible, setBannerVisible] = useState(true);
-  const [promoVisible, setPromoVisible] = useState(true);
-
   return (
-    <div className="min-h-screen bg-[#fdf6ec] text-[#1a1a1a] font-sans">
+    <div className="min-h-screen bg-cream text-ink font-sans">
+      <HomeSchema />
+      <Navbar activePath="/" />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCATION_LIST_SCHEMA) }}
-      />
-
-      {/* ANNOUNCEMENT BANNER */}
-      {bannerVisible && (
-        <div className="hidden md:flex fixed top-0 left-0 right-0 z-60 bg-[#a46746] text-white text-sm py-2.5 px-4 items-center justify-center gap-3">
-          <span>✨ Own a Tanned Co. studio. Franchise opportunities now open. <Link href="/franchise" className="underline font-semibold hover:text-white/80 transition-colors">Enquire here</Link></span>
-          <button
-            onClick={() => setBannerVisible(false)}
-            className="absolute right-4 text-white/70 hover:text-white text-lg leading-none transition-colors"
-            aria-label="Dismiss banner"
-          >
-            ✕
-          </button>
-        </div>
-      )}
-
-      <Navbar activePath="/" withBanner={bannerVisible} />
-
-
-      {/* HERO */}
-      <section className="relative h-[82vh] md:h-screen min-h-[500px] flex items-end">
-        <h1 className="sr-only">Tanned Co. Sydney&apos;s Automated Spray Tanning Studio</h1>
-        <Image
-          src={IMGS.hero}
-          alt="Tanned Co. studio"
-          fill
-          className="object-cover"
-          style={{ objectPosition: "50% 0%" }}
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-6 md:pb-28">
-          <Image
-            src="/logo_transparent.png"
-            alt="Tanned Co."
-            width={900}
-            height={200}
-            className="w-full max-w-[260px] md:max-w-3xl brightness-0 invert mb-4 md:mb-6"
-            style={{ height: "auto" }}
-          />
-          <p className="text-white/90 text-lg md:text-xl max-w-md mb-8">
-            Sydney&apos;s first automated spray tanning studio. Private booths. Perfect results. 7 days a week.
+      {/* HERO: one headline, one line, one button. Text sits in the bottom third on a dark gradient. */}
+      {/* Fills the screen: below the top strips (--top-h) and, on phones, above the sticky Book bar.
+          The navbar overlays the top 68px (pt-[68px]). See .hero-fill in globals.css. */}
+      <section className="hero-fill relative flex items-end min-h-[480px] md:min-h-[640px] md:max-h-[920px] bg-espresso pt-[68px]">
+        <HeroBackdrop />
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-8 md:pb-16">
+          <h1 className="display-xl text-white max-w-4xl md:[text-shadow:0_1px_3px_rgba(0,0,0,0.4),0_2px_24px_rgba(0,0,0,0.35)]">Private, automated spray tanning.</h1>
+          {/* "about 4 minutes" in the booth: confirmed by Hass.
+              Desktop subline is 24px so it counts as large text for WCAG AA (3:1) over the photo. */}
+          <p className="text-white/90 md:text-white text-lg md:text-2xl leading-relaxed max-w-xl md:max-w-2xl mt-4 md:[text-shadow:0_1px_3px_rgba(0,0,0,0.5),0_1px_16px_rgba(0,0,0,0.4)]">
+            Your own private room. Book, let yourself in, tan in about 4 minutes.
           </p>
-          <div className="flex items-center gap-5 flex-wrap">
-            <Link
-              href="/book-now"
-              className="inline-flex items-center bg-white text-[#1a1a1a] text-sm md:text-base px-8 py-3.5 rounded-full font-semibold hover:bg-[#f5e6cc] transition-colors"
-            >
-              Book Your Tan →
-            </Link>
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-4 md:mt-7 empty:hidden">
+            {/* Goes to the studio picker, which books the chosen studio's casual tan */}
+            {/* Desktop only: phones use the always-visible sticky Book bar */}
+            <Link href="/book-now" className="btn btn-light max-md:hidden">Book a tan, {formatAud(CASUAL.price)}</Link>
+            {HERO_OFFER_LINK && (
+              <OfferButton
+                source="home_hero"
+                className="text-sm font-medium text-white/90 underline decoration-white/40 underline-offset-4 hover:text-white hover:decoration-white transition-colors cursor-pointer"
+              >
+                First visit? {FIRST_TIMER_OFFER.headline}
+              </OfferButton>
+            )}
           </div>
         </div>
       </section>
 
-      {/* EXCLUSIVE OFFER BANNER */}
-      {promoVisible && (
-        <div className="relative bg-[#fdf0d5] border-b border-[#e8d9c3] py-3.5 px-12 text-center">
-          <button
-            onClick={() => window.dispatchEvent(new CustomEvent("tannedco:open-offer"))}
-            className="text-sm text-[#3a2e24] hover:text-[#1a1a1a] transition-colors cursor-pointer"
-          >
-            ✨ First Timer?{" "}
-            <strong className="text-[#a46746] underline underline-offset-2">Get 10% off your first tan</strong>
-            {" "}· tap to claim
-          </button>
-          <button
-            onClick={() => setPromoVisible(false)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9a8a7a] hover:text-[#1a1a1a] transition-colors text-lg leading-none"
-            aria-label="Dismiss offer"
-          >
-            ✕
-          </button>
-        </div>
-      )}
+      {/* STUDIOS, straight under the hero */}
+      <StudioStrip />
 
-      {/* ABOUT TEASER */}
-      <section className="py-12 md:py-28">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      {/* BOOTH WALKTHROUGH: hidden while BOOTH_VIDEO_SECTION is false in lib/site.ts (renders nothing) */}
+      <BoothVideo />
+
+      {/* WHY TANNED CO */}
+      <section className="py-14 md:py-28">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div>
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">Your Go-To Destination</p>
-            <h2 className="text-2xl md:text-5xl font-black uppercase leading-tight mb-6">
-              Luxury Tanning, Your Way
-            </h2>
-            <p className="text-[#5a4a3a] text-lg leading-relaxed mb-8">
-              Tanned Co is Sydney&apos;s first automated spray tanning studio offering a luxurious, private experience with state-of-the-art VersaSpa booths. Open 7 days a week across 5 Sydney locations.
+            <p className="eyebrow mb-4">Sydney&apos;s first automated spray tan studio</p>
+            <h2 className="display-lg mb-6">A calm, private tan in minutes.</h2>
+            <p className="text-body text-lg leading-relaxed mb-8">
+              Book a time, let yourself in and tan in your own heated VersaSpa Pro booth. The booth senses your
+              height and voice prompts guide you through four positions for an even, natural-looking result.
             </p>
-            <Link
-              href="/about"
-              className="inline-flex items-center bg-[#1a1a1a] text-white px-7 py-3.5 rounded-full font-semibold hover:bg-[#3a2e24] transition-colors"
-            >
-              Learn More →
-            </Link>
-            <div className="flex items-center gap-2 mt-5">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9a8a7a]">Powered by</span>
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#a46746] border border-[#a46746]/40 rounded-full px-3 py-1 bg-[#a46746]/5">
-                VersaSpa Pro
-              </span>
-              <span className="text-[10px] text-[#9a8a7a]">world&apos;s leading automated spray tan system</span>
+            <ul className="space-y-3.5 mb-9">
+              {whyPoints.map((p) => (
+                <li key={p} className="flex items-start gap-3 font-medium">
+                  <CheckIcon className="w-4 h-4 mt-1.5 text-bronze shrink-0" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+              <Link href="/how-it-works" className="btn btn-outline max-md:hidden">See how it works</Link>
+              <Link href="/about" className="text-link">Our story</Link>
             </div>
           </div>
-          <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/5]">
-            <Image src={IMGS.about} alt="Tanned Co. result" fill className="object-cover" />
+          {/* Photo hidden on phones to cut scrolling; it is also on the About page */}
+          <div className="relative rounded-[28px] overflow-hidden aspect-[4/5] max-md:hidden">
+            <Image
+              src={IMGS.about}
+              alt="A golden, even Tanned Co. spray tan result"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
 
-      {/* PAIN POINT No More Tanning Horror Stories */}
-      <section className="py-16 md:py-20 bg-white border-y border-[#e8d9c3]">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4">We Get It</p>
-          <h2 className="text-3xl md:text-4xl font-black uppercase leading-tight mb-5">
-            No More Tanning Horror Stories
-          </h2>
-          <p className="text-[#5a4a3a] text-lg leading-relaxed mb-8">
-            You&apos;ve probably had at least one bad spray tan experience streaky legs, orange palms, or standing half-dressed in front of a stranger. At Tanned Co, every session is completely private, automated, and designed for a perfectly even result. No more guesswork.
-          </p>
-          <Link
-            href="/how-it-works"
-            className="inline-flex items-center border-2 border-[#a46746] text-[#a46746] px-7 py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm uppercase tracking-wider"
-          >
-            See How It Works →
-          </Link>
-        </div>
-      </section>
-
-      {/* REAL RESULTS Before/After grid */}
-      <section className="py-12 md:py-28 bg-[#fdf0d5]">
+      {/* REAL RESULTS */}
+      <section className="py-14 md:py-28 bg-sand">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Real Results</p>
-          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">The Transformation</h2>
-          <p className="text-center text-[#5a4a3a] mb-14 max-w-md mx-auto">
-            See what a Tanned Co session looks like on real skin tones.
-          </p>
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {/* Pair 1 Rapid Venetian Medium */}
-            <div className="space-y-3">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
-                <Image
-                  src="/before-after-venetian.jpg"
-                  alt="Before and after Rapid Venetian Medium spray tan"
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Rapid Venetian · Medium</p>
-            </div>
-
-            {/* Pair 2 Malibu Medium */}
-            <div className="space-y-3">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
-                <Image
-                  src="/before-after-tan.jpg"
-                  alt="Before and after Malibu Medium spray tan"
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Malibu · Medium</p>
-            </div>
-
-            {/* Pair 3 Monterey Dark */}
-            <div className="space-y-3">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
-                <Image
-                  src="/before-after-monterey-dark.jpg"
-                  alt="Before and after Monterey Dark spray tan"
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-              <p className="text-center text-xs font-bold uppercase tracking-widest text-[#a46746]">Monterey · Dark</p>
-            </div>
-
+          <SectionHeading
+            eyebrow="Real results"
+            title="One tan, before and after."
+            intro="What a single Tanned Co. session looks like on real skin. Results vary with skin tone, prep and aftercare."
+          />
+          <div className="grid md:grid-cols-3 gap-5 md:gap-7 swipe-row" style={{ ["--swipe-w" as string]: "78%" }}>
+            {results.map((r) => (
+              <figure key={r.src}>
+                <div className="relative aspect-[3/4] rounded-3xl overflow-hidden">
+                  <Image src={r.src} alt={r.alt} fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover" />
+                  <span aria-hidden="true" className="absolute top-3 left-3 rounded-full bg-espresso/80 text-white text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5">Before</span>
+                  <span aria-hidden="true" className="absolute top-3 right-3 rounded-full bg-espresso/80 text-white text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5">After</span>
+                </div>
+                <figcaption className="text-center mt-4">
+                  <span className="eyebrow block">Shade: {r.shade} <span className="ml-2">Depth: {r.depth}</span></span>
+                  <span className="block text-xs text-muted mt-1.5">One session, before and after</span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
           <div className="text-center mt-12">
-            <Link
-              href="/book-now"
-              className="inline-flex items-center bg-[#1a1a1a] hover:bg-[#3a2e24] text-white px-8 py-3.5 rounded-full font-semibold transition-colors"
-            >
-              Get Your Glow →
-            </Link>
+            <p className="text-xs text-muted md:hidden">Swipe for more results</p>
+            <Link href="/book-now" className="btn btn-dark max-md:hidden">{PRICE_TEXT.bookTan}</Link>
           </div>
         </div>
       </section>
-
-      {/* INSTAGRAM FEED */}
-      <InstagramFeed />
 
       {/* HOW IT WORKS */}
-      <section className="py-12 md:py-28 bg-white text-[#1a1a1a]">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">The Process</p>
-          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">4 Simple Steps</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { num: "01", title: "Download & Book", desc: "Choose your location, date and time through our easy online booking system or via our app." },
-              { num: "02", title: "Check In & Prep", desc: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, check in again to open your room. Remove jewellery and makeup, then apply your hair net, sticky feet and barrier cream." },
-              { num: "03", title: "Select & Spray", desc: "Choose your shade and depth from the in-room tan menu, enter your code, and step into the booth. Voice prompts guide you through every position." },
-              { num: "04", title: "Walk Out Glowing", desc: "Rinse after 6–8 hours for Malibu and Monterey, or 2–3 hours for Rapid Venetian. Your full colour develops over 24 hours." },
-            ].map(({ num, title, desc }) => (
-              <div key={num} className="border border-[#e8d9c3] rounded-3xl p-8 hover:border-[#a46746] transition-colors">
-                <p className="text-4xl font-black text-[#a46746] mb-4">{num}</p>
-                <h3 className="text-xl font-bold mb-3">{title}</h3>
-                <p className="text-[#5a4a3a] leading-relaxed">{desc}</p>
-              </div>
+          <SectionHeading eyebrow="The process" title="Four simple steps." />
+          <div className="grid lg:grid-cols-[1fr_340px] gap-12 lg:gap-14 items-start">
+          <div>
+          {/* Phones: the four steps as an accordion */}
+          <ol className="md:hidden border-t border-line mobile-acc">
+            {steps.map(({ num, title, desc }) => (
+              <li key={num} className="border-b border-line">
+                <details className="group">
+                  <summary className="flex items-center gap-4 py-4 cursor-pointer list-none">
+                    <span className="font-display text-2xl text-bronze w-9 shrink-0">{num}</span>
+                    <span className="text-lg font-semibold flex-1">{title}</span>
+                    <span aria-hidden="true" className="text-2xl leading-none text-bronze transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="text-body leading-relaxed pb-5 pl-[3.25rem]">{desc}</p>
+                </details>
+              </li>
             ))}
-          </div>
-          <div className="text-center mt-12">
-            <Link
-              href="/how-it-works"
-              className="inline-flex items-center border-2 border-[#a46746] text-[#a46746] px-7 py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm uppercase tracking-wider"
-            >
-              Full Guide →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* TRUST BADGES */}
-      <TrustBadges />
-
-      {/* PRICING PREVIEW */}
-      <section className="py-12 md:py-28 bg-[#fdf0d5]">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Transparent &amp; Simple</p>
-          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-4">Our Pricing</h2>
-          <p className="text-center text-[#5a4a3a] mb-16 max-w-md mx-auto">Simple, upfront prices. Full terms are on our <Link href="/pricing" className="underline">pricing page</Link>.</p>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-
-            {/* Casual */}
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">Casual Tan</p>
-              <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">{formatAud(CASUAL.price)}</span>
-                <span className="text-[#5a4a3a] mb-1.5">/ session</span>
-              </div>
-              <p className="text-[#5a4a3a] text-sm mb-6">Pay as you go, no commitment</p>
-              <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> 1x automated spray tan session</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Pay when you book your time</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Private booth experience</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Choose your shade &amp; depth</li>
-              </ul>
-              <StudioBookButton
-                plan="casual"
-                source="home_pricing"
-                label="Book Casual Tan →"
-                buttonClassName="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
-              />
-            </div>
-
-            {/* 10 Pack */}
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#e8d9c3] flex flex-col">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-3">10 Pack</p>
-              <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">{formatAud(TEN_PACK.price)}</span>
-              </div>
-              <p className="text-[#5a4a3a] text-sm mb-6">{formatAud(TEN_PACK.perTan)} per tan · Save {formatAud(TEN_PACK.saving)}</p>
-              <ul className="space-y-3 text-[#5a4a3a] text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {TEN_PACK.sessions}x automated spray tan sessions</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Valid for {TEN_PACK.validity}</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Name-specific booking</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Best for regular tanners</li>
-              </ul>
-              <StudioBookButton
-                plan="tenPack"
-                source="home_pricing"
-                label="Buy 10 Pack →"
-                buttonClassName="block text-center border-2 border-[#1a1a1a] text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm"
-              />
-            </div>
-
-            {/* Glow Club */}
-            <div className="bg-[#1a1a1a] text-white rounded-3xl p-8 shadow-sm flex flex-col">
-              <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#e0a878] mb-3">Glow Club Membership</p>
-              <div className="flex items-end gap-1 mb-1">
-                <span className="text-5xl font-black">{formatAud(GLOW_CLUB.monthly)}</span>
-                <span className="text-white/60 mb-1.5">/ month</span>
-              </div>
-              <p className="text-white/60 text-sm mb-6">{GLOW_CLUB.tansPerMonth} tans a month · under $30 a tan</p>
-              <ul className="space-y-3 text-white/80 text-sm flex-1 mb-8">
-                <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_CLUB.tansPerMonth} automated spray tans every month</li>
-                <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> Best value for regular tanners</li>
-                <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_CLUB.minimumMonths}-month minimum ({formatAud(GLOW_CLUB.minimumTotal)} in total), then month to month</li>
-              </ul>
-              <Link
-                href="/glow-club"
-                onClick={() => trackEvent("glow_club_click", { source: "home_pricing" })}
-                className="block text-center bg-white text-[#1a1a1a] py-3 rounded-full font-semibold hover:bg-[#f5e6cc] transition-colors text-sm"
-              >
-                See Glow Club →
-              </Link>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* GOOGLE REVIEWS */}
-      <GoogleReviews />
-
-      {/* FAQ TEASER */}
-      <section className="py-12 md:py-28 bg-[#fdf0d5]">
-        <div className="max-w-3xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Got Questions?</p>
-          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-14">FAQ</h2>
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <div key={i} className="bg-white rounded-2xl overflow-hidden border border-[#e8d9c3]">
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  aria-expanded={openFaq === i}
-                  className="w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-[#1a1a1a] hover:bg-[#fdf6ec] transition-colors"
-                >
-                  <span className="pr-4">{faq.q}</span>
-                  <span className={`text-[#a46746] text-xl font-black flex-shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-45" : ""}`}>+</span>
-                </button>
-                {openFaq === i && (
-                  <div className="px-6 pb-6 text-[#5a4a3a] leading-relaxed text-sm border-t border-[#e8d9c3] pt-4">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
+          </ol>
+          <ol className="hidden md:grid sm:grid-cols-2 gap-x-8 gap-y-10">
+            {steps.map(({ num, title, desc }) => (
+              <li key={num} className="border-t border-line pt-7">
+                <p className="font-display font-normal text-5xl text-bronze leading-none mb-5">{num}</p>
+                <h3 className="text-xl font-semibold mb-2.5">{title}</h3>
+                <p className="text-body leading-relaxed">{desc}</p>
+              </li>
             ))}
+          </ol>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 mt-8 md:mt-12">
+            <Link href="/how-it-works" className="btn btn-outline">Read the full guide</Link>
+            <Link href="/faq" className="text-link">First time? Read the FAQ</Link>
           </div>
-          <div className="text-center mt-10">
-            <Link href="/faq" className="text-sm font-semibold tracking-wider uppercase text-[#a46746] border-b-2 border-[#a46746] pb-0.5 hover:text-[#7d4e33] hover:border-[#7d4e33] transition-colors">
-              See All FAQs →
-            </Link>
+          </div>
+          {/* Genuine review from the live Google feed; renders nothing if the feed is unavailable */}
+          {/* Hidden on phones: the reviews carousel further down covers it */}
+          <LatestGoogleReview className="max-md:hidden" repuFallbackKey={LOCATIONS[0].repuWidgetKey} />
           </div>
         </div>
       </section>
 
-      {/* CONTACT TEASER */}
-      <section className="py-12 md:py-28 bg-[#fdf6ec] text-[#1a1a1a]">
+      {/* SUPPORT */}
+      <SupportBlock />
+
+      {/* PRICING */}
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#a46746] mb-4 text-center">Find Us</p>
-          <h2 className="text-2xl md:text-5xl font-black uppercase text-center mb-16">Visit Us</h2>
-          <div className="grid md:grid-cols-2 gap-12">
+          <SectionHeading
+            eyebrow="Simple pricing"
+            title="Pick how you pay."
+            intro={
+              <>
+                Upfront prices. Every session includes your own private room and your choice of shade. Spray tanning is for everyone. Read the{" "}
+                <Link href="/terms" className="text-link">purchase terms</Link>.
+              </>
+            }
+          />
+          <PricingPlans source="home_pricing" mobileSwipe />
+          <p className="text-center mt-8">
+            <OfferButton source="home_pricing" className="text-link cursor-pointer">
+              First visit? Get {FIRST_TIMER_OFFER.headline}
+            </OfferButton>
+          </p>
+        </div>
+      </section>
 
-            {/* Locations list */}
-            <div>
-              <h3 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#a46746]">Our Locations</h3>
-              <div className="space-y-3">
-                {LOCATIONS.map((loc) => (
-                  <Link
-                    key={loc.slug}
-                    href={`/locations/${loc.slug}`}
-                    className="flex items-center gap-3 border-b border-[#e8d9c3] pb-3 group"
-                  >
-                    <span className="text-[#a46746]">📍</span>
-                    <span className="text-[#3a2e24] font-medium group-hover:text-[#a46746] transition-colors">{loc.shortName}</span>
-                    <span className="ml-auto text-xs text-[#a46746] opacity-0 group-hover:opacity-100 transition-opacity">View →</span>
-                  </Link>
-                ))}
-              </div>
+      {/* REVIEWS */}
+      <GoogleReviews className="bg-sand" />
+
+      {/* STUDIOS + CLOSING CTA */}
+      <section className="bg-espresso text-white py-14 md:py-28">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 md:gap-24 items-center">
+          <div>
+            <p className="eyebrow-light mb-4">Five studios. Open 7 days.</p>
+            <h2 className="display-xl">Ready when you are.</h2>
+            <p className="text-on-dark text-lg leading-relaxed mt-6 max-w-md">
+              Book in under a minute. First visit? Get {FIRST_TIMER_OFFER.headline}.
+            </p>
+            <div className="flex flex-wrap gap-3 mt-9">
+              {/* Phones already have the sticky Book bar */}
+              <Link href="/book-now" className="btn btn-light max-md:hidden">{PRICE_TEXT.bookTan}</Link>
+              <OfferButton source="home_closing" className="btn btn-outline-light">
+                Get my 10% code
+              </OfferButton>
             </div>
-
-            {/* Get in touch */}
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-lg font-bold uppercase tracking-widest mb-4 text-[#a46746]">Get In Touch</h3>
-                <div className="space-y-3">
-                  <a href="mailto:hello@tannedco.com.au" onClick={() => trackEvent("email_click", { source: "home_contact" })} className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors">
-                    <span>✉️</span> hello@tannedco.com.au
-                  </a>
-                  <a href="tel:1300826633" onClick={() => trackEvent("phone_click", { source: "home_contact" })} className="flex items-center gap-3 text-[#3a2e24] hover:text-[#1a1a1a] transition-colors">
-                    <span>📞</span> 1300 826 633
-                  </a>
-                </div>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link
-                  href="/locations"
-                  className="inline-flex items-center border-2 border-[#a46746] text-[#a46746] px-7 py-3 rounded-full font-semibold hover:bg-[#a46746] hover:text-white transition-colors text-sm uppercase tracking-wider"
-                >
-                  See All Locations →
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center border-2 border-[#1a1a1a] text-[#1a1a1a] px-7 py-3 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-colors text-sm uppercase tracking-wider"
-                >
-                  Contact Us →
-                </Link>
-              </div>
-            </div>
-
+            <p className="text-on-dark-muted text-sm mt-10">
+              Want to own a Tanned Co. studio?{" "}
+              <Link href="/franchise" className="underline hover:text-white transition-colors">Franchise opportunities are open</Link>.
+            </p>
           </div>
+          {/* Hidden on phones: the same 5 studios are in the row under the hero and in the footer */}
+          <ul className="border-t border-white/15 max-md:hidden">
+            {LOCATIONS.map((loc) => (
+              <li key={loc.slug}>
+                <Link
+                  href={`/locations/${loc.slug}`}
+                  className="group flex items-center justify-between gap-4 py-5 border-b border-white/15"
+                >
+                  <span>
+                    <span className="block font-display font-medium text-[1.7rem] leading-tight group-hover:text-bronze-light transition-colors">
+                      {loc.shortName}
+                    </span>
+                    <span className="block text-on-dark-muted text-sm mt-1">{loc.address}</span>
+                  </span>
+                  <ArrowIcon className="w-5 h-5 text-bronze-light shrink-0 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       <Footer />
-
     </div>
   );
 }

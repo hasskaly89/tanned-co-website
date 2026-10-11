@@ -15,7 +15,8 @@ export type LeadResult =
 export async function submitClaim(input: {
   submissionId: string;
   name: string;
-  email: string;
+  /** Optional: the offer popup collects first name and mobile only. */
+  email?: string;
   phone: string;
   location: string;
   marketingConsent: boolean;

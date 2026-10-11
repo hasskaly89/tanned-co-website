@@ -1,11 +1,15 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import { isPreviewRequest, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
 import { escapeHtml, field, isValidEmail, isValidPhone } from "@/lib/form-utils";
 import { clientIp, rateLimited } from "@/lib/rate-limit";
 
 const FRANCHISE_EMAIL = "franchise@tannedco.com.au";
 
 export async function POST(req: Request) {
+  if (isPreviewRequest()) {
+    return NextResponse.json({ error: PREVIEW_FORM_MESSAGE }, { status: 403 });
+  }
   if (rateLimited(`franchise:${clientIp(req)}`, 5, 10 * 60 * 1000)) {
     return NextResponse.json({ error: "Too many enquiries. Please wait a few minutes and try again." }, { status: 429 });
   }
