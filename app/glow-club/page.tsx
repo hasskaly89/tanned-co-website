@@ -14,6 +14,9 @@ import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, PRICE_TEXT, formatAud } fro
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 
+// Perks: GymMaster's Glow Club page lists birthday tan, member-only perks and limited
+// founding spots. Website-only perks (product drops, mate's rate, member offers,
+// priority access) are kept as Hass says the perks are real; final list pending Hass.
 const perks = [
   { title: "Birthday tan on us", body: "A free tan during your birthday month, our treat." },
   { title: "All 5 studios", body: "Access to all 5 studios through the app." },

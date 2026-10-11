@@ -15,7 +15,7 @@ import RepuReviews, { REPU_HOME_WIDGET_KEY } from "@/components/RepuReviews";
 import { Stars, PinIcon, ClockIcon, CarIcon, PhoneIcon, LockIcon, SunIcon, SparkleIcon, CheckIcon } from "@/components/Icons";
 import { LOCATIONS, SITE_URL, bookingUrlFor } from "@/lib/locations";
 import { getPlaceReviews } from "@/lib/google-reviews";
-import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud, PRICE_TEXT } from "@/lib/pricing";
+import { CASUAL, TEN_PACK, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
 import { APP_UNLOCK_TEXT, BOOTH_TIME, RINSE_LINE, DEVELOP_LINE, CHECK_IN_TEXT } from "@/lib/site";
 import SupportBlock from "@/components/SupportBlock";
@@ -212,8 +212,8 @@ export default async function LocationPage({
                 <ExternalBookButton href={urls.tenPack} source={`location_booking_${slug}`} extraParams={{ plan: "10_pack", location_slug: slug }} className="btn btn-outline w-full !py-4">
                   Buy a 10 pack, {formatAud(TEN_PACK.price)} (save {formatAud(TEN_PACK.saving)}, valid {TEN_PACK.validity})
                 </ExternalBookButton>
-                <Link href="/glow-club" className="btn btn-outline w-full !py-4">
-                  Glow Club, {formatAud(GLOW_CLUB.monthly)} a month
+                <Link href="/glow-club" className="btn btn-outline w-full !py-4 text-center text-balance">
+                  Glow Club, {PRICE_TEXT.glowClubTerms}
                 </Link>
               </div>
               <p className="text-sm text-body mb-8">
