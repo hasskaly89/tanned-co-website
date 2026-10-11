@@ -1,5 +1,6 @@
 "use client";
 
+import { PRICE_TEXT } from "@/lib/pricing";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -72,7 +73,7 @@ export default function FAQClient() {
         text="Can't find what you're looking for? Reach out to our team. We're happy to help."
       >
         <Link href="/contact" className="btn btn-light">Get in touch</Link>
-        <Link href="/book-now" className="btn btn-outline-light">Book your tan</Link>
+        <Link href="/book-now" className="btn btn-outline-light">{PRICE_TEXT.bookTan}</Link>
       </CtaBand>
 
       <Footer />

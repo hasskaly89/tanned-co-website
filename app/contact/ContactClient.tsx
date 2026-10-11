@@ -1,5 +1,6 @@
 "use client";
 
+import { PRICE_TEXT } from "@/lib/pricing";
 import { CONTACT, SOCIAL_LINKS, SUPPORT_HOURS_LINE } from "@/lib/site";
 import { useState } from "react";
 import Link from "next/link";
@@ -124,7 +125,7 @@ export default function ContactClient() {
             <div className="border-t border-line py-7">
               <h3 className="eyebrow mb-4">Quick links</h3>
               <div className="flex flex-wrap gap-3">
-                <Link href="/book-now" className="btn btn-dark">Book your tan</Link>
+                <Link href="/book-now" className="btn btn-dark">{PRICE_TEXT.bookTan}</Link>
                 <Link href="/locations" className="btn btn-outline">View all studios</Link>
               </div>
             </div>
