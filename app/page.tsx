@@ -49,7 +49,8 @@ export default function Home() {
       <Navbar activePath="/" />
 
       {/* HERO: one headline, one line, one button. Text sits in the bottom third on a dark gradient. */}
-      <section className="relative flex items-end h-[78svh] min-h-[540px] max-h-[740px] md:h-[100svh] md:min-h-[640px] md:max-h-[920px] bg-espresso pt-[68px]">
+      {/* Fills the screen below the announcement strip (--banner-h is 0 once it is dismissed); the navbar sits inside the pt-[68px] */}
+      <section className="relative flex items-end h-[calc(100svh-var(--banner-h))] min-h-[540px] md:min-h-[640px] md:max-h-[920px] bg-espresso pt-[68px]">
         <HeroBackdrop />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-9 md:pb-12">
           <h1 className="display-xl text-white max-w-4xl">Private, automated spray tanning.</h1>

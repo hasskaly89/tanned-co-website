@@ -41,3 +41,20 @@ export const APP_LINKS = {
  * and from the offer form on every studio page. Set to true to restore it.
  */
 export const HERO_OFFER_LINK = false;
+
+/**
+ * Slim announcement strip at the top of every page. Change `id` whenever the
+ * message changes so people who dismissed the old one see the new one.
+ * "across Australia": pending Hass confirmation.
+ */
+export const ANNOUNCEMENT = {
+  enabled: true,
+  id: "franchise-2026-10",
+  text: "Now franchising across Australia.",
+  /** Second sentence, hidden on very narrow screens to keep the strip one line. */
+  textMore: "Own a Tanned Co. studio.",
+  linkText: "Learn more",
+  href: "/franchise",
+} as const;
+
+export const ANNOUNCEMENT_STORAGE_KEY = "tannedco_announcement_dismissed";

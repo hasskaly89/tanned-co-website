@@ -24,7 +24,7 @@ export default function Navbar({ activePath = "/" }: { activePath?: string }) {
   return (
     <nav
       aria-label="Main"
-      className="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-line"
+      className="fixed top-[var(--banner-h)] left-0 right-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-line"
     >
       <div className="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between gap-6">
         <Link href="/" aria-label="Tanned Co. home" className="flex items-center shrink-0">

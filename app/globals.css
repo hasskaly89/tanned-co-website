@@ -134,3 +134,17 @@ body {
 .mobile-acc summary::-webkit-details-marker {
   display: none;
 }
+
+/* Announcement strip height (components/AnnouncementBar.tsx). 0 once dismissed. */
+:root {
+  --banner-h: 36px;
+}
+html.announce-off {
+  --banner-h: 0px;
+}
+html.announce-off .announce-bar {
+  display: none;
+}
+html {
+  scroll-padding-top: var(--banner-h);
+}

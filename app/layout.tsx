@@ -8,6 +8,8 @@ import BronzeBot from "@/components/BronzeBot";
 import PageViewTracker from "@/components/PageViewTracker";
 import PreviewRibbon from "@/components/PreviewRibbon";
 import ScrollReveal from "@/components/ScrollReveal";
+import AnnouncementBar from "@/components/AnnouncementBar";
+import { ANNOUNCEMENT, ANNOUNCEMENT_STORAGE_KEY } from "@/lib/site";
 import { IS_PREVIEW, isPreviewRequest } from "@/lib/preview";
 import { GA_ID } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/locations";
@@ -76,8 +78,18 @@ export default function RootLayout({
       // Lets Next.js switch smooth scrolling off during page changes, so new pages open at the top
       // while in-page anchor links still scroll smoothly (globals.css sets scroll-behavior: smooth).
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${displayFont.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${displayFont.variable} h-full antialiased${ANNOUNCEMENT.enabled ? "" : " announce-off"}`}
+      // The inline script below may add "announce-off" before React hydrates.
+      suppressHydrationWarning
     >
+      <head>
+        {/* Hide a dismissed announcement before first paint (no flash, no layout shift). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem(${JSON.stringify(ANNOUNCEMENT_STORAGE_KEY)})===${JSON.stringify(ANNOUNCEMENT.id)})document.documentElement.classList.add("announce-off")}catch(e){}`,
+          }}
+        />
+      </head>
       {ANALYTICS_ENABLED && (
         <>
           {/* Google Analytics 4 */}
@@ -95,7 +107,8 @@ export default function RootLayout({
           </Script>
         </>
       )}
-      <body className="min-h-full flex flex-col pb-[72px] md:pb-0">
+      <body className="min-h-full flex flex-col pt-[var(--banner-h)] pb-[72px] md:pb-0">
+        <AnnouncementBar />
         <PageViewTracker />
         {children}
         <ScrollReveal />
