@@ -1,4 +1,4 @@
-import { CONTACT, SOCIAL_LINKS, SUPPORT_HOURS_LINE } from "@/lib/site";
+import { CONTACT, LEGAL_ENTITY, SOCIAL_LINKS, SUPPORT_HOURS_LINE } from "@/lib/site";
 import Link from "next/link";
 import Image from "next/image";
 import { LOCATIONS } from "@/lib/locations";
@@ -117,7 +117,7 @@ export default function Footer() {
 
         <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-on-dark-muted text-xs">
-            © {new Date().getFullYear()} Tanned Co. All rights reserved.
+            © {new Date().getFullYear()} Tanned Co. All rights reserved.{LEGAL_ENTITY && ` ${LEGAL_ENTITY.name}, ABN ${LEGAL_ENTITY.abn}.`}
           </p>
           <ul className="flex items-center gap-5">
             {legal.map((l) => (

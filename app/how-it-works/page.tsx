@@ -92,25 +92,26 @@ const prepTips = [
   },
 ];
 
+// Shade descriptions follow the manufacturer fact sheets (Innové / VersaSpa PRO, Norvell).
 const shades = [
   {
     name: "Rapid Venetian",
     tag: "Quick rinse",
-    desc: "Rich chocolate brown with subtle violet undertones. A timeless European-style tan, and the quickest to rinse if you're short on time.",
+    desc: "A cool violet-brown for a classic European-style tan, and the quickest to rinse if you're short on time.",
     rinse: `Rinse after ${RINSE.rapid}`,
     swatches: ["#c4956a", "#a06b42", "#6b3f22"],
   },
   {
     name: "Malibu",
-    tag: "Deep olive bronze",
-    desc: "Caramel and violet undertones. A neutral base that develops into a deep olive bronze tan. A good match for olive undertones.",
+    tag: "Warm brown, cool violet",
+    desc: "A warm brown with cool violet undertones.",
     rinse: `Rinse after ${RINSE.standard}`,
     swatches: ["#c49a6c", "#9e6e42", "#6b4020"],
   },
   {
     name: "Monterey",
-    tag: "Golden beach tan",
-    desc: "A unique blend of golden and coffee brown undertones. For that classic beach tan. A good match for fair undertones.",
+    tag: "Warm brown",
+    desc: "Warm brown undertones for a classic beach tan.",
     rinse: `Rinse after ${RINSE.standard}`,
     swatches: ["#d4a96a", "#b8823a", "#8a5c20"],
   },

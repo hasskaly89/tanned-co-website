@@ -9,7 +9,7 @@ const IMG = "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a
 /** Option A (default): the group photo. */
 const OPTION_A = {
   src: `${IMG}/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg`,
-  alt: "Five women with even, natural spray tans at a Tanned Co. studio",
+  alt: "Five women with even spray tans at a Tanned Co. studio",
   position: "50% 0%",
 };
 

@@ -5,7 +5,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
 // DRAFT for owner review. Not legal advice; have it checked before relying on it.
-// TODO(next push): add the legal entity name(s) and ABN(s) for each studio.
+// Legal entity and ABN: set LEGAL_ENTITY in lib/site.ts once Hass confirms (renders in the footer).
 
 export const metadata: Metadata = {
   title: "Privacy Policy",

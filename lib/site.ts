@@ -80,6 +80,20 @@ export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/profile.php?id=100086326464692",
 } as const;
 
+/**
+ * Legal entity shown in the footer and on the terms and privacy pages. Pending
+ * Hass: candidate "Tanned Co Australia Pty Limited", ABN 42 690 766 815 (ABR, Oct 2026),
+ * but which entity runs which studio isn't confirmed. Leave null until Hass picks;
+ * nothing renders while it's null.
+ */
+export const LEGAL_ENTITY: { name: string; abn: string } | null = null;
+
+/**
+ * Product claims: only vegan, cruelty-free and paraben-free (manufacturer fact sheets).
+ * Never claim nut-free, fragrance-free, dye-free, organic, natural, chemical-free,
+ * non-toxic, hypoallergenic, dermatologist tested, pregnancy-safe or "no orange".
+ */
+
 export const APP_LINKS = {
   appStore: "https://apps.apple.com/au/app/tannedco/id1659547172",
   googlePlay: "https://play.google.com/store/apps/details?id=com.treshna.memberportal.tannedco",

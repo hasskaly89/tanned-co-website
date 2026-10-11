@@ -8,7 +8,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
 // DRAFT for owner review, built from the terms confirmed in October 2026.
-// TODO(next push): add the legal entity name(s) and ABN(s), and the failed-payment fee once confirmed.
+// Legal entity and ABN: set LEGAL_ENTITY in lib/site.ts once Hass confirms (renders in the footer).
 
 export const metadata: Metadata = {
   title: "Purchase Terms",
