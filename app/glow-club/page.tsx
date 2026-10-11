@@ -19,8 +19,9 @@ import {
 
 const GLOW_CLUB_SIGNUP_URL = "https://tannedco.gymmasteronline.com/portal/membership/a015bd6ac18c7596fa250eed4e8ab668";
 
-// Perks match the GymMaster Glow Club page only. Website-only perks (product drops,
-// mate's rate, seasonal offers, priority access) removed until Hass confirms them.
+// Perks confirmed by Hass (11 Oct 2026): the GymMaster list (Glow Key, birthday tan,
+// member-only perks, founding spots) plus mate's rate, product drops, member offers
+// and priority access.
 const perks = [
   {
     title: GLOW_KEY_TITLE,
@@ -31,8 +32,20 @@ const perks = [
     body: "A free tan during your birthday month, our treat.",
   },
   {
-    title: "Member-only perks",
-    body: "Extra perks just for Glow Club members.",
+    title: "First access to product drops",
+    body: "Be first to future tan care products and merch at member pricing.",
+  },
+  {
+    title: "Mate's rate",
+    body: `Share a code with one friend per month for ${formatAud(GLOW_CLUB.mateRateDiscount)} off their casual tan.`,
+  },
+  {
+    title: "Exclusive member offers",
+    body: "Member-only promotions and seasonal offers throughout the year.",
+  },
+  {
+    title: "Priority access",
+    body: "First in line for new locations and new services as we grow.",
   },
   {
     title: "Founding member status",

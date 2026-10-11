@@ -20,6 +20,7 @@ export const GLOW_CLUB = {
   minimumTotal: 267, // 3 x $89 base membership payments
   casualEquivalent: 117, // 3 casual tans
   monthlySaving: 28,
+  mateRateDiscount: 10, // $ off a friend's casual tan, once a month
   cancelEmail: "hello@tannedco.com.au",
 } as const;
 

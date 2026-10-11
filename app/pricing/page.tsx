@@ -139,7 +139,8 @@ export default function Pricing() {
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {GLOW_KEY_TITLE}</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Birthday tan on us</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Founding member status</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Member-only perks</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Mate&apos;s rate</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Priority access</li>
               </ul>
               <a
                 href="https://tannedco.gymmasteronline.com/portal/membership/a015bd6ac18c7596fa250eed4e8ab668"
