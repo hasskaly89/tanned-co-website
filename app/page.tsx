@@ -14,7 +14,7 @@ import { CASUAL, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import StudioStrip from "@/components/StudioStrip";
 import BoothVideo from "@/components/BoothVideo";
 import HeroBackdrop from "@/components/HeroBackdrop";
-import { HERO_OFFER_LINK, RINSE_LINE, DEVELOP_LINE } from "@/lib/site";
+import { HERO_OFFER_LINK, RINSE_LINE, DEVELOP_LINE, CHECK_IN_TEXT } from "@/lib/site";
 import SupportBlock from "@/components/SupportBlock";
 import LatestGoogleReview from "@/components/LatestGoogleReview";
 
@@ -37,7 +37,7 @@ const results = [
 
 const steps = [
   { num: "01", title: "Book", desc: "Choose your studio, date and time online or in the app." },
-  { num: "02", title: "Check in", desc: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, check in again to open your room." },
+  { num: "02", title: "Check in", desc: CHECK_IN_TEXT },
   { num: "03", title: "Prep and spray", desc: "Pop on the hair net, sticky feet and barrier cream, pick your shade on the in-room menu, and step in. Voice prompts guide every position." },
   { num: "04", title: "Glow", desc: `${RINSE_LINE} ${DEVELOP_LINE}` },
 ];

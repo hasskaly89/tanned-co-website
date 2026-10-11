@@ -4,7 +4,7 @@
 // match reviews shown on the page, and ratings here come from third parties.
 import { LOCATIONS, SCHEMA_OPENING_HOURS, SITE_URL, phoneToE164, bookingUrlFor, GLOW_CLUB_SIGNUP_URL, type LocationData } from "@/lib/locations";
 import { CASUAL, GLOW_CLUB, TEN_PACK } from "@/lib/pricing";
-import { CONTACT, SOCIAL_LINKS } from "@/lib/site";
+import { CONTACT, LEGAL_ENTITY, SOCIAL_LINKS } from "@/lib/site";
 
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -20,6 +20,7 @@ export function organizationSchema() {
     "@type": "Organization",
     "@id": ORG_ID,
     name: "Tanned Co.",
+    ...(LEGAL_ENTITY ? { legalName: LEGAL_ENTITY.name, taxID: LEGAL_ENTITY.abn } : {}),
     url: SITE_URL,
     logo: { "@type": "ImageObject", url: LOGO },
     email: CONTACT.email,

@@ -11,6 +11,12 @@ export const CONTACT = {
 /** Confirmed wording: booking needs no app, the app unlocks the studio and your room. */
 export const APP_UNLOCK_TEXT = "Download the app before your visit to unlock the studio and your room.";
 export const APP_ACCESS_TEXT = `Book online. ${APP_UNLOCK_TEXT}`;
+/**
+ * How customers get in: the Check In button in the app (confirmed by Hass, 11 Oct 2026).
+ * Use this line wherever entry is explained. No Glow Key wording for entry.
+ */
+export const CHECK_IN_TEXT =
+  "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, tap Check In again to open your room.";
 
 /** Short hours line under the phone number (footer, contact page). */
 export const SUPPORT_HOURS_LINE = `${CONTACT.supportHours[0].toUpperCase()}${CONTACT.supportHours.slice(1)}. Choose your studio when you call.`;
@@ -50,16 +56,16 @@ export const BOOKING_SLOT = "20 minute";
 export const BOOKING_SLOT_LINE = `Each booking is a ${BOOKING_SLOT} slot, with ${BOOTH_TIME} in the booth.`;
 
 /**
- * Rinse and develop times (confirmed by Hass, Oct 2026). Use these everywhere
+ * Rinse and develop times (confirmed by Hass, 11 Oct 2026: Monterey and Malibu 6 to 8 hours,
+ * Rapid Venetian 2 to 3 hours, all 24 hours to fully develop). Use these everywhere
  * aftercare is mentioned so the pages can't disagree.
  */
-export const RINSE = { rapid: "2 to 3 hours", standard: "8 hours" } as const;
+export const RINSE = { rapid: "2 to 3 hours", standard: "6 to 8 hours" } as const;
 export const RINSE_LINE = `Rinse after ${RINSE.standard} for Malibu and Monterey, or ${RINSE.rapid} for Rapid Venetian.`;
 export const DEVELOP_LINE = "Your colour keeps developing for 24 hours.";
 
 /**
- * Franchise page switches. Each was reported confirmed by Hass via the Chief of
- * Staff (Oct 2026). Reconfirm with Hass before go-live; set to false to hide.
+ * Franchise page switches. Both confirmed by Hass 11 Oct 2026. Set to false to hide.
  */
 /** "Five company-owned studios" wording on /franchise. */
 export const FRANCHISE_SHOW_COMPANY_OWNED = true;
@@ -81,12 +87,14 @@ export const SOCIAL_LINKS = {
 } as const;
 
 /**
- * Legal entity shown in the footer and on the terms and privacy pages. Pending
- * Hass: candidate "Tanned Co Australia Pty Limited", ABN 42 690 766 815 (ABR, Oct 2026),
- * but which entity runs which studio isn't confirmed. Leave null until Hass picks;
- * nothing renders while it's null.
+ * Legal entity: footer, operator line on /terms and /privacy-policy, and
+ * Organization JSON-LD (legalName, taxID). Confirmed by Hass 11 Oct 2026.
+ * Set to null to hide everywhere.
  */
-export const LEGAL_ENTITY: { name: string; abn: string } | null = null;
+export const LEGAL_ENTITY: { name: string; abn: string } | null = {
+  name: "Tanned Co Australia Pty Limited",
+  abn: "42 690 766 815",
+};
 
 /**
  * Product claims: only vegan, cruelty-free and paraben-free (manufacturer fact sheets).

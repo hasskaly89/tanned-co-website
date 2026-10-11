@@ -17,7 +17,7 @@ import { LOCATIONS, SITE_URL, bookingUrlFor } from "@/lib/locations";
 import { getPlaceReviews } from "@/lib/google-reviews";
 import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
-import { APP_UNLOCK_TEXT, BOOTH_TIME, RINSE_LINE, DEVELOP_LINE } from "@/lib/site";
+import { APP_UNLOCK_TEXT, BOOTH_TIME, RINSE_LINE, DEVELOP_LINE, CHECK_IN_TEXT } from "@/lib/site";
 import SupportBlock from "@/components/SupportBlock";
 
 export function generateStaticParams() {
@@ -51,7 +51,7 @@ export async function generateMetadata({
 
 const steps = [
   { num: "01", title: "Book online", text: `Book online in under a minute. ${APP_UNLOCK_TEXT}` },
-  { num: "02", title: "Check in with the app", text: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, check in again to open your private room." },
+  { num: "02", title: "Check in with the app", text: CHECK_IN_TEXT },
   { num: "03", title: "Leave glowing", text: `Rinse your hands after 30 minutes. ${RINSE_LINE} ${DEVELOP_LINE}` },
 ];
 

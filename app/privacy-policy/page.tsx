@@ -3,9 +3,10 @@ import LegalPage from "@/components/LegalPage";
 import { SITE_URL } from "@/lib/locations";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
+import { LEGAL_ENTITY } from "@/lib/site";
 
 // DRAFT for owner review. Not legal advice; have it checked before relying on it.
-// Legal entity and ABN: set LEGAL_ENTITY in lib/site.ts once Hass confirms (renders in the footer).
+// Legal entity and ABN come from LEGAL_ENTITY in lib/site.ts (confirmed by Hass 11 Oct 2026).
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -24,6 +25,13 @@ export default function PrivacyPolicyPage() {
           personal information, in line with the Australian Privacy Principles.
         </p>
       </section>
+      {LEGAL_ENTITY && (
+        <section>
+          <p>
+            Tanned Co. is operated by {LEGAL_ENTITY.name} (ABN {LEGAL_ENTITY.abn}).
+          </p>
+        </section>
+      )}
 
       <section>
         <h2>What we collect</h2>

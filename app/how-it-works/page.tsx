@@ -6,7 +6,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import CtaBand from "@/components/CtaBand";
 import { CheckIcon, ClockIcon } from "@/components/Icons";
-import { APP_ACCESS_TEXT, APP_UNLOCK_TEXT, RINSE, DEVELOP_LINE, BOOKING_SLOT_LINE } from "@/lib/site";
+import { APP_ACCESS_TEXT, APP_UNLOCK_TEXT, RINSE, DEVELOP_LINE, BOOKING_SLOT_LINE, CHECK_IN_TEXT } from "@/lib/site";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
@@ -35,7 +35,7 @@ const steps = [
   {
     num: "02",
     title: "Check in and enter",
-    desc: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, tap Check In again at the reader on your tan room door. No queues, no waiting.",
+    desc: CHECK_IN_TEXT,
   },
   {
     num: "03",

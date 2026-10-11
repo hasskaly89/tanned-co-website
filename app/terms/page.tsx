@@ -1,5 +1,5 @@
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
-import { BOOKING_SLOT_LINE } from "@/lib/site";
+import { BOOKING_SLOT_LINE, CHECK_IN_TEXT, LEGAL_ENTITY } from "@/lib/site";
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 import { SITE_URL } from "@/lib/locations";
@@ -8,7 +8,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
 // DRAFT for owner review, built from the terms confirmed in October 2026.
-// Legal entity and ABN: set LEGAL_ENTITY in lib/site.ts once Hass confirms (renders in the footer).
+// Legal entity and ABN come from LEGAL_ENTITY in lib/site.ts (confirmed by Hass 11 Oct 2026).
 
 export const metadata: Metadata = {
   title: "Purchase Terms",
@@ -27,6 +27,13 @@ export default function TermsPage() {
           Consumer Law.
         </p>
       </section>
+      {LEGAL_ENTITY && (
+        <section>
+          <p>
+            Tanned Co. is operated by {LEGAL_ENTITY.name} (ABN {LEGAL_ENTITY.abn}).
+          </p>
+        </section>
+      )}
 
       <section>
         <h2>Casual tans</h2>
@@ -56,7 +63,7 @@ export default function TermsPage() {
             To cancel before the minimum term ends, you pay the remaining months of the minimum term.
           </li>
           <li>After the minimum term, the membership continues month to month. Cancel by emailing {GLOW_CLUB.cancelEmail}.</li>
-          <li>Members receive a Glow Key for access to all 5 Sydney studios.</li>
+          <li>Members get access to all 5 studios through the app.</li>
         </ul>
       </section>
 
@@ -77,8 +84,7 @@ export default function TermsPage() {
       <section>
         <h2>Arriving for your tan</h2>
         <p>
-          5 minutes before your booking, tap Check In in the Tanned Co. app at the Bluetooth reader to open the studio.
-          At your start time, check in again to open your tan room. {BOOKING_SLOT_LINE}
+          {CHECK_IN_TEXT} {BOOKING_SLOT_LINE}
         </p>
       </section>
 
