@@ -21,9 +21,9 @@ const OPTION_B = {
 };
 
 /**
- * Hero photo with the dark gradient the text sits on. On phones the photo
- * fills the top of the hero (faces and shoulders in the top third) and fades
- * into solid espresso, so the headline and button never sit across bodies.
+ * Hero photo with the dark band the text sits on. The photo fills the top of
+ * the hero (faces and shoulders in the top third) and fades into solid
+ * espresso, so the headline and button never sit across bodies.
  * Production always renders option A; ?hero=b only works on Vercel previews.
  */
 const noop = () => () => {};
@@ -38,7 +38,8 @@ export default function HeroBackdrop() {
 
   return (
     <>
-      <div className="absolute inset-x-0 top-0 h-[66%] md:h-full">
+      {/* Photo fills the top of the hero (faces and shoulders in the top third) */}
+      <div className="absolute inset-x-0 top-0 h-[56%] md:h-[68%]">
         <Image
           key={img.src}
           src={img.src}
@@ -50,11 +51,8 @@ export default function HeroBackdrop() {
           style={{ objectPosition: img.position }}
         />
       </div>
-      {/* Phones: photo fades into solid espresso behind the text */}
-      <div className="md:hidden absolute inset-x-0 top-[34%] h-[33%] bg-gradient-to-b from-transparent to-espresso" />
-      {/* Desktop: strong dark bottom third for the text, light at the top */}
-      <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-[#1a120c]/95 via-[#1a120c]/45 via-35% to-transparent to-65%" />
-      <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#1a120c]/55 via-transparent via-50% to-transparent" />
+      {/* ...and fades into solid espresso, so the text in the bottom third never sits across bodies */}
+      <div className="absolute inset-x-0 top-[28%] h-[29%] md:top-[36%] md:h-[33%] bg-gradient-to-b from-transparent to-espresso" />
     </>
   );
 }
