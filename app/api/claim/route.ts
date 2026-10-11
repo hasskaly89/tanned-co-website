@@ -63,11 +63,16 @@ export async function POST(req: Request) {
   const consentVersion = field(body, "consentVersion", 40);
   const marketingConsent = body.marketingConsent === true;
 
-  if (!name || !email || !phone) {
-    return NextResponse.json({ error: "Please fill in your name, email and mobile number." }, { status: 400 });
+  // Email is optional: the offer popup asks for first name and mobile only (pending Hass
+  // confirmation); the studio-page offer form still sends an email. The SMS code goes to the mobile.
+  if (!name || !phone) {
+    return NextResponse.json({ error: "Please fill in your name and mobile number." }, { status: 400 });
   }
-  if (!isValidEmail(email) || !isValidPhone(phone)) {
-    return NextResponse.json({ error: "Please check your email address and mobile number." }, { status: 400 });
+  if (!isValidPhone(phone)) {
+    return NextResponse.json({ error: "Please check your mobile number." }, { status: 400 });
+  }
+  if (email && !isValidEmail(email)) {
+    return NextResponse.json({ error: "Please check your email address." }, { status: 400 });
   }
 
   // A retry of a submission we already processed: don't send it to the CRM twice.
@@ -104,7 +109,7 @@ export async function POST(req: Request) {
       {
         firstName,
         lastName,
-        email,
+        ...(email ? { email } : {}),
         phone,
         tags: ["10% Off Lead", location, ...(marketingConsent ? ["Marketing Opt-In"] : [])],
         source: "Tanned Co. Website",
@@ -134,7 +139,7 @@ export async function POST(req: Request) {
     const res = await resend.emails.send({
       from: "Tanned Co. Website <noreply@tannedco.com.au>",
       to: ["hello@tannedco.com.au", "edensorpark@tannedco.com.au"],
-      replyTo: email,
+      ...(email ? { replyTo: email } : {}),
       subject: `${crm.ok ? "" : "[ACTION NEEDED: CRM FAILED] "}New 10% Off Lead: ${location}`.replace(/[\r\n]+/g, " "),
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #fdf6ec; border-radius: 12px;">
@@ -143,7 +148,7 @@ export async function POST(req: Request) {
           ${crm.ok ? "" : `<p style="background:#f8e6e3;color:#a1352a;padding:12px;border-radius:8px;"><strong>The CRM did not accept this lead, so no SMS was sent.</strong> Please send the 10% off code manually and add the contact to the CRM.</p>`}
           <table style="width: 100%; border-collapse: collapse;">
             <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase; width: 150px;">Name</td><td style="padding: 8px 0; color: #1a1a1a; font-weight: bold;">${escapeHtml(name)}</td></tr>
-            <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Email</td><td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}" style="color: #a46746;">${escapeHtml(email)}</a></td></tr>
+            <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Email</td><td style="padding: 8px 0;">${email ? `<a href="mailto:${escapeHtml(email)}" style="color: #a46746;">${escapeHtml(email)}</a>` : "Not provided"}</td></tr>
             <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Mobile</td><td style="padding: 8px 0; color: #1a1a1a;">${escapeHtml(phone)}</td></tr>
             <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Location</td><td style="padding: 8px 0; color: #1a1a1a;">${escapeHtml(location)}</td></tr>
             <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Marketing consent</td><td style="padding: 8px 0; color: #1a1a1a;">${marketingConsent ? `Yes (${escapeHtml(consent.consentVersion)}, ${escapeHtml(submittedAt)})` : "No (offer only)"}</td></tr>

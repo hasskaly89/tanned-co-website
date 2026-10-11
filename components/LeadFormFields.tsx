@@ -25,12 +25,16 @@ export default function LeadFormFields({
   form,
   setForm,
   tone,
+  variant = "full",
 }: {
   idPrefix: string;
   form: LeadFormState;
   setForm: (f: LeadFormState) => void;
   tone: "dark" | "light";
+  /** "short" = first name + mobile only (offer popup, pending Hass confirmation). */
+  variant?: "full" | "short";
 }) {
+  const short = variant === "short";
   const dark = tone === "dark";
   const input = dark ? "field-dark" : "field";
   const label = `block text-sm font-medium mb-1.5 ${dark ? "text-white" : "text-ink"}`;
@@ -40,15 +44,17 @@ export default function LeadFormFields({
   return (
     <>
       <div>
-        <label htmlFor={`${idPrefix}-name`} className={label}>Full name</label>
-        <input id={`${idPrefix}-name`} type="text" autoComplete="name" required maxLength={100}
+        <label htmlFor={`${idPrefix}-name`} className={label}>{short ? "First name" : "Full name"}</label>
+        <input id={`${idPrefix}-name`} type="text" autoComplete={short ? "given-name" : "name"} required maxLength={100}
           value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className={input} />
       </div>
-      <div>
-        <label htmlFor={`${idPrefix}-email`} className={label}>Email</label>
-        <input id={`${idPrefix}-email`} type="email" autoComplete="email" required maxLength={254}
-          value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={input} />
-      </div>
+      {!short && (
+        <div>
+          <label htmlFor={`${idPrefix}-email`} className={label}>Email</label>
+          <input id={`${idPrefix}-email`} type="email" autoComplete="email" required maxLength={254}
+            value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={input} />
+        </div>
+      )}
       <div>
         <label htmlFor={`${idPrefix}-phone`} className={label}>Mobile number</label>
         <input id={`${idPrefix}-phone`} type="tel" autoComplete="tel" inputMode="tel" required maxLength={30}

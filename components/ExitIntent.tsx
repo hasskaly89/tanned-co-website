@@ -6,8 +6,10 @@ import { FIRST_TIMER_OFFER } from "@/lib/consent";
 import { newSubmissionId, submitClaim } from "@/lib/submit-lead";
 import { IS_PREVIEW, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
 
-const SESSION_KEY = "tannedco_exit_shown";
-
+/**
+ * First-visit offer dialog, rendered once in the root layout.
+ * Fields: first name + mobile + optional marketing consent (pending Hass confirmation).
+ */
 export default function ExitIntent() {
   const [visible, setVisible] = useState(false);
   const [form, setForm] = useState<LeadFormState>(EMPTY_LEAD_FORM);
@@ -28,44 +30,16 @@ export default function ExitIntent() {
     returnFocus.current?.focus?.();
   }, []);
 
+  // Opens only when a visitor clicks an offer button (OfferButton dispatches
+  // "tannedco:open-offer"). The desktop exit-intent auto-open was removed:
+  // PENDING HASS CONFIRMATION (click-only vs auto-open once per visit).
   useEffect(() => {
-    let triggered = false;
-
-    // Manual trigger via custom event (any OfferButton)
     const handleManualOpen = () => {
       setStatus((s) => (s === "success" ? s : "idle"));
       open();
     };
     window.addEventListener("tannedco:open-offer", handleManualOpen);
-
-    // Desktop exit-intent auto trigger, once per session
-    let alreadyShown = false;
-    try {
-      alreadyShown = !!sessionStorage.getItem(SESSION_KEY);
-    } catch {}
-    if (alreadyShown) {
-      return () => window.removeEventListener("tannedco:open-offer", handleManualOpen);
-    }
-
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 5 && !triggered) {
-        triggered = true;
-        try {
-          sessionStorage.setItem(SESSION_KEY, "1");
-        } catch {}
-        setTimeout(open, 200);
-      }
-    };
-
-    const timer = setTimeout(() => {
-      document.addEventListener("mouseleave", handleMouseLeave);
-    }, 5000);
-
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      window.removeEventListener("tannedco:open-offer", handleManualOpen);
-    };
+    return () => window.removeEventListener("tannedco:open-offer", handleManualOpen);
   }, [open]);
 
   // Dialog behaviour: focus the first field, Escape closes, Tab stays inside.
@@ -159,11 +133,11 @@ export default function ExitIntent() {
             <p className="eyebrow mb-3">First time at Tanned Co.?</p>
             <h2 id="offer-title" className="display-md mb-3">Get {FIRST_TIMER_OFFER.headline}.</h2>
             <p className="text-body leading-relaxed mb-6">
-              Enter your details and we&apos;ll text you a code to use at checkout. {FIRST_TIMER_OFFER.terms}
+              Enter your first name and mobile and we&apos;ll text you a code to use at checkout. {FIRST_TIMER_OFFER.terms}
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-3.5">
-              <LeadFormFields idPrefix="offer-popup" form={form} setForm={setForm} tone="light" />
+              <LeadFormFields idPrefix="offer-popup" form={form} setForm={setForm} tone="light" variant="short" />
               <button type="submit" disabled={status === "loading" || IS_PREVIEW} className="btn btn-dark w-full !py-4">
                 {status === "loading" ? "Sending..." : "Text me my code"}
               </button>
