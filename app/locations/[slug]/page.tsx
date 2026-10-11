@@ -209,7 +209,7 @@ export default async function LocationPage({
                 <ExternalBookButton href={urls.casual} source={`location_booking_${slug}`} extraParams={{ plan: "casual", location_slug: slug }} className="btn btn-dark w-full !py-4">
                   {PRICE_TEXT.bookTan}
                 </ExternalBookButton>
-                <ExternalBookButton href={urls.tenPack} source={`location_booking_${slug}`} extraParams={{ plan: "10_pack", location_slug: slug }} className="btn btn-outline w-full !py-4">
+                <ExternalBookButton href={urls.tenPack} source={`location_booking_${slug}`} extraParams={{ plan: "10_pack", location_slug: slug }} className="btn btn-outline w-full !py-4 text-center text-balance">
                   Buy a 10 pack, {formatAud(TEN_PACK.price)} (save {formatAud(TEN_PACK.saving)}, valid {TEN_PACK.validity})
                 </ExternalBookButton>
                 <Link href="/glow-club" className="btn btn-outline w-full !py-4 text-center text-balance">
