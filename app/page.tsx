@@ -392,7 +392,7 @@ export default function Home() {
               <ul className="space-y-3 text-white/80 text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_CLUB.tansPerMonth} automated spray tans every month</li>
                 <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> Best value for regular tanners</li>
-                <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_KEY_TITLE}, posted to you</li>
+                <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_KEY_TITLE}</li>
                 <li className="flex items-start gap-2"><span className="text-[#e0a878] mt-0.5">✓</span> {GLOW_CLUB_MINIMUM_LINE}</li>
               </ul>
               <Link

@@ -136,7 +136,7 @@ export default function Pricing() {
               <div className="border-t border-white/10 mb-6" />
               <ul className="space-y-3 text-white/70 text-sm flex-1 mb-8">
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {GLOW_CLUB_MINIMUM_LINE}</li>
-                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {GLOW_KEY_TITLE}, posted to you</li>
+                <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> {GLOW_KEY_TITLE}</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Birthday tan on us</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Founding member status</li>
                 <li className="flex items-start gap-2"><span className="text-[#a46746] mt-0.5">✓</span> Member-only perks</li>
