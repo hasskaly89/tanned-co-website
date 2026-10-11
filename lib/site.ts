@@ -54,6 +54,8 @@ export const ANNOUNCEMENT = {
   /** Second sentence, hidden on very narrow screens to keep the strip one line. */
   textMore: "Own a Tanned Co. studio.",
   linkText: "Learn more",
+  /** Read by screen readers and search engines after linkText, so the link makes sense on its own. */
+  linkTextHidden: " about franchising",
   href: "/franchise",
 } as const;
 

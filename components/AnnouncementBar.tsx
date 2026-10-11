@@ -30,6 +30,7 @@ export default function AnnouncementBar() {
           {ANNOUNCEMENT.text} <span className="hidden sm:inline">{ANNOUNCEMENT.textMore}</span>{" "}
           <Link href={ANNOUNCEMENT.href} className="font-medium text-bronze-text underline decoration-bronze/40 underline-offset-2 hover:decoration-bronze">
             {ANNOUNCEMENT.linkText}
+            <span className="sr-only">{ANNOUNCEMENT.linkTextHidden}</span>
           </Link>
         </p>
         <button
