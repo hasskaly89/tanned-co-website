@@ -138,6 +138,18 @@ body {
 /* Announcement strip height (components/AnnouncementBar.tsx). 0 once dismissed. */
 :root {
   --banner-h: 36px;
+  /* Preview strip (phones, previews only) and mobile sticky Book bar heights. */
+  --ribbon-h: 0px;
+  --cta-h: 0px;
+  --top-h: calc(var(--ribbon-h) + var(--banner-h));
+}
+@media (max-width: 767px) {
+  :root {
+    --cta-h: 76px;
+  }
+  html.is-preview {
+    --ribbon-h: 18px;
+  }
 }
 html.announce-off {
   --banner-h: 0px;
@@ -146,5 +158,12 @@ html.announce-off .announce-bar {
   display: none;
 }
 html {
-  scroll-padding-top: var(--banner-h);
+  scroll-padding-top: var(--top-h);
+}
+
+/* Home hero fills the screen between the top strips and (phones) the sticky Book bar. */
+.hero-fill {
+  height: calc(100vh - var(--top-h) - var(--cta-h));
+  height: calc(100dvh - var(--top-h) - var(--cta-h) - env(safe-area-inset-bottom, 0px));
+  height: calc(100svh - var(--top-h) - var(--cta-h) - env(safe-area-inset-bottom, 0px));
 }

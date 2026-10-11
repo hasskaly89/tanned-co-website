@@ -78,7 +78,7 @@ export default function RootLayout({
       // Lets Next.js switch smooth scrolling off during page changes, so new pages open at the top
       // while in-page anchor links still scroll smoothly (globals.css sets scroll-behavior: smooth).
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${displayFont.variable} h-full antialiased${ANNOUNCEMENT.enabled ? "" : " announce-off"}`}
+      className={`${geistSans.variable} ${displayFont.variable} h-full antialiased${ANNOUNCEMENT.enabled ? "" : " announce-off"}${IS_PREVIEW ? " is-preview" : ""}`}
       // The inline script below may add "announce-off" before React hydrates.
       suppressHydrationWarning
     >
@@ -107,7 +107,7 @@ export default function RootLayout({
           </Script>
         </>
       )}
-      <body className="min-h-full flex flex-col pt-[var(--banner-h)] pb-[72px] md:pb-0">
+      <body className="min-h-full flex flex-col pt-[var(--top-h)] pb-[calc(var(--cta-h)+env(safe-area-inset-bottom,0px))] md:pb-0">
         <AnnouncementBar />
         <PageViewTracker />
         {children}

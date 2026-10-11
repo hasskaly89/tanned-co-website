@@ -23,11 +23,11 @@ export default function AnnouncementBar() {
     <div
       role="region"
       aria-label="Announcement"
-      className="announce-bar fixed top-0 inset-x-0 z-[55] h-[var(--banner-h)] bg-sand border-b border-line text-ink"
+      className="announce-bar fixed top-[var(--ribbon-h)] inset-x-0 z-[55] h-[var(--banner-h)] bg-sand border-b border-line text-ink"
     >
       <div className="max-w-6xl mx-auto h-full pl-6 pr-1 flex items-center justify-center gap-2 text-xs md:text-[13px]">
         <p className="truncate">
-          {ANNOUNCEMENT.text} <span className="hidden min-[400px]:inline">{ANNOUNCEMENT.textMore}</span>{" "}
+          {ANNOUNCEMENT.text} <span className="hidden sm:inline">{ANNOUNCEMENT.textMore}</span>{" "}
           <Link href={ANNOUNCEMENT.href} className="font-medium text-bronze-text underline decoration-bronze/40 underline-offset-2 hover:decoration-bronze">
             {ANNOUNCEMENT.linkText}
           </Link>
