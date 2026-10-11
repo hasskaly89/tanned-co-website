@@ -83,3 +83,54 @@ body {
     @apply w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 text-[15px] text-white placeholder-on-dark-muted transition-colors focus:border-bronze-light focus:outline-none;
   }
 }
+
+/*
+ * Mobile swipe rows: on phones a grid becomes one horizontal row you swipe
+ * through (scroll-snap, no JS). From md up the element's own grid classes apply,
+ * so desktop is unchanged. Set --swipe-w on the row to change card width.
+ */
+@media (max-width: 767px) {
+  .swipe-row {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: -1.5rem;
+    padding-inline: 1.5rem;
+    scroll-padding-inline: 1.5rem;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .swipe-row::-webkit-scrollbar {
+    display: none;
+  }
+  .swipe-row > * {
+    flex: 0 0 var(--swipe-w, 82%);
+    scroll-snap-align: start;
+    min-width: 0;
+  }
+}
+
+/*
+ * Scroll reveal (components/ScrollReveal.tsx). Only JS adds .reveal-pending, and
+ * only to sections that start below the fold, so nothing is hidden without JS
+ * and nothing above the fold flashes. Opacity and transform only (no layout
+ * shift). Desktop only, and off for anyone who prefers reduced motion.
+ */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .reveal-pending {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  .reveal-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 450ms ease-out, transform 450ms ease-out;
+  }
+}
+
+/* Mobile accordions: hide the default disclosure marker (we draw a +). */
+.mobile-acc summary::-webkit-details-marker {
+  display: none;
+}

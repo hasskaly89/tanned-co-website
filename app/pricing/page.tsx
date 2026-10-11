@@ -45,7 +45,7 @@ export default function Pricing() {
         imageAlt="A Tanned Co. spray tan result"
       />
 
-      <section className="py-20 md:py-28 bg-sand">
+      <section className="py-14 md:py-28 bg-sand">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Our pricing"
@@ -62,7 +62,7 @@ export default function Pricing() {
 
       <TrustBadges />
 
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-3xl mx-auto px-6">
           <SectionHeading eyebrow="Pricing questions" title="Common questions." />
           <FaqAccordion items={pricingFaqs} />

@@ -67,7 +67,7 @@ export default function About() {
       />
 
       {/* FOUNDER STORY */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div>
             <p className="eyebrow mb-4">Meet Paige Cook, founder</p>
@@ -113,7 +113,7 @@ export default function About() {
       </section>
 
       {/* MISSION */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Our mission"
@@ -133,7 +133,7 @@ export default function About() {
       </section>
 
       {/* BOOTHS */}
-      <section className="py-20 md:py-28 bg-sand">
+      <section className="py-14 md:py-28 bg-sand">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div className="relative rounded-[28px] overflow-hidden aspect-[4/5]">
             <Image

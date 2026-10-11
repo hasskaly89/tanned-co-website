@@ -15,7 +15,7 @@ export default function SectionHeading({
 }) {
   const centered = align === "center";
   return (
-    <div className={`${centered ? "text-center mx-auto" : ""} max-w-2xl mb-12 md:mb-16`}>
+    <div className={`${centered ? "text-center mx-auto" : ""} max-w-2xl mb-8 md:mb-16`}>
       {eyebrow && <p className={`${dark ? "eyebrow-light" : "eyebrow"} mb-4`}>{eyebrow}</p>}
       <Tag className={`display-lg ${dark ? "text-white" : "text-ink"}`}>{title}</Tag>
       {intro && (

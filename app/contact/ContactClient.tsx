@@ -81,7 +81,7 @@ export default function ContactClient() {
         imageAlt="Tanned Co. studio"
       />
 
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1fr_1.15fr] gap-14 md:gap-20">
           {/* Contact info */}
           <div>

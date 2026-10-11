@@ -49,7 +49,7 @@ export default function LocationsPage() {
         imageAlt="Tanned Co. studios across Sydney"
       />
 
-      <section className="py-20 md:py-28 bg-sand">
+      <section className="py-14 md:py-28 bg-sand">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Find us"

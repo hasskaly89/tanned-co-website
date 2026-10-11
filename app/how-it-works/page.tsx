@@ -140,7 +140,7 @@ export default function HowItWorks() {
       />
 
       {/* THE PROCESS */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading eyebrow="The process" title="Six steps to your glow." />
           <ol className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
@@ -170,7 +170,7 @@ export default function HowItWorks() {
       </div>
 
       {/* SHADES */}
-      <section className="py-20 md:py-28 bg-sand">
+      <section className="py-14 md:py-28 bg-sand">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Tan colours"
@@ -201,7 +201,7 @@ export default function HowItWorks() {
       </section>
 
       {/* IN THE ROOM */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="In the room"
@@ -224,7 +224,7 @@ export default function HowItWorks() {
       </section>
 
       {/* APP */}
-      <section className="py-20 md:py-28 bg-sand">
+      <section className="py-14 md:py-28 bg-sand">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Book in seconds"
@@ -242,7 +242,7 @@ export default function HowItWorks() {
       </section>
 
       {/* AFTERCARE */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-4xl mx-auto px-6">
           <SectionHeading eyebrow="After your session" title="Aftercare tips." />
           <ul className="grid sm:grid-cols-2 gap-x-12 border-t border-line">

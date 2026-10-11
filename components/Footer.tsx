@@ -31,8 +31,9 @@ export default function Footer() {
   return (
     <footer className="bg-espresso-deep text-on-dark">
       <div className="max-w-6xl mx-auto px-6 pt-16 pb-10">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
-          <div>
+        {/* Phones: two columns (Explore and Studios side by side) to cut scrolling */}
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+          <div className="col-span-2 md:col-span-1">
             <Image
               src="/logo_transparent.png"
               alt="Tanned Co."
@@ -81,7 +82,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <p className={colHeading}>Get in touch</p>
             <ul className="space-y-2.5 mb-6">
               <li><a href="mailto:hello@tannedco.com.au" className={colLink}>hello@tannedco.com.au</a></li>

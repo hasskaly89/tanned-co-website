@@ -83,7 +83,7 @@ export default function GlowClub() {
       </PageHero>
 
       {/* MEMBERSHIP + PERKS */}
-      <section className="py-20 md:py-28 bg-sand">
+      <section className="py-14 md:py-28 bg-sand">
         <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[minmax(0,420px)_1fr] gap-12 lg:gap-20 items-start">
           <div className="bg-espresso text-white rounded-[28px] p-8 md:p-10 shadow-xl lg:sticky lg:top-28">
             <div className="flex items-center justify-between gap-3 mb-5">
@@ -137,7 +137,7 @@ export default function GlowClub() {
 
       <TrustBadges />
 
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-3xl mx-auto px-6">
           <SectionHeading eyebrow="Membership questions" title="Common questions." />
           <FaqAccordion items={glowClubFaqs} />

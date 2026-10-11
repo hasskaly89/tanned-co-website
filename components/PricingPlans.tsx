@@ -23,13 +23,20 @@ function Feature({ children, dark = false }: { children: React.ReactNode; dark?:
 export default function PricingPlans({
   source,
   glowClubAction = "learn",
+  mobileSwipe = false,
 }: {
   source: string;
   /** "learn" links to the Glow Club page; "join" goes straight to sign-up. */
   glowClubAction?: "learn" | "join";
+  /** Phones: show the three plans as a horizontal swipe row (home page). */
+  mobileSwipe?: boolean;
 }) {
   return (
-    <div className="grid gap-6 md:grid-cols-3 items-stretch">
+    <>
+    <div
+      className={`grid gap-6 md:grid-cols-3 items-stretch ${mobileSwipe ? "swipe-row" : ""}`}
+      style={mobileSwipe ? { ["--swipe-w" as string]: "86%" } : undefined}
+    >
       {/* Casual */}
       <div className="bg-white rounded-[28px] border border-line p-8 md:p-9 flex flex-col">
         <div className="flex items-center justify-between gap-3 mb-5">
@@ -117,5 +124,7 @@ export default function PricingPlans({
         )}
       </div>
     </div>
+    {mobileSwipe && <p className="md:hidden text-center text-xs text-muted mt-3">Swipe to compare the 10 pack and Glow Club</p>}
+    </>
   );
 }

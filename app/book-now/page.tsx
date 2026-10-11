@@ -65,7 +65,7 @@ export default function BookNow() {
       </section>
 
       {/* WHAT TO EXPECT */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading eyebrow="First time?" title="What to expect." />
           <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">

@@ -9,9 +9,9 @@ export default function StudioStrip() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 mb-5">
           <h2 id="studio-strip-title" className="eyebrow">Choose your studio</h2>
-          <p className="text-sm text-muted">All five open 7 days, 6am to midnight</p>
+          <p className="text-sm text-muted">{LOCATIONS.length} Sydney studios. Open 7 days, 6am to midnight.</p>
         </div>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <ul className="grid md:grid-cols-3 lg:grid-cols-5 gap-3 swipe-row" style={{ ["--swipe-w" as string]: "46%" }}>
           {LOCATIONS.map((loc) => (
             <li key={loc.slug}>
               <Link

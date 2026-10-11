@@ -29,7 +29,7 @@ export default function GoogleReviews({ className = "bg-cream" }: { className?: 
   const links = live?.studios ?? LOCATIONS.map((l) => ({ slug: l.slug, name: l.shortName, url: l.mapsUrl, total: 0, rating: 0 }));
 
   return (
-    <section className={`py-20 md:py-28 ${className}`}>
+    <section className={`py-14 md:py-28 ${className}`}>
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12 md:mb-16">
           <div className="max-w-xl">

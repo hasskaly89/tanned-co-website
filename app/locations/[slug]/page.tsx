@@ -130,7 +130,7 @@ export default async function LocationPage({
       </div>
 
       {/* STUDIO DETAILS + BOOKING */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading eyebrow="Find us" title={`Tanned Co. ${loc.shortName}.`} />
           <div className="grid md:grid-cols-2 gap-10 items-start">
@@ -232,7 +232,7 @@ export default async function LocationPage({
 
       {/* REVIEWS */}
       {loc.repuWidgetKey && (
-        <section className="py-20 md:py-28 bg-sand">
+        <section className="py-14 md:py-28 bg-sand">
           <div className="max-w-6xl mx-auto px-6">
             <RepuReviews
               widgetKey={loc.showAllStudioReviews ? REPU_HOME_WIDGET_KEY : loc.repuWidgetKey}
@@ -254,7 +254,7 @@ export default async function LocationPage({
       )}
 
       {showGoogleCards && google && (
-        <section className="py-20 md:py-28 bg-sand">
+        <section className="py-14 md:py-28 bg-sand">
           <div className="max-w-6xl mx-auto px-6">
             <SectionHeading
               eyebrow="Google reviews"
@@ -280,7 +280,7 @@ export default async function LocationPage({
       )}
 
       {/* HOW IT WORKS */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading eyebrow="Super simple" title="How it works." />
           <ol className="grid md:grid-cols-3 gap-x-10 gap-y-10">
@@ -302,10 +302,10 @@ export default async function LocationPage({
       <SupportBlock className="bg-sand" />
 
       {/* FEATURES */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading eyebrow="Why Tanned Co." title="What makes us different." />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 swipe-row" style={{ ["--swipe-w" as string]: "80%" }}>
             {studioFeatures.map((f) => (
               <div key={f.title} className="bg-white rounded-3xl border border-line p-7">
                 <div className="text-bronze mb-5">{f.icon}</div>

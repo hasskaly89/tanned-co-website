@@ -76,7 +76,7 @@ export default function FranchisePage() {
       </header>
 
       {/* THE STUDIO */}
-      <section className="py-20 md:py-28 bg-sand">
+      <section className="py-14 md:py-28 bg-sand">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading eyebrow="The studio" title="How a Tanned Co. studio runs." />
           <div className="grid gap-4 sm:grid-cols-3 mb-12">
@@ -98,7 +98,7 @@ export default function FranchisePage() {
       </section>
 
       {/* RECEIVE / RESPONSIBILITIES / WHO IT SUITS / INVESTMENT */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid gap-5 md:grid-cols-2">
           <div className="bg-white rounded-3xl border border-line p-7 md:p-8">
             <p className="eyebrow mb-3">What franchisees receive</p>
@@ -120,7 +120,7 @@ export default function FranchisePage() {
       </section>
 
       {/* OPENING PROCESS */}
-      <section className="py-20 md:py-28 bg-sand">
+      <section className="py-14 md:py-28 bg-sand">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading eyebrow="Opening process" title="From enquiry to opening." />
           <ol className="grid gap-x-8 gap-y-10 md:grid-cols-3">
@@ -136,7 +136,7 @@ export default function FranchisePage() {
       </section>
 
       {/* ENQUIRY FORM */}
-      <section id="enquire" className="py-20 md:py-28 scroll-mt-20">
+      <section id="enquire" className="py-14 md:py-28 scroll-mt-20">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-[1fr_1.1fr] gap-14 md:gap-20 items-start">
           <div>
             <p className="eyebrow mb-4">Enquire</p>

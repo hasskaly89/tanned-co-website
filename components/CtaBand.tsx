@@ -16,7 +16,7 @@ export default function CtaBand({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="bg-espresso text-white py-20 md:py-28">
+    <section className="bg-espresso text-white py-14 md:py-28">
       <div className="max-w-3xl mx-auto px-6 text-center">
         <p className="eyebrow-light mb-4">{eyebrow}</p>
         <h2 className="display-lg">{title}</h2>

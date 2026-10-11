@@ -47,8 +47,8 @@ export default function Home() {
       <HomeSchema />
       <Navbar activePath="/" />
 
-      {/* HERO */}
-      <section className="relative flex items-end min-h-[640px] h-[100svh] max-h-[920px] bg-espresso pt-[68px]">
+      {/* HERO: one headline, one line, one button, one quiet link */}
+      <section className="relative flex items-end h-[76svh] min-h-[520px] max-h-[720px] md:h-[100svh] md:min-h-[640px] md:max-h-[920px] bg-espresso pt-[68px]">
         <Image
           src={IMGS.hero}
           alt="Five women with even, natural spray tans at a Tanned Co. studio"
@@ -60,32 +60,22 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#1a120c]/85 via-[#1a120c]/25 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#1a120c]/75 via-[#1a120c]/30 to-transparent" />
-        {/* pb-28 on mobile keeps the trust row clear of the sticky Book bar */}
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-28 md:pb-20">
-          <p className="eyebrow-light mb-5">Sydney&apos;s first automated spray tan studio</p>
+        {/* pb-24 on mobile keeps the button clear of the sticky Book bar */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-24 md:pb-24">
           <h1 className="display-xl text-white max-w-4xl">Private, automated spray tanning.</h1>
-          <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-xl mt-6">
-            Your own heated booth, your choice of shade and about 4 minutes in the booth. Book online, let yourself in
-            and tan in private.
+          <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-xl mt-5">
+            Your own heated booth. About 4 minutes, open 7 days.
           </p>
-          <div className="inline-flex items-center gap-5 md:gap-7 mt-7 rounded-2xl border border-white/35 bg-white/10 backdrop-blur-sm px-5 py-3.5 md:px-6">
-            <p className="leading-tight">
-              <span className="block eyebrow-light">Casual tans</span>
-              <span className="block text-on-dark text-xs mt-1">Per session, no commitment</span>
-            </p>
-            <p className="font-display font-medium text-4xl md:text-5xl leading-none text-white">{formatAud(CASUAL.price)}</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3 mt-7">
-            <Link href="/book-now" className="btn btn-light">Book your tan</Link>
-            <OfferButton source="home_hero" className="btn btn-outline-light">
-              First visit? Get {FIRST_TIMER_OFFER.headline}
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-4 mt-8">
+            {/* Goes to the studio picker, which books the chosen studio's casual tan */}
+            <Link href="/book-now" className="btn btn-light">Book a tan, {formatAud(CASUAL.price)}</Link>
+            <OfferButton
+              source="home_hero"
+              className="text-sm font-medium text-white/90 underline decoration-white/40 underline-offset-4 hover:text-white hover:decoration-white transition-colors cursor-pointer"
+            >
+              First visit? {FIRST_TIMER_OFFER.headline}
             </OfferButton>
           </div>
-          <ul className="flex flex-wrap items-center gap-x-7 gap-y-2 mt-8 text-sm font-medium text-on-dark">
-            <li>5 Sydney studios</li>
-            <li>Open 7 days, 6am to midnight</li>
-            <li>4 minutes in the booth</li>
-          </ul>
         </div>
       </section>
 
@@ -96,10 +86,10 @@ export default function Home() {
       <BoothVideo />
 
       {/* WHY TANNED CO */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div>
-            <p className="eyebrow mb-4">Why Tanned Co.</p>
+            <p className="eyebrow mb-4">Sydney&apos;s first automated spray tan studio</p>
             <h2 className="display-lg mb-6">A calm, private tan in minutes.</h2>
             <p className="text-body text-lg leading-relaxed mb-8">
               Book a time, let yourself in and tan in your own heated VersaSpa Pro booth. The booth senses your
@@ -114,11 +104,12 @@ export default function Home() {
               ))}
             </ul>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
-              <Link href="/how-it-works" className="btn btn-outline">See how it works</Link>
+              <Link href="/how-it-works" className="btn btn-outline max-md:hidden">See how it works</Link>
               <Link href="/about" className="text-link">Our story</Link>
             </div>
           </div>
-          <div className="relative rounded-[28px] overflow-hidden aspect-[4/5]">
+          {/* Photo hidden on phones to cut scrolling; it is also on the About page */}
+          <div className="relative rounded-[28px] overflow-hidden aspect-[4/5] max-md:hidden">
             <Image
               src={IMGS.about}
               alt="A golden, even Tanned Co. spray tan result"
@@ -131,14 +122,14 @@ export default function Home() {
       </section>
 
       {/* REAL RESULTS */}
-      <section className="py-20 md:py-28 bg-sand">
+      <section className="py-14 md:py-28 bg-sand">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Real results"
             title="The transformation."
             intro="What a single Tanned Co. session looks like on real skin. Results vary with skin tone, prep and aftercare."
           />
-          <div className="grid sm:grid-cols-3 gap-5 md:gap-7">
+          <div className="grid md:grid-cols-3 gap-5 md:gap-7 swipe-row" style={{ ["--swipe-w" as string]: "78%" }}>
             {results.map((r) => (
               <figure key={r.src}>
                 <div className="relative aspect-[3/4] rounded-3xl overflow-hidden">
@@ -154,18 +145,34 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Link href="/book-now" className="btn btn-dark">Get your glow</Link>
+            <p className="text-xs text-muted md:hidden">Swipe for more results</p>
+            <Link href="/book-now" className="btn btn-dark max-md:hidden">Get your glow</Link>
           </div>
         </div>
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading eyebrow="The process" title="Four simple steps." />
           <div className="grid lg:grid-cols-[1fr_340px] gap-12 lg:gap-14 items-start">
           <div>
-          <ol className="grid sm:grid-cols-2 gap-x-8 gap-y-10">
+          {/* Phones: the four steps as an accordion */}
+          <ol className="md:hidden border-t border-line mobile-acc">
+            {steps.map(({ num, title, desc }) => (
+              <li key={num} className="border-b border-line">
+                <details className="group">
+                  <summary className="flex items-center gap-4 py-4 cursor-pointer list-none">
+                    <span className="font-display text-2xl text-bronze w-9 shrink-0">{num}</span>
+                    <span className="text-lg font-semibold flex-1">{title}</span>
+                    <span aria-hidden="true" className="text-2xl leading-none text-bronze transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="text-body leading-relaxed pb-5 pl-[3.25rem]">{desc}</p>
+                </details>
+              </li>
+            ))}
+          </ol>
+          <ol className="hidden md:grid sm:grid-cols-2 gap-x-8 gap-y-10">
             {steps.map(({ num, title, desc }) => (
               <li key={num} className="border-t border-line pt-7">
                 <p className="font-display font-normal text-5xl text-bronze leading-none mb-5">{num}</p>
@@ -174,13 +181,14 @@ export default function Home() {
               </li>
             ))}
           </ol>
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 mt-12">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 mt-8 md:mt-12">
             <Link href="/how-it-works" className="btn btn-outline">Read the full guide</Link>
             <Link href="/faq" className="text-link">First time? Read the FAQ</Link>
           </div>
           </div>
           {/* Genuine review from the live Google feed; renders nothing if the feed is unavailable */}
-          <LatestGoogleReview repuFallbackKey={LOCATIONS[0].repuWidgetKey} />
+          {/* Hidden on phones: the reviews carousel further down covers it */}
+          <LatestGoogleReview className="max-md:hidden" repuFallbackKey={LOCATIONS[0].repuWidgetKey} />
           </div>
         </div>
       </section>
@@ -189,7 +197,7 @@ export default function Home() {
       <SupportBlock />
 
       {/* PRICING */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading
             eyebrow="Simple pricing"
@@ -201,7 +209,7 @@ export default function Home() {
               </>
             }
           />
-          <PricingPlans source="home_pricing" />
+          <PricingPlans source="home_pricing" mobileSwipe />
         </div>
       </section>
 
@@ -209,7 +217,7 @@ export default function Home() {
       <GoogleReviews className="bg-sand" />
 
       {/* STUDIOS + CLOSING CTA */}
-      <section className="bg-espresso text-white py-20 md:py-28">
+      <section className="bg-espresso text-white py-14 md:py-28">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 md:gap-24 items-center">
           <div>
             <p className="eyebrow-light mb-4">Five studios. Open 7 days.</p>
@@ -218,7 +226,8 @@ export default function Home() {
               Book in under a minute. First visit? Get {FIRST_TIMER_OFFER.headline}.
             </p>
             <div className="flex flex-wrap gap-3 mt-9">
-              <Link href="/book-now" className="btn btn-light">Book your tan</Link>
+              {/* Phones already have the sticky Book bar */}
+              <Link href="/book-now" className="btn btn-light max-md:hidden">Book your tan</Link>
               <OfferButton source="home_closing" className="btn btn-outline-light">
                 Claim first-visit offer
               </OfferButton>
@@ -228,7 +237,8 @@ export default function Home() {
               <Link href="/franchise" className="underline hover:text-white transition-colors">Franchise opportunities are open</Link>.
             </p>
           </div>
-          <ul className="border-t border-white/15">
+          {/* Hidden on phones: the same 5 studios are in the row under the hero and in the footer */}
+          <ul className="border-t border-white/15 max-md:hidden">
             {LOCATIONS.map((loc) => (
               <li key={loc.slug}>
                 <Link

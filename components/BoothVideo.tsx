@@ -11,7 +11,7 @@ import { BOOTH_VIDEO } from "@/lib/site";
 export default function BoothVideo() {
   const hasVideo = !!BOOTH_VIDEO.src;
   return (
-    <section className="py-20 md:py-28 bg-sand" aria-labelledby="booth-walkthrough-title">
+    <section className="py-14 md:py-28 bg-sand" aria-labelledby="booth-walkthrough-title">
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading
           eyebrow="Booth walkthrough"
