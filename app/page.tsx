@@ -79,7 +79,7 @@ export default function Home() {
       {/* STUDIOS, straight under the hero */}
       <StudioStrip />
 
-      {/* BOOTH WALKTHROUGH: real studio photo with "coming soon" until a video file is set in lib/site.ts */}
+      {/* BOOTH WALKTHROUGH: hidden while BOOTH_VIDEO_SECTION is false in lib/site.ts (renders nothing) */}
       <BoothVideo />
 
       {/* WHY TANNED CO */}

@@ -30,10 +30,12 @@ export const SUPPORT_CALL_TEXT = `Need a hand? Call ${CONTACT.phone}, ${CONTACT.
  * poster. Until then the existing studio photo shows with a "coming soon" label.
  */
 /**
- * Show the booth walkthrough section on the home page. On for this preview; Hass
- * decides whether to hide it at launch if there is no video yet (set to false).
+ * Show the booth walkthrough section on the home page. Off (Hass, 11 Oct 2026):
+ * no video yet, so the whole section renders nothing. The component stays in code.
+ * Candidate clip for later: Google Drive IMG_2077, Edensor Park walkthrough.
+ * To bring it back: set BOOTH_VIDEO.src to the file and this flag to true.
  */
-export const BOOTH_VIDEO_SECTION = true;
+export const BOOTH_VIDEO_SECTION = false;
 
 /**
  * "5,000+ spray tans delivered" stat on /about. Confirmed by Hass (Oct 2026).
