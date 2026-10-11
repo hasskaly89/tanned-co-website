@@ -33,3 +33,11 @@ export const APP_LINKS = {
   appStore: "https://apps.apple.com/au/app/tannedco/id1659547172",
   googlePlay: "https://play.google.com/store/apps/details?id=com.treshna.memberportal.tannedco",
 } as const;
+
+/**
+ * Show the "First visit? 10% off your first tan" link in the home hero.
+ * Off for now (Marketing: keep the hero to one action). The offer is still
+ * reachable from the pricing section and the closing band on the home page,
+ * and from the offer form on every studio page. Set to true to restore it.
+ */
+export const HERO_OFFER_LINK = false;

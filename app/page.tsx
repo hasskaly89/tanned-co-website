@@ -13,11 +13,12 @@ import { FIRST_TIMER_OFFER } from "@/lib/consent";
 import { CASUAL, formatAud } from "@/lib/pricing";
 import StudioStrip from "@/components/StudioStrip";
 import BoothVideo from "@/components/BoothVideo";
+import HeroBackdrop from "@/components/HeroBackdrop";
+import { HERO_OFFER_LINK } from "@/lib/site";
 import SupportBlock from "@/components/SupportBlock";
 import LatestGoogleReview from "@/components/LatestGoogleReview";
 
 const IMGS = {
-  hero: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
   about: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg",
 };
 
@@ -47,34 +48,26 @@ export default function Home() {
       <HomeSchema />
       <Navbar activePath="/" />
 
-      {/* HERO: one headline, one line, one button, one quiet link */}
-      <section className="relative flex items-end h-[76svh] min-h-[520px] max-h-[720px] md:h-[100svh] md:min-h-[640px] md:max-h-[920px] bg-espresso pt-[68px]">
-        <Image
-          src={IMGS.hero}
-          alt="Five women with even, natural spray tans at a Tanned Co. studio"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: "50% 0%" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1a120c]/85 via-[#1a120c]/25 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a120c]/75 via-[#1a120c]/30 to-transparent" />
-        {/* pb-24 on mobile keeps the button clear of the sticky Book bar */}
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-24 md:pb-24">
+      {/* HERO: one headline, one line, one button. Text sits in the bottom third on a dark gradient. */}
+      <section className="relative flex items-end h-[78svh] min-h-[540px] max-h-[740px] md:h-[100svh] md:min-h-[640px] md:max-h-[920px] bg-espresso pt-[68px]">
+        <HeroBackdrop />
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-10 md:pb-16">
           <h1 className="display-xl text-white max-w-4xl">Private, automated spray tanning.</h1>
-          <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-xl mt-5">
-            Your own heated booth. About 4 minutes, open 7 days.
+          {/* "about 4 minutes" in the booth: pending Hass confirmation */}
+          <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-xl mt-4">
+            Your own private room. Book, let yourself in, tan in about 4 minutes.
           </p>
-          <div className="flex flex-wrap items-center gap-x-7 gap-y-4 mt-8">
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-4 mt-7">
             {/* Goes to the studio picker, which books the chosen studio's casual tan */}
             <Link href="/book-now" className="btn btn-light">Book a tan, {formatAud(CASUAL.price)}</Link>
-            <OfferButton
-              source="home_hero"
-              className="text-sm font-medium text-white/90 underline decoration-white/40 underline-offset-4 hover:text-white hover:decoration-white transition-colors cursor-pointer"
-            >
-              First visit? {FIRST_TIMER_OFFER.headline}
-            </OfferButton>
+            {HERO_OFFER_LINK && (
+              <OfferButton
+                source="home_hero"
+                className="text-sm font-medium text-white/90 underline decoration-white/40 underline-offset-4 hover:text-white hover:decoration-white transition-colors cursor-pointer"
+              >
+                First visit? {FIRST_TIMER_OFFER.headline}
+              </OfferButton>
+            )}
           </div>
         </div>
       </section>
@@ -210,6 +203,11 @@ export default function Home() {
             }
           />
           <PricingPlans source="home_pricing" mobileSwipe />
+          <p className="text-center mt-8">
+            <OfferButton source="home_pricing" className="text-link cursor-pointer">
+              First visit? Get {FIRST_TIMER_OFFER.headline}
+            </OfferButton>
+          </p>
         </div>
       </section>
 
