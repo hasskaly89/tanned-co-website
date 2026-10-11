@@ -1,5 +1,5 @@
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
-import { BOOKING_SLOT_LINE, CHECK_IN_TEXT, LEGAL_ENTITY } from "@/lib/site";
+import { BOOKING_SLOT_LINE, CHECK_IN_TEXT, GLOW_KEY, LEGAL_ENTITY } from "@/lib/site";
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 import { SITE_URL } from "@/lib/locations";
@@ -61,7 +61,7 @@ export default function TermsPage() {
             To cancel before the minimum term ends, you pay the remaining months of the minimum term.
           </li>
           <li>After the minimum term, the membership continues month to month. Cancel by emailing {GLOW_CLUB.cancelEmail}.</li>
-          <li>Members get access to all 5 studios through the app.</li>
+          <li>Members get access to all 5 studios. {GLOW_KEY}</li>
         </ul>
       </section>
 

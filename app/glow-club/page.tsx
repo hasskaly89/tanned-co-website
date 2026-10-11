@@ -1,5 +1,6 @@
 "use client";
 
+import { GLOW_KEY, GLOW_CLUB_ENTRY_FAQ } from "@/lib/site";
 import { trackEvent } from "@/lib/analytics";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -19,7 +20,7 @@ import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 // priority access) are kept as Hass says the perks are real; final list pending Hass.
 const perks = [
   { title: "Birthday tan on us", body: "A free tan during your birthday month, our treat." },
-  { title: "All 5 studios", body: "Access to all 5 studios through the app." },
+  { title: "Glow Key", body: `${GLOW_KEY} Works at all 5 studios.` },
   { title: "First access to product drops", body: "Be first to future tan care products and merch at member pricing." },
   { title: "Mate's rate", body: `Share a code with one friend per month for ${formatAud(GLOW_CLUB.mateRateDiscount)} off their casual tan.` },
   { title: "Exclusive member offers", body: "Member-only promotions and seasonal offers throughout the year." },
@@ -29,7 +30,7 @@ const perks = [
 
 const included = [
   `${GLOW_CLUB.tansPerMonth} automated spray tan sessions a month`,
-  "Access to all 5 studios through the app",
+  "Your own Glow Key for all 5 studios, posted to you",
   `${GLOW_CLUB.minimumMonths} month minimum (${PRICE_TEXT.glowClubMinimum}), then month to month`,
   "Book online or in the app, 7 days, 6am to midnight",
   "All founding member perks",
@@ -56,6 +57,7 @@ const glowClubFaqs = [
     q: "Where can I use my membership?",
     a: "Your membership works at all 5 of our Sydney studios, 7 days a week, 6am to midnight. Book online or in the app.",
   },
+  GLOW_CLUB_ENTRY_FAQ,
 ];
 
 function JoinButton({ source, className }: { source: string; className: string }) {

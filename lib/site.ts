@@ -15,6 +15,18 @@ export const APP_ACCESS_TEXT = `Book online. ${APP_UNLOCK_TEXT}`;
  * How customers get in: the Check In button in the app (confirmed by Hass, 11 Oct 2026).
  * Use this line wherever entry is explained. No Glow Key wording for entry.
  */
+/**
+ * Glow Club entry (corrected by Hass, 11 Oct 2026): members get a Glow Key (key fob)
+ * posted to them and tap it at the door. Casual and 10 pack customers use the app's
+ * Check In button (CHECK_IN_TEXT).
+ * FLAG for Hass: do members also need the app Check In to open their room, or does
+ * the Glow Key open the room too?
+ */
+export const GLOW_KEY = "Your own Glow Key, posted to you. Just tap it at the door to get in.";
+export const GLOW_CLUB_ENTRY_FAQ = {
+  q: "How do Glow Club members get in?",
+  a: `${GLOW_KEY} Casual and 10 pack customers use the Check In button in the Tanned Co. app instead.`,
+};
 export const CHECK_IN_TEXT =
   "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, tap Check In again to open your room.";
 

@@ -1,4 +1,4 @@
-import { RINSE_LINE, DEVELOP_LINE } from "@/lib/site";
+import { RINSE_LINE, DEVELOP_LINE, GLOW_CLUB_ENTRY_FAQ } from "@/lib/site";
 import { CASUAL, PRICE_TEXT, formatAud } from "@/lib/pricing";
 
 // Safety and suitability answers are pending supplier-backed wording and owner approval.
@@ -47,6 +47,7 @@ export const categories = [
         q: "Do I need to book in advance?",
         a: "Yes, all sessions at Tanned Co. are pre-booked. You can book via our app or online through our website. That way your private room is ready for you when you arrive. No waiting, no queues.",
       },
+      GLOW_CLUB_ENTRY_FAQ,
       {
         q: "Can men get a spray tan?",
         a: "Yes. Tanned Co. is for everyone, whatever your gender or body type. You tan alone in your own private room, so there's no one to feel awkward in front of.",

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
 import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, TEN_PACK, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import { GLOW_CLUB_SIGNUP_URL } from "@/lib/locations";
+import { GLOW_KEY } from "@/lib/site";
 import StudioBookButton from "@/components/StudioBookButton";
 import { CheckIcon } from "@/components/Icons";
 
@@ -100,6 +101,7 @@ export default function PricingPlans({
           <Feature dark>
             {GLOW_CLUB.minimumMonths} month minimum ({PRICE_TEXT.glowClubMinimum}), then month to month
           </Feature>
+          <Feature dark>{GLOW_KEY}</Feature>
           <Feature dark>Birthday tan on us</Feature>
           <Feature dark>Founding member perks</Feature>
         </ul>
