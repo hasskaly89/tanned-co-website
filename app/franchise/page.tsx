@@ -40,8 +40,8 @@ const IMG = "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a
 // Existing site photography only. No swimwear or body shots on this page.
 const studioPhotos = [
   { src: `${IMG}/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg`, alt: "The Tanned Co. Caringbah shopfront" },
-  { src: `${IMG}/90818258-d4ad-4495-8609-69069d53a69c/DSCF2505.jpg`, alt: "A private Tanned Co. tan room with its VersaSpa Pro booth" },
-  { src: `${IMG}/96d6e447-3940-40dd-9241-c884ba173900/DSCF2437.jpg`, alt: "The prep station inside a private Tanned Co. tan room" },
+  { src: "/locations-hero.jpg", alt: "Inside a Tanned Co. studio: the lit Tanned Co. sign and waiting area" },
+  { src: `${IMG}/66cba3e8-b0f9-4756-859a-70bf1be4aa45/DSCF2443.jpg`, alt: "The prep station inside a private Tanned Co. tan room" },
 ];
 
 const studiosLine = FRANCHISE_SHOW_COMPANY_OWNED
