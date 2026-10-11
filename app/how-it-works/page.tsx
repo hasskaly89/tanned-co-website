@@ -6,7 +6,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import CtaBand from "@/components/CtaBand";
 import { CheckIcon, ClockIcon } from "@/components/Icons";
-import { APP_ACCESS_TEXT, APP_UNLOCK_TEXT } from "@/lib/site";
+import { APP_ACCESS_TEXT, APP_UNLOCK_TEXT, RINSE, DEVELOP_LINE, BOOKING_SLOT_LINE } from "@/lib/site";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
@@ -30,7 +30,7 @@ const steps = [
   {
     num: "01",
     title: "Book online",
-    desc: `Choose your location, date and time online or in the app. ${APP_UNLOCK_TEXT}`,
+    desc: `Choose your studio, date and time online or in the app. ${BOOKING_SLOT_LINE} ${APP_UNLOCK_TEXT}`,
   },
   {
     num: "02",
@@ -55,7 +55,7 @@ const steps = [
   {
     num: "06",
     title: "Get dressed and go",
-    desc: "Get dressed and go. Your colour keeps developing over the next 24 hours.",
+    desc: `Get dressed and go. ${DEVELOP_LINE}`,
   },
 ];
 
@@ -97,21 +97,21 @@ const shades = [
     name: "Rapid Venetian",
     tag: "Quick rinse",
     desc: "Rich chocolate brown with subtle violet undertones. A timeless European-style tan, and the quickest to rinse if you're short on time.",
-    rinse: "Rinse after 2 to 3 hours",
+    rinse: `Rinse after ${RINSE.rapid}`,
     swatches: ["#c4956a", "#a06b42", "#6b3f22"],
   },
   {
     name: "Malibu",
     tag: "Deep olive bronze",
     desc: "Caramel and violet undertones. A neutral base that develops into a deep olive bronze tan. A good match for olive undertones.",
-    rinse: "Rinse after 6 to 8 hours or sleep in",
+    rinse: `Rinse after ${RINSE.standard}`,
     swatches: ["#c49a6c", "#9e6e42", "#6b4020"],
   },
   {
     name: "Monterey",
     tag: "Golden beach tan",
     desc: "A unique blend of golden and coffee brown undertones. For that classic beach tan. A good match for fair undertones.",
-    rinse: "Rinse after 6 to 8 hours or sleep in",
+    rinse: `Rinse after ${RINSE.standard}`,
     swatches: ["#d4a96a", "#b8823a", "#8a5c20"],
   },
 ];
@@ -119,7 +119,7 @@ const shades = [
 const depthNames = ["Natural", "Medium", "Dark"];
 
 const aftercare = [
-  "Wait 6 to 8 hours before showering with Monterey or Malibu; 2 to 3 hours for Rapid Venetian",
+  `Wait ${RINSE.standard} before showering with Malibu or Monterey, or ${RINSE.rapid} for Rapid Venetian`,
   "Pat dry, don't rub",
   "Moisturise daily to extend your tan",
   "Avoid chlorine and long baths",
@@ -259,7 +259,7 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      <CtaBand source="how_it_works_cta" title="Ready to book?" text="Book online in under a minute. Your colour keeps developing over the next 24 hours." />
+      <CtaBand source="how_it_works_cta" title="Ready to book?" text={`Book online in under a minute. ${DEVELOP_LINE}`} />
 
       <Footer />
     </div>

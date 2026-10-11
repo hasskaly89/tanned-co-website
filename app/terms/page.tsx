@@ -1,5 +1,5 @@
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
-import { BOOTH_TIME, BOOKING_SLOT } from "@/lib/site";
+import { BOOKING_SLOT_LINE } from "@/lib/site";
 import type { Metadata } from "next";
 import LegalPage from "@/components/LegalPage";
 import { SITE_URL } from "@/lib/locations";
@@ -78,8 +78,7 @@ export default function TermsPage() {
         <h2>Arriving for your tan</h2>
         <p>
           5 minutes before your booking, tap Check In in the Tanned Co. app at the Bluetooth reader to open the studio.
-          At your start time, check in again to open your tan room. Each booking is a {BOOKING_SLOT} slot, with {BOOTH_TIME}{" "}
-          in the booth.
+          At your start time, check in again to open your tan room. {BOOKING_SLOT_LINE}
         </p>
       </section>
 

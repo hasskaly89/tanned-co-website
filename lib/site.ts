@@ -30,10 +30,10 @@ export const SUPPORT_CALL_TEXT = `Need a hand? Call ${CONTACT.phone}, ${CONTACT.
 export const BOOTH_VIDEO_SECTION = true;
 
 /**
- * "5,000+ spray tans delivered" stat on /about. No source yet, so off until Hass
- * confirms the number (then set to true).
+ * "5,000+ spray tans delivered" stat on /about. Confirmed by Hass (Oct 2026).
+ * Set to false to hide it.
  */
-export const SHOW_TANS_DELIVERED_STAT = false;
+export const SHOW_TANS_DELIVERED_STAT = true;
 
 export const BOOTH_VIDEO: { src: string; poster: string; posterAlt: string; caption: string } = {
   src: "",
@@ -44,12 +44,18 @@ export const BOOTH_VIDEO: { src: string; poster: string; posterAlt: string; capt
   caption: "A short walkthrough of a first visit, from the front door to the booth, so you know what to expect.",
 };
 
-/**
- * Time in the booth. "about 4 minutes": pending Hass confirmation. The 20 minute
- * booking slot is from the brief.
- */
+/** Time in the booth and booking slot length (confirmed by Hass, Oct 2026). */
 export const BOOTH_TIME = "about 4 minutes";
 export const BOOKING_SLOT = "20 minute";
+export const BOOKING_SLOT_LINE = `Each booking is a ${BOOKING_SLOT} slot, with ${BOOTH_TIME} in the booth.`;
+
+/**
+ * Rinse and develop times (confirmed by Hass, Oct 2026). Use these everywhere
+ * aftercare is mentioned so the pages can't disagree.
+ */
+export const RINSE = { rapid: "2 to 3 hours", standard: "8 hours" } as const;
+export const RINSE_LINE = `Rinse after ${RINSE.standard} for Malibu and Monterey, or ${RINSE.rapid} for Rapid Venetian.`;
+export const DEVELOP_LINE = "Your colour keeps developing for 24 hours.";
 
 /**
  * Franchise page switches. Each was reported confirmed by Hass via the Chief of
@@ -90,7 +96,7 @@ export const HERO_OFFER_LINK = false;
 /**
  * Slim announcement strip at the top of every page. Change `id` whenever the
  * message changes so people who dismissed the old one see the new one.
- * "across Australia": pending Hass confirmation.
+ * Wording approved by Hass (Oct 2026).
  */
 export const ANNOUNCEMENT = {
   enabled: true,

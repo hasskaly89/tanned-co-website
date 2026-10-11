@@ -7,7 +7,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import CtaBand from "@/components/CtaBand";
 import InstagramFeed from "@/components/InstagramFeed";
-import { SHOW_TANS_DELIVERED_STAT } from "@/lib/site";
+import { SHOW_TANS_DELIVERED_STAT, DEVELOP_LINE } from "@/lib/site";
 import { CheckIcon, SunIcon, LockIcon, LeafIcon, ClockIcon } from "@/components/Icons";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -37,7 +37,7 @@ const stats = [
   { value: "5", label: "Sydney studios" },
   { value: "7", label: "Days a week" },
   { value: "3", label: "Signature shades" },
-  // Unsourced: shown only when SHOW_TANS_DELIVERED_STAT is true in lib/site.ts (pending Hass).
+  // Confirmed by Hass; switch with SHOW_TANS_DELIVERED_STAT in lib/site.ts.
   SHOW_TANS_DELIVERED_STAT ? { value: "5,000+", label: "Spray tans delivered" } : { value: "9", label: "Shade and depth options" },
 ];
 
@@ -185,7 +185,7 @@ export default function About() {
         <InstagramFeed />
       </section>
 
-      <CtaBand source="about_cta" title="Ready when you are." text="Book online in under a minute. Your colour keeps developing over the next 24 hours." />
+      <CtaBand source="about_cta" title="Ready when you are." text={`Book online in under a minute. ${DEVELOP_LINE}`} />
 
       <Footer />
     </div>

@@ -17,7 +17,7 @@ import { LOCATIONS, SITE_URL, bookingUrlFor } from "@/lib/locations";
 import { getPlaceReviews } from "@/lib/google-reviews";
 import { CASUAL, GLOW_CLUB, TEN_PACK, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import { FIRST_TIMER_OFFER } from "@/lib/consent";
-import { APP_UNLOCK_TEXT, BOOTH_TIME } from "@/lib/site";
+import { APP_UNLOCK_TEXT, BOOTH_TIME, RINSE_LINE, DEVELOP_LINE } from "@/lib/site";
 import SupportBlock from "@/components/SupportBlock";
 
 export function generateStaticParams() {
@@ -52,13 +52,13 @@ export async function generateMetadata({
 const steps = [
   { num: "01", title: "Book online", text: `Book online in under a minute. ${APP_UNLOCK_TEXT}` },
   { num: "02", title: "Check in with the app", text: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, check in again to open your private room." },
-  { num: "03", title: "Leave glowing", text: "Rinse your hands after 30 minutes. Rinse off after 6 to 8 hours (2 to 3 for Rapid Venetian). Full colour develops over 24 hours." },
+  { num: "03", title: "Leave glowing", text: `Rinse your hands after 30 minutes. ${RINSE_LINE} ${DEVELOP_LINE}` },
 ];
 
 const studioFeatures = [
   { icon: <LockIcon className="w-6 h-6" />, title: "Private", text: "Your own private room. No staff, no awkward moments. Just you and your tan." },
   { icon: <SunIcon className="w-6 h-6" />, title: "3 signature shades", text: "Malibu, Monterey or Rapid Venetian. Three depth levels each, so you can choose the glow that suits you." },
-  { icon: <SparkleIcon className="w-6 h-6" />, title: "Quick in, quick out", text: `${BOOTH_TIME[0].toUpperCase()}${BOOTH_TIME.slice(1)} in the booth. See colour in 2 to 3 hours and full colour within 24 hours. Lasts up to 7 days with good aftercare.` },
+  { icon: <SparkleIcon className="w-6 h-6" />, title: "Quick in, quick out", text: `${BOOTH_TIME[0].toUpperCase()}${BOOTH_TIME.slice(1)} in the booth. ${DEVELOP_LINE} Lasts up to 7 days with good aftercare.` },
   { icon: <PhoneIcon className="w-6 h-6" />, title: "Book in under a minute", text: `Book online or in the app. ${APP_UNLOCK_TEXT}` },
 ];
 

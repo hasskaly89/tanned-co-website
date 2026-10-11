@@ -14,7 +14,7 @@ import { CASUAL, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import StudioStrip from "@/components/StudioStrip";
 import BoothVideo from "@/components/BoothVideo";
 import HeroBackdrop from "@/components/HeroBackdrop";
-import { HERO_OFFER_LINK } from "@/lib/site";
+import { HERO_OFFER_LINK, RINSE_LINE, DEVELOP_LINE } from "@/lib/site";
 import SupportBlock from "@/components/SupportBlock";
 import LatestGoogleReview from "@/components/LatestGoogleReview";
 
@@ -39,7 +39,7 @@ const steps = [
   { num: "01", title: "Book", desc: "Choose your studio, date and time online or in the app." },
   { num: "02", title: "Check in", desc: "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, check in again to open your room." },
   { num: "03", title: "Prep and spray", desc: "Pop on the hair net, sticky feet and barrier cream, pick your shade on the in-room menu, and step in. Voice prompts guide every position." },
-  { num: "04", title: "Glow", desc: "Rinse after 6 to 8 hours for Malibu and Monterey, or 2 to 3 hours for Rapid Venetian. Full colour develops over 24 hours." },
+  { num: "04", title: "Glow", desc: `${RINSE_LINE} ${DEVELOP_LINE}` },
 ];
 
 export default function Home() {
@@ -55,7 +55,7 @@ export default function Home() {
         <HeroBackdrop />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-8 md:pb-16">
           <h1 className="display-xl text-white max-w-4xl md:[text-shadow:0_1px_3px_rgba(0,0,0,0.4),0_2px_24px_rgba(0,0,0,0.35)]">Private, automated spray tanning.</h1>
-          {/* "about 4 minutes" in the booth: pending Hass confirmation.
+          {/* "about 4 minutes" in the booth: confirmed by Hass.
               Desktop subline is 24px so it counts as large text for WCAG AA (3:1) over the photo. */}
           <p className="text-white/90 md:text-white text-lg md:text-2xl leading-relaxed max-w-xl md:max-w-2xl mt-4 md:[text-shadow:0_1px_3px_rgba(0,0,0,0.5),0_1px_16px_rgba(0,0,0,0.4)]">
             Your own private room. Book, let yourself in, tan in about 4 minutes.

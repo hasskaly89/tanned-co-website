@@ -1,3 +1,4 @@
+import { DEVELOP_LINE } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -102,7 +103,7 @@ export default function LocationsPage() {
       <CtaBand
         source="locations_cta"
         title="Ready to glow?"
-        text="Book online in under a minute. Your colour keeps developing over the next 24 hours."
+        text={`Book online in under a minute. ${DEVELOP_LINE}`}
       >
         <StudioBookButton
           plan="casual"
