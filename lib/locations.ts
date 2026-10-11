@@ -26,6 +26,8 @@ export interface LocationData {
   lat: number;
   lng: number;
   heroImage: string;
+  /** Real photo of this studio's own shopfront, when one exists (shown on its studio page). */
+  storefrontImage?: string;
   phone: string;
   nearbySuburbs: string[];
   parkingNote: string;
@@ -57,6 +59,9 @@ export const LOCATIONS: LocationData[] = [
     lng: 151.1217383,
     heroImage:
       "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg",
+    // Existing site photo of the 349b Kingsway shopfront.
+    storefrontImage:
+      "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg",
     phone: "1300 826 633",
     nearbySuburbs: ["Cronulla", "Miranda", "Gymea", "Sutherland", "Taren Point", "Woolooware"],
     parkingNote: "Street parking available on Kingsway. Easy access from Caringbah train station.",

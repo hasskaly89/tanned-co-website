@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
@@ -57,7 +58,7 @@ const studioFeatures = [
   { icon: <LockIcon className="w-6 h-6" />, title: "Completely private", text: "Your own locked booth. No staff, no awkward moments. Just you and your tan." },
   { icon: <SunIcon className="w-6 h-6" />, title: "3 signature shades", text: "Malibu, Monterey or Rapid Venetian. Three depth levels each, so you can choose the glow that suits you." },
   { icon: <SparkleIcon className="w-6 h-6" />, title: "Rapid results", text: "4 minutes in the booth. See colour in 2 to 3 hours and full colour within 24 hours. Lasts up to 7 days with proper care." },
-  { icon: <PhoneIcon className="w-6 h-6" />, title: "Book in seconds", text: "Download the Tanned Co. app or book online. No phone calls, no waiting. Sorted in under a minute." },
+  { icon: <PhoneIcon className="w-6 h-6" />, title: "Book in seconds", text: `Book online or in the app in under a minute. ${APP_UNLOCK_TEXT}` },
 ];
 
 const reviewsButton = "btn btn-outline";
@@ -129,6 +130,17 @@ export default async function LocationPage({
           <SectionHeading eyebrow="Find us" title={`Tanned Co. ${loc.shortName}.`} />
           <div className="grid md:grid-cols-2 gap-10 items-start">
             <div className="bg-white rounded-[28px] border border-line overflow-hidden">
+              {loc.storefrontImage && (
+                <div className="relative aspect-[16/10]">
+                  <Image
+                    src={loc.storefrontImage}
+                    alt={`The Tanned Co. ${loc.shortName} shopfront at ${loc.address}`}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              )}
               <div style={{ filter: "grayscale(100%)" }}>
                 <iframe
                   title={`Map of Tanned Co. ${loc.shortName}`}
@@ -281,8 +293,11 @@ export default async function LocationPage({
         </div>
       </section>
 
+      {/* SUPPORT */}
+      <SupportBlock className="bg-sand" />
+
       {/* FEATURES */}
-      <section className="py-20 md:py-28 bg-sand">
+      <section className="py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-6">
           <SectionHeading eyebrow="Why Tanned Co." title="What makes us different." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -296,9 +311,6 @@ export default async function LocationPage({
           </div>
         </div>
       </section>
-
-      {/* SUPPORT */}
-      <SupportBlock className="bg-cream" />
 
       <Footer />
     </div>
