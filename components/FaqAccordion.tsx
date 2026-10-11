@@ -43,16 +43,16 @@ export default function FaqAccordion({
                 </span>
               </button>
             </h3>
-            {isOpen && (
-              <div
-                id={panelId}
-                role="region"
-                aria-labelledby={buttonId}
-                className="pb-6 pr-14 text-body leading-relaxed"
-              >
-                {renderAnswer ? renderAnswer(item) : item.a}
-              </div>
-            )}
+            {/* Always in the HTML (hidden when closed) so answers match the FAQPage JSON-LD. */}
+            <div
+              id={panelId}
+              role="region"
+              aria-labelledby={buttonId}
+              hidden={!isOpen}
+              className="pb-6 pr-14 text-body leading-relaxed"
+            >
+              {renderAnswer ? renderAnswer(item) : item.a}
+            </div>
           </div>
         );
       })}

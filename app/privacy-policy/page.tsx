@@ -27,9 +27,7 @@ export default function PrivacyPolicyPage() {
       </section>
       {LEGAL_ENTITY && (
         <section>
-          <p>
-            Tanned Co. is operated by {LEGAL_ENTITY.name} (ABN {LEGAL_ENTITY.abn}).
-          </p>
+          <p>{`Tanned Co. is operated by ${LEGAL_ENTITY.name} (ABN ${LEGAL_ENTITY.abn}).`}</p>
         </section>
       )}
 
