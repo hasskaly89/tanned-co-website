@@ -1,28 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/locations";
-import { CONTACT, SUPPORT_HOURS_LINE } from "@/lib/site";
-import { PRICE_TEXT } from "@/lib/pricing";
+import { CONTACT, GIFT_CARDS, SUPPORT_HOURS_LINE } from "@/lib/site";
 import { breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Gift Cards",
-  description: `Give someone a spray tan. Ask us about Tanned Co. gift cards: call ${CONTACT.phone} or email ${CONTACT.email}.`,
+  description: "Give someone a spray tan. Buy a Tanned Co. gift card online, valid for 12 months and redeemable when booking at any of our 5 Sydney studios.",
   alternates: { canonical: `${SITE_URL}/gift-cards` },
 };
 
-/*
- * FLAG for Hass: Tanned Co. sells gift cards, but no public purchase link was found
- * (Oct 2026: live site /gift-cards 404; GymMaster portal shop needs a login; the
- * GymMaster booking form only has an "Apply Gift Voucher" field to redeem one).
- * So this page sends people to the phone line and email. No prices or terms here.
- * When there's a public purchase URL, add a button to it and use only the wording
- * and prices shown there.
- */
+// Purchase link, steps and terms live in GIFT_CARDS in lib/site.ts.
+// Terms per GymMaster admin, pending Hass confirmation. No voucher amounts.
 
 export default function GiftCardsPage() {
   return (
@@ -32,31 +24,24 @@ export default function GiftCardsPage() {
 
       <main className="max-w-6xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28 grid md:grid-cols-[1.15fr_1fr] gap-12 md:gap-16 items-center">
         <div>
-          <p className="eyebrow mb-4">Gift a tan</p>
-          <h1 className="display-xl">Ask us about gift cards.</h1>
+          <p className="eyebrow mb-4">Gift cards</p>
+          <h1 className="display-xl">Gift a tan.</h1>
           <p className="text-body text-lg leading-relaxed mt-6">
-            Want to give someone a tan? Call or email us and we&apos;ll sort out a Tanned Co. gift card.
+            Tanned Co. gift cards are bought online in our booking portal.
           </p>
-          <dl className="mt-8 space-y-5">
-            <div>
-              <dt className="eyebrow mb-1">Call</dt>
-              <dd>
-                <a href={CONTACT.phoneHref} className="text-link text-lg">{CONTACT.phone}</a>
-                <p className="text-sm text-muted mt-1">{SUPPORT_HOURS_LINE}</p>
-              </dd>
-            </div>
-            <div>
-              <dt className="eyebrow mb-1">Email</dt>
-              <dd>
-                <a href={`mailto:${CONTACT.email}?subject=Gift%20card`} className="text-link text-lg">{CONTACT.email}</a>
-              </dd>
-            </div>
-          </dl>
+          <a href={GIFT_CARDS.shopUrl} target="_blank" rel="noopener noreferrer" className="btn btn-dark mt-8">
+            Buy a gift card
+          </a>
+          <p className="text-sm text-muted mt-3">Opens our booking portal in a new tab.</p>
           <div className="mt-10 bg-white rounded-3xl border border-line p-7">
-            <h2 className="text-lg font-semibold mb-2">Got a gift voucher?</h2>
-            <p className="text-body leading-relaxed mb-5">Enter your voucher code when you book online.</p>
-            <Link href="/book-now" className="btn btn-dark">{PRICE_TEXT.bookTan}</Link>
+            <h2 className="text-lg font-semibold mb-2">How it works</h2>
+            <p className="text-body leading-relaxed">{GIFT_CARDS.steps}</p>
+            <p className="text-body leading-relaxed mt-3">{GIFT_CARDS.terms}</p>
           </div>
+          <p className="text-body leading-relaxed mt-8">
+            Questions? Call <a href={CONTACT.phoneHref} className="text-link">{CONTACT.phone}</a> ({SUPPORT_HOURS_LINE.split(".")[0]}) or email{" "}
+            <a href={`mailto:${CONTACT.email}?subject=Gift%20card`} className="text-link">{CONTACT.email}</a>.
+          </p>
         </div>
         <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
           <Image

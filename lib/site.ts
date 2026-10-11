@@ -104,6 +104,18 @@ export const LEGAL_ENTITY: { name: string; abn: string } | null = {
  * non-toxic, hypoallergenic, dermatologist tested, pregnancy-safe or "no orange".
  */
 
+/**
+ * Gift vouchers are bought in the GymMaster Club Shop (online voucher purchase and
+ * non-member shopping are on). Terms per GymMaster admin (checked by Chief of Staff,
+ * 11 Oct 2026): vouchers expire after 1 year and can be used as payment when booking.
+ * Pending Hass confirmation. No voucher amounts on the site.
+ */
+export const GIFT_CARDS = {
+  shopUrl: "https://tannedco.gymmasteronline.com/portal/shop",
+  steps: "Choose New Member, add your details and studio, then pick the gift voucher.",
+  terms: "Valid for 12 months from purchase. Enter your code when you book online.",
+} as const;
+
 export const APP_LINKS = {
   appStore: "https://apps.apple.com/au/app/tannedco/id1659547172",
   googlePlay: "https://play.google.com/store/apps/details?id=com.treshna.memberportal.tannedco",
