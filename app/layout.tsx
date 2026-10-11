@@ -7,6 +7,7 @@ import ExitIntent from "@/components/ExitIntent";
 import BronzeBot from "@/components/BronzeBot";
 import PageViewTracker from "@/components/PageViewTracker";
 import PreviewRibbon from "@/components/PreviewRibbon";
+import ScrollReveal from "@/components/ScrollReveal";
 import { IS_PREVIEW, isPreviewRequest } from "@/lib/preview";
 import { GA_ID } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/locations";
@@ -97,6 +98,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col pb-[72px] md:pb-0">
         <PageViewTracker />
         {children}
+        <ScrollReveal />
         <MobileCTA />
         <ExitIntent />
         <BronzeBot />
