@@ -54,9 +54,10 @@ export default function Home() {
       <section className="hero-fill relative flex items-end min-h-[480px] md:min-h-[640px] md:max-h-[920px] bg-espresso pt-[68px]">
         <HeroBackdrop />
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-8 md:pb-16">
-          <h1 className="display-xl text-white max-w-4xl md:[text-shadow:0_1px_2px_rgba(0,0,0,0.35),0_2px_24px_rgba(0,0,0,0.3)]">Private, automated spray tanning.</h1>
-          {/* "about 4 minutes" in the booth: pending Hass confirmation */}
-          <p className="text-white/90 md:text-white text-lg md:text-xl leading-relaxed max-w-xl mt-4 md:[text-shadow:0_1px_2px_rgba(0,0,0,0.45),0_1px_16px_rgba(0,0,0,0.35)]">
+          <h1 className="display-xl text-white max-w-4xl md:[text-shadow:0_1px_3px_rgba(0,0,0,0.4),0_2px_24px_rgba(0,0,0,0.35)]">Private, automated spray tanning.</h1>
+          {/* "about 4 minutes" in the booth: pending Hass confirmation.
+              Desktop subline is 24px so it counts as large text for WCAG AA (3:1) over the photo. */}
+          <p className="text-white/90 md:text-white text-lg md:text-2xl leading-relaxed max-w-xl md:max-w-2xl mt-4 md:[text-shadow:0_1px_3px_rgba(0,0,0,0.5),0_1px_16px_rgba(0,0,0,0.4)]">
             Your own private room. Book, let yourself in, tan in about 4 minutes.
           </p>
           <div className="flex flex-wrap items-center gap-x-7 gap-y-4 md:mt-7 empty:hidden">

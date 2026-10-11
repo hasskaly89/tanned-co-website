@@ -56,7 +56,7 @@ export default function HeroBackdrop() {
       <div className="md:hidden absolute inset-0 bg-gradient-to-t from-espresso via-espresso/75 via-30% to-transparent to-60%" />
       {/* Desktop: photo fully visible, with a soft dark gradient on the text side only (bottom left,
           45% at most, no solid colour). The text also has a subtle shadow; see the hero in app/page.tsx. */}
-      <div className="hidden md:block absolute inset-0 bg-[linear-gradient(to_top_right,rgba(26,18,12,0.45)_0%,rgba(26,18,12,0.32)_32%,rgba(26,18,12,0)_62%)]" />
+      <div className="hidden md:block absolute inset-0 bg-[linear-gradient(to_top_right,rgba(26,18,12,0.45)_0%,rgba(26,18,12,0.45)_40%,rgba(26,18,12,0.38)_55%,rgba(26,18,12,0)_80%)]" />
     </>
   );
 }
