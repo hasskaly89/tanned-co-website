@@ -16,12 +16,16 @@ export const APP_ACCESS_TEXT = `Book online. ${APP_UNLOCK_TEXT}`;
 export const SUPPORT_CALL_TEXT = `Need a hand? Call ${CONTACT.phone}, ${CONTACT.supportHours}, and choose your studio to be connected.`;
 
 /**
- * Booth walkthrough video for the homepage. Leave src empty until the real
- * video file is supplied (e.g. "/video/booth-walkthrough.mp4" in public/);
- * the section stays hidden while it is empty.
+ * Booth walkthrough video for the homepage. Set `src` to the real video file
+ * (e.g. "/video/booth-walkthrough.mp4" in public/) and it plays in place of the
+ * poster. Until then the existing studio photo shows with a "coming soon" label.
  */
-export const BOOTH_VIDEO: { src: string; poster?: string; caption: string } = {
+export const BOOTH_VIDEO: { src: string; poster: string; posterAlt: string; caption: string } = {
   src: "",
+  // Existing site photo (DSCF2505): a client stepping into a private tan room.
+  poster:
+    "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/90818258-d4ad-4495-8609-69069d53a69c/DSCF2505.jpg",
+  posterAlt: "A client stepping into a private Tanned Co. tan room",
   caption: "A short walkthrough of a first visit, from the front door to the booth, so you know what to expect.",
 };
 
