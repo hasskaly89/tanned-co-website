@@ -32,6 +32,9 @@ const nextConfig: NextConfig = {
       ["/franchising", "/franchise"],
       ["/locations-1", "/locations"],
       ["/home", "/"],
+      ["/gift-card", "/gift-cards"],
+      ["/gift-vouchers", "/gift-cards"],
+      ["/gift-voucher", "/gift-cards"],
     ];
     return [
       ...locationSlugs.map((slug) => ({ source: `/${slug}`, destination: `/locations/${slug}`, statusCode: 301 as const })),

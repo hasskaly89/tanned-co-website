@@ -17,6 +17,7 @@ const explore = [
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
+  { label: "Gift cards", href: "/gift-cards" },
   { label: "Franchising", href: "/franchise" },
 ];
 
