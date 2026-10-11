@@ -26,7 +26,7 @@ const pricingFaqs = [
   },
   {
     q: "Is there a minimum commitment?",
-    a: `Casual tans and the 10 pack have no commitment. Glow Club has a ${GLOW_CLUB.minimumMonths} month minimum, which is ${PRICE_TEXT.glowClubMinimum}. To leave before then, you pay out the rest of the minimum term. After that it continues month to month, and you can cancel by emailing ${GLOW_CLUB.cancelEmail}.`,
+    a: `Casual tans and the 10 pack have no commitment. Glow Club has a ${GLOW_CLUB.minimumMonths}-month minimum, which is ${PRICE_TEXT.glowClubMinimum}. To leave before then, you pay out the rest of the minimum term. After that it continues month to month, and you can cancel by emailing ${GLOW_CLUB.cancelEmail}.`,
   },
   {
     q: "Do unused Glow Club tans roll over?",

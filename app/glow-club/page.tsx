@@ -1,6 +1,6 @@
 "use client";
 
-import { GLOW_KEY, GLOW_CLUB_ENTRY_FAQ } from "@/lib/site";
+import { GLOW_KEY, GLOW_KEY_TITLE, GLOW_CLUB_ENTRY_FAQ } from "@/lib/site";
 import { trackEvent } from "@/lib/analytics";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -20,7 +20,7 @@ import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
 // priority access) are kept as Hass says the perks are real; final list pending Hass.
 const perks = [
   { title: "Birthday tan on us", body: "A free tan during your birthday month, our treat." },
-  { title: "Glow Key", body: `${GLOW_KEY} Works at all 5 studios.` },
+  { title: GLOW_KEY_TITLE, body: GLOW_KEY },
   { title: "First access to product drops", body: "Be first to future tan care products and merch at member pricing." },
   { title: "Mate's rate", body: `Share a code with one friend per month for ${formatAud(GLOW_CLUB.mateRateDiscount)} off their casual tan.` },
   { title: "Exclusive member offers", body: "Member-only promotions and seasonal offers throughout the year." },
@@ -30,8 +30,8 @@ const perks = [
 
 const included = [
   `${GLOW_CLUB.tansPerMonth} automated spray tan sessions a month`,
-  "Your own Glow Key for all 5 studios, posted to you",
-  `${GLOW_CLUB.minimumMonths} month minimum (${PRICE_TEXT.glowClubMinimum}), then month to month`,
+  `${GLOW_KEY_TITLE}: ${GLOW_KEY}`,
+  `${GLOW_CLUB.minimumMonths}-month minimum (${PRICE_TEXT.glowClubMinimum}), then month to month`,
   "Book online or in the app, 7 days, 6am to midnight",
   "All founding member perks",
 ];
@@ -43,7 +43,7 @@ const glowClubFaqs = [
   },
   {
     q: "Is there a minimum commitment?",
-    a: `Yes. Glow Club has a ${GLOW_CLUB.minimumMonths} month minimum, which is ${formatAud(GLOW_CLUB.minimumTotal)} in base membership payments (${GLOW_CLUB.minimumMonths} x ${formatAud(GLOW_CLUB.monthly)}). To leave before then, you pay out the rest of the minimum term. After that it continues month to month, and you can cancel by emailing ${GLOW_CLUB.cancelEmail}.`,
+    a: `Yes. Glow Club has a ${GLOW_CLUB.minimumMonths}-month minimum, which is ${PRICE_TEXT.glowClubMinimum}. To leave before then, you pay out the rest of the minimum term. After that it continues month to month, and you can cancel by emailing ${GLOW_CLUB.cancelEmail}.`,
   },
   {
     q: "Do unused tans roll over?",

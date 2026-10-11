@@ -13,19 +13,18 @@ export const APP_UNLOCK_TEXT = "Download the app before your visit to unlock the
 export const APP_ACCESS_TEXT = `Book online. ${APP_UNLOCK_TEXT}`;
 /**
  * How customers get in: the Check In button in the app (confirmed by Hass, 11 Oct 2026).
- * Use this line wherever entry is explained. No Glow Key wording for entry.
+ * Use this line wherever casual and 10 pack entry is explained. Glow Key wording is for Glow Club only.
  */
 /**
- * Glow Club entry (corrected by Hass, 11 Oct 2026): members get a Glow Key (key fob)
- * posted to them and tap it at the door. Casual and 10 pack customers use the app's
- * Check In button (CHECK_IN_TEXT).
- * FLAG for Hass: do members also need the app Check In to open their room, or does
- * the Glow Key open the room too?
+ * Glow Club entry, word for word from the GymMaster Glow Club page (confirmed by Hass,
+ * 11 Oct 2026): members get a Glow Key posted to them and tap it at the door. No app
+ * Check In step for Glow Club members. Casual and 10 pack use CHECK_IN_TEXT.
  */
-export const GLOW_KEY = "Your own Glow Key, posted to you. Just tap it at the door to get in.";
+export const GLOW_KEY_TITLE = "Your own Glow Key";
+export const GLOW_KEY = "Once you join, we'll post your Glow Key to you. Just tap it at the door to get in.";
 export const GLOW_CLUB_ENTRY_FAQ = {
   q: "How do Glow Club members get in?",
-  a: `${GLOW_KEY} Casual and 10 pack customers use the Check In button in the Tanned Co. app instead.`,
+  a: `${GLOW_KEY} Casual and 10 pack customers use the Check In button in the Tanned Co. app.`,
 };
 export const CHECK_IN_TEXT =
   "5 minutes before your booking, tap Check In in the app at the Bluetooth reader to open the studio. At your start time, tap Check In again to open your room.";

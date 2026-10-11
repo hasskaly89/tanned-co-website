@@ -40,8 +40,8 @@ export const PRICE_TEXT = {
   mateRate: `${formatAud(GLOW_CLUB.mateRateDiscount)} off`,
   /** "$267 total (3 x $89)" */
   glowClubMinimum: `${formatAud(GLOW_CLUB.minimumTotal)} total (${GLOW_CLUB.minimumMonths} x ${formatAud(GLOW_CLUB.monthly)})`,
-  /** "$89 a month, 3 month minimum, then month to month" */
-  glowClubTerms: `${formatAud(GLOW_CLUB.monthly)} a month, ${GLOW_CLUB.minimumMonths} month minimum, then month to month`,
+  /** "$89 a month, 3-month minimum, then month to month" */
+  glowClubTerms: `${formatAud(GLOW_CLUB.monthly)} a month, ${GLOW_CLUB.minimumMonths}-month minimum, then month to month`,
   casualHeadline: `Casual tans ${formatAud(CASUAL.price)}`,
   /** Main booking button label, used sitewide. */
   bookTan: `Book a tan, ${formatAud(CASUAL.price)}`,

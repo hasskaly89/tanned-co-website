@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { LOCATIONS, bookingUrlFor, type LocationData } from "@/lib/locations";
-import { GLOW_KEY } from "@/lib/site";
+import { GLOW_KEY_TITLE } from "@/lib/site";
 import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, TEN_PACK, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import { trackEvent } from "@/lib/analytics";
 import { CheckIcon } from "@/components/Icons";
@@ -165,7 +165,7 @@ export default function BookingPicker() {
               </p>
               <p className="text-sm text-on-dark mt-2">
                 {GLOW_CLUB.tansPerMonth} tans a month, under {formatAud(GLOW_CLUB_PER_TAN_UNDER)} a tan.{" "}
-                {GLOW_CLUB.minimumMonths} month minimum ({formatAud(GLOW_CLUB.minimumTotal)}). {GLOW_KEY}
+                {GLOW_CLUB.minimumMonths}-month minimum, then month to month. {GLOW_KEY_TITLE}.
               </p>
             </div>
             <Link

@@ -111,7 +111,7 @@ export function serviceSchema(plans: SchemaPlan[], loc?: LocationData) {
     return {
       "@type": "Offer",
       name: "Glow Club membership",
-      description: `${GLOW_CLUB.tansPerMonth} spray tans a month. ${GLOW_CLUB.minimumMonths} month minimum, then month to month.`,
+      description: `${GLOW_CLUB.tansPerMonth} spray tans a month. ${GLOW_CLUB.minimumMonths}-month minimum, then month to month.`,
       price: GLOW_CLUB.monthly,
       priceCurrency: "AUD",
       priceSpecification: {

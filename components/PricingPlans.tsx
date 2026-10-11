@@ -4,7 +4,7 @@ import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
 import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, TEN_PACK, formatAud, PRICE_TEXT } from "@/lib/pricing";
 import { GLOW_CLUB_SIGNUP_URL } from "@/lib/locations";
-import { GLOW_KEY } from "@/lib/site";
+import { GLOW_KEY_TITLE } from "@/lib/site";
 import StudioBookButton from "@/components/StudioBookButton";
 import { CheckIcon } from "@/components/Icons";
 
@@ -99,9 +99,9 @@ export default function PricingPlans({
         <ul className="space-y-3 text-on-dark text-[15px] flex-1 mb-8">
           <Feature dark>{GLOW_CLUB.tansPerMonth} automated spray tans every month</Feature>
           <Feature dark>
-            {GLOW_CLUB.minimumMonths} month minimum ({PRICE_TEXT.glowClubMinimum}), then month to month
+            {GLOW_CLUB.minimumMonths}-month minimum ({PRICE_TEXT.glowClubMinimum}), then month to month
           </Feature>
-          <Feature dark>{GLOW_KEY}</Feature>
+          <Feature dark>{GLOW_KEY_TITLE}</Feature>
           <Feature dark>Birthday tan on us</Feature>
           <Feature dark>Founding member perks</Feature>
         </ul>
