@@ -63,6 +63,11 @@ const studioFeatures = [
 
 const reviewsButton = "btn btn-outline";
 
+// Re-check the Google Places data daily, so the rating and reviews appear on their
+// own once the API key works again (and disappear cleanly if it stops). Without
+// data nothing Google-specific is rendered: no rating, no empty box.
+export const revalidate = 86400;
+
 export default async function LocationPage({
   params,
 }: {
