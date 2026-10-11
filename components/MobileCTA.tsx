@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
+import { IS_PREVIEW } from "@/lib/preview";
 import { LOCATIONS, bookingUrlFor } from "@/lib/locations";
 
 export default function MobileCTA() {
@@ -33,7 +34,7 @@ export default function MobileCTA() {
     <div
       inert={!shown}
       aria-hidden={!shown || undefined}
-      className={`md:hidden fixed bottom-0 left-0 right-0 z-40 bg-cream/95 backdrop-blur-sm border-t border-line px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] transition-transform duration-300 ${shown ? "translate-y-0" : "translate-y-full"}`}
+      className={`md:hidden fixed ${IS_PREVIEW ? "bottom-[22px]" : "bottom-0"} left-0 right-0 z-40 bg-cream/95 backdrop-blur-sm border-t border-line px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] transition-transform duration-300 ${shown ? "translate-y-0" : "translate-y-full"}`}
     >
       {studio ? (
         <a

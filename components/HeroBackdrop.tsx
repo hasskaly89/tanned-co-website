@@ -17,7 +17,7 @@ const OPTION_A = {
 const OPTION_B = {
   src: `${IMG}/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg`,
   alt: "The Tanned Co. Caringbah shopfront with its neon Here we glow sign",
-  position: "50% 38%",
+  position: "62% 22%",
 };
 
 /**
