@@ -62,6 +62,7 @@ export default function About() {
     <div className="min-h-screen bg-cream text-ink font-sans">
       <JsonLd data={breadcrumbSchema([{ name: "About", path: "/about" }])} />
       <Navbar activePath="/about" />
+      <main id="main" tabIndex={-1} className="outline-none">
 
       <PageHero
         eyebrow="Who we are"
@@ -186,6 +187,8 @@ export default function About() {
       </section>
 
       <CtaBand source="about_cta" title="Ready when you are." text={`Book online in under a minute. ${DEVELOP_LINE}`} />
+
+      </main>
 
       <Footer />
     </div>

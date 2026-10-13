@@ -39,6 +39,7 @@ export default function FranchisePage() {
     <div className="min-h-screen bg-cream text-ink font-sans">
       <JsonLd data={breadcrumbSchema([{ name: "Franchise", path: "/franchise" }])} />
       <Navbar activePath="/franchise" />
+      <main id="main" tabIndex={-1} className="outline-none">
 
       <header className="max-w-6xl mx-auto px-6 pt-32 pb-14 md:pt-40 md:pb-20 grid md:grid-cols-[1.15fr_1fr] gap-12 md:gap-16 items-center">
         <div>
@@ -92,6 +93,8 @@ export default function FranchisePage() {
           <FranchiseForm />
         </div>
       </section>
+
+      </main>
 
       <Footer />
     </div>

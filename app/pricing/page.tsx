@@ -39,6 +39,7 @@ export default function Pricing() {
     <div className="min-h-screen bg-cream text-ink font-sans">
       <JsonLd data={[breadcrumbSchema([{ name: "Pricing", path: "/pricing" }]), serviceSchema(["casual", "tenPack", "glowClub"]), faqSchema(pricingFaqs)]} />
       <Navbar activePath="/pricing" />
+      <main id="main" tabIndex={-1} className="outline-none">
 
       <PageHero
         eyebrow="Transparent and simple"
@@ -76,6 +77,8 @@ export default function Pricing() {
       </section>
 
       <CtaBand source="pricing_cta" title="Book your first tan." />
+
+      </main>
 
       <Footer />
     </div>

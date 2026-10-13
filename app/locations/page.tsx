@@ -36,6 +36,7 @@ export default function LocationsPage() {
     <div className="min-h-screen bg-cream text-ink font-sans">
       <JsonLd data={[breadcrumbSchema([{ name: "Locations", path: "/locations" }]), studioListSchema()]} />
       <Navbar activePath="/locations" />
+      <main id="main" tabIndex={-1} className="outline-none">
 
       <PageHero
         eyebrow="Sydney. 5 studios."
@@ -114,6 +115,8 @@ export default function LocationsPage() {
         />
         <Link href="/faq" className="btn btn-outline-light">Read the prep guide</Link>
       </CtaBand>
+
+      </main>
 
       <Footer />
     </div>

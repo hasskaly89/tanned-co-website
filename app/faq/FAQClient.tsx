@@ -15,6 +15,7 @@ export default function FAQClient() {
   return (
     <div className="min-h-screen bg-cream text-ink font-sans">
       <Navbar activePath="/faq" />
+      <main id="main" tabIndex={-1} className="outline-none">
 
       <PageHero
         eyebrow="Got questions?"
@@ -75,6 +76,8 @@ export default function FAQClient() {
         <Link href="/contact" className="btn btn-light">Get in touch</Link>
         <Link href="/book-now" className="btn btn-outline-light">{PRICE_TEXT.bookTan}</Link>
       </CtaBand>
+
+      </main>
 
       <Footer />
     </div>

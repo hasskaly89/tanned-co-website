@@ -72,6 +72,7 @@ export default function ContactClient() {
   return (
     <div className="min-h-screen bg-cream text-ink font-sans">
       <Navbar activePath="/contact" />
+      <main id="main" tabIndex={-1} className="outline-none">
 
       <PageHero
         eyebrow="Questions? Ask away."
@@ -252,6 +253,8 @@ export default function ContactClient() {
           </div>
         </div>
       </section>
+
+      </main>
 
       <Footer />
     </div>

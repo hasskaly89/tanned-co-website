@@ -26,6 +26,7 @@ export default function BookNow() {
     <div className="min-h-screen bg-cream text-ink font-sans">
       <JsonLd data={[breadcrumbSchema([{ name: "Book now", path: "/book-now" }]), serviceSchema(["casual", "tenPack", "glowClub"])]} />
       <Navbar activePath="/book-now" />
+      <main id="main" tabIndex={-1} className="outline-none">
 
       {/* COMPACT HEADER: booking starts straight after it */}
       <header className="pt-[68px] bg-cream">
@@ -87,6 +88,8 @@ export default function BookNow() {
           </p>
         </div>
       </section>
+
+      </main>
 
       <Footer />
     </div>

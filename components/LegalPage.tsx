@@ -19,7 +19,8 @@ export default function LegalPage({
   return (
     <div className="min-h-screen bg-cream text-ink font-sans">
       <Navbar activePath={activePath} />
-      <main className="max-w-3xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28">
+      <main id="main" tabIndex={-1} className="outline-none">
+      <div className="max-w-3xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28">
         {LEGAL_DRAFT && (
           <p className="mb-8 rounded-xl border border-line bg-white px-4 py-3 text-sm text-body">
             This page is being finalised. If you have a question about it, email hello@tannedco.com.au.
@@ -30,6 +31,7 @@ export default function LegalPage({
         <div className="space-y-10 text-body leading-relaxed [&_h2]:font-display [&_h2]:font-medium [&_h2]:uppercase [&_h2]:tracking-[0.07em] [&_h2]:text-xl [&_h2]:text-ink [&_h2]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1.5 [&_p]:mb-3 [&_a]:text-link">
           {children}
         </div>
+      </div>
       </main>
       <Footer />
     </div>

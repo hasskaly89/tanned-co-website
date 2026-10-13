@@ -47,6 +47,7 @@ export default function Home() {
     <div className="min-h-screen bg-cream text-ink font-sans">
       <HomeSchema />
       <Navbar activePath="/" />
+      <main id="main" tabIndex={-1} className="outline-none">
 
       {/* HERO: one headline, one line, one button. Text sits in the bottom third on a dark gradient. */}
       {/* Fills the screen: below the top strips (--top-h) and, on phones, above the sticky Book bar.
@@ -260,6 +261,8 @@ export default function Home() {
           </ul>
         </div>
       </section>
+
+      </main>
 
       <Footer />
     </div>

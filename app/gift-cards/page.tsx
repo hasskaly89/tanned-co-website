@@ -21,8 +21,9 @@ export default function GiftCardsPage() {
     <div className="min-h-screen bg-cream text-ink font-sans">
       <JsonLd data={breadcrumbSchema([{ name: "Gift cards", path: "/gift-cards" }])} />
       <Navbar activePath="/gift-cards" />
+      <main id="main" tabIndex={-1} className="outline-none">
 
-      <main className="max-w-6xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28 grid md:grid-cols-[1.15fr_1fr] gap-12 md:gap-16 items-center">
+      <div className="max-w-6xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28 grid md:grid-cols-[1.15fr_1fr] gap-12 md:gap-16 items-center">
         <div>
           <p className="eyebrow mb-4">Gift cards</p>
           <h1 className="display-xl">Gift a tan.</h1>
@@ -53,6 +54,8 @@ export default function GiftCardsPage() {
             className="object-cover"
           />
         </div>
+      </div>
+
       </main>
 
       <Footer />

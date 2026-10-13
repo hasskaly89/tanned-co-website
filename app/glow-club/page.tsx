@@ -76,6 +76,7 @@ export default function GlowClub() {
     <div className="min-h-screen bg-cream text-ink font-sans">
       <JsonLd data={[breadcrumbSchema([{ name: "Glow Club", path: "/glow-club" }]), serviceSchema(["glowClub"]), faqSchema(glowClubFaqs)]} />
       <Navbar activePath="/glow-club" />
+      <main id="main" tabIndex={-1} className="outline-none">
 
       <PageHero
         eyebrow="Founding memberships now open"
@@ -157,6 +158,8 @@ export default function GlowClub() {
       >
         <JoinButton source="glow_club_page_cta" className="btn btn-light" />
       </CtaBand>
+
+      </main>
 
       <Footer />
     </div>

@@ -131,6 +131,7 @@ export default function HowItWorks() {
     <div className="min-h-screen bg-cream text-ink font-sans">
       <JsonLd data={breadcrumbSchema([{ name: "How it works", path: "/how-it-works" }])} />
       <Navbar activePath="/how-it-works" />
+      <main id="main" tabIndex={-1} className="outline-none">
 
       <PageHero
         eyebrow="Step by step"
@@ -252,6 +253,8 @@ export default function HowItWorks() {
       </section>
 
       <CtaBand source="how_it_works_cta" title="Ready to book?" text={`Book online in under a minute. ${DEVELOP_LINE}`} />
+
+      </main>
 
       <Footer />
     </div>

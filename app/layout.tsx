@@ -116,6 +116,12 @@ export default function RootLayout({
         </>
       )}
       <body className="min-h-full flex flex-col pt-[var(--top-h)] pb-[calc(var(--cta-h)+env(safe-area-inset-bottom,0px))] md:pb-0">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-5 focus:py-3 btn btn-dark"
+        >
+          Skip to content
+        </a>
         <AnnouncementBar />
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <PageViewTracker />

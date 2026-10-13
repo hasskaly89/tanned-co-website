@@ -90,6 +90,7 @@ export default async function LocationPage({
     <div className="min-h-screen bg-cream text-ink font-sans">
       <JsonLd data={[studioSchema(loc), breadcrumbSchema([{ name: "Locations", path: "/locations" }, { name: loc.shortName, path: `/locations/${loc.slug}` }]), serviceSchema(["casual", "tenPack", "glowClub"], loc)]} />
       <Navbar activePath={`/locations/${slug}`} />
+      <main id="main" tabIndex={-1} className="outline-none">
 
       <PageHero
         tall
@@ -318,6 +319,8 @@ export default async function LocationPage({
           </div>
         </div>
       </section>
+
+      </main>
 
       <Footer />
     </div>
