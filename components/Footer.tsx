@@ -1,4 +1,4 @@
-import { CONTACT, LEGAL_ENTITY, SOCIAL_LINKS, SUPPORT_HOURS_LINE } from "@/lib/site";
+import { APP_LINKS, CONTACT, LEGAL_ENTITY, SOCIAL_LINKS, SUPPORT_HOURS_LINE } from "@/lib/site";
 import Link from "next/link";
 import Image from "next/image";
 import { LOCATIONS } from "@/lib/locations";
@@ -93,7 +93,7 @@ export default function Footer() {
             </ul>
             <div className="flex flex-wrap gap-2.5">
               <a
-                href="https://apps.apple.com/au/app/tannedco/id1659547172"
+                href={APP_LINKS.appStore}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Download on the App Store"
@@ -103,7 +103,7 @@ export default function Footer() {
                 <span className="text-sm font-medium">App Store</span>
               </a>
               <a
-                href="https://play.google.com/store/apps/details?id=com.treshna.memberportal.tannedco"
+                href={APP_LINKS.googlePlay}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Get it on Google Play"
