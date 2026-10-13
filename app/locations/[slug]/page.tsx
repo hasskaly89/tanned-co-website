@@ -226,6 +226,20 @@ export default async function LocationPage({
               </div>
             </div>
           </div>
+
+          {/* Studio-specific copy, only when the owner has supplied some (lib/locations.ts about). */}
+          {loc.about && loc.about.length > 0 && (
+            <div className="mt-14 md:mt-20 max-w-3xl">
+              <h2 className="display-lg">{`About the ${loc.shortName} studio.`}</h2>
+              <div className="mt-6 space-y-4">
+                {loc.about.map((para) => (
+                  <p key={para} className="text-body text-lg leading-relaxed">
+                    {para}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

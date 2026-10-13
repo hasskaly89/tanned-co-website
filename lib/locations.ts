@@ -31,6 +31,8 @@ export interface LocationData {
   phone: string;
   nearbySuburbs: string[];
   parkingNote: string;
+  /** Optional studio-specific paragraphs for its page ("About the {shortName} studio."). Empty until the owner supplies copy; hidden when empty. */
+  about?: string[];
   placeId?: string;
   mapEmbed?: string;
   bookingUrls?: BookingUrls;
@@ -65,6 +67,7 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Cronulla", "Miranda", "Gymea", "Sutherland", "Taren Point", "Woolooware"],
     parkingNote: "Street parking available on Kingsway. Easy access from Caringbah train station.",
+    about: [],
     placeId: "ChIJyws_3_7HEmuFKYC-9ykPuw",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.8923!2d151.1217383!3d-34.0409989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12c7fedf3f0bcb%3A0xbb0f29f7be802985!2sTanned%20Co%20Caringbah!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
@@ -91,6 +94,7 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Wetherill Park", "Bossley Park", "Prairiewood", "Greenfield Park", "St Johns Park"],
     parkingNote: "Free parking available in the shopping complex car park.",
+    about: [],
     placeId: "ChIJEYBmsIqXEmtX8pY2qy_0Bw",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.5167046702772!2d150.87214544797754!3d-33.876344150603344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12978ab0668011%3A0x7f42fab3696f257!2sTanned%20Co%20Edensor%20Park!5e0!3m2!1sen!2sus!4v1775535255079!5m2!1sen!2sus",
     bookingUrls: {
@@ -118,6 +122,7 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Blacktown", "Quakers Hill", "Marayong", "Seven Hills", "Pendle Hill"],
     parkingNote: "Free on-site parking. Located in a small retail complex on Garling Rd.",
+    about: [],
     placeId: "ChIJS2Ya_2eZEmu_T9577IDgBg",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.8764!2d150.9154175!3d-33.7453629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b129967ff1a664b%3A0x6e080ec7bde4fbf!2sTanned%20Co%20Kings%20Park!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
@@ -145,6 +150,7 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Camden", "Narellan", "Mount Annan", "Oran Park", "Gregory Hills"],
     parkingNote: "Ample free parking in the Anderson Rd complex.",
+    about: [],
     placeId: "ChIJq75oaQrxEmulgNUgcVqJJA",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.6219!2d150.7607107!3d-34.0339258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12f10a6968beab%3A0x24895a7120d580a5!2sTanned%20Co%20Smeaton%20Grange!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
@@ -171,6 +177,7 @@ export const LOCATIONS: LocationData[] = [
     phone: "1300 826 633",
     nearbySuburbs: ["Paddington", "Double Bay", "Bondi Junction", "Edgecliff", "Rose Bay"],
     parkingNote: "Street parking on Oxford St and nearby side streets. Close to Edgecliff station.",
+    about: [],
     placeId: "ChIJPxc9zA6vEmv_K_H11VQCPQ",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.7154!2d151.232489!3d-33.8886925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12af0ecc3d173f%3A0x3d0254d5f5f12bff!2sTanned%20Co%20Woollahra!5e0!3m2!1sen!2sus!4v1744000000000!5m2!1sen!2sus",
     bookingUrls: {
