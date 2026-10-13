@@ -45,7 +45,10 @@ export default function HeroBackdrop() {
           src={img.src}
           alt={img.alt}
           fill
-          priority
+          // Next 16: priority is deprecated; the docs recommend eager loading with
+          // fetchPriority="high" for the LCP hero (not combined with preload).
+          loading="eager"
+          fetchPriority="high"
           sizes="100vw"
           className="object-cover"
           style={{ objectPosition: img.position }}

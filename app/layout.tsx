@@ -82,7 +82,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-AU"
       // Lets Next.js switch smooth scrolling off during page changes, so new pages open at the top
       // while in-page anchor links still scroll smoothly (globals.css sets scroll-behavior: smooth).
       data-scroll-behavior="smooth"

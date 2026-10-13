@@ -129,7 +129,7 @@ export const GIFT_CARDS = {
 } as const;
 
 export const APP_LINKS = {
-  appStore: "https://apps.apple.com/au/app/tannedco/id1659547172",
+  appStore: "https://apps.apple.com/au/app/tanned-co/id1659547172",
   googlePlay: "https://play.google.com/store/apps/details?id=com.treshna.memberportal.tannedco",
 } as const;
 

@@ -34,6 +34,7 @@ export default function Navbar({ activePath = "/" }: { activePath?: string }) {
             width={1438}
             height={200}
             priority
+            sizes="150px"
             className="h-[18px] md:h-5 w-auto"
           />
         </Link>
