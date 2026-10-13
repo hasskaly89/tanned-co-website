@@ -5,7 +5,7 @@ import { GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, formatAud } from "@/lib/pricing";
 const PER_MONTH = `${GLOW_CLUB.tansPerMonth} spray tans a month for ${formatAud(GLOW_CLUB.monthly)}, under ${formatAud(GLOW_CLUB_PER_TAN_UNDER)} a tan`;
 
 const OG_IMAGE =
-  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg";
+  "/images/two-women-white-swimwear.jpg";
 
 export const metadata: Metadata = {
   title: "Glow Club Membership",

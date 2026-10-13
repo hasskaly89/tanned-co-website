@@ -19,7 +19,7 @@ import SupportBlock from "@/components/SupportBlock";
 import LatestGoogleReview from "@/components/LatestGoogleReview";
 
 const IMGS = {
-  about: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg",
+  about: "/images/tan-close-up-torso.jpg",
 };
 
 const whyPoints = [

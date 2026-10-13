@@ -13,7 +13,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
 const OG_IMAGE =
-  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg";
+  "/images/tan-close-up-torso.jpg";
 
 export const metadata: Metadata = {
   title: { absolute: "About Tanned Co. | Sydney's First Automated Spray Tan Studio" },
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 const IMGS = {
   story: "/founder.jpg",
-  booth: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg",
+  booth: "/images/studio-door-side-view.jpg",
 };
 
 const stats = [
@@ -67,7 +67,7 @@ export default function About() {
         eyebrow="Who we are"
         title="Our story."
         intro="Private, automated spray tanning. No awkward small talk, no paper undies."
-        image="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c9ff8e92-b68d-4078-8398-61dd12ded903/DSCF3278.jpg"
+        image="/images/tan-close-up-torso.jpg"
         imageAlt="Tanned Co. studio"
       />
 

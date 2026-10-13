@@ -77,7 +77,7 @@ export default function ContactClient() {
         eyebrow="Questions? Ask away."
         title="Contact us."
         intro="Got a question, franchise enquiry, or just want to say hi? Drop us a message."
-        image="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg"
+        image="/images/caringbah-shopfront.jpg"
         imageAlt="Tanned Co. studio"
       />
 

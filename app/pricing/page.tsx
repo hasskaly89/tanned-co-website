@@ -44,7 +44,7 @@ export default function Pricing() {
         eyebrow="Transparent and simple"
         title="What it costs."
         intro="Upfront prices, no upsells."
-        image="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg"
+        image="/images/two-women-white-swimwear.jpg"
         imageAlt="A Tanned Co. spray tan result"
       />
 

@@ -9,8 +9,6 @@ import { CONTACT, LEGAL_ENTITY, SOCIAL_LINKS } from "@/lib/site";
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 const LOGO = `${SITE_URL}/logo_transparent.png`;
-const DEFAULT_IMAGE =
-  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg";
 
 export const studioId = (loc: LocationData) => `${SITE_URL}/locations/${loc.slug}#studio`;
 
@@ -61,7 +59,7 @@ export function studioSchema(loc: LocationData, withContext = true) {
     "@id": studioId(loc),
     name: loc.fullName,
     url: `${SITE_URL}/locations/${loc.slug}`,
-    image: loc.storefrontImage ?? loc.heroImage ?? DEFAULT_IMAGE,
+    image: `${SITE_URL}${loc.storefrontImage ?? loc.heroImage}`,
     logo: LOGO,
     telephone: phoneToE164(loc.phone),
     email: CONTACT.email,

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/locations";
 
 const OG_IMAGE =
-  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/2b8046e0-e9f5-424e-9f55-58d06dc9689f/DSCF3275.jpg";
+  "/images/tan-close-up-legs.jpg";
 
 export const metadata: Metadata = {
   title: "FAQs",

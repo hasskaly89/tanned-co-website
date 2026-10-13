@@ -23,11 +23,10 @@ export const metadata: Metadata = {
  * franchise lawyer sign-off before they appear anywhere).
  */
 
-const IMG = "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946";
 
 // Existing site photography only. No swimwear or body shots on this page.
 const studioPhotos = [
-  { src: `${IMG}/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg`, alt: "The Tanned Co. Caringbah shopfront" },
+  { src: "/images/caringbah-shopfront.jpg", alt: "The Tanned Co. Caringbah shopfront" },
   { src: "/locations-hero.jpg", alt: "Inside a Tanned Co. studio: the lit Tanned Co. sign and waiting area" },
 ];
 

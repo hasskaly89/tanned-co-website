@@ -4,18 +4,17 @@ import { useSyncExternalStore } from "react";
 import Image from "next/image";
 import { IS_PREVIEW } from "@/lib/preview";
 
-const IMG = "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946";
 
 /** Option A (default): the group photo. */
 const OPTION_A = {
-  src: `${IMG}/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg`,
+  src: "/images/hero-group-five-white.jpg",
   alt: "Five women with even spray tans at a Tanned Co. studio",
   position: "50% 0%",
 };
 
 /** Option B (design preview only, ?hero=b): an existing photo with no bodies, the Caringbah shopfront. */
 const OPTION_B = {
-  src: `${IMG}/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg`,
+  src: "/images/caringbah-shopfront.jpg",
   alt: "The Tanned Co. Caringbah shopfront with its neon Here we glow sign",
   position: "62% 22%",
 };

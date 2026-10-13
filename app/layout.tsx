@@ -29,7 +29,7 @@ const displayFont = Jost({
 });
 
 const OG_IMAGE =
-  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/b1474ec4-23ae-4f11-9e38-66d88c73ace9/DSCF3371.jpg";
+  `${SITE_URL}/images/hero-group-five-white.jpg`;
 
 // Analytics only load on production builds that are not Vercel preview deployments,
 // so local runs and partner previews don't pollute GA. Same VERCEL_ENV=preview check

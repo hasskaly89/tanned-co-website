@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/locations";
 
 const OG_IMAGE =
-  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6ca1781a-e596-4b4b-ba4b-125cf568e0b8/DSCF2180.jpg";
+  "/images/caringbah-shopfront.jpg";
 
 export const metadata: Metadata = {
   title: "Contact & Locations",

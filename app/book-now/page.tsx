@@ -10,7 +10,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 const HEADER_IMAGE =
-  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg";
+  "/images/two-women-white-swimwear.jpg";
 
 const bookingSteps = ["Choose a studio", "Pick a time", "Check in with the app"];
 

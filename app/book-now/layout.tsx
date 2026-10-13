@@ -3,7 +3,7 @@ import { SITE_URL } from "@/lib/locations";
 import { CASUAL, formatAud } from "@/lib/pricing";
 
 const OG_IMAGE =
-  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg";
+  "/images/two-women-white-swimwear.jpg";
 
 export const metadata: Metadata = {
   title: "Book Your Tan",

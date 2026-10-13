@@ -11,7 +11,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
 const OG_IMAGE =
-  "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/fa36c942-482e-468e-b580-694d88148ed1/DSCF2508.jpg";
+  "/images/studio-door-side-view.jpg";
 
 export const metadata: Metadata = {
   title: { absolute: "How Automated Spray Tanning Works | Tanned Co." },
@@ -70,25 +70,25 @@ const prepTips = [
     step: "01",
     title: "Undress and remove jewellery",
     desc: "Get undressed and remove any jewellery.",
-    img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/66cba3e8-b0f9-4756-859a-70bf1be4aa45/DSCF2443.jpg",
+    img: "/images/prep-hair-net-dispenser.jpg",
   },
   {
     step: "02",
     title: "Put on a hair net",
     desc: "Put on a hair net and leave your hairline and ears exposed for even coverage.",
-    img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/96d6e447-3940-40dd-9241-c884ba173900/DSCF2437.jpg",
+    img: "/images/prep-sticky-feet-shelf.jpg",
   },
   {
     step: "03",
     title: "Apply barrier cream",
     desc: "Apply barrier cream to your palms, back of hands and feet including nails to prevent over-absorption.",
-    img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/90818258-d4ad-4495-8609-69069d53a69c/DSCF2505.jpg",
+    img: "/images/studio-door-back-view.jpg",
   },
   {
     step: "04",
     title: "Apply sticky feet",
     desc: "Apply sticky feet to the bottom of your feet to keep them clean during your session.",
-    img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/f38ee636-add7-48ad-a970-c4e1438e0971/DSCF2447.jpg",
+    img: "/images/prep-opening-pack.jpg",
   },
 ];
 
@@ -160,7 +160,7 @@ export default function HowItWorks() {
       {/* FULL-WIDTH PHOTO */}
       <div className="relative h-[380px] md:h-[520px] overflow-hidden bg-espresso">
         <Image
-          src="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/f7fcbfad-4a79-4e5e-b6e1-0ea0acdc15e1/DSCF3643.jpg"
+          src="/images/group-five-blue-swimwear.jpg"
           alt="Inside a Tanned Co. tanning booth"
           fill
           sizes="100vw"

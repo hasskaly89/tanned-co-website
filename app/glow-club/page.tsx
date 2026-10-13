@@ -81,7 +81,7 @@ export default function GlowClub() {
         eyebrow="Founding memberships now open"
         title="Glow Club."
         intro={`${GLOW_CLUB.tansPerMonth} tans a month. ${formatAud(GLOW_CLUB.monthly)}. Under ${formatAud(GLOW_CLUB_PER_TAN_UNDER)} a tan, with founding member perks.`}
-        image="https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/68dfbc5a-7570-4655-8931-499fc2d58a0b/DSCF3334-HIGHRES-2.jpg"
+        image="/images/two-women-white-swimwear.jpg"
         imageAlt="A Tanned Co. Glow Club member"
       >
         <JoinButton source="glow_club_hero" className="btn btn-light" />

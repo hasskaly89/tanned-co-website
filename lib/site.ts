@@ -58,7 +58,7 @@ export const BOOTH_VIDEO: { src: string; poster: string; posterAlt: string; capt
   src: "",
   // Existing site photo (DSCF2505): a client stepping into a private tan room.
   poster:
-    "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/90818258-d4ad-4495-8609-69069d53a69c/DSCF2505.jpg",
+    "/images/studio-door-back-view.jpg",
   posterAlt: "A client stepping into a private Tanned Co. tan room",
   caption: "A short walkthrough of a first visit, from the front door to the booth, so you know what to expect.",
 };
