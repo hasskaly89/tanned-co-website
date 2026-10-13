@@ -62,7 +62,7 @@ export default function BookNow() {
       </header>
 
       {/* BOOKING: studio, casual tan, then other options */}
-      <section className="py-14 md:py-20 bg-sand">
+      <section id="choose-studio" className="py-14 md:py-20 bg-sand scroll-mt-[calc(var(--top-h)+68px)]">
         <div className="max-w-6xl mx-auto px-6">
           <BookingPicker />
         </div>

@@ -25,6 +25,15 @@ export default function MobileCTA() {
         >
           Book {studio.shortName}
         </a>
+      ) : pathname === "/book-now" ? (
+        // Already on Book now: jump to the studio picker instead of reloading the page.
+        <a
+          href="#choose-studio"
+          onClick={() => trackEvent("book_now_click", { source: "mobile_sticky_cta", target: "choose_studio" })}
+          className="btn btn-dark w-full !py-4"
+        >
+          {PRICE_TEXT.bookTan}
+        </a>
       ) : (
         <Link
           href="/book-now"
