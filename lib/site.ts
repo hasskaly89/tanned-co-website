@@ -135,11 +135,9 @@ export const APP_LINKS = {
 
 /**
  * Show the "First visit? 10% off your first tan" link in the home hero.
- * Off for now (Marketing: keep the hero to one action). The offer is still
- * reachable from the pricing section and the closing band on the home page,
- * and from the offer form on every studio page. Set to true to restore it.
+ * On again (item 13, approved by Hass 13 Oct 2026). Set to false to hide it.
  */
-export const HERO_OFFER_LINK = false;
+export const HERO_OFFER_LINK = true;
 
 /**
  * Slim announcement strip at the top of every page. Change `id` whenever the

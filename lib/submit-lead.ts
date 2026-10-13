@@ -11,6 +11,8 @@ export type LeadResult =
 /**
  * Posts a first-timer offer claim. `submissionId` must stay the same across
  * retries of one form so the server and downstream systems can drop duplicates.
+ * `analytics` adds extra (non-personal) params to the generate_lead event only;
+ * it is not sent to the API.
  */
 export async function submitClaim(input: {
   submissionId: string;
@@ -22,7 +24,7 @@ export async function submitClaim(input: {
   marketingConsent: boolean;
   website: string; // honeypot
   form: string; // analytics label, e.g. "location_claim"
-}): Promise<LeadResult> {
+}, analytics: Record<string, string> = {}): Promise<LeadResult> {
   try {
     const res = await fetch("/api/claim", {
       method: "POST",
@@ -36,7 +38,7 @@ export async function submitClaim(input: {
     const data = await res.json().catch(() => ({}));
     if (!res.ok) return { ok: false, error: data.error ?? "Something went wrong. Please try again." };
     // No personal information goes to analytics.
-    trackEvent("generate_lead", { form: input.form, location: input.location, marketing_consent: input.marketingConsent });
+    trackEvent("generate_lead", { form: input.form, location: input.location, marketing_consent: input.marketingConsent, ...analytics });
     return { ok: true, crm: data.crm === true };
   } catch {
     return { ok: false, error: "We couldn't reach our server. Check your connection and try again." };
