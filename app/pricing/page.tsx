@@ -9,7 +9,7 @@ import FaqAccordion from "@/components/FaqAccordion";
 import CtaBand from "@/components/CtaBand";
 import { GLOW_CLUB, PRICE_TEXT } from "@/lib/pricing";
 import JsonLd from "@/components/JsonLd";
-import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 const pricingFaqs = [
   {
@@ -37,7 +37,7 @@ const pricingFaqs = [
 export default function Pricing() {
   return (
     <div className="min-h-screen bg-cream text-ink font-sans">
-      <JsonLd data={[breadcrumbSchema([{ name: "Pricing", path: "/pricing" }]), serviceSchema(["casual", "tenPack", "glowClub"]), faqSchema(pricingFaqs)]} />
+      <JsonLd data={[breadcrumbSchema([{ name: "Pricing", path: "/pricing" }]), serviceSchema(["casual", "tenPack", "glowClub"])]} />
       <Navbar activePath="/pricing" />
       <main id="main" tabIndex={-1} className="outline-none">
 

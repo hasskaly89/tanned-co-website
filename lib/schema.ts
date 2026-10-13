@@ -5,6 +5,7 @@
 import { LOCATIONS, SCHEMA_OPENING_HOURS, SITE_URL, phoneToE164, bookingUrlFor, GLOW_CLUB_SIGNUP_URL, type LocationData } from "@/lib/locations";
 import { CASUAL, GLOW_CLUB, TEN_PACK } from "@/lib/pricing";
 import { CONTACT, LEGAL_ENTITY, SOCIAL_LINKS } from "@/lib/site";
+import { categories as FAQ_CATEGORIES } from "@/app/faq/faq-data";
 
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -140,6 +141,22 @@ export function faqSchema(items: { q: string; a: string }[]) {
     "@type": "FAQPage",
     mainEntity: items.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
   };
+}
+
+// Each question goes in FAQPage markup on one page only. /faq carries the full list;
+// other pages mark up only questions that are not on /faq. /pricing marks up none
+// (its questions are either on /faq or on /glow-club). Visible accordions are unchanged.
+const FAQ_PAGE_QUESTIONS = new Set(FAQ_CATEGORIES.flatMap((c) => c.faqs.map((f) => f.q.trim().toLowerCase())));
+
+/** FAQPage for the /faq page: every question. */
+export function faqPageSchema() {
+  return faqSchema(FAQ_CATEGORIES.flatMap((c) => c.faqs));
+}
+
+/** FAQPage for another page: only questions not already marked up on /faq. Null when none are left. */
+export function extraFaqSchema(items: { q: string; a: string }[]) {
+  const extra = items.filter((f) => !FAQ_PAGE_QUESTIONS.has(f.q.trim().toLowerCase()));
+  return extra.length ? faqSchema(extra) : null;
 }
 
 /** BreadcrumbList for an inner page. Pass the trail after Home. */

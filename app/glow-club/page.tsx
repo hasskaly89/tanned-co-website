@@ -13,7 +13,7 @@ import { GLOW_CLUB_SIGNUP_URL } from "@/lib/locations";
 import { CheckIcon } from "@/components/Icons";
 import { CASUAL, GLOW_CLUB, GLOW_CLUB_PER_TAN_UNDER, PRICE_TEXT, formatAud } from "@/lib/pricing";
 import JsonLd from "@/components/JsonLd";
-import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, extraFaqSchema, serviceSchema } from "@/lib/schema";
 
 // Perks match the GymMaster Glow Club page (Hass, 11 Oct 2026 go-live): Glow Key,
 // birthday tan, member-only perks and limited founding member spots. Website-only
@@ -74,7 +74,7 @@ function JoinButton({ source, className }: { source: string; className: string }
 export default function GlowClub() {
   return (
     <div className="min-h-screen bg-cream text-ink font-sans">
-      <JsonLd data={[breadcrumbSchema([{ name: "Glow Club", path: "/glow-club" }]), serviceSchema(["glowClub"]), faqSchema(glowClubFaqs)]} />
+      <JsonLd data={[breadcrumbSchema([{ name: "Glow Club", path: "/glow-club" }]), serviceSchema(["glowClub"]), extraFaqSchema(glowClubFaqs)].filter((d) => d !== null)} />
       <Navbar activePath="/glow-club" />
       <main id="main" tabIndex={-1} className="outline-none">
 
