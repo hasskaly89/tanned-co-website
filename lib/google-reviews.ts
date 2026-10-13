@@ -24,6 +24,18 @@ const API_BASE = process.env.GOOGLE_PLACES_API_BASE ?? "https://places.googleapi
 const FIELDS = ["places.id", "places.displayName", "places.rating", "places.userRatingCount", "places.reviews", "places.googleMapsUri"].join(",");
 const DAY = 86400;
 
+// The key is deliberately not set for now. With no key every lookup returns null
+// quietly (the /api/google-reviews route then answers { available: false } and the
+// Google block stays hidden). Real API failures are logged once per studio and
+// status per server instance, not on every request.
+const logged = new Set<string>();
+function logOnce(key: string, msg: string, err?: unknown) {
+  if (logged.has(key)) return;
+  logged.add(key);
+  if (err === undefined) console.error(msg);
+  else console.error(msg, err);
+}
+
 type ApiReview = {
   rating?: number;
   text?: { text?: string };
@@ -43,7 +55,7 @@ type ApiPlace = {
 /** Finds the studio on Google by name and address, then returns its rating and latest reviews. */
 export async function getPlaceReviews(loc: LocationData): Promise<PlaceReviews | null> {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
-  if (!apiKey) return null;
+  if (!apiKey) return null; // unavailable: no key configured, nothing logged
 
   try {
     const res = await fetch(`${API_BASE}/v1/places:searchText`, {
@@ -58,7 +70,7 @@ export async function getPlaceReviews(loc: LocationData): Promise<PlaceReviews |
       next: { revalidate: DAY },
     });
     if (!res.ok) {
-      console.error(`Google Places ${loc.shortName}: ${res.status} ${await res.text().catch(() => "")}`.slice(0, 300));
+      logOnce(`${loc.slug}:${res.status}`, `Google Places ${loc.shortName}: ${res.status} ${await res.text().catch(() => "")}`.slice(0, 300));
       return null;
     }
     const data = (await res.json()) as { places?: ApiPlace[] };
@@ -82,7 +94,7 @@ export async function getPlaceReviews(loc: LocationData): Promise<PlaceReviews |
         .filter((r) => r.text.length > 20),
     };
   } catch (err) {
-    console.error(`Google Places ${loc.shortName} failed:`, err);
+    logOnce(`${loc.slug}:error`, `Google Places ${loc.shortName} failed:`, err);
     return null;
   }
 }
