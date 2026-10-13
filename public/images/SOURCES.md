@@ -21,3 +21,15 @@ Full-resolution originals (JPEG and PNG, not the WebP copies Squarespace serves 
 | app-steps-check-in.png | 6d1c8f20-ab3e-4eae-adf5-62c594a286df/3.png | app/how-it-works/page.tsx |
 
 Note on the three `app-steps-*.png` graphics: they are old Squarespace artwork with the old serif font and baked-in text, including "ensure a flawless and safe experience" and "Select 'Join Club'". That wording was removed from the site copy in the audit, but it is still visible inside these images on How it works. The owner should decide whether to re-make them.
+
+## public/images/app/ (added 13 October 2026)
+
+Phone screens cropped out of the three old `app-steps-*.png` graphics (2024 screenshots of the Tanned Co. app in a phone frame, white background). Interim images for the rebuilt "Book online, unlock with the app" cards on How it works; the owner will supply fresh screenshots later, so keep the same file names when replacing them.
+
+| File | Shows | Cropped from |
+|---|---|---|
+| app-login.png | Login screen (email, password, Join Club) | app-steps-sign-up.png |
+| app-home-book.png | Home screen with My Upcoming Bookings and the Book a Tanning Session button | app-steps-check-in.png (left phone) |
+| app-check-in.png | Check In screen, "Scanning for door reader" | app-steps-check-in.png (right phone) |
+
+The old `app-steps-book-session.png` is not reused anywhere: its screenshot lists sessions at $29.95, which is an old price.
