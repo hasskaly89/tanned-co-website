@@ -31,7 +31,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const loc = LOCATIONS.find((l) => l.slug === slug);
-  if (!loc) return {};
+  if (!loc) return { title: "Page not found", robots: { index: false } };
 
   const title = `Spray Tan ${loc.shortName}, Sydney`;
   const description = `Automated spray tan studio in ${loc.suburb}, ${loc.address}. Private rooms, open 7 days, 6am to midnight. Casual tans ${formatAud(CASUAL.price)}.`;
