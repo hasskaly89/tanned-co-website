@@ -59,10 +59,28 @@ const steps = [
   },
 ];
 
-const appScreens = [
-  { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6933d56e-70e2-44c5-8fbe-dde2aac05421/1.png", label: "Booking in the Tanned Co. app, step 1" },
-  { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/c3e14383-d601-4ac6-b8b2-02393874f08a/2.png", label: "Booking in the Tanned Co. app, step 2" },
-  { img: "https://images.squarespace-cdn.com/content/v1/65cec61119c06337bea7a946/6d1c8f20-ab3e-4eae-adf5-62c594a286df/3.png", label: "Booking in the Tanned Co. app, step 3" },
+// App step cards: copy word for word from the post-launch brief (13 Oct 2026).
+// Phone screens are interim crops (public/images/app/, see SOURCES.md); keep the file
+// names when the owner supplies fresh screenshots.
+const appSteps = [
+  {
+    step: "Step 01",
+    title: "Sign up.",
+    body: "Download the Tanned Co. app, create your account and choose your studio.",
+    img: { src: "/images/app/app-login.png", width: 760, height: 1520, alt: "The Tanned Co. app login screen" },
+  },
+  {
+    step: "Step 02",
+    title: "Book your session.",
+    body: "Pick a studio, date and time, and pay in the app. Casual tans have no commitment.",
+    img: { src: "/images/app/app-home-book.png", width: 760, height: 1520, alt: "The Tanned Co. app home screen with the Book a Tanning Session button" },
+  },
+  {
+    step: "Step 03",
+    title: "Arrive and check in.",
+    body: "5 minutes before your booking, tap Check In at the Bluetooth reader to open the studio. At your start time, tap again to open your room.",
+    img: { src: "/images/app/app-check-in.png", width: 600, height: 1200, alt: "The Tanned Co. app Check In screen scanning for the door reader" },
+  },
 ];
 
 const prepTips = [
@@ -227,10 +245,24 @@ export default function HowItWorks() {
             title="Book online, unlock with the app."
             intro={`${APP_ACCESS_TEXT} You can also book and manage sessions in the app, then check in with it when you arrive.`}
           />
-          <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {appScreens.map(({ img, label }) => (
-              <div key={label} className="relative aspect-[3/4] rounded-3xl overflow-hidden border border-line bg-white">
-                <Image src={img} alt={label} fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover" />
+          <div className="grid sm:grid-cols-3 sm:grid-rows-[auto_340px] md:grid-rows-[auto_360px] gap-x-6 gap-y-6 sm:gap-y-0">
+            {appSteps.map(({ step, title, body, img }) => (
+              <div key={step} className="bg-white border border-line rounded-3xl overflow-hidden h-[560px] flex flex-col sm:h-auto sm:row-span-2 sm:grid sm:grid-rows-subgrid">
+                <div className="p-7 pb-0 shrink-0">
+                  <p className="eyebrow mb-3">{step}</p>
+                  <h3 className="display-md">{title}</h3>
+                  <p className="text-body leading-relaxed mt-3">{body}</p>
+                </div>
+                <div className="relative flex-1 min-h-0 mt-6 overflow-hidden bg-gradient-to-b from-white to-sand flex justify-center">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={img.width}
+                    height={img.height}
+                    sizes="220px"
+                    className="w-[200px] md:w-[220px] h-auto self-start mt-6 shrink-0"
+                  />
+                </div>
               </div>
             ))}
           </div>
