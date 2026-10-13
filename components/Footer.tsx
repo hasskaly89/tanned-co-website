@@ -89,7 +89,7 @@ export default function Footer() {
             <ul className="space-y-2.5 mb-6">
               <li><a href={`mailto:${CONTACT.email}`} className={colLink}>{CONTACT.email}</a></li>
               <li><a href={CONTACT.phoneHref} className={colLink}>{CONTACT.phone}</a></li>
-              <li className="text-sm text-muted">{SUPPORT_HOURS_LINE}</li>
+              <li className="text-sm text-on-dark-muted">{SUPPORT_HOURS_LINE}</li>
             </ul>
             <div className="flex flex-wrap gap-2.5">
               <a
