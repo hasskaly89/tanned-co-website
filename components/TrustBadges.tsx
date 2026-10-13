@@ -1,11 +1,9 @@
-import { LockIcon, LeafIcon, ClockIcon, PhoneIcon, SparkleIcon, PinIcon } from "@/components/Icons";
-import { CONTACT } from "@/lib/site";
+import { LockIcon, LeafIcon, ClockIcon, SparkleIcon, PinIcon } from "@/components/Icons";
 
 const badges = [
   { icon: <LockIcon />, label: "Private rooms" },
   { icon: <LeafIcon />, label: "Vegan and cruelty-free" },
   { icon: <ClockIcon />, label: "Open 6am to midnight" },
-  { icon: <PhoneIcon />, label: `Help on ${CONTACT.phone}` },
   { icon: <SparkleIcon />, label: "Self-cleaning booths" },
   { icon: <PinIcon />, label: "5 Sydney studios" },
 ];
