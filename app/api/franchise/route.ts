@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { isPreviewRequest, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
-import { escapeHtml, field, isValidEmail, isValidPhone } from "@/lib/form-utils";
+import { escapeHtml, field, isValidEmail, normalisePhone, PHONE_HINT } from "@/lib/form-utils";
 import { clientIp, rateLimited } from "@/lib/rate-limit";
 
 const FRANCHISE_EMAIL = "franchise@tannedco.com.au";
@@ -26,16 +26,21 @@ export async function POST(req: Request) {
 
   const name = field(body, "name", 100);
   const email = field(body, "email", 254);
-  const phone = field(body, "phone", 30);
+  const rawPhone = field(body, "phone", 30);
+  // AU mobiles are stored as 04XXXXXXXX; landlines and overseas numbers stay as typed.
+  const phone = normalisePhone(rawPhone) ?? "";
   const area = field(body, "area", 120);
   const timeframe = field(body, "timeframe", 60);
   const message = field(body, "message", 3000);
 
-  if (!name || !email || !phone || !area) {
+  if (!name || !email || !rawPhone || !area) {
     return NextResponse.json({ error: "Please fill in your name, email, mobile and area." }, { status: 400 });
   }
-  if (!isValidEmail(email) || !isValidPhone(phone)) {
-    return NextResponse.json({ error: "Please check your email address and mobile number." }, { status: 400 });
+  if (!isValidEmail(email)) {
+    return NextResponse.json({ error: "Check your email address" }, { status: 400 });
+  }
+  if (!phone) {
+    return NextResponse.json({ error: PHONE_HINT }, { status: 400 });
   }
 
   const row = (label: string, value: string) =>

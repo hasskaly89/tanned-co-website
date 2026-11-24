@@ -58,7 +58,7 @@ export default function LeadFormFields({
       <div>
         <label htmlFor={`${idPrefix}-phone`} className={label}>Mobile number</label>
         <input id={`${idPrefix}-phone`} type="tel" autoComplete="tel" inputMode="tel" required maxLength={30}
-          value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className={input} />
+          placeholder="0412 345 678" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className={input} />
       </div>
 
       {/* Honeypot: hidden from people, filled by bots */}

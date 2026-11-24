@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
 import { IS_PREVIEW, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
+import { normalisePhone, PHONE_HINT } from "@/lib/form-utils";
 
 const EMPTY = { name: "", email: "", phone: "", area: "", timeframe: "", message: "", website: "" };
 const label = "block text-sm font-medium text-ink mb-1.5";
@@ -15,6 +16,12 @@ export default function FranchiseForm() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    // Caught here so a wrong number never reaches the franchise inbox.
+    if (!normalisePhone(form.phone)) {
+      setError(PHONE_HINT);
+      setStatus("error");
+      return;
+    }
     setStatus("loading");
     try {
       const res = await fetch("/api/franchise", {
@@ -56,7 +63,7 @@ export default function FranchiseForm() {
         </div>
         <div>
           <label htmlFor="fr-phone" className={label}>Mobile number</label>
-          <input id="fr-phone" type="tel" required maxLength={30} autoComplete="tel" inputMode="tel" value={form.phone} onChange={set("phone")} className="field !bg-cream" />
+          <input id="fr-phone" type="tel" required maxLength={30} autoComplete="tel" inputMode="tel" placeholder="0412 345 678" value={form.phone} onChange={set("phone")} className="field !bg-cream" />
         </div>
       </div>
       <div>

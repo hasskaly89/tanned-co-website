@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { isPreviewRequest, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
-import { escapeHtml, field, isValidEmail, isValidPhone } from "@/lib/form-utils";
+import { escapeHtml, field, isValidEmail, normalisePhone, PHONE_HINT } from "@/lib/form-utils";
 import { clientIp, rateLimited } from "@/lib/rate-limit";
 
 export async function POST(req: Request) {
@@ -21,16 +21,21 @@ export async function POST(req: Request) {
 
     const name = field(body, "name", 100);
     const email = field(body, "email", 254);
-    const phone = field(body, "phone", 30);
+    const rawPhone = field(body, "phone", 30);
+    // AU mobiles are stored as 04XXXXXXXX; landlines and overseas numbers stay as typed.
+    const phone = normalisePhone(rawPhone) ?? "";
     const enquiryType = field(body, "enquiryType", 80);
     const location = field(body, "location", 60);
     const message = field(body, "message", 3000);
 
-    if (!name || !email || !phone || !enquiryType || !location || !message) {
+    if (!name || !email || !rawPhone || !enquiryType || !location || !message) {
       return NextResponse.json({ error: "All fields are required." }, { status: 400 });
     }
-    if (!isValidEmail(email) || !isValidPhone(phone)) {
-      return NextResponse.json({ error: "Please check your email and mobile number." }, { status: 400 });
+    if (!isValidEmail(email)) {
+      return NextResponse.json({ error: "Check your email address" }, { status: 400 });
+    }
+    if (!phone) {
+      return NextResponse.json({ error: PHONE_HINT }, { status: 400 });
     }
 
     const sheetsWebhook = process.env.GOOGLE_SHEETS_CONTACT_WEBHOOK;
@@ -97,7 +102,8 @@ export async function POST(req: Request) {
           body: JSON.stringify({
             name,
             email,
-            phone,
+            // Leading apostrophe makes Google Sheets store the number as text, so the 0 is kept.
+            phone: `'${phone}`,
             enquiryType,
             location,
             message,

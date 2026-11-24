@@ -10,6 +10,7 @@ import PageHero from "@/components/PageHero";
 import { MailIcon, PhoneIcon, InstagramIcon, TikTokIcon, FacebookIcon } from "@/components/Icons";
 import { trackEvent } from "@/lib/analytics";
 import { IS_PREVIEW, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
+import { normalisePhone, PHONE_HINT } from "@/lib/form-utils";
 
 const enquiryTypes = [
   "General Enquiry",
@@ -48,9 +49,17 @@ export default function ContactClient() {
     website: "", // honeypot, left empty by real visitors
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Caught here so a wrong number never reaches the inbox or the sheet.
+    if (!normalisePhone(formData.phone)) {
+      setError(PHONE_HINT);
+      setStatus("error");
+      return;
+    }
+    setError("");
     setStatus("loading");
     try {
       const res = await fetch("/api/contact", {
@@ -184,10 +193,12 @@ export default function ContactClient() {
                       id="phone"
                       type="tel"
                       required
+                      maxLength={30}
                       autoComplete="tel"
+                      inputMode="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="0400 000 000"
+                      placeholder="0412 345 678"
                       className="field !bg-cream"
                     />
                   </div>
@@ -238,7 +249,7 @@ export default function ContactClient() {
                 </div>
                 {status === "error" && (
                   <p role="alert" className="text-sm text-red-700">
-                    Something went wrong. Please try again or email us directly at hello@tannedco.com.au
+                    {error || "Something went wrong. Please try again or email us directly at hello@tannedco.com.au"}
                   </p>
                 )}
                 <button type="submit" disabled={status === "loading" || IS_PREVIEW} className="btn btn-dark w-full !py-4">

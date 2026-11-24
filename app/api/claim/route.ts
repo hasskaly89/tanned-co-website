@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { isPreviewRequest, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
-import { escapeHtml, field, isValidEmail, isValidPhone } from "@/lib/form-utils";
+import { AU_MOBILE_HINT, escapeHtml, field, isValidEmail, toAuMobile } from "@/lib/form-utils";
 import { MARKETING_CONSENT_TEXT } from "@/lib/consent";
 import { clientIp, markHandled, rateLimited, wasHandled } from "@/lib/rate-limit";
 
@@ -57,7 +57,9 @@ export async function POST(req: Request) {
 
   const name = field(body, "name", 100);
   const email = field(body, "email", 254);
-  const phone = field(body, "phone", 30);
+  const rawPhone = field(body, "phone", 30);
+  // One standard everywhere (CRM, sheet, email, GymMaster matching): 04XXXXXXXX.
+  const phone = toAuMobile(rawPhone) ?? "";
   const location = field(body, "location", 60) || "Website";
   const submissionId = field(body, "submissionId", 64);
   const consentVersion = field(body, "consentVersion", 40);
@@ -65,11 +67,11 @@ export async function POST(req: Request) {
 
   // Email is optional: the offer popup asks for first name and mobile only (pending Hass
   // confirmation); the studio-page offer form still sends an email. The SMS code goes to the mobile.
-  if (!name || !phone) {
+  if (!name || !rawPhone) {
     return NextResponse.json({ error: "Please fill in your name and mobile number." }, { status: 400 });
   }
-  if (!isValidPhone(phone)) {
-    return NextResponse.json({ error: "Please check your mobile number." }, { status: 400 });
+  if (!phone) {
+    return NextResponse.json({ error: AU_MOBILE_HINT }, { status: 400 });
   }
   if (email && !isValidEmail(email)) {
     return NextResponse.json({ error: "Please check your email address." }, { status: 400 });
@@ -125,7 +127,8 @@ export async function POST(req: Request) {
     sheetsWebhook
       ? postJson(
           sheetsWebhook,
-          { firstName, lastName, email, phone, location, source: "Tanned Co. Website", submittedAt, submissionId, ...consent, ...attribution },
+          // Leading apostrophe makes Google Sheets store the number as text, so the 0 is kept.
+          { firstName, lastName, email, phone: `'${phone}`, location, source: "Tanned Co. Website", submittedAt, submissionId, ...consent, ...attribution },
           "Sheets webhook"
         )
       : Promise.resolve<Channel>({ ok: false }),

@@ -3,6 +3,7 @@
 import { getAttribution } from "@/lib/attribution";
 import { trackEvent } from "@/lib/analytics";
 import { MARKETING_CONSENT_VERSION } from "@/lib/consent";
+import { AU_MOBILE_HINT, toAuMobile } from "@/lib/form-utils";
 
 export type LeadResult =
   | { ok: true; crm: boolean }
@@ -25,12 +26,18 @@ export async function submitClaim(input: {
   website: string; // honeypot
   form: string; // analytics label, e.g. "location_claim"
 }, analytics: Record<string, string> = {}): Promise<LeadResult> {
+  // Checked here so a wrong number is caught before submitting, and so the API,
+  // the CRM, the sheet and GymMaster all receive the one format: 04XXXXXXXX.
+  const phone = toAuMobile(input.phone);
+  if (!phone) return { ok: false, error: AU_MOBILE_HINT };
+
   try {
     const res = await fetch("/api/claim", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...input,
+        phone,
         consentVersion: MARKETING_CONSENT_VERSION,
         attribution: getAttribution(),
       }),
