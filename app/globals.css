@@ -151,6 +151,20 @@ body {
     --ribbon-h: 18px;
   }
 }
+/* Black Friday strip (lib/promos/black-friday-glow-trio.ts): html.promo-on swaps it in for
+   the franchise strip and makes the strip a little taller. Must stay above announce-off. */
+.announce-promo {
+  display: none;
+}
+html.promo-on {
+  --banner-h: 40px;
+}
+html.promo-on .announce-promo {
+  display: block;
+}
+html.promo-on .announce-franchise {
+  display: none;
+}
 html.announce-off {
   --banner-h: 0px;
 }
@@ -166,4 +180,47 @@ html {
   height: calc(100vh - var(--top-h) - var(--cta-h));
   height: calc(100dvh - var(--top-h) - var(--cta-h) - env(safe-area-inset-bottom, 0px));
   height: calc(100svh - var(--top-h) - var(--cta-h) - env(safe-area-inset-bottom, 0px));
+}
+
+/* Black Friday pop-up (components/PromoModal.tsx): fade in; a small rise only without reduced motion. */
+@keyframes promo-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes promo-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.promo-backdrop {
+  animation: promo-fade 200ms ease-out;
+}
+.promo-panel {
+  animation: promo-fade 200ms ease-out;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .promo-panel {
+    animation: promo-rise 260ms ease-out;
+  }
+}
+
+/* Black Friday pop-up: struck "$117" (a drawn line, not text-decoration, so it sits through the middle). */
+.bf-value-amt {
+  position: relative;
+  display: inline-block;
+  padding: 0 2px;
+  font-family: var(--font-display-face), Jost, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.bf-value-amt::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 52%;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 1px;
 }

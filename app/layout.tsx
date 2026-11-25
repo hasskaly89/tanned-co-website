@@ -9,7 +9,9 @@ import PageViewTracker from "@/components/PageViewTracker";
 import PreviewRibbon from "@/components/PreviewRibbon";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnnouncementBar from "@/components/AnnouncementBar";
-import { ANNOUNCEMENT, ANNOUNCEMENT_STORAGE_KEY } from "@/lib/site";
+import PromoModal from "@/components/PromoModal";
+import { ANNOUNCEMENT } from "@/lib/site";
+import { BF_GLOW_TRIO, announcementHeadScript } from "@/lib/promos/black-friday-glow-trio";
 import { IS_PREVIEW, isPreviewRequest } from "@/lib/preview";
 import { GA_ID } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/locations";
@@ -86,17 +88,14 @@ export default function RootLayout({
       // Lets Next.js switch smooth scrolling off during page changes, so new pages open at the top
       // while in-page anchor links still scroll smoothly (globals.css sets scroll-behavior: smooth).
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${displayFont.variable} h-full antialiased${ANNOUNCEMENT.enabled ? "" : " announce-off"}${IS_PREVIEW ? " is-preview" : ""}`}
-      // The inline script below may add "announce-off" before React hydrates.
+      className={`${geistSans.variable} ${displayFont.variable} h-full antialiased${ANNOUNCEMENT.enabled || BF_GLOW_TRIO.enabled ? "" : " announce-off"}${IS_PREVIEW ? " is-preview" : ""}`}
+      // The inline script below may add "promo-on" / "announce-off" before React hydrates.
       suppressHydrationWarning
     >
       <head>
-        {/* Hide a dismissed announcement before first paint (no flash, no layout shift). */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem(${JSON.stringify(ANNOUNCEMENT_STORAGE_KEY)})===${JSON.stringify(ANNOUNCEMENT.id)})document.documentElement.classList.add("announce-off")}catch(e){}`,
-          }}
-        />
+        {/* Pick the Black Friday or franchise strip, and hide a dismissed one, before first paint
+            (no flash, no layout shift). Falls back to the franchise strip by itself once the promo ends. */}
+        <script dangerouslySetInnerHTML={{ __html: announcementHeadScript() }} />
       </head>
       {ANALYTICS_ENABLED && (
         <>
@@ -129,6 +128,7 @@ export default function RootLayout({
         <ScrollReveal />
         <MobileCTA />
         <ExitIntent />
+        <PromoModal />
         <BronzeBot />
         <PreviewRibbon />
       </body>

@@ -6,6 +6,7 @@ import { FIRST_TIMER_OFFER } from "@/lib/consent";
 import { newSubmissionId, submitClaim } from "@/lib/submit-lead";
 import { IS_PREVIEW, PREVIEW_FORM_MESSAGE } from "@/lib/preview";
 import { usePathname } from "next/navigation";
+import { promoShowsOn } from "@/lib/promos/black-friday-glow-trio";
 
 // One auto-open per visit, shared by the desktop and phone triggers. Set when the
 // popup opens by itself, and when it is closed or submitted, so it never opens by
@@ -24,6 +25,12 @@ function markShown() {
   try {
     sessionStorage.setItem(SESSION_KEY, "1");
   } catch {}
+}
+// While the Black Friday promo shows on this page it is the one auto pop-up, so this
+// one waits (offer buttons still open it). Switches back by itself when the promo ends.
+// Also never auto-opens over another open dialog.
+function autoBlocked() {
+  return promoShowsOn(window.location.pathname) || !!document.querySelector('[role="dialog"][aria-modal="true"]');
 }
 function alreadyShown() {
   try {
@@ -82,7 +89,7 @@ export default function ExitIntent() {
   useEffect(() => {
     if (!window.matchMedia(DESKTOP_QUERY).matches || alreadyShown()) return;
     const onLeave = (e: MouseEvent) => {
-      if (e.clientY > 5 || alreadyShown() || !window.matchMedia(DESKTOP_QUERY).matches) return;
+      if (e.clientY > 5 || alreadyShown() || autoBlocked() || !window.matchMedia(DESKTOP_QUERY).matches) return;
       document.removeEventListener("mouseleave", onLeave);
       window.setTimeout(() => open("auto_desktop"), 200);
     };
@@ -103,7 +110,7 @@ export default function ExitIntent() {
     let passed = false;
     let timer: number | undefined;
     const tryOpen = () => {
-      if (!passed || alreadyShown() || window.matchMedia(DESKTOP_QUERY).matches) return;
+      if (!passed || alreadyShown() || autoBlocked() || window.matchMedia(DESKTOP_QUERY).matches) return;
       const wait = MOBILE_DELAY_MS - (Date.now() - start);
       if (wait > 0) {
         window.clearTimeout(timer);

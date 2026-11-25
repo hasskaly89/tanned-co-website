@@ -25,6 +25,8 @@ export async function submitClaim(input: {
   marketingConsent: boolean;
   website: string; // honeypot
   form: string; // analytics label, e.g. "location_claim"
+  /** Decides the CRM tag and SMS. Leave out for the 10% first-visit offer. */
+  offer?: "first_visit_10" | "bf_glowtrio";
 }, analytics: Record<string, string> = {}): Promise<LeadResult> {
   // Checked here so a wrong number is caught before submitting, and so the API,
   // the CRM, the sheet and GymMaster all receive the one format: 04XXXXXXXX.

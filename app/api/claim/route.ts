@@ -11,6 +11,19 @@ const GHL_WEBHOOK =
   process.env.GHL_WEBHOOK_URL ??
   "https://services.leadconnectorhq.com/hooks/aZwzIqXfd3kp2OCmsGiu/webhook-trigger/9d5155c4-b4c6-4e1e-b567-81f55a14e4d6";
 
+// Black Friday Glow Trio leads go to their OWN PD Wise (GoHighLevel) inbound webhook,
+// "WEBSITE -> BLACK FRIDAY GLOW TRIO Workflow", never the 10% one above (its workflow
+// texts the 10% code). Same pattern as GHL_WEBHOOK: env var wins, literal is the hook.
+const GHL_BF_WEBHOOK =
+  process.env.GHL_BF_WEBHOOK_URL ??
+  "https://services.leadconnectorhq.com/hooks/aZwzIqXfd3kp2OCmsGiu/webhook-trigger/0055dcad-5069-467e-81f9-1e20636ac285";
+
+type Offer = "first_visit_10" | "bf_glowtrio";
+const OFFERS: Record<Offer, { tag: string; label: string; webhook: string }> = {
+  first_visit_10: { tag: "10% Off Lead", label: "10% Off Lead", webhook: GHL_WEBHOOK },
+  bf_glowtrio: { tag: "BF Glow Trio Lead", label: "Black Friday Glow Trio Lead", webhook: GHL_BF_WEBHOOK },
+};
+
 const TIMEOUT_MS = 8000;
 const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "landing_page", "referrer"];
 
@@ -64,6 +77,9 @@ export async function POST(req: Request) {
   const submissionId = field(body, "submissionId", 64);
   const consentVersion = field(body, "consentVersion", 40);
   const marketingConsent = body.marketingConsent === true;
+  // Missing or unknown = the 10% offer, so the existing forms behave exactly as before.
+  const offerKey: Offer = field(body, "offer", 40) === "bf_glowtrio" ? "bf_glowtrio" : "first_visit_10";
+  const offer = OFFERS[offerKey];
 
   // Email is optional: the offer popup asks for first name and mobile only (pending Hass
   // confirmation); the studio-page offer form still sends an email. The SMS code goes to the mobile.
@@ -105,15 +121,16 @@ export async function POST(req: Request) {
   const sheetsWebhook = process.env.GOOGLE_SHEETS_WEBHOOK;
 
   const [crm, sheet] = await Promise.all([
-    // CRM webhook: creates the contact and triggers the offer SMS
-    postJson(
-      GHL_WEBHOOK,
+    // CRM webhook: creates the contact and triggers that offer's SMS workflow
+    offer.webhook
+      ? postJson(
+      offer.webhook,
       {
         firstName,
         lastName,
         ...(email ? { email } : {}),
         phone,
-        tags: ["10% Off Lead", location, ...(marketingConsent ? ["Marketing Opt-In"] : [])],
+        tags: [offer.tag, location, ...(marketingConsent ? ["Marketing Opt-In"] : [])],
         source: "Tanned Co. Website",
         customField: { location },
         submissionId,
@@ -121,7 +138,8 @@ export async function POST(req: Request) {
         ...attribution,
       },
       "CRM webhook"
-    ),
+    )
+      : Promise.resolve<Channel>({ ok: false }),
 
     // Google Sheets backup log (Apps Script web app)
     sheetsWebhook
@@ -135,6 +153,7 @@ export async function POST(req: Request) {
   ]);
 
   if (!sheetsWebhook) console.error("GOOGLE_SHEETS_WEBHOOK is not set; lead was not logged to the sheet.");
+  if (!offer.webhook) console.error(`No CRM webhook set for ${offer.tag}; no SMS was sent.`);
 
   // Team notification. A CRM failure is flagged in the subject so someone sends the code by hand.
   try {
@@ -143,12 +162,12 @@ export async function POST(req: Request) {
       from: "Tanned Co. Website <noreply@tannedco.com.au>",
       to: ["hello@tannedco.com.au", "edensorpark@tannedco.com.au"],
       ...(email ? { replyTo: email } : {}),
-      subject: `${crm.ok ? "" : "[ACTION NEEDED: CRM FAILED] "}New 10% Off Lead: ${location}`.replace(/[\r\n]+/g, " "),
+      subject: `${crm.ok ? "" : "[ACTION NEEDED: CRM FAILED] "}New ${offer.label}: ${location}`.replace(/[\r\n]+/g, " "),
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #fdf6ec; border-radius: 12px;">
-          <h2 style="color: #1a1a1a; margin-bottom: 4px;">New Lead: 10% Off Claim</h2>
+          <h2 style="color: #1a1a1a; margin-bottom: 4px;">New Lead: ${offerKey === "bf_glowtrio" ? "Black Friday Glow Trio" : "10% Off Claim"}</h2>
           <p style="color: #a46746; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0;">${escapeHtml(location)}</p>
-          ${crm.ok ? "" : `<p style="background:#f8e6e3;color:#a1352a;padding:12px;border-radius:8px;"><strong>The CRM did not accept this lead, so no SMS was sent.</strong> Please send the 10% off code manually and add the contact to the CRM.</p>`}
+          ${crm.ok ? "" : `<p style="background:#f8e6e3;color:#a1352a;padding:12px;border-radius:8px;"><strong>The CRM did not accept this lead, so no SMS was sent.</strong> ${offerKey === "bf_glowtrio" ? "Please text them the Glow Trio checkout link manually and add the contact to the CRM." : "Please send the 10% off code manually and add the contact to the CRM."}</p>`}
           <table style="width: 100%; border-collapse: collapse;">
             <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase; width: 150px;">Name</td><td style="padding: 8px 0; color: #1a1a1a; font-weight: bold;">${escapeHtml(name)}</td></tr>
             <tr><td style="padding: 8px 0; color: #7a6a5a; font-size: 12px; text-transform: uppercase;">Email</td><td style="padding: 8px 0;">${email ? `<a href="mailto:${escapeHtml(email)}" style="color: #a46746;">${escapeHtml(email)}</a>` : "Not provided"}</td></tr>
