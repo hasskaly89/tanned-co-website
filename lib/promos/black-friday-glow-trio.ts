@@ -35,14 +35,14 @@ export const PROMO_MODAL_STORAGE_KEY = "tannedco_promo_dismissed";
 /** Pop-up already shown this visit: no reopening on internal navigation. */
 export const PROMO_MODAL_SESSION_KEY = "tannedco_promo_shown";
 /**
- * Buy link: GymMaster quick sign-up for the Glow Trio pack (membership type 194963,
- * "BLACK FRIDAY GLOW TRIO - 3 TANS FOR $79", Exclusive Offers). Quick sign-up asks
- * 6 fields (no password, no address) instead of 13. Not the Glow Club link, not
- * /book-now. Chosen by Hass 25 Nov 2026.
- * Note: Mobile Phone is optional on this GymMaster form.
+ * Buy link: Hass's bit.ly (switched 27 Nov 2026). It redirects to the GymMaster
+ * offer page for the Glow Trio pack (membership type 194963, "BLACK FRIDAY GLOW
+ * TRIO - 3 TANS FOR $79"): offer details, then New Member / Current or Past Member.
+ * Website clicks now count in bit.ly alongside the other places this link is shared.
+ * Previous link (25-27 Nov), the 6-field quick sign-up:
+ * https://tannedco.gymmasteronline.com/portal/quick/signup/de9d37256ec469bd7370407fa5c8ea57
  */
-export const BF_GLOW_TRIO_BUY_URL =
-  "https://tannedco.gymmasteronline.com/portal/quick/signup/de9d37256ec469bd7370407fa5c8ea57";
+export const BF_GLOW_TRIO_BUY_URL = "https://bit.ly/bronze-friday";
 
 export function isPromoLive(now: number = Date.now()): boolean {
   if (!BF_GLOW_TRIO.enabled) return false;
